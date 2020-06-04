@@ -1,0 +1,147 @@
+.signin{
+  width: 100%;
+  background-color: whitesmoke;
+  &__header{
+    text-align: center;
+    &__logo{
+      margin:30px 0px;
+      width: 150px;
+    }
+    &__logo:hover{
+      opacity: 0.7;
+    }
+  }
+  &__main{
+    text-align: center;
+    &__form{
+      background-color: white;
+      box-shadow: 0 0 4px gray;
+      height: auto;
+      width: 35%;
+      margin: 0 auto;
+      &__signup{
+        border-bottom:1px lightgray solid ;
+        padding: 30px 0px;
+        p{
+          font-size: 14px;
+        }
+        &__vanar{
+          margin: 0 auto;
+          text-decoration: none;
+          color: white;
+          display: block;
+          padding: 10px 0px;
+          line-height: 20px;
+          width: 300px;
+          background-color: #0066FF;
+          font-size: 15px;
+        }
+      }
+      &__login{
+        padding: 30px 0px;
+        &__sns{
+          margin-bottom: 30px;
+          &__facebook{
+            margin: 0px auto 10px;
+            text-decoration: none;
+            color: white;
+            display: block;
+            padding: 10px 0px;
+            line-height: 25px;
+            width: 300px;
+            background-color: #0033CC;
+            font-size: 12px;
+          }
+          &__google{
+            margin: 10px auto;
+            text-decoration: none;
+            color:black;
+            display: block;
+            padding: 10px 0px;
+            line-height: 25px;
+            width: 300px;
+            border: 1px black solid;
+            font-size: 12px;
+          }
+        }
+        &__input{
+          padding: 10px 0px;
+          &__mail{
+            line-height: 40px;
+            width: 294px;
+            margin-bottom: 20px;
+          }
+          &__pass{
+            line-height: 40px;
+            width: 294px;
+            margin-bottom: 30px;
+          }
+          h3{
+            margin: 0 auto;
+            background-color: lightslategray;
+            line-height: 60px;
+            border-radius: 5px;
+            width: 300px;
+            color: white;
+            font-size: 12px;
+            font-weight: lighter;
+          }
+          &__btn{
+            display: inline-block;
+            font-size: 10pt;
+            text-align: center;
+            cursor: pointer;
+            margin: 20px 0px;
+            width: 300px;
+            line-height: 40px;
+            background: #ff0000;
+            color: #ffffff;
+            border: 2px solid #ff0000;
+
+          }
+          &__forget{
+            text-decoration: none;
+            color: red;
+          }
+          &__forget:hover{
+            color:blue;
+            
+          }
+        }
+      }
+    }
+  }
+  &__footer{
+    text-align: center;
+    width: 100%;
+    &__list{
+      display: flex;
+      justify-content: center;
+      margin-right: 30px;
+      &__left{
+        list-style: none;
+        font-size: 12px;
+      }
+      &__center{
+        list-style: none;
+        font-size: 12px;
+        margin: 0px 10px;
+      }
+      &__right{
+        list-style: none;
+        font-size: 12px;
+      }
+    }
+    &__logo{
+      width: 150px;
+    }
+    &__logo:hover{
+      opacity: 0.7;
+    }
+    p{
+      text-align: center;
+      font-size: 12px;
+      padding-bottom: 50px;
+    }
+  }
+}
