@@ -1,7 +1,7 @@
-# class MypageController < ApplicationController
-#   def index
-#   end
+class MypageController < ApplicationController
+  def index
+  end
 
-#   def new
-#   end
-# end
+  def new
+  end
+end
