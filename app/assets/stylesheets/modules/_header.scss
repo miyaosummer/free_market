@@ -15,8 +15,13 @@
       &__logo {
         padding-bottom: 10px;
         margin-right: 30px;
-      }
 
+        &__furima-logo {
+          width: 140px;
+          height: 40px;
+        }
+      }
+      
       &__search {
         width: 100%;
         margin-left: auto;
@@ -39,20 +44,14 @@
             border-radius: 4px;
             margin: 2px;
             padding: 8px;
+
+            &__search-icon {
+              width: 20px;
+              height: 20px;
+            }
           }
         }
       }
     }
-  
   }
-
-
-
-
-
-
-
-
-
-
 }

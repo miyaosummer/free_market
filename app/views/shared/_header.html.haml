@@ -3,12 +3,12 @@
     .header__inner__top
       %h1.header__inner__top__logo
         = link_to root_path do
-          = image_tag "logo.png" , class:"furima-logo" , width: "140px", height: "40px"
+          = image_tag "logo.png" , class:"header__inner__top__logo__furima-logo"
       .header__inner__top__search
         = form_tag "#", method: :get, class: "header__inner__top__search__form" do
           = text_field_tag :keyword, "", class: "header__inner__top__search__form__input", placeholder: "キーワードから探す"
           = button_tag type: "submit",class: "header__inner__top__search__form__button" do
-            = image_tag "icon-search 1.png" , class:"search-icon" , width: "20px", height: "20px"
+            = image_tag "icon-search 1.png" , class:"header__inner__top__search__form__button__search-icon"
             
     .header__inner__nav.nav
       .nav__left
