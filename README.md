@@ -98,7 +98,6 @@ Things you may want to cover:
 |price               |integer    |null: false|
 |seller_id           |references |null: false, foreign_key: true|
 |buyer_id            |references |null: false, foreign_key: true|
-|product_image_id    |references |null: false, foreign_key: true|
 |product_category_id |references |null: false, foreign_key: true|
 |product_condition_id|references |null: false, foreign_key: true|
 |postage_way_id      |references |null: false, foreign_key: true|
@@ -144,9 +143,9 @@ Things you may want to cover:
 
 
 ## product_brands table
-|Column     |Type   |Options |
-|-----------|-------|--------|
-|brand_name |string |	       |
+|Column     |Type   |Options     |
+|-----------|-------|------------|
+|brand_name |string |null: false |
 
 ### Association
 has_many :products
