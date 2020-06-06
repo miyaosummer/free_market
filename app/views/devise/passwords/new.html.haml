@@ -1,0 +1,19 @@
+.forgetpass
+  .forgetpass__header
+    = render "devise/sessions/header"
+  .forgetpass__main
+    .forgetpass__main__tittle
+      %h2 パスワードをお忘れの方
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      .field
+        = f.label :email
+        %br/
+        = f.email_field :email, autofocus: true, autocomplete: "email"
+      .actions
+        = f.submit "Send me reset password instructions"
+  .forgetpass__footer
+    = render "devise/sessions/footer"
+-# = render "devise/shared/links"
+
+
