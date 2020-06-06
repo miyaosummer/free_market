@@ -15,7 +15,6 @@
 |birth_year      |integer   |null: false|
 |birth_month     |integer   |null: false|
 |birth_day       |integer   |null: false|
-|user_id         |references|null: false, foreign_key: true|
 
 ### Association
 - has_one  :destination
