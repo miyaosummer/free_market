@@ -1,0 +1,235 @@
+.putup{
+  width: 100%;
+  background-color: whitesmoke;
+  &__header{
+    text-align: center;
+    &__logo{
+      margin:30px 0px;
+      width: 150px;
+    }
+    &__logo:hover{
+      opacity: 0.7;
+    }
+  }
+
+  &__main{
+    width: 50%;
+    margin:0 auto;
+    background-color: white;
+    &__upload{
+      padding-top: 40px;
+      &__title{
+        margin-left: 40px;
+        &__imperative{
+          background-color:#99FFFF;
+        }
+      }
+      &__description{
+        margin: 20px 0px 0px 40px;
+      }
+      &__image-box{
+        margin: 20px 40px 0px 40px;
+        border-style: solid;
+        width: calc(100% - 80px);
+      }
+  }
+  &__name{
+    padding-top: 40px;
+    &__title{
+      margin-left: 40px;
+      &__imperative{
+        background-color:#99FFFF;
+      }
+    }
+    &__text-box{
+      margin: 20px 40px 0px 40px;
+      height: 40px;
+      width: calc(100% - 80px);
+    }
+  }
+  &__description{
+    padding-top: 40px;
+    &__title{
+      margin-left: 40px;
+      &__imperative{
+        background-color:#99FFFF;
+      }
+    }
+    &__text-box{
+      margin: 20px 40px 0px 40px;
+      width: calc(100% - 80px);
+    }
+  }
+  &__category{
+    padding-top: 40px;
+    &__title{
+      margin-left: 40px;
+      &__imperative{
+        background-color:#99FFFF;
+      }
+    }
+    &__select-box{
+      margin: 20px 40px 0px 40px;
+      height: 40px;
+      width: calc(100% - 80px);
+    }
+  }
+  &__brand{
+    padding-top: 40px;
+    &__title{
+      margin-left: 40px;
+      &__imperative{
+        background-color:#99FFFF;
+      }
+    }
+    &__text-box{
+      margin: 20px 40px 0px 40px;
+      height: 40px;
+      width: calc(100% - 80px);
+    }
+  }
+  &__condition{
+    padding-top: 40px;
+    &__title{
+      margin-left: 40px;
+      &__imperative{
+        background-color:#99FFFF;
+      }
+    }
+    &__select-box{
+      margin: 20px 40px 0px 40px;
+      height: 40px;
+      width: calc(100% - 80px);
+    }
+  }
+  &__postage-way{
+    padding-top: 40px;
+    &__title{
+      margin-left: 40px;
+      &__imperative{
+        background-color:#99FFFF;
+      }
+    }
+    &__select-box{
+      margin: 20px 40px 0px 40px;
+      height: 40px;
+      width: calc(100% - 80px);
+    }
+  }
+  &__prefecture{
+    padding-top: 40px;
+    &__title{
+      margin-left: 40px;
+      &__imperative{
+        background-color:#99FFFF;
+      }
+    }
+    &__select-box{
+      margin: 20px 40px 0px 40px;
+      height: 40px;
+      width: calc(100% - 80px);
+    }
+  }
+  &__shipping-day{
+    padding-top: 40px;
+    &__title{
+      margin-left: 40px;
+      &__imperative{
+        background-color:#99FFFF;
+      }
+    }
+    &__select-box{
+      margin: 20px 40px 0px 40px;
+      height: 40px;
+      width: calc(100% - 80px);
+    }
+  }
+  &__price{
+    padding-top: 40px;
+    &__title{
+      margin-left: 40px;
+      //border-style: solid;
+      &__imperative{
+        background-color:#99FFFF;
+        //border-style: solid;
+      }
+      &__number-box{
+        //border-style: solid;
+        height: 40px;
+        width: 50%;
+        width: calc(100% - 80px);
+      }  
+    }
+  }
+  &__commission{
+    padding-top: 40px;
+    &__title{
+      margin-left: 40px;
+    }
+  }
+  &__profit{
+    padding-top: 40px;
+    &__title{
+      margin-left: 40px;
+    }
+  }
+  &__submit{
+    padding-top: 40px;
+    &__title{
+      margin: 20px 160px 0px 160px;
+      height: 40px;
+      font-size: 20px;
+      width: calc(100% - 320px);
+      text-align: center;
+      vertical-align: middle;
+      background-color:#99FFFF;
+    }
+  }
+  &__prohibit{
+    padding-top: 40px;
+    &__script{
+      font-size: 12px;
+      margin-left: 40px;
+      margin-right: 40px;
+      padding-bottom: 40px;
+    }
+  }
+}
+
+
+  &__footer{
+    padding-top: 40px;
+    text-align: center;
+    width: 100%;
+    &__list{
+      display: flex;
+      justify-content: center;
+      margin-right: 30px;
+      &__left{
+        list-style: none;
+        font-size: 12px;
+      }
+      &__center{
+        list-style: none;
+        font-size: 12px;
+        margin: 0px 10px;
+      }
+      &__right{
+        list-style: none;
+        font-size: 12px;
+      }
+    }
+    &__logo{
+      width: 150px;
+    }
+    &__logo:hover{
+      opacity: 0.7;
+    }
+    p{
+      text-align: center;
+      font-size: 12px;
+      padding-bottom: 50px;
+    }
+  }
+
+}
