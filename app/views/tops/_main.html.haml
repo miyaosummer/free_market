@@ -1,0 +1,201 @@
+.main
+  .top-banner
+    .top-banner__content
+      %h2.top-banner__content__title
+        %br
+        人生を変えるフリマアプリ
+      %p.top-banner__content__text
+        FURIMAはだれでもかんたんに出品・購入できる
+        %br
+        フリマアプリです
+      .top-banner__content__stores
+        = link_to "#" , class: "top-banner__content__stores__store-btn" do
+          = image_tag "app-store.svg" , class: "top-banner__content__stores__store-btn__app-store"
+        = link_to "#" , class: "top-banner__content__stores__store-btn" do
+          = image_tag "google-play.svg" , class: "top-banner__content__stores__store-btn__google-play"
+
+  .intro
+    %h2.intro__title
+      FURIMAが選ばれる3つの理由
+    %ul.intro__lists
+      %li.intro__lists__list
+        .intro__lists__list__box
+          %span.intro__lists__list__box__number 1
+          = image_tag "pict-reason-01.jpg", class: "intro__lists__list__box__image"
+        %h3.intro__lists__list__text
+          %span.intro__lists__list__text--emphasis
+            3分
+          ですぐに出品
+        %p.intro__lists__list__description
+          スマホで入力するだけで簡単に出品できる！
+
+      %li.intro__lists__list
+        .intro__lists__list__box
+          %span.intro__lists__list__box__number 2
+          = image_tag "pict-reason-02.jpg", class: "intro__lists__list__box__image"
+        %h3.intro__lists__list__text
+          %span.intro__lists__list__text--emphasis
+            シンプル
+          で使いやすい
+        %p.intro__lists__list__description
+          めんどくさい入力は必要なく、検索も購入もスムーズ！
+
+      %li.intro__lists__list
+        .intro__lists__list__box
+          %span.intro__lists__list__box__number 3
+          = image_tag "pict-reason-03.jpg", class: "intro__lists__list__box__image"
+        %h3.intro__lists__list__text
+          手数料
+          %span.intro__lists__list__text--emphasis
+            業界最安値
+        %p.intro__lists__list__description
+          最大3%でお得に出品&購入！
+
+  .middle-banner
+    .middle-banner__content
+      %h2.middle-banner__content__title
+        %br
+        会員数日本一位
+      %p.middle-banner__content__text
+        FURIMAは、フリマアプリで最も人気。
+        %br
+        出品・購入回数も業界最多です！
+        %br
+        ほしかったあの商品に出会えるかもしれません。
+      .middle-banner__content__stores
+        = link_to "#" , class: "middle-banner__content__stores__store-btn" do
+          = image_tag "app-store.svg" , class: "middle-banner__content__stores__store-btn__app-store"
+        = link_to "#" , class: "middle-banner__content__stores__store-btn" do
+          = image_tag "google-play.svg" , class: "middle-banner__content__stores__store-btn__google-play"
+
+  .feature
+    %h2.feature__title
+      FURIMAの特徴
+
+    %ul.feature__lists
+      %li.feature__lists__list
+        .feature__lists__list__box
+          = image_tag "icon-01.png", class: "feature__lists__list__box__image"
+        %h3.feature__lists__list__text
+          簡単に売り買いできる
+        %p.feature__lists__list__description
+          スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+
+      %li.feature__lists__list
+        .feature__lists__list__box
+          = image_tag "icon-03.png", class: "feature__lists__list__box__image"
+        %h3.feature__lists__list__text
+          売上金は即日振込み対応
+        %p.feature__lists__list__description
+          午前９時までに振り込みを依頼いただければ、翌日に指定の口座に入金いたします！
+
+      %li.feature__lists__list
+        .feature__lists__list__box
+          = image_tag "icon-04.png", class: "feature__lists__list__box__image"
+        %h3.feature__lists__list__text
+          手数料
+        %p.feature__lists__list__description
+          お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+
+  .pickup
+    %h2.pickup__title
+      ピックアップカテゴリー
+    .pickup__container
+      = link_to "新規登録商品", "#" , class: "pickup__container__title"
+      .pickup__container__items
+        .pickup__container__items__item.item
+          = link_to "#" do
+            .item__image-box
+              = image_tag "hoge.png" , class: "item__image-box__image"
+            .item__caption
+              %h3.item__caption__name test-product
+              .item__caption__details
+                .item__caption__details__price
+                  30000円
+                %p.item__capiton__details__like
+                  ★０
+              %p.item__caption__tax (税込)
+
+        .pickup__container__items__item.item
+          = link_to "#" do
+            .item__image-box
+              = image_tag "hoge.png" , class: "item__image-box__image"
+            .item__caption
+              %h3.item__caption__name test-product
+              .item__caption__details
+                .item__caption__details__price
+                  30000円
+                %p.item__capiton__details__like
+                  ★０
+              %p.item__caption__tax (税込)
+
+        .pickup__container__items__item.item
+          = link_to "#" do
+            .item__image-box
+              = image_tag "hoge.png" , class: "item__image-box__image"
+            .item__caption
+              %h3.item__caption__name test-product
+              .item__caption__details
+                .item__caption__details__price
+                  30000円
+                %p.item__capiton__details__like
+                  ★０
+              %p.item__caption__tax (税込)
+
+  .pickup.last-pickup
+    %h2.pickup__title
+      ピックアップブランド
+    .pickup__container
+      = link_to "アーカイバ", "#" , class: "pickup__container__title"
+      .pickup__container__items
+        .pickup__container__items__item.item
+          = link_to "#" do
+            .item__image-box
+              = image_tag "hoge.png" , class: "item__image-box__image"
+            .item__caption
+              %h3.item__caption__name test-product
+              .item__caption__details
+                .item__caption__details__price
+                  30000円
+                %p.item__capiton__details__like
+                  ★０
+              %p.item__caption__tax (税込)
+
+        .pickup__container__items__item.item
+          = link_to "#" do
+            .item__image-box
+              = image_tag "hoge.png" , class: "item__image-box__image"
+            .item__caption
+              %h3.item__caption__name test-product
+              .item__caption__details
+                .item__caption__details__price
+                  30000円
+                %p.item__capiton__details__like
+                  ★０
+              %p.item__caption__tax (税込)
+              
+        .pickup__container__items__item.item
+          = link_to "#" do
+            .item__image-box
+              = image_tag "hoge.png" , class: "item__image-box__image"
+            .item__caption
+              %h3.item__caption__name test-product
+              .item__caption__details
+                .item__caption__details__price
+                  30000円
+                %p.item__capiton__details__like
+                  ★０
+              %p.item__caption__tax (税込)
+        
+  .bottom-banner
+    .bottom-banner__content
+      %h2.bottom-banner__content__title
+        だれでもかんたん、人生を変えるフリマアプリ
+      %p.bottom-banner__content__text
+        今すぐ無料ダウンロード！
+      .bottom-banner__content__stores
+        = link_to "#" , class: "bottom-banner__content__stores__store-btn" do
+          = image_tag "app-store.svg" , class: "bottom-banner__content__stores__store-btn__app-store"
+        = link_to "#" , class: "bottom-banner__content__stores__store-btn" do
+          = image_tag "google-play.svg" , class: "bottom-banner__content__stores__store-btn__google-play"
+
