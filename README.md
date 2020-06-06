@@ -38,12 +38,12 @@ Things you may want to cover:
 |birth_day       |integer   |null: false|
 
 ### Association
-- has_one  :destination
-- has_one  :credit_card
-- has_one  :sns_authentication
+- has_one  :destination, dependent: :destroy
+- has_one  :credit_card, dependent: :destroy
+- has_one  :sns_authentication, dependent: :destroy
 - has_many :products
-- has_many :comments
-- has_many :favorites
+- has_many :comments, dependent: :destroy
+- has_many :favorites, dependent: :destroy
 
 
 ## destinations table
@@ -108,9 +108,9 @@ Things you may want to cover:
 |prefecture_id       |references |null: false, foreign_key: true|
 
 ### Association
-- has_many :product_images
-- has_many :comments
-- has_many :favorites
+- has_many :product_images, dependent: :destroy
+- has_many :comments, dependent: :destroy
+- has_many :favorites, dependent: :destroy
 - belongs_to :seller, class_name: 'User', :foreign_key => 'seller_id'
 - belongs_to :buyer,  class_name: 'User', :foreign_key => 'buyer_id'
 - belongs_to :product_category
