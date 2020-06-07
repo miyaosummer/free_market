@@ -1,0 +1,115 @@
+.putup
+  .putup__header
+    = render "header_products"
+
+  .putup__main
+    .putup__main__upload
+      %p.putup__main__upload__title
+        商品画像
+        %span.putup__main__upload__title__imperative
+          必須
+      %p.putup__main__upload__description
+        最大10枚までアップロードできます
+      %textarea{class: "putup__main__upload__image-box", rows: "5", placeholder:'ドラッグアンドドロップまたはクリックしてファイルをアップロード'}
+
+    .putup__main__name
+      %p.putup__main__name__title
+        商品名
+        %span.putup__main__name__title__imperative
+          必須
+      %input{type: "text", class: "putup__main__name__text-box", placeholder:'40文字まで'}
+
+    .putup__main__description 
+      %p.putup__main__description__title
+        商品の説明
+        %span.putup__main__description__title__imperative
+          必須
+      %textarea{class: "putup__main__description__text-box", rows: "6", placeholder:'商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'}
+
+    .putup__main__category 
+      %p.putup__main__category__title
+        カテゴリー
+        %span.putup__main__category__title__imperative
+          必須
+      %select{class: "putup__main__category__select-box"}
+        %option{:value => "0"}  選択してください
+        %option{:value => "1"}  レディース
+        %option{:value => "2"}  メンズ
+
+    .putup__main__brand
+      %p.putup__main__brand__title
+        ブランド
+        %span.putup__main__brand__title__optional
+          任意
+      %input{type: "text", class: "putup__main__brand__text-box", placeholder:'例）シャネル'}
+
+    .putup__main__condition
+      %p.putup__main__condition__title
+        商品の状態
+        %span.putup__main__condition__title__imperative
+          必須
+      %select{class: "putup__main__condition__select-box"}
+        %option{:value => "0"}  選択してください
+        %option{:value => "1"}  新品、未使用
+        %option{:value => "2"}  未使用に近い
+        %option{:value => "3"}  目立った傷や汚れなし
+        %option{:value => "4"}  やや傷や汚れあり
+        %option{:value => "5"}  傷や汚れあり
+        %option{:value => "6"}  全体的に状態が悪い
+
+    .putup__main__postage-way
+      %p.putup__main__postage-way__title
+        配送料の負担
+        %span.putup__main__postage-way__title__imperative
+          必須
+      %select{class: "putup__main__postage-way__select-box"}
+        %option{:value => "0"}  選択してください
+        %option{:value => "1"}  送料込み(出品者負担)
+        %option{:value => "2"}  着払い(購入者負担)
+
+    .putup__main__prefecture
+      %p.putup__main__prefecture__title
+        発送元の地域
+        %span.putup__main__prefecture__title__imperative
+          必須
+      %select{class: "putup__main__prefecture__select-box"}
+        %option{:value => "0"}  選択してください
+        %option{:value => "1"}  北海道
+        %option{:value => "2"}  青森
+
+    .putup__main__shipping-day
+      %p.putup__main__shipping-day__title
+        発送までの日数
+        %span.putup__main__shipping-day__title__imperative
+          必須
+      %select{class: "putup__main__shipping-day__select-box"}
+        %option{:value => "0"}  選択してください
+        %option{:value => "1"}  1〜2日で発送
+        %option{:value => "2"}  2〜3日で発送
+        %option{:value => "3"}  4〜7日で発送
+
+    .putup__main__price
+      %p.putup__main__price__title
+        販売価格
+        %span.putup__main__price__title__imperative
+          必須
+        %input{type: "number",min: "300", max: "9999999", class: "putup__main__price__number-box", placeholder:'0'}
+
+    .putup__main__commission
+      %p.putup__main__commission__title
+        販売手数料（10%）
+
+    .putup__main__profit
+      %p.putup__main__profit__title
+        販売利益
+
+    .putup__main__submit
+      %h2.putup__main__submit__title
+        出品する 
+
+    .putup__main__prohibit
+      %p.putup__main__prohibit__script
+        禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+
+  .putup__footer
+    = render "footer_products"
