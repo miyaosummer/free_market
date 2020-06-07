@@ -14,9 +14,9 @@
         .signin__main__form__login__input
           = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
             = f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"メールアドレス",class:"signin__main__form__login__input__mail"
-            %br/
+            %br
             = f.password_field :password, autocomplete: "current-password",placeholder:"パスワード",class:"signin__main__form__login__input__pass"
-            %br/
+            %br
             %h3 私はロボットではありません
             = f.submit "ログイン",class:"signin__main__form__login__input__btn"
             = render "devise/shared/links"
