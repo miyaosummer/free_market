@@ -14,30 +14,49 @@
 
   &__main{
     width: 50%;
+    min-width: 500px;
     margin:0 auto;
     background-color: white;
     &__upload{
       padding-top: 40px;
       &__title{
         margin-left: 40px;
+        font-weight: bold;
+        font-size: 14px;
+        font-family: "Source Sans Pro", Helvetica, Arial, 
+                      游ゴシック体, YuGothic, メイリオ, Meiryo, 
+                      sans-serif;
         &__imperative{
+          border-radius: 2px;
+          padding: 2px 4px;
+          font-size: 12px;
           background-color:#99FFFF;
         }
       }
       &__description{
         margin: 20px 0px 0px 40px;
+        font-size: 14px;
       }
       &__image-box{
         margin: 20px 40px 0px 40px;
-        border-style: solid;
+        border-style: dashed;
         width: calc(100% - 80px);
+        background-color: whitesmoke;
       }
   }
   &__name{
     padding-top: 40px;
     &__title{
       margin-left: 40px;
+      font-weight: bold;
+      font-size: 14px;
+      font-family: "Source Sans Pro", Helvetica, Arial, 
+                    游ゴシック体, YuGothic, メイリオ, Meiryo, 
+                    sans-serif;
       &__imperative{
+        border-radius: 2px;
+        padding: 2px 4px;
+        font-size: 12px;
         background-color:#99FFFF;
       }
     }
@@ -45,26 +64,62 @@
       margin: 20px 40px 0px 40px;
       height: 40px;
       width: calc(100% - 80px);
+      border-color: #DDDDDD;
+      border-style: solid;
+      border-width: 1px;
+      border-radius: 5px;
     }
   }
   &__description{
     padding-top: 40px;
     &__title{
       margin-left: 40px;
+      font-weight: bold;
+      font-size: 14px;
+      font-family: "Source Sans Pro", Helvetica, Arial, 
+                    游ゴシック体, YuGothic, メイリオ, Meiryo, 
+                    sans-serif;
       &__imperative{
+        border-radius: 2px;
+        padding: 2px 4px;
+        font-size: 12px;
         background-color:#99FFFF;
       }
     }
     &__text-box{
       margin: 20px 40px 0px 40px;
       width: calc(100% - 80px);
+      border-color: #DDDDDD;
+      border-style: solid;
+      border-width: 1px;
+      border-radius: 5px;
+    }
+  }
+  &__product-detail{
+    padding-top: 20px;
+    &__title{
+      margin-left: 40px;
+      color: gray;
+      font-weight: bold;
+      font-size: 14px;
+      font-family: "Source Sans Pro", Helvetica, Arial, 
+                    游ゴシック体, YuGothic, メイリオ, Meiryo, 
+                    sans-serif;
     }
   }
   &__category{
     padding-top: 40px;
     &__title{
       margin-left: 40px;
+      font-weight: bold;
+      font-size: 14px;
+      font-family: "Source Sans Pro", Helvetica, Arial, 
+                    游ゴシック体, YuGothic, メイリオ, Meiryo, 
+                    sans-serif;
       &__imperative{
+        border-radius: 2px;
+        padding: 2px 4px;
+        font-size: 12px;
         background-color:#99FFFF;
       }
     }
@@ -72,27 +127,49 @@
       margin: 20px 40px 0px 40px;
       height: 40px;
       width: calc(100% - 80px);
+      border-color: #DDDDDD;
+      border-radius: 5px;
     }
   }
   &__brand{
     padding-top: 40px;
     &__title{
       margin-left: 40px;
-      &__imperative{
-        background-color:#99FFFF;
+      font-weight: bold;
+      font-size: 14px;
+      font-family: "Source Sans Pro", Helvetica, Arial, 
+                    游ゴシック体, YuGothic, メイリオ, Meiryo, 
+                    sans-serif;
+      &__optional{
+        border-radius: 2px;
+        padding: 2px 4px;
+        font-size: 12px;
+        background-color:#DDDDDD;
       }
     }
     &__text-box{
       margin: 20px 40px 0px 40px;
       height: 40px;
       width: calc(100% - 80px);
+      border-color: #DDDDDD;
+      border-style: solid;
+      border-width: 1px;
+      border-radius: 5px;
     }
   }
   &__condition{
     padding-top: 40px;
     &__title{
       margin-left: 40px;
+      font-weight: bold;
+      font-size: 14px;
+      font-family: "Source Sans Pro", Helvetica, Arial, 
+                    游ゴシック体, YuGothic, メイリオ, Meiryo, 
+                    sans-serif;
       &__imperative{
+        border-radius: 2px;
+        padding: 2px 4px;
+        font-size: 12px;
         background-color:#99FFFF;
       }
     }
@@ -100,13 +177,46 @@
       margin: 20px 40px 0px 40px;
       height: 40px;
       width: calc(100% - 80px);
+      border-color: #DDDDDD;
+      border-radius: 5px;
+    }
+  }
+  &__delivery{
+    padding-top: 20px;
+    &__title{
+      margin-left: 40px;
+      color: gray;
+      font-weight: bold;
+      font-size: 14px;
+      font-family: "Source Sans Pro", Helvetica, Arial, 
+                    游ゴシック体, YuGothic, メイリオ, Meiryo, 
+                    sans-serif;
+      &__icon{
+        width: 16px;
+        height: 16px;
+        font-size: 12px;
+        color: black;
+        border-radius: 50%;
+        background: #99FFFF;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+      }
     }
   }
   &__postage-way{
     padding-top: 40px;
     &__title{
       margin-left: 40px;
+      font-weight: bold;
+      font-size: 14px;
+      font-family: "Source Sans Pro", Helvetica, Arial, 
+                    游ゴシック体, YuGothic, メイリオ, Meiryo, 
+                    sans-serif;
       &__imperative{
+        border-radius: 2px;
+        padding: 2px 4px;
+        font-size: 12px;
         background-color:#99FFFF;
       }
     }
@@ -114,13 +224,23 @@
       margin: 20px 40px 0px 40px;
       height: 40px;
       width: calc(100% - 80px);
+      border-color: #DDDDDD;
+      border-radius: 5px;
     }
   }
   &__prefecture{
     padding-top: 40px;
     &__title{
       margin-left: 40px;
+      font-weight: bold;
+      font-size: 14px;
+      font-family: "Source Sans Pro", Helvetica, Arial, 
+                    游ゴシック体, YuGothic, メイリオ, Meiryo, 
+                    sans-serif;
       &__imperative{
+        border-radius: 2px;
+        padding: 2px 4px;
+        font-size: 12px;
         background-color:#99FFFF;
       }
     }
@@ -128,13 +248,23 @@
       margin: 20px 40px 0px 40px;
       height: 40px;
       width: calc(100% - 80px);
+      border-color: #DDDDDD;
+      border-radius: 5px;
     }
   }
   &__shipping-day{
     padding-top: 40px;
     &__title{
       margin-left: 40px;
+      font-weight: bold;
+      font-size: 14px;
+      font-family: "Source Sans Pro", Helvetica, Arial, 
+                    游ゴシック体, YuGothic, メイリオ, Meiryo, 
+                    sans-serif;
       &__imperative{
+        border-radius: 2px;
+        padding: 2px 4px;
+        font-size: 12px;
         background-color:#99FFFF;
       }
     }
@@ -142,47 +272,175 @@
       margin: 20px 40px 0px 40px;
       height: 40px;
       width: calc(100% - 80px);
+      border-color: #DDDDDD;
+      border-radius: 5px;
+    }
+  }
+  &__price-range{
+    padding-top: 20px;
+    &__title{
+      margin-left: 40px;
+      color: gray;
+      font-weight: bold;
+      font-size: 14px;
+      font-family: "Source Sans Pro", Helvetica, Arial, 
+                    游ゴシック体, YuGothic, メイリオ, Meiryo, 
+                    sans-serif;
+      &__icon{
+        width: 16px;
+        height: 16px;
+        font-size: 12px;
+        color: black;
+        border-radius: 50%;
+        background: #99FFFF;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+      }
     }
   }
   &__price{
     padding-top: 40px;
-    &__title{
-      margin-left: 40px;
-      //border-style: solid;
-      &__imperative{
-        background-color:#99FFFF;
-        //border-style: solid;
+    &__contents{
+      &__content{
+        padding: 0 0 24px;
+        &__frame{
+          display: flex;
+          &__title-box{
+            width: 50%;
+            line-height: 40px;
+            &__title{
+              margin-left: 40px;
+              font-weight: bold;
+              font-size: 14px;
+              font-family: "Source Sans Pro", Helvetica, Arial, 
+                            游ゴシック体, YuGothic, メイリオ, Meiryo, 
+                            sans-serif;
+              &__imperative{
+                border-radius: 2px;
+                padding: 2px 4px;
+                font-size: 12px;
+                background-color:#99FFFF;
+              }
+            }
+          }
+          &__input{
+            width: 50%;
+            display: flex;
+            &__yen{
+              margin: auto 0;
+            }
+            &__number-box{
+              width: 80%;
+              text-align: right;
+              margin-left: 5%;
+              border-color: #DDDDDD;
+              border-style: solid;
+              border-width: 1px;
+              border-radius: 5px;
+            }
+          }
+        }
       }
-      &__number-box{
-        //border-style: solid;
-        height: 40px;
-        width: 50%;
-        width: calc(100% - 80px);
-      }  
     }
   }
   &__commission{
-    padding-top: 40px;
-    &__title{
-      margin-left: 40px;
+    &__contents{
+      &__content{
+        &__frame{
+          display: flex;
+          &__title-box{
+            width: 50%;
+            line-height: 40px;
+            &__title{
+              margin-left: 40px;
+              font-size: 14px;
+              font-family: "Source Sans Pro", Helvetica, Arial, 
+                            游ゴシック体, YuGothic, メイリオ, Meiryo, 
+                            sans-serif;
+            }
+          }
+          &__input{
+            width: 50%;
+            &__calc-result{
+              text-align: right;
+              line-height: 40px;
+              margin-right: 40px;
+            }
+          }
+        }
+      }
     }
   }
   &__profit{
-    padding-top: 40px;
-    &__title{
-      margin-left: 40px;
+    &__contents{
+      &__content{
+        &__frame{
+          display: flex;
+          &__title-box{
+            width: 50%;
+            line-height: 40px;
+            &__title{
+              margin-left: 40px;
+              font-size: 14px;
+              font-family: "Source Sans Pro", Helvetica, Arial, 
+                            游ゴシック体, YuGothic, メイリオ, Meiryo, 
+                            sans-serif;
+            }
+          }
+          &__input{
+            width: 50%;
+            &__calc-result{
+              text-align: right;
+              line-height: 40px;
+              margin-right: 40px;
+            }
+          }
+        }
+      }
     }
   }
   &__submit{
-    padding-top: 40px;
-    &__title{
-      margin: 20px 160px 0px 160px;
-      height: 40px;
-      font-size: 20px;
-      width: calc(100% - 320px);
+    padding-top: 20px;
+    &__submit-btn{
+      margin: 20px 180px 0px 180px;
+      height: 50px;
+      font-size: 16px;
+      font-weight: bold;
+      width: calc(100% - 360px);
+      border-radius: 10px;
       text-align: center;
       vertical-align: middle;
+      border-style: solid;
+      border-color: #99FFFF;
       background-color:#99FFFF;
+    }
+  }
+  &__draft{
+    padding-top: 20px;
+    &__submit-btn{
+      margin: 0px 180px 0px 180px;
+      height: 50px;
+      font-size: 16px;
+      font-weight: bold;
+      width: calc(100% - 360px);
+      border-radius: 10px;
+      text-align: center;
+      vertical-align: middle;
+      border-style: solid;
+      border-color: #DDDDDD;
+      background-color:#DDDDDD;
+    }
+  }
+  &__page-transition{
+    padding-top: 20px;
+    &__title{
+      text-align: center;
+      font-size: 14px;
+      &__link{
+        text-decoration: none;
+        color: #000000;
+      }
     }
   }
   &__prohibit{
@@ -192,7 +450,18 @@
       margin-left: 40px;
       margin-right: 40px;
       padding-bottom: 40px;
+      &__action{
+        font-size: 12px;
+        text-decoration: none;
+        color: #3399FF;
+      }
     }
+  }
+  &__separate-line{
+    margin: 20px 0;
+    height: 2px;
+    background-color: whitesmoke;
+    border: none;
   }
 }
 
@@ -220,6 +489,7 @@
       }
     }
     &__logo{
+      padding-top: 20px;
       width: 150px;
     }
     &__logo:hover{
