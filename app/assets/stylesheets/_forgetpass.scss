@@ -4,6 +4,7 @@
   height: 100vh;
   &__main{
     width: 50%;
+    min-width: 500px;
     margin: 0 auto;
     box-shadow: 0 0 4px gray;
     background-color: white;
@@ -21,8 +22,9 @@
     }
     &__form{
       text-align: left;
+      margin-left: auto;
+      margin-right: auto;
       width: 300px;
-      margin-left: 30%;
       padding: 50px 0px 50px 0px;
       &__index{
         &__label{
