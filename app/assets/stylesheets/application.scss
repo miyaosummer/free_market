@@ -1,4 +1,11 @@
 @import "reset";
+@import "config";
+@import "mixin/mixin";
+@import "modules/header";
+@import "modules/nav";
+@import "modules/footer";
+@import "modules/sell-btn";
+@import "pages/tops";
 @import "modules/mypage";
 @import "modules/mypage_header";
 @import "modules/mypage_naver";
