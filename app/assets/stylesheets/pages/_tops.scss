@@ -1,3 +1,7 @@
+*, *:before, *:after {
+	box-sizing: border-box;
+}
+
 /*-- main --*/
 .main {
   width: 100%;
