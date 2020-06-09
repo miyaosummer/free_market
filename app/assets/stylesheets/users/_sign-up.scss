@@ -90,7 +90,7 @@
           text-align: left;
           width: 300px;
           font-size: 14px;
-
+          color: gray;
         }
         &__input{
           padding: 10px 0px;
@@ -127,18 +127,11 @@
             color: #ffffff;
             border: 2px solid #ff0000;
           }
-          &__forget{
-            text-decoration: none;
-            color: red;
-          }
-          &__forget:hover{
-            color:blue;
-            
-          }
         }
       }
     }
   }
+  
   &__footer{
     text-align: center;
     width: 100%;
