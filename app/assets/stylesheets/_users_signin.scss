@@ -18,6 +18,7 @@
       box-shadow: 0 0 4px gray;
       height: auto;
       width: 32%;
+      min-width: 500px;
       margin: 0 auto;
       &__signup{
         border-bottom:1px lightgray solid ;
@@ -26,8 +27,9 @@
           font-size: 14px;
         }
         &__vanar{
-          margin: 0 auto;
+          margin: 10px auto 0px;
           text-decoration: none;
+          border-radius: 5px;
           color: white;
           display: block;
           padding: 10px 0px;
@@ -44,6 +46,7 @@
           &__facebook{
             margin: 0px auto 10px;
             text-decoration: none;
+            border-radius: 5px;
             color: white;
             display: block;
             padding: 10px 0px;
@@ -55,6 +58,7 @@
           &__google{
             margin: 10px auto;
             text-decoration: none;
+            border-radius: 5px;
             color:black;
             display: block;
             padding: 10px 0px;
@@ -88,6 +92,7 @@
           }
           &__btn{
             display: inline-block;
+            border-radius: 5px;
             font-size: 10pt;
             text-align: center;
             cursor: pointer;
@@ -97,7 +102,6 @@
             background: #ff0000;
             color: #ffffff;
             border: 2px solid #ff0000;
-
           }
           &__forget{
             text-decoration: none;
@@ -117,7 +121,7 @@
     &__list{
       display: flex;
       justify-content: center;
-      margin-right: 30px;
+      margin: 20px 0px;
       &__left{
         list-style: none;
         font-size: 12px;
@@ -138,7 +142,7 @@
     &__logo:hover{
       opacity: 0.7;
     }
-    p{
+    &__sitename{
       text-align: center;
       font-size: 12px;
       padding-bottom: 50px;
