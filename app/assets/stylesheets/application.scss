@@ -1,18 +1,14 @@
 @import "reset";
 @import "config";
 @import "mixin/mixin";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 @import "modules/header";
 @import "modules/nav";
 @import "modules/footer";
 @import "modules/sell-btn";
 @import "pages/tops";
-@import "modules/mypage";
-@import "modules/mypage_header";
-@import "modules/mypage_naver";
-@import "modules/mypage_main";
-@import "modules/mypage_banner";
-@import "modules/mypage_footer";
-@import "font-awesome-sprockets";
-@import "font-awesome";
-@import "users_signin";
-@import "forgetpass";
+@import "pages/products_new";
+@import "pages/products_show";
+@import "pages/products_purchase";
+

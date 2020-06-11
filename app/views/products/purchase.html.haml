@@ -1,0 +1,53 @@
+.purchase
+  .purchase__header
+    = render "header_products"
+
+  .purchase__main
+    %h2.purchase__main__product-confirmation
+      購入内容の確認
+
+    .purchase__main__product-info
+      .purchase__main__product-info__inner
+        .purchase__main__product-info__inner__content
+          %h3.purchase__main__product-info__inner__content__img
+            %img(src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png")/
+          .purchase__main__product-info__inner__content__detail
+            .purchase__main__product-info__inner__content__detail
+              %p.purchase__main__product-info__inner__content__detail__name
+                product3
+              %p.purchase__main__product-info__inner__content__detail__price
+                %span
+                  ¥30000
+                %span.purchase__main__product-info__inner__content__detail__price--tax
+                  (税込) 送料込み
+
+    .purchase__main__payment-info
+      .purchase__main__payment-info__innner
+        %form{:action => "#", class: "purchase__main__payment-info__innner__form", :method => "post"}
+          .purchase__main__payment-info__innner__form__table
+            .purchase__main__payment-info__innner__form__table__pay-label
+              支払い金額
+            .purchase__main__payment-info__innner__form__table__pay-amount
+              ¥30000
+
+          .purchase__main__payment-info__innner__form__user-info
+            %h3.purchase__main__payment-info__innner__form__user-info__pay-method
+              支払い方法
+            %p.purchase__main__payment-info__innner__form__user-info__text
+              = link_to "#" , class: "purchase__main__payment-info__innner__form__user-info__text" do
+                = icon('fas', 'plus-circle')
+                登録してください
+
+          .purchase__main__payment-info__innner__form__user-info
+            %h3.purchase__main__payment-info__innner__form__user-info__destination
+              配送先
+            %p.purchase__main__payment-info__innner__form__user-info__text
+              = link_to "#" , class: "purchase__main__payment-info__innner__form__user-info__text" do
+                = icon('fas', 'plus-circle')
+                登録してください
+
+          .purchase__main__payment-info__innner__form__submit
+            %input{type: "submit", class: "purchase__main__payment-info__innner__form__submit--btn", value:'購入する'}
+
+  .purchase__footer
+    = render "footer_products"
