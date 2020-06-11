@@ -31,19 +31,18 @@ img {
           text-decoration: none;
           color: #333;
         }
-    }
-    &--last{
-      font-weight: bold;
+      }
+      &--last{
+        font-weight: bold;
+      }
     }
   }
 
   &__main{
     background-color: #f8f8f8;
-    height: 1855px;
     padding: 40px;
     margin: 0 auto;
     &__product{
-      height: 1767px;
       width: 700px;
       margin: 0 auto;
       &__content{        
@@ -179,7 +178,6 @@ img {
         }
 
         &__comment{
-          height: 304px;
           padding: 24px;
           background-color: #fff;
           margin: 10px 0;
@@ -193,7 +191,7 @@ img {
             padding: 10px;
           }
           &__form{
-             height: 256px;
+            
             &__notice{
               padding: 8px;
               font-size: 14px;

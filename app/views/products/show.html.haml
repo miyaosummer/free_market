@@ -145,9 +145,9 @@
             = icon('fa', 'angle-right')
 
       .show__main__product__related
-        = link_to "#", class: "show_main_relatedProducts" do
+        = link_to "#", class: "show__main__product__related__items" do
           ベビー・キッズをもっと見る
-          .show__main__product__related__lists
+        .show__main__product__related__lists
           
   .show__banner
     = render "shared/bottom-banner"
@@ -155,5 +155,6 @@
   .show__footer
     = render "shared/footer"
 
+  -# 今後使用しない場合削除予定↓
   .show__putupBtn
     = render "shared/sell-btn"
