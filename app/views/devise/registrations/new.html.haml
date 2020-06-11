@@ -1,0 +1,95 @@
+.signup
+
+  .signup__header
+    = render "devise/sessions/header"
+
+  .signup__main
+    .signup__main__container
+      .signup__main__container__head
+        %h2 会員情報入力
+      .signup__main__container__register-form
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = render "devise/shared/error_messages", resource: resource
+          
+          -# ニックネーム
+          .signup__main__container__register-form__label-top
+            = f.label :nickname, "ニックネーム"
+            %span.form-require 必須
+          .input
+            = f.text_field :nickname, class: "input-full", autofocus: true, autocomplete: "nickname", placeholder: "例）フリマ太郎"
+
+          -# メールアドレス
+          .signup__main__container__register-form__label-top
+            = f.label :email, "メールアドレス"
+            %span.form-require 必須
+          .input
+            = f.email_field :email, class: "input-full", autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可"
+
+          -# パスワード  
+          .signup__main__container__register-form__label-top
+            = f.label :password, "パスワード"
+            -# - if @minimum_password_length
+            %span.form-require 必須
+          .input
+            = f.password_field :password, class: "input-full", autocomplete: "off", autocomplete: "new-password", placeholder: "6文字以上の半角英数字"
+          .signup__main__container__register-form__form-info
+            %p ※ 英字と数字の両方を含めて設定してください
+
+          .signup__main__container__register-form__head-sub 
+            %h3 本人確認
+            .signup__main__container__register-form__head-sub__info
+              %p 
+                安心・安全にご利用いただくために、お客さまの本人
+                %br
+                情報の登録にご協力ください。他のお客さまに公開さ
+                %br
+                れることはありません。
+
+          -# お名前(全角)  
+          .signup__main__container__register-form__label-bottom
+            = f.label :name, "お名前(全角)"
+            %span.form-require 必須
+          .input-name
+            .input-name__last-name
+              = f.text_field :last_name, class: "input-half", autofocus: true, autocomplete: "last_name", placeholder: "例）山田"
+            .input-name__first-name
+              = f.text_field :first_name, class: "input-half", autofocus: true, autocomplete: "first_name", placeholder: "例）彩"
+
+          -# お名前カナ(全角)  
+          .signup__main__container__register-form__label-bottom
+            = f.label :name, "お名前カナ(全角)"
+            %span.form-require 必須
+          .input-name
+            .input-name__last-name
+              = f.text_field :last_name_kana, class: "input-half", autofocus: true, autocomplete: "last_name_kana", placeholder: "例）ヤマダ"
+            .input-name__first-name
+              = f.text_field :first_name_kana, class: "input-half", autofocus: true, autocomplete: "first_name_kana", placeholder: "例）アヤ"
+
+          -# 生年月日
+          .signup__main__container__register-form__label-bottom
+            = f.label :birthday, "生年月日"
+            %span.form-require 必須
+          .signup__main__container__register-form__input-birthday
+            -# = raw sprintf(f.date_select(:birthday, autofocus: true, prompt:"--", use_month_numbers: true, start_year:Time.now.year, end_year:(1900), date_separator:'%s'), '年 ', '月 ') + '日' 
+
+          .signup__main__container__register-form__form-info
+            %p 
+              ※ 本人情報は正しく入力してください。会員登録後、
+              %br
+              修正するにはお時間を頂く場合があります。
+
+          .signup__main__container__register-form__actions
+            = f.submit "登録",class: "signup__main__container__register-form__submit-btn"
+
+          .signup__main__container__register-form__about
+            %a 本人情報の登録について
+            = icon 'fas', 'chevron-right', class:"about-icon"
+
+          .signup__main__container__register-form__form-policy
+            %p
+              This site is protected by reCAPTCHA and the Google
+              %br
+              Privacy Policy and Terms of Service apply.
+
+  .signup__footer
+    = render "devise/sessions/footer"
