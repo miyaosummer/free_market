@@ -101,6 +101,7 @@
         text-align: left;
         display: flex;
         flex-direction: column;
+        align-items: center;
 
         &__box {
           position: relative;
@@ -129,8 +130,10 @@
 
         &__text {
           font-size: 24px;
+          font-weight: bold;
           line-height: 50px;
           margin-left: 2px;
+          text-align: center;
 
           &--emphasis {
             color: $main-color
@@ -183,7 +186,7 @@
         a {
           text-decoration: none;
         }
-        
+
         &__store-btn {
           &:hover {
             opacity: 0.5 ;
@@ -252,6 +255,7 @@
           font-size: 19px;
           line-height: 50px;
           margin-left: 2px;
+          font-weight: bold;
         }
 
         &__description {
