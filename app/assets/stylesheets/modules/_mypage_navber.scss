@@ -1,0 +1,26 @@
+.banner {
+  background-color: orange;
+  height: 50px;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  background-color: #fff;
+}
+  .banner__left {
+    width: 59px;
+    height: 18px;
+    border-top: 1px solid #eee;
+    font-size: 14px;
+    display: inline-block;
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+    z-index: 1;
+    position: relative;
+  }
+  
+  .banner__right {
+    width: 59px;
+    height: 18px;
+    font-size: 13px;
+    line-height: 18px;
+    margin: 15px 40px;
+  }
