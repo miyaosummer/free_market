@@ -6,7 +6,7 @@
   .signup__main
     .signup__main__container
       .signup__main__container__head
-        %h2 会員情報入力
+        %p 会員情報入力
       .signup__main__container__register-form
         = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
           = render "devise/shared/error_messages", resource: resource
@@ -36,7 +36,7 @@
             %p ※ 英字と数字の両方を含めて設定してください
 
           .signup__main__container__register-form__head-sub 
-            %h3 本人確認
+            %p 本人確認
             .signup__main__container__register-form__head-sub__info
               %p 
                 安心・安全にご利用いただくために、お客さまの本人
@@ -70,7 +70,7 @@
             = f.label :birthday, "生年月日"
             %span.form-require 必須
           .signup__main__container__register-form__input-birthday
-            -# = raw sprintf(f.date_select(:birthday, autofocus: true, prompt:"--", use_month_numbers: true, start_year:Time.now.year, end_year:(1900), date_separator:'%s'), '年 ', '月 ') + '日' 
+            = raw sprintf(f.date_select(:birthday, autofocus: true, prompt:"--", use_month_numbers: true, start_year:Time.now.year, end_year:(1900), date_separator:'%s'), '年 ', '月 ') + '日' 
 
           .signup__main__container__register-form__form-info
             %p 
@@ -79,11 +79,12 @@
               修正するにはお時間を頂く場合があります。
 
           .signup__main__container__register-form__actions
-            = f.submit "登録",class: "signup__main__container__register-form__submit-btn"
+            = f.submit "登 録",class: "signup__main__container__register-form__submit-btn"
 
           .signup__main__container__register-form__about
-            %a 本人情報の登録について
-            = icon 'fas', 'chevron-right', class:"about-icon"
+            =  link_to "#" do
+              本人情報の登録について
+              = icon 'fas', 'chevron-right', class:"about-icon"
 
           .signup__main__container__register-form__form-policy
             %p

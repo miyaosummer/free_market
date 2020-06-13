@@ -9,7 +9,7 @@
   &__header {
     text-align: center;
     &__logo {
-      margin:30px 0px;
+      margin: 30px 0px;
       width: 150px;
     }
     &__logo:hover {
@@ -17,40 +17,44 @@
     }
   }
 
-  
   &__main {
     text-align: center;
     &__container {
       height: 100%;
       width: 720px;
-      background-color: white;
+      background-color: $white;
       border-radius: 1px;
       margin: auto;
       padding-bottom: 24px;
 
       &__head {
-        font-size: 16px;
+        font-size: 24px;
+        font-weight: bold;
         border-bottom: 1px solid whitesmoke;
-        padding: 20px;
+        padding: 36px;
       }
 
       &__register-form {
         text-align: left;
         &__label-top {
-          font-weight: bold;
+          font-size: 14px;
+          font-weight: 600;
           margin: 24px 0 0 216px;
         }
         &__label-bottom {
-          font-weight: bold;
+          font-size: 14px;
+          font-weight: 600;
           margin: 48px 0 0 216px;
         }
         .form-require {
-          background-color: #99FFFF;
-          color: black;
+          background-color: $main-color;
+          color: $white;
           font-size: 12px;
+          font-weight: 300;
           border-radius: 2px;
           margin: 4px;
-          padding: 4px 5.5px 4px 4px;
+          padding: 4px 5px 4px 4px;
+          vertical-align: top;
         }
 
         // textbox関連
@@ -64,7 +68,7 @@
           padding: 12px;
         }
         .input-full:focus {
-          border: 1px solid #99FFFF;
+          border: 1px solid $main-color;
           outline: 0;
         }
         .input-half {
@@ -76,7 +80,7 @@
           padding: 12px;
         }
         .input-half:focus {
-          border: 1px solid #99FFFF;
+          border: 1px solid $main-color;
           outline: 0;
         }
         .input-name {
@@ -124,25 +128,31 @@
         &__about {
           font-size: 14px;
           margin: 36px 0 24px 350px;
+          a {
+            color: $main-color;
+          }
         }
         &__form-policy {
-          display: block;
+          height: 48px;
           width: 300px;
           background-color: whitesmoke;
           font-size: 8px;
+          color: #888888;
           margin: 36px 0 24px 216px;
-          padding: 4px 8px;
+          padding: 12px;
           text-align: center;
+          line-height: 12px;
         }
 
         &__submit-btn {
           height: 48px;
           width: 300px;
-          background-color: #99FFFF;
-          border: 1px solid #99FFFF;
+          background-color: $main-color;
+          border: 1px solid $main-color;
           border-radius: 4px;
           font-size: 14px;
-          color: black;
+          font-weight: 600;
+          color: $white;
           margin: 36px 0 0 216px;
         }
       }
