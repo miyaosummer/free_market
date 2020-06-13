@@ -1,5 +1,5 @@
 *, *:before, *:after {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /*-- main --*/
@@ -40,11 +40,14 @@
       &__stores {
         margin-top: 24px;
 
+        a {
+          text-decoration: none;
+        }
+
         &__store-btn {
           &:hover {
             opacity: 0.5;
           }
-
           &__app-store {
             width: 180px;
             height: 53px;
@@ -98,6 +101,7 @@
         text-align: left;
         display: flex;
         flex-direction: column;
+        align-items: center;
 
         &__box {
           position: relative;
@@ -126,8 +130,10 @@
 
         &__text {
           font-size: 24px;
+          font-weight: bold;
           line-height: 50px;
           margin-left: 2px;
+          text-align: center;
 
           &--emphasis {
             color: $main-color
@@ -176,6 +182,10 @@
 
       &__stores {
         margin-top: 24px;
+
+        a {
+          text-decoration: none;
+        }
 
         &__store-btn {
           &:hover {
@@ -245,6 +255,7 @@
           font-size: 19px;
           line-height: 50px;
           margin-left: 2px;
+          font-weight: bold;
         }
 
         &__description {
