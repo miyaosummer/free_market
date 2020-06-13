@@ -9,7 +9,6 @@ img {
 
 .show{
   width: 100%;
-  font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
 
   &__navbar{
     height: 55px;
@@ -26,7 +25,7 @@ img {
       margin: 0 auto;;
       display: flex;
       li{
-        padding: 0 10px 0 0;
+        padding-right: 10px;
         a{
           text-decoration: none;
           color: #333;
@@ -88,7 +87,7 @@ img {
             }
           }
           &__price{
-            margin: 24px 0 24px;
+            margin: 24px 0;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -96,8 +95,9 @@ img {
               font-size: 46px;
               font-weight: bold;
               margin: 0 10px 0 0;
+              margin-right: 10px; 
             }
-            &-detail{
+            &__detail{
               font-size: 16px;
             }
           }
@@ -124,7 +124,7 @@ img {
               }
               td{
                 width: 61%;
-                padding: 15px 15px;
+                padding: 15px;
                 border: 1px solid #dedede;
                 font-size: 14px;
                 a {
@@ -140,7 +140,7 @@ img {
             display: flex;
             justify-content: space-between;
             &__btn { 
-              margin: 10px 0 0;
+              margin-top: 10px;
               display: flex;
               &--favorite{
                 margin-right: auto;
