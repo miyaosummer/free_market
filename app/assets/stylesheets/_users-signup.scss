@@ -1,0 +1,195 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.signup {
+  width: 100%;
+  background-color: whitesmoke;
+
+  &__header {
+    text-align: center;
+    &__logo {
+      margin: 30px 0px;
+      width: 150px;
+    }
+    &__logo:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__main {
+    text-align: center;
+    &__container {
+      height: 100%;
+      width: 720px;
+      background-color: $white;
+      border-radius: 1px;
+      margin: auto;
+      padding-bottom: 24px;
+
+      &__head {
+        font-size: 24px;
+        font-weight: bold;
+        border-bottom: 1px solid whitesmoke;
+        padding: 36px;
+      }
+
+      &__register-form {
+        text-align: left;
+        &__label-top {
+          font-size: 14px;
+          font-weight: 600;
+          margin: 24px 0 0 216px;
+        }
+        &__label-bottom {
+          font-size: 14px;
+          font-weight: 600;
+          margin: 48px 0 0 216px;
+        }
+        .form-require {
+          background-color: $main-color;
+          color: $white;
+          font-size: 12px;
+          font-weight: 300;
+          border-radius: 2px;
+          margin: 4px;
+          padding: 4px 5px 4px 4px;
+          vertical-align: top;
+        }
+
+        // textbox関連
+        .input-full {
+          height: 50px;
+          width: 300px;
+          border: 1px solid #CCCCCC;
+          border-radius: 4px;
+          font-size: 14px;
+          margin: 4px 0 0 216px;
+          padding: 12px;
+        }
+        .input-full:focus {
+          border: 1px solid $main-color;
+          outline: 0;
+        }
+        .input-half {
+          height: 50px;
+          width: 146px;
+          border: 1px solid #CCCCCC;
+          border-radius: 4px;
+          font-size: 14px;
+          padding: 12px;
+        }
+        .input-half:focus {
+          border: 1px solid $main-color;
+          outline: 0;
+        }
+        .input-name {
+          display: flex;
+          height: 36px;
+          &__last-name {
+            margin: 4px 0 0 216px;
+          }
+          &__first-name {
+            margin: 4px 0 0 8px;
+          }
+        }
+
+        // birthday関連
+        &__input-birthday {
+          font-size: 12px;
+          margin: 4px 0 0 216px;
+          #user_birthday_1i, #user_birthday_2i, #user_birthday_3i {
+            height: 50px;
+            width: 72px;
+            border: 1px solid #CCCCCC;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #888888;
+            padding: 8px;
+          }
+        }
+
+        // information関連
+        &__form-info {
+          font-size: 12px;
+          color: #AAAAAA;
+          margin: 2px 0 0 216px;
+        }
+        &__head-sub {
+          text-align: left;
+          font-weight: bold;
+          margin: 24px 0 0 216px;
+          &__info {
+            font-size: 12px;
+            font-weight: 240;
+            bottom: 12px;
+          }
+        }
+        &__about {
+          font-size: 14px;
+          margin: 36px 0 24px 350px;
+          a {
+            color: $main-color;
+          }
+        }
+        &__form-policy {
+          height: 48px;
+          width: 300px;
+          background-color: whitesmoke;
+          font-size: 8px;
+          color: #888888;
+          margin: 36px 0 24px 216px;
+          padding: 12px;
+          text-align: center;
+          line-height: 12px;
+        }
+
+        &__submit-btn {
+          height: 48px;
+          width: 300px;
+          background-color: $main-color;
+          border: 1px solid $main-color;
+          border-radius: 4px;
+          font-size: 14px;
+          font-weight: 600;
+          color: $white;
+          margin: 36px 0 0 216px;
+        }
+      }
+    }
+  }
+
+  &__footer {
+    width: 100%;
+    text-align: center;
+    &__list {
+      display: flex;
+      justify-content: center;
+      margin-right: 30px;
+      &__left {
+        list-style: none;
+        font-size: 12px;
+      }
+      &__center {
+        list-style: none;
+        font-size: 12px;
+        margin: 0px 10px;
+      }
+      &__right {
+        list-style: none;
+        font-size: 12px;
+      }
+    }
+    &__logo {
+      width: 150px;
+    }
+    &__logo:hover {
+      opacity: 0.7;
+    }
+    p {
+      text-align: center;
+      font-size: 12px;
+      padding-bottom: 50px;
+    }
+  }
+}

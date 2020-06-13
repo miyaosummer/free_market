@@ -4,14 +4,18 @@
   .forgetpass__main
     .forgetpass__main__tittle
       %h2 パスワードをお忘れの方
-    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-      = render "devise/shared/error_messages", resource: resource
-      .field
-        = f.label :email
-        %br/
-        = f.email_field :email, autofocus: true, autocomplete: "email"
-      .actions
-        = f.submit "Send me reset password instructions"
+    .forgetpass__main__form
+      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+        .forgetpass__main__form__index
+          = render "devise/shared/error_messages", resource: resource
+          = f.label :email,"メールアドレス",class:"forgetpass__main__form__index__label"
+          %br/
+          = f.email_field :email, autofocus: true, autocomplete: "email",placeholder:" ご登録されたメールアドレス",class:"forgetpass__main__form__index__email"
+          %br/
+          %p.forgetpass__main__form__index__notice ご登録されたメールアドレスにパスワード再設定のご案内が送信されます。
+          %br/
+          %h3 私はロボットではありません
+          = f.submit "送信する",class:"forgetpass__main__form__index__btn"
   .forgetpass__footer
     = render "devise/sessions/footer"
 -# = render "devise/shared/links"

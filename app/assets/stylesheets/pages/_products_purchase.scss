@@ -1,0 +1,188 @@
+*{
+  box-sizing: border-box;
+}
+
+.purchase{
+  width: 100%;
+  background-color: whitesmoke;
+  color: #333;
+  
+  &__header{
+    text-align: center;
+    &__logo{
+      margin:30px 0px;
+      width: 150px;
+    }
+    &__logo:hover{
+      opacity: 0.7;
+    }
+  }
+
+  &__main{
+    width: 50%;
+    min-width: 500px;
+    margin:0 auto;
+    background-color: white;
+    text-align: center;
+    &__product-confirmation{
+      font-size: 22px;
+      padding: 32px;
+      border-bottom: 1px solid whitesmoke;
+    }
+    h2 {
+      font-weight: bold;
+    }
+
+    &__product-info{
+      height: 150px;
+      border-bottom: 1px solid whitesmoke;
+      padding: 32px 16px;
+      &__inner{
+        max-width: 343px;
+        margin: 0 auto;
+        &__content{
+          display: flex;
+          text-align: center;
+          h3{
+            height: 80px;
+            width: 80px;
+          }
+
+          img{
+            height: 80px;
+            width: 80px;
+            min-width: 80px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+          }
+
+          &__detail{
+            margin: 8px 0 0 16px;
+            &__name{
+              font-size: 15px;
+              margin: 0;
+              padding: 0 0 8px;
+              line-height: 1.5;
+              text-align: left;
+            }
+            &__price{
+              margin: 0;
+              text-align: left;
+              font-size: 15px;
+              font-weight: bold;
+              &__tax{
+                font-size: 13px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &__payment-info{
+      &__innner{
+        max-width: 343px;
+        margin: 0 auto;
+        padding: 32px 16px;
+        &__form{
+
+          &__table{
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            line-height: 35px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid whitesmoke;
+            &__pay-label{
+              font-size: 18px;
+            }
+            &__pay-amount{
+              font-size: 30px;
+            }
+          }
+
+          &__user-info{
+            padding: 32px 0;
+            border-bottom: 1px solid whitesmoke;
+            font-size: 14px;
+            text-align: left;
+            &__pay-method{
+              font-weight: bold;
+            }
+            &__destination{
+              font-weight: bold;
+            }
+            &__text{
+              margin: 8px 0 0;
+            }
+            a{
+              cursor: pointer;
+              color: #0099e8;
+              text-decoration: none;
+            }
+          }
+
+          &__submit{
+            padding: 32px 0;
+            &__submit-btn{
+              height: 50px;
+              font-size: 16px;
+              font-weight: bold;
+              width: 100%;
+              border-radius: 10px;
+              text-align: center;
+              vertical-align: middle;
+              border-style: solid;
+              border-color: #99FFFF;
+              background-color:#99FFFF;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }  
+  }
+
+  &__footer{
+    padding-top: 40px;
+    text-align: center;
+    width: 100%;
+    &__list{
+      display: flex;
+      justify-content: center;
+      margin-right: 30px;
+      &__left{
+        list-style: none;
+        font-size: 12px;
+      }
+      &__center{
+        list-style: none;
+        font-size: 12px;
+        margin: 0px 10px;
+      }
+      &__right{
+        list-style: none;
+        font-size: 12px;
+      }
+    }
+    &__logo{
+      padding-top: 20px;
+      width: 150px;
+    }
+    &__logo:hover{
+      opacity: 0.7;
+    }
+    p{
+      text-align: center;
+      font-size: 12px;
+      padding-bottom: 50px;
+    }
+  }
+}
