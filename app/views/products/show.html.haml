@@ -1,0 +1,160 @@
+.show
+  .show__header
+    = render "shared/header"
+
+  .show__navbar
+    %ul
+      %li 
+        = link_to "#", class: "show_navbar-top" do
+          FURIMA
+      %li 
+        = icon('fa', 'angle-right')
+      %li 
+        ベビー・キッズ
+      %li
+        = icon('fa', 'angle-right')
+      %li
+        ベビー服(男女兼用)~95cm
+      %li
+        = icon('fa', 'angle-right')
+      %li 
+        アウター
+      %li
+        = icon('fa', 'angle-right')
+      %li.show__navbar--last
+        product3
+
+  .show__main
+
+    .show__main__product
+      .show__main__product__content
+        .show__main__product__content__information
+          %h2.show__main__product__content__information__name
+            product3
+          .show__main__product__content__information__body
+            %ul 
+              %li
+                %img(src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" alt="")/
+                %ul
+                  %li
+                    %img(src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" alt="")/
+                  %li
+                    %img(src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png" alt="")/
+                  %li
+                    %img(src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png" alt="")/
+
+          .show__main__product__content__information__price
+            %span
+              ¥30000
+            .show__main__product__content__information__price__detail
+              %span
+                (税込)
+              %span
+                送料込み
+
+          .show__main__product__content__information__introduction
+            親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
+
+          .show__main__product__content__information__table
+            %table
+              %tbody
+                %tr
+                  %th
+                    出品者
+                  %td
+                    hoge
+                %tr
+                  %th
+                    カテゴリー
+                  %td
+                    = link_to "#", class: "show__main__product__content__information__table__category" do
+                      ベビー・キッズ
+                    %br/
+                    = link_to "#", class: "show__main__product__content__information__table__category" do
+                      ベビー服(男女兼用) ~95cm
+                    %br/
+                    = link_to "#", class: "show__main__product__content__information__table__category" do
+                      アウター
+                %tr
+                  %th
+                    ブランド
+                  %td
+                    
+                %tr
+                  %th
+                    商品のサイズ
+                  %td
+                    
+                %tr
+                  %th
+                    商品の状態
+                  %td
+                    未使用に近い
+                %tr
+                  %th
+                    配送料の負担
+                  %td
+                    送料込み（出品者負担）
+                %tr
+                  %th
+                    発送元の地域
+                  %td
+                    = link_to "#", class: "show__main__product__content__information__table__derection" do
+                      岩手県
+                %tr
+                  %th
+                    発送日の目安
+                  %td
+                    4-7日で発送
+
+          .show__main__product__content__information__option
+            %ul.show__main__product__content__information__option__btn
+              %li.show__main__product__content__information__option__btn--favorite
+                = icon('fa', 'star')
+                お気に入り 0
+            %ul.show__main__product__content__information__option__btn
+              %li.show__main__product__content__information__option__btn--purchase
+                = link_to "#", class: "show__main__product__content__information__option__btn--purchase" do
+                  購入画面に進む
+            %ul.show__main__product__content__information__option__btn
+              %li.show__main__product__content__information__option__btn--report
+                = link_to "#", class: "show__main__product__content__information__option__btn--report" do
+                  = icon('fa', 'flag')
+                  不適切な商品の通報
+
+        .show__main__product__content__comment
+          %ul.show__main__product__content__comment__text
+          %form(class="show__main__product__content__comment__form" action="#" method="post")
+            %textarea(name="" class="show__main__product__content__comment__form__textarea" id="comment_body")
+            %p.show__main__product__content__comment__form__notice
+              相手のことを考え丁寧なコメントを心がけましょう。
+              %br/
+              不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            %button(name="button" class="show__main__product__content__comment__form__button" type="submit" )
+              = icon('fa', 'comment')
+              コメントする
+
+      %ul.show__main__product__links 
+        %li
+          = link_to "#", class: "show_main_links-before" do
+            = icon('fa', 'angle-left')
+            前の商品
+        %li 
+          = link_to "#", class: "show_main_links-after" do
+            後ろの商品
+            = icon('fa', 'angle-right')
+
+      .show__main__product__related
+        = link_to "#", class: "show__main__product__related__items" do
+          ベビー・キッズをもっと見る
+        .show__main__product__related__lists
+          
+  .show__banner
+    = render "shared/bottom-banner"
+
+  .show__footer
+    = render "shared/footer"
+
+  -# 今後使用しない場合削除予定↓
+  .show__putupBtn
+    = render "shared/sell-btn"

@@ -187,15 +187,6 @@
                   ★０
               %p.item__caption__tax (税込)
         
-  .bottom-banner
-    .bottom-banner__content
-      %h2.bottom-banner__content__title
-        だれでもかんたん、人生を変えるフリマアプリ
-      %p.bottom-banner__content__text
-        今すぐ無料ダウンロード！
-      .bottom-banner__content__stores
-        = link_to "#" , class: "bottom-banner__content__stores__store-btn" do
-          = image_tag "app-store.svg" , class: "bottom-banner__content__stores__store-btn__app-store"
-        = link_to "#" , class: "bottom-banner__content__stores__store-btn" do
-          = image_tag "google-play.svg" , class: "bottom-banner__content__stores__store-btn__google-play"
 
+  -# .bottom-banner
+  = render "shared/bottom-banner"
