@@ -56,7 +56,7 @@ Things you may want to cover:
 |city            |string    |null: false|
 |block           |string    |null: false|
 |building        |string    |null: false|
-|phone_number    |integer   |           |
+|phone_number    |string    |           |
 |user_id         |references|null: false, foreign_key: true|
 
 ### Association
@@ -65,13 +65,11 @@ Things you may want to cover:
 
 
 ## credit_cards table
-|Column           |Type      |Options    |
-|-----------------|----------|-----------|
-|card_number      |integer   |null: false|
-|expiration_year  |integer   |null: false|
-|expiration_month |integer   |null: false|
-|security_code    |integer   |null: false|
-|user_id          |references|null: false, foreign_key: true|
+|Column      |Type      |Options    |
+|------------|----------|-----------|
+|card_id     |string	  |null:false |
+|customer_id |string	  |null:false |
+|user_id     |references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to  :user
@@ -134,7 +132,7 @@ Things you may want to cover:
 |Column   |Type   |Options     |
 |---------|-------|------------|
 |name     |string |null: false |
-|ancestry |string |null: false |
+|ancestry |string |            |
 
 ### Association
 - has_many :products
