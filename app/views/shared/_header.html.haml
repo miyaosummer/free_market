@@ -18,7 +18,6 @@
           ブランド
 
       .nav__right
-      .nav__right
         - if user_signed_in?
           = link_to "マイページ(仮)" , "#", class: "nav__right__login"
           = link_to "ログアウト(仮)", destroy_user_session_path, method: :delete, class: "nav__right__signup"
