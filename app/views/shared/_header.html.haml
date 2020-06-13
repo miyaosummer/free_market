@@ -17,6 +17,10 @@
         = link_to "#" , class: ".nav__left__brand" do
           ブランド
 
+      /*--- ここはログイン機能実装が完了したら修正します ---*/
+      .nav__right
+        = link_to "マイページ(仮)" , "#", class: "nav__right__login"
+      /*-------マイページリンクのための仮設置です。------*/
 
       .nav__right
         = link_to "ログイン" , new_user_session_path, class: "nav__right__login"
