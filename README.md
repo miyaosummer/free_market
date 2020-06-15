@@ -52,7 +52,7 @@ Things you may want to cover:
 |last_name_kana  |string    |null: false|
 |first_name_kana |string    |null: false|
 |postal_code     |integer   |null: false|
-|prefecture_id   |integer   |null: false, foreign_key: true|
+|prefecture_id   |string    |null: false|
 |city            |string    |null: false|
 |block           |string    |null: false|
 |building        |string    |null: false|
@@ -95,13 +95,13 @@ Things you may want to cover:
 |seller_id           |references |null: false, foreign_key: true|
 |buyer_id            |references |null: false, foreign_key: true|
 |product_category_id |references |null: false, foreign_key: true|
-|product_condition_id|references |null: false, foreign_key: true|
-|postage_way_id      |references |null: false, foreign_key: true|
+|product_condition_id|string     |null: false|
+|postage_way_id      |string     |null: false|
 |postage             |string     |null: false|
-|shipping_day_id     |references |null: false, foreign_key: true|
+|shipping_day_id     |string     |null: false|
 |product_brand_id    |references |foreign_key: true|
-|product_size_id     |references |foreign_key: true|
-|prefecture_id       |references |null: false, foreign_key: true|
+|product_size_id     |string     |           |
+|prefecture_id       |string     |null: false|
 
 ### Association
 - has_many :product_images, dependent: :destroy
