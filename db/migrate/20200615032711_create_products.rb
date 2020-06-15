@@ -4,8 +4,8 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.string       :name,                   null: false
       t.text         :description,            null: false
       t.integer      :price,                  null: false
-      #buyer_id seller_idの記述方法が分からないため、userモデルを外部キー参照するカラムを仮生成
-      t.references   :user,                   null: false, foreign_key: true
+      t.references   :seller,                 foreign_key: {to_table: :users}
+      t.references   :buyer,                  foreign_key: {to_table: :users}
       t.references   :product_category,       null: false, foreign_key: true
       t.string       :product_condition_id,   null: false
       t.string       :postage_way_id,         null: false

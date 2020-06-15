@@ -82,7 +82,8 @@ ActiveRecord::Schema.define(version: 2020_06_15_042351) do
     t.string "name", null: false
     t.text "description", null: false
     t.integer "price", null: false
-    t.bigint "user_id", null: false
+    t.bigint "seller_id"
+    t.bigint "buyer_id"
     t.bigint "product_category_id", null: false
     t.string "product_condition_id", null: false
     t.string "postage_way_id", null: false
@@ -93,9 +94,10 @@ ActiveRecord::Schema.define(version: 2020_06_15_042351) do
     t.string "prefecture_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["buyer_id"], name: "index_products_on_buyer_id"
     t.index ["product_brand_id"], name: "index_products_on_product_brand_id"
     t.index ["product_category_id"], name: "index_products_on_product_category_id"
-    t.index ["user_id"], name: "index_products_on_user_id"
+    t.index ["seller_id"], name: "index_products_on_seller_id"
   end
 
   create_table "sns_authentications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -135,6 +137,7 @@ ActiveRecord::Schema.define(version: 2020_06_15_042351) do
   add_foreign_key "product_images", "products"
   add_foreign_key "products", "product_brands"
   add_foreign_key "products", "product_categories"
-  add_foreign_key "products", "users"
+  add_foreign_key "products", "users", column: "buyer_id"
+  add_foreign_key "products", "users", column: "seller_id"
   add_foreign_key "sns_authentications", "users"
 end
