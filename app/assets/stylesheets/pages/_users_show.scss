@@ -1,0 +1,222 @@
+.mypage-main {
+  background-color: #f8f8f8;
+  margin: auto;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  }
+  
+  .left_box {
+    background-color: #f8f8f8;
+    // 後ほど枠組みができたら調整
+    // height: 1300px;
+    width: 280px;
+    padding-right: 30px ;
+    padding-top: 30px ;
+    // background-color: rgb(255, 255, 255);
+
+    &__mypage_list {
+      border: 0;
+      height: 720px;
+      position: relative;
+      display: block;
+      min-height: 48px;
+      font-size: 14px;
+      color: #333;
+      .mypage_list {
+        font-size: 14px;
+        text-align: left;
+        display: block;
+        min-height: 48px;
+        padding: 16px;
+        background: #fff;
+        font-size: 14px;
+        color: #333;
+        height: 45px;
+        // border: 1px solid rgba(0,0,0,0.3);
+      }
+    }
+    
+    .merupay_head {
+      border: 0;
+      height: 150px;
+      position: relative;
+      display: block;
+      min-height: 48px;
+      font-size: 14px;
+      color: #333;
+      
+      p{
+        font-weight: bold;
+        padding:20px 0;
+      }
+      &_list {
+        .head_list{
+          background-color: #fff;
+          font-size: 14px;
+          text-align: left;
+          display: block;
+          min-height: 48px;
+          padding: 16px;
+          font-size: 14px;
+          color: #333;
+          height: 45px;
+          // border-bottom: medium solid black;  
+          
+         }
+      }
+    }
+
+    .config_head {
+      //background-color: #f8f8f8;
+      height: 50px;
+      margin: 40px 0 0;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .config_lists{
+      .config__head_list{
+        .head_list{
+          background-color: #fff;
+          font-size: 14px;
+          text-align: left;
+          display: block;
+          min-height: 48px;
+          padding: 16px;
+          font-size: 14px;
+          color: #333;
+          height: 45px;
+          // border-bottom: medium solid black;  
+          
+         }
+      }
+    }
+  }
+  .right_box {
+    padding-top: 30px;
+    .mypage_users {
+      // position: absolute;
+      height: 200px;
+      width: 700px;
+      background-color: pink;
+    }
+
+    .mypage_know {
+      background-color: #fff;
+      width: 700px;
+      
+      .tab_list{
+        width: 100%;
+        height: 74px;
+        display: flex;
+        text-align: center;
+        .notice {
+          background-color: #fff;
+          width: 50%;
+          height: 100%;
+          border-right: 1px solid black(0,0,0,1); 
+          line-height: 70px;
+          border-right: 1px solid black;
+          position: relative;
+          border-bottom: 1px solid #eee;
+        } 
+        .todo {
+          background-color: lightgrey;
+          width: 50%;
+          height: 100%;
+          line-height: 70px;
+          // border-bottom: medium solid black;
+        }
+
+      }
+      .news_list{
+        width: 100%;
+        line-height: 70px;
+        background-color: #fff;
+        border-top: 1px hidden black;
+        
+        .list {
+          // border-bottom: medium solid black;
+      
+        }
+      }
+    }
+    .mypage_buyitem {
+      // background-color:yellow;
+      height: 70px;
+      width: 700px;
+      margin-top: 30px;
+      line-height: 72px;
+      margin-top: 30px;
+      border-bottom: 350px #f00(1,0,0,0.0);
+      
+      .tab_lists{
+        width: 100%;
+        height: 74px;
+        display: flex;
+        text-align: center;
+        //border-right: medium solid black;
+
+        .dealings {
+          background-color: lightyellow;
+          width: 50%;
+          height: 100%;
+          border-right: medium solid black; 
+          line-height: 70px;
+          // border-left: medium solid black;
+        }
+
+        .past_dealing {
+          // background-color: lightgrey;
+          width: 50%;
+          height: 100%;
+          line-height: 70px;
+          float: right;
+        }
+      }
+      .news_dealings{
+        width: 100%;
+        .list {
+         height: 300px;
+        //  background-color: lightyellow;
+        }
+      }
+    }
+  }
+  //   .mypage_buyitem  {
+  //     background-color: peru;
+  //     height: 382px;
+  //     width: 700px;
+  //     margin-top: 30px;
+  //     margin-bottom: 150px;
+  //   }
+
+  .list{
+    width: 100%;
+    height: 70px;
+    // border-bottom: medium solid black;
+    // border-right: medium solid black;
+    // border-left: medium solid black;
+  }
+
+  // .main
+  // .left_box
+  //   .left_box__mypage_list
+  //     マイページ
+  //   .merupay_head
+  //     メルペイ
+  //   .merupay_config
+  //     メルペイ中身
+  //   .config_head
+  //     設定
+  //   .config_list
+  //     プロフなど
+
+  // .right_box
+  //   .mypage_user
+  //     ユーザー
+  //   .mypage_know
+  //     お知らせ
+  //   .mypage_buyitem 
+  //     購入品
