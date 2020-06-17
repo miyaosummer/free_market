@@ -10,4 +10,11 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
   validates :password, presence: true, length: { minimum: 6 }, format: { with: VALID_PASSWORD_REGEX }
   validates :birthday, presence: true
+
+  has_one :destination, dependent: :destroy
+  has_one :credit_card, dependent: :destroy
+  has_one :sns_authentication, dependent: :destroy
+  has_many :products
+  has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 end
