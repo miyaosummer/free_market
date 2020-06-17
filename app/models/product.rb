@@ -9,7 +9,7 @@ class Product < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   belongs_to :seller, class_name: 'User', :foreign_key => 'seller_id'
-  belongs_to :buyer, class_name: 'User', :foreign_key => 'buyer_id'
+  belongs_to :buyer, class_name: 'User', :foreign_key => 'buyer_id', optional: true
   belongs_to :product_category
-  belongs_to :product_brand
+  belongs_to :product_brand, optional: true
 end
