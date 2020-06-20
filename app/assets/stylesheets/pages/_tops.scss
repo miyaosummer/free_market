@@ -318,6 +318,10 @@
     background-color: $white;
     box-shadow: 0 0 10px rgba($black,0.2);
 
+    a {
+      text-decoration: none;
+    }
+
     &:hover {
       opacity: 0.5 ;
     }
@@ -360,6 +364,9 @@
         
         &__price {
           color: $black;
+          &::after {
+            content: "円";
+          }
         }
 
         &__like {
