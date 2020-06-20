@@ -1,16 +1,66 @@
-.main__destinations-form
-  %h1.main__destinations-form__tittle
+.destinations-form
+  %h1.destinations-form__tittle
     発送元・お届け先住所登録
-  .main__destinations-form__index
-    = form_with model: @destinations, local: true do |f|
-      = f.text_field :name,placeholder:"名前",class:"user__index__name"
-    .main__destinations-form__index__first-name
-    .main__destinations-form__index__last-name
-    .main__destinations-form__index__first-name__kana
-    .main__destinations-form__index__last-name__kana
-    .main__destinations-form__index__postal-code
-    .main__destinations-form__index__prefectures
-    .main__destinations-form__index__city
-    .main__destinations-form__index__block
-    .main__destinations-form__index__building
-    .main__destinations-form__index__phone-number
+  .destinations-form__index
+    = form_with model: @destination,local: true do |f|
+      .destinations-form__index__group
+        = f.label "お名前",class:"destinations-form__index__group__name"
+        %span.destinations-form__index__imperative
+          必須
+        <br>
+        = f.text_field :first_name,placeholder:"例）山田",class:"destinations-form__index__group__first-name"
+        <br>
+        = f.text_field :last_name,placeholder:"例）彩",class:"destinations-form__index__group__first-name"
+
+      .destinations-form__index__group
+        = f.label "お名前（カナ）",class:"destinations-form__index__group__kana"
+        %span.destinations-form__index__imperative
+          必須
+        <br>
+        = f.text_field :first_name_kana,placeholder:"例）ヤマダ",class:"destinations-form__index__group__first-kana"
+        <br>
+        = f.text_field :last_name_kana,placeholder:"例）アヤ",class:"destinations-form__index__group__last-kana"
+
+      .destinations-form__index__group
+        = f.label "郵便番号",class:"destinations-form__index__group__postal-code"
+        %span.destinations-form__index__imperative
+          必須
+        <br>
+        = f.text_field :postal_code,placeholder:"例）123-4567",class:"destinations-form__index__group__postal-code__field"
+
+      .destinations-form__index__group
+        = f.label "都道府県",class:"destinations-form__index__group__prefectures"
+        %span.destinations-form__index__imperative
+          必須
+        <br>
+        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: ""}, {class: "destinations-form__index__group__prefectures__box"}
+
+      .destinations-form__index__group
+        = f.label "市区町村",class:"destinations-form__index__group__city"
+        %span.destinations-form__index__imperative
+          必須
+        <br>
+        = f.text_field :city,placeholder:"例）新宿区",class:"destinations-form__index__group__city__box"
+
+      .destinations-form__index__group
+        = f.label "番地",class:"destinations-form__index__group__block"
+        %span.destinations-form__index__imperative
+          必須
+        <br>
+        = f.text_field :block,placeholder:"例）青山1-1-1",class:"destinations-form__index__group__block__box"
+
+      .destinations-form__index__group
+        = f.label "建物名",class:"destinations-form__index__group__building"
+        %span.destinations-form__index__imperative
+          必須
+        <br>
+        = f.text_field :building,placeholder:"例）野原ビル201",class:"destinations-form__index__group__building__box"
+
+      .destinations-form__index__group
+        = f.label "電話番号",class:"destinations-form__index__group__phone-number"
+        %span.destinations-form__index__imperative
+          必須
+        <br>
+        = f.text_field :phone_number,placeholder:"例）080-1234-5678",class:"destinations-form__index__group__phone-number__box"
+      
+      =f.submit "登録する",class:"destinations-form__submit-btn"
