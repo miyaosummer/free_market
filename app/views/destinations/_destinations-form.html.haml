@@ -1,0 +1,16 @@
+.main__destinations-form
+  %h1.main__destinations-form__tittle
+    発送元・お届け先住所登録
+  .main__destinations-form__index
+    = form_with model: @destinations, local: true do |f|
+      = f.text_field :name,placeholder:"名前",class:"user__index__name"
+    .main__destinations-form__index__first-name
+    .main__destinations-form__index__last-name
+    .main__destinations-form__index__first-name__kana
+    .main__destinations-form__index__last-name__kana
+    .main__destinations-form__index__postal-code
+    .main__destinations-form__index__prefectures
+    .main__destinations-form__index__city
+    .main__destinations-form__index__block
+    .main__destinations-form__index__building
+    .main__destinations-form__index__phone-number
