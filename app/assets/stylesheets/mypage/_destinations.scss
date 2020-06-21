@@ -8,12 +8,7 @@
   height: auto;
   background-color: whitesmoke;
   display: flex;
-  .side-bar{
-    width: 300px;
-    height: auto;
-    margin: 50px 25px 50px 200px;
-    background-color: coral;
-  }
+
   .destinations-form{
     width: 650px;
     height: auto;
@@ -195,6 +190,7 @@
         border-style: solid;
         border-color: #99FFFF;
         background-color:#99FFFF;
+        margin-left: 40px;
       }
     }
   }
