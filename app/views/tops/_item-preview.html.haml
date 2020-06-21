@@ -2,7 +2,7 @@
   - @products.each do |product|
     - if product.buyer_id.present?
       .pickup__container__items__item.item.item--soldout
-        = link_to '/products/show'  do
+        = link_to product_path(product)  do
           .item__image-box
             = image_tag "#{product.product_images[0].image.url}" , class: "item__image-box__image"
           .item__caption
@@ -16,7 +16,7 @@
             %p.item__caption__tax (税込)
     - else
       .pickup__container__items__item.item
-        = link_to '/products/show'  do
+        = link_to product_path(product)  do
           .item__image-box
             = image_tag "#{product.product_images[0].image.url}" , class: "item__image-box__image"
           .item__caption
