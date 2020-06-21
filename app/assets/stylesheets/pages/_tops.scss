@@ -318,43 +318,8 @@
     background-color: $white;
     box-shadow: 0 0 10px rgba($black,0.2);
 
-    a {
-      text-decoration: none;
-    }
-
     &:hover {
       opacity: 0.5 ;
-    }
-
-    &--soldout {
-      position: relative;
-
-      &:before {
-        content: "";
-        position: absolute;
-        z-index: 10;
-        left: 0;
-        top: 0;
-        border-bottom: 5em solid transparent;
-        border-left: 5em solid $main-color;
-      }
-      &:after {
-        content: "SOLD";
-        position: absolute;
-        color: $white;
-        font-weight: bold;
-        letter-spacing: 2px;
-        z-index: 11;
-        left: 5px;
-        top: 18px;
-        -webkit-transform: rotate(-45deg);
-        transform: rotate(-45deg);
-      }
-    }
-
-    &--nil {
-      height: 150px;
-      line-height: 150px;
     }
 
     &__image-box{
@@ -395,9 +360,6 @@
         
         &__price {
           color: $black;
-          &::after {
-            content: "円";
-          }
         }
 
         &__like {
