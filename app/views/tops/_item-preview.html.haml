@@ -1,0 +1,33 @@
+- if @products.present?
+  - @products.each do |product|
+    - if product.buyer_id.present?
+      .pickup__container__items__item.item.item--soldout
+        = link_to product_path(product)  do
+          .item__image-box
+            = image_tag "#{product.product_images[0].image.url}" , class: "item__image-box__image"
+          .item__caption
+            %h3.item__caption__name
+              = truncate(product.name, length:15, omission: "...")
+            .item__caption__details
+              .item__caption__details__price
+                = product.price
+              %p.item__capiton__details__like
+                ★０
+            %p.item__caption__tax (税込)
+    - else
+      .pickup__container__items__item.item
+        = link_to product_path(product)  do
+          .item__image-box
+            = image_tag "#{product.product_images[0].image.url}" , class: "item__image-box__image"
+          .item__caption
+            %h3.item__caption__name
+              = truncate(product.name, length:15, omission: "...")
+            .item__caption__details
+              .item__caption__details__price
+                = product.price
+              %p.item__capiton__details__like
+                ★０
+            %p.item__caption__tax (税込)
+- else
+  .pickup__container__items__item.item--nil
+    %p 該当する商品が見つかりません。 
