@@ -1,8 +1,6 @@
 // Place all the styles related to the destinations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-//メイン部分
 .main-area{
   width: 100%;
   height: auto;
@@ -10,192 +8,14 @@
   display: flex;
   .side-bar{
     width: 300px;
-    height: auto;
+    height: 100vh;
     margin: 50px 25px 50px 200px;
     background-color: coral;
   }
   .destinations-form{
     width: 650px;
-    height: auto;
+    height: 100vh;
     margin: 50px 100px 50px 25px;
-    background-color: white;
-    &__tittle{
-      text-align: center;
-      border-bottom:1px lightgray solid ;
-      padding: 10px 0px;
-      font-size: 25px;
-      font-weight: bold;
-    }
-
-    // 項目ごとにまとめる予定
-    &__index{
-      width: 100%;
-      min-width: 500px;
-      height: 100%;
-      padding:20px 125px;
-      //名前入力フォーム
-      &__group{
-        margin-bottom: 20px;
-        padding-left: 20px ;
-        &__name{
-          font-size: 13px;
-          font-weight: bold;
-          &__imperative{
-            border-radius: 2px;
-            padding: 2px 4px;
-            font-size: 12px;
-            background-color:#99FFFF;
-          }
-        }
-        &__first-name{
-          width: 350px;
-          height: 45px;
-          margin-top: 5px;
-        }
-        &__last-name{
-          width: 350px;
-          height: 45px;
-          margin-top: 5px;
-        }
-
-        //かな入力フォーム
-        &__kana{
-          font-size: 13px;
-          font-weight: bold;
-          &__imperative{
-            border-radius: 2px;
-            padding: 2px 4px;
-            font-size: 12px;
-            background-color:#99FFFF;
-          }
-        }
-        &__first-kana{
-          width: 350px;
-          height: 45px;
-          margin-top: 5px;
-        }
-        &__last-kana{
-          width: 350px;
-          height: 45px;
-          margin-top: 5px;
-        }
-
-        //郵便番号入力フォーム
-        &__postal-code{
-          font-size: 13px;
-          font-weight: bold;
-          &__field{
-            width: 350px;
-            height: 45px;
-            margin-top: 5px;
-          }
-          &__imperative{
-            border-radius: 2px;
-            padding: 2px 4px;
-            font-size: 12px;
-            background-color:#99FFFF;
-          }
-        }
-
-        //都道府県入力フォーム
-        &__prefectures{
-          font-size: 13px;
-          font-weight: bold;
-          &__box{
-            width: 350px;
-            height: 45px;
-            margin-top: 5px;
-          }
-          &__imperative{
-            border-radius: 2px;
-            padding: 2px 4px;
-            font-size: 12px;
-            background-color:#99FFFF;
-          }
-        }
-
- 
-        //市区町村入力フォーム
-        &__city{
-          font-size: 13px;
-          font-weight: bold;
-          &__field{
-            width: 350px;
-            height: 45px;
-            margin-top: 5px;
-          }
-          &__imperative{
-            border-radius: 2px;
-            padding: 2px 4px;
-            font-size: 12px;
-            background-color:#99FFFF;
-          }
-        }
-
-        //番地入力フォーム
-        &__block{
-          font-size: 13px;
-          font-weight: bold;
-          &__field{
-            width: 350px;
-            height: 45px;
-            margin-top: 5px;
-          }
-          &__imperative{
-            border-radius: 2px;
-            padding: 2px 4px;
-            font-size: 12px;
-            background-color:#99FFFF;
-          }
-        }
-
-        //建物入力フォーム
-        &__building{
-          font-size: 13px;
-          font-weight: bold;
-          &__field{
-            width: 350px;
-            height: 45px;
-            margin-top: 5px;
-          }
-          &__imperative{
-            border-radius: 2px;
-            padding: 2px 4px;
-            font-size: 12px;
-            color: white;
-            background-color:gray;
-          }
-        }
-
-        //電話番号入力フォーム
-        &__phone-number{
-          font-size: 13px;
-          font-weight: bold;
-          &__field{
-            width: 350px;
-            height: 45px;
-            margin-top: 5px;
-          }
-          &__imperative{
-            border-radius: 2px;
-            padding: 2px 4px;
-            font-size: 12px;
-            color: white;
-            background-color:gray;
-          }
-        }
-
-      }
-      &__submit-btn{
-        text-align: center;
-        height: 40px;
-        font-size: 14px;
-        width: 300px;
-        border-radius: 5px;
-        border-style: solid;
-        border-color: #99FFFF;
-        background-color:#99FFFF;
-      }
-    }
+    background-color: skyblue;
   }
 }
