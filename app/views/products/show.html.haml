@@ -5,7 +5,7 @@
   .show__navbar
     %ul
       %li 
-        = link_to "#", class: "show_navbar-top" do
+        = link_to root_path , class: "show_navbar-top" do
           FURIMA
       %li 
         = icon('fa', 'angle-right')
@@ -30,22 +30,32 @@
       .show__main__product__content
         .show__main__product__content__information
           %h2.show__main__product__content__information__name
-            product3
+            = @product.name
+
+            -# 編集・削除ボタン↓
+          -# - if user_signed_in? && current_user.id == @product.seller_id
+          %ul.show__main__product__content__information__btn
+            %li
+              = link_to "編集する", "#", class: "show__main__product__content__information__btn--edit", method: :get
+            %li
+              = link_to "削除する", "#", class: "show__main__product__content__information__btn--delete", method: :delete
+
           .show__main__product__content__information__body
             %ul 
               %li
-                %img(src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" alt="")/
+                = image_tag @product.product_images[0].image.url
                 %ul
                   %li
-                    %img(src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png" alt="")/
+                    = image_tag @product.product_images[0].image.url
                   %li
-                    %img(src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png" alt="")/
+                    
                   %li
-                    %img(src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png" alt="")/
+                    
 
           .show__main__product__content__information__price
             %span
-              ¥30000
+              ¥
+              = @product.price
             .show__main__product__content__information__price__detail
               %span
                 (税込)
@@ -53,7 +63,7 @@
                 送料込み
 
           .show__main__product__content__information__introduction
-            親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
+            = @product.description
 
           .show__main__product__content__information__table
             %table
@@ -62,50 +72,56 @@
                   %th
                     出品者
                   %td
-                    hoge
+                    -# hoge
+                    -# = @product.seller_id
+                    -# ↑分かりません。。。
                 %tr
                   %th
                     カテゴリー
                   %td
                     = link_to "#", class: "show__main__product__content__information__table__category" do
-                      ベビー・キッズ
+                      -# ベビー・キッズ
                     %br/
                     = link_to "#", class: "show__main__product__content__information__table__category" do
-                      ベビー服(男女兼用) ~95cm
+                      -# ベビー服(男女兼用) ~95cm
                     %br/
                     = link_to "#", class: "show__main__product__content__information__table__category" do
-                      アウター
+                      -# アウター
+                    -# 後ほど実装予定
                 %tr
                   %th
                     ブランド
                   %td
-                    
+                    -# = @product.product_brands.brand_name
+                    -# 後ほど実装予定
                 %tr
                   %th
                     商品のサイズ
                   %td
-                    
+                    = @product.product_size_id
                 %tr
                   %th
                     商品の状態
                   %td
-                    未使用に近い
+                    = @product.product_condition_id
                 %tr
                   %th
                     配送料の負担
                   %td
-                    送料込み（出品者負担）
+                    = @product.postage_way_id
                 %tr
                   %th
                     発送元の地域
                   %td
                     = link_to "#", class: "show__main__product__content__information__table__derection" do
-                      岩手県
+                      = @product.prefecture_id
                 %tr
                   %th
                     発送日の目安
                   %td
-                    4-7日で発送
+                    = @product.shipping_day_id
+
+          -# ↓ユーザーが出品者かそうで無いかで場合分け
 
           .show__main__product__content__information__option
             %ul.show__main__product__content__information__option__btn
@@ -114,13 +130,15 @@
                 お気に入り 0
             %ul.show__main__product__content__information__option__btn
               %li.show__main__product__content__information__option__btn--purchase
-                = link_to '/products/purchase', class: "show__main__product__content__information__option__btn--purchase" do
+                = link_to purchase_products_path(@product), class: "show__main__product__content__information__option__btn--purchase" do
                   購入画面に進む
             %ul.show__main__product__content__information__option__btn
               %li.show__main__product__content__information__option__btn--report
                 = link_to "#", class: "show__main__product__content__information__option__btn--report" do
                   = icon('fa', 'flag')
                   不適切な商品の通報
+
+
 
         .show__main__product__content__comment
           %ul.show__main__product__content__comment__text
@@ -136,19 +154,31 @@
 
       %ul.show__main__product__links 
         %li
-          = link_to "#", class: "show_main_links-before" do
+          = link_to "#", class: "show__main__links__before" do
             = icon('fa', 'angle-left')
             前の商品
         %li 
-          = link_to "#", class: "show_main_links-after" do
+          = link_to "#", class: "show__main__links__after" do
             後ろの商品
             = icon('fa', 'angle-right')
 
       .show__main__product__related
         = link_to "#", class: "show__main__product__related__items" do
           ベビー・キッズをもっと見る
-        .show__main__product__related__lists
-          
+        %ul.show__main__product__related__lists
+          %li.show__main__product__related__lists__list
+            -# = link_to "#", class: "" do 一旦コメントアウト
+            .show__main__product__related__lists__list__img
+
+            .show__main__product__related__lists__list__body
+              %h3
+              .show__main__product__related__lists__list__body__details
+                %ul
+                  %li
+                  %li
+                    = icon('', '')
+                %p  
+
   .show__banner
     = render "shared/bottom-banner"
 
