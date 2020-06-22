@@ -1,0 +1,191 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.signup-card {
+  width: 100%;
+  background-color: whitesmoke;
+
+  &__header {
+    text-align: center;
+    &__logo {
+      margin: 30px 0px;
+      width: 150px;
+    }
+    &__logo:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__main {
+    text-align: center;
+    &__container {
+      height: 100%;
+      width: 720px;
+      background-color: $white;
+      border-radius: 1px;
+      margin: auto;
+      padding-bottom: 36px;
+      
+      &__head {
+        font-size: 24px;
+        font-weight: bold;
+        border-bottom: 1px solid whitesmoke;
+        padding: 12px;
+      }
+
+      &__register-form {
+        text-align: left;
+        &__label {
+          font-size: 14px;
+          font-weight: 600;
+          margin: 36px 0 0 216px;
+        }
+        .icon {
+          color: gray;
+        }
+        &__image {
+          display: flex;
+          margin: 6px 0 0 216px;
+          .visa {
+            height: 9%;
+            width: 9%;
+          }
+          .mastercard {
+            height: 6.5%;
+            width: 6.5%;
+            margin-left: 6px;
+          }
+          .SAISONcard {
+            height: 7%;
+            width: 7%;
+            margin: 2px 0 0 6px;
+          }
+          .JCB {
+            height: 6%;
+            width: 6%;
+            margin-left: 6px;
+          }
+          .AmericanExpress {
+            height: 5%;
+            width: 5%;
+            margin-left: 6px;
+          }
+          .DinersClub {
+            height: 7%;
+            width: 7%;
+            margin-left: 6px;
+          }
+          .DISCOVER {
+            height: 7%;
+            width: 7%;
+            margin-left: 6px;
+          }
+        }
+        
+        .form-require {
+          background-color: $main-color;
+          color: $white;
+          font-size: 12px;
+          font-weight: 300;
+          border-radius: 2px;
+          margin: 4px;
+          padding: 4px 5px 4px 4px;
+          vertical-align: top;
+        }
+        .term-label {
+          font-size: 12px;
+        }
+
+        // input関連
+        .number, .cvc {
+          height: 50px;
+          width: 300px;
+          border: 1px solid #CCCCCC;
+          border-radius: 4px;
+          font-size: 14px;
+          margin: 4px 0 0 216px;
+          padding: 12px;
+        }
+        .number:focus, .cvc:focus {
+          border: 1px solid $main-color;
+          outline: 0;
+        }
+        .term {
+          display: flex;
+          margin: 4px 0 0 216px;
+          .input-term {
+            height: 50px;
+            width: 100px;
+            border: 1px solid #CCCCCC;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #888888;
+            padding: 8px;
+          }
+          .term-label {
+            font-size: 14px;
+            line-height: 25px;
+            margin: 12px;
+          }
+        }
+
+        &__btn {
+          cursor: pointer;
+        }
+        #token_submit {
+          height: 48px;
+          width: 300px;
+          background-color: $main-color;
+          border: 1px solid $main-color;
+          border-radius: 4px;
+          font-size: 14px;
+          font-weight: 600;
+          color: $white;
+          margin: 36px 0 0 216px;
+        }
+        #token_submit:focus {
+          border: 1px solid $main-color;
+          outline: 0;
+        }
+        #token_submit:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+
+  &__footer {
+    width: 100%;
+    text-align: center;
+    &__list {
+      display: flex;
+      justify-content: center;
+      margin-right: 30px;
+      &__left {
+        list-style: none;
+        font-size: 12px;
+      }
+      &__center {
+        list-style: none;
+        font-size: 12px;
+        margin: 0px 10px;
+      }
+      &__right {
+        list-style: none;
+        font-size: 12px;
+      }
+    }
+    &__logo {
+      width: 150px;
+    }
+    &__logo:hover {
+      opacity: 0.7;
+    }
+    p {
+      text-align: center;
+      font-size: 12px;
+      padding-bottom: 50px;
+    }
+  }
+}
