@@ -19,7 +19,7 @@
 
       .nav__right
         - if user_signed_in?
-          = link_to "マイページ(仮)" , user_path(current_user.id), class: "nav__right__login"
+          = link_to "マイページ(仮)" , "#", class: "nav__right__login"
           = link_to "ログアウト(仮)", destroy_user_session_path, method: :delete, class: "nav__right__signup"
         - else
           = link_to "ログイン" , new_user_session_path, class: "nav__right__login"
