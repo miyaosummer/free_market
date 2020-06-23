@@ -8,7 +8,7 @@ function appendProductCategoryChildrenBox(insertHTML) {
   let productCategoryChildrenHtml = '';
   productCategoryChildrenHtml = 
     `<select class="putup__main__category__select-box" id="product_category_children">
-       <option value="">選択してください</option>
+       <option value="" data-category="">選択してください</option>
        ${insertHTML}</select>`;
   $('#children_box').append(productCategoryChildrenHtml);
 }
@@ -17,7 +17,7 @@ function appendProductCategoryGrandchildrenBox(insertHTML) {
   let productCategoryGrandChildrenHtml = '';
   productCategoryGrandChildrenHtml = 
     `<select class="putup__main__category__select-box" id="product_category_grandchildren" name="item[category_id]">
-       <option value="">選択してください</option>
+       <option value="" data-category="">選択してください</option>
        ${insertHTML}</select>`;
   $('#grandchildren_box').append(productCategoryGrandChildrenHtml);
 }
