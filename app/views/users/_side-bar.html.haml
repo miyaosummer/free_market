@@ -3,7 +3,7 @@
     メニュー
   .menu
     .menu__mypage
-      =link_to "マイページ", "#",class: "menu__mypage__link"
+      =link_to "マイページ", user_path(current_user.id),class: "menu__mypage__link"
       %i.fas.fa-chevron-right
     .menu__product
       =link_to "出品する", new_product_path ,class: "menu__product__link"
