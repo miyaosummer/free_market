@@ -1,0 +1,45 @@
+.mypage-bar
+  .mypage-bar__index
+    .mypage-bar__index__user
+      .mypage-bar__index__user__tittle
+        = image_tag "member_photo_noimage_thumb.png", class: "mypage-bar__index__user__tittle__icon"
+        %p.mypage-bar__index__user__icon__tittle__name Name
+      .mypage-bar__index__user__list
+        %h1.mypage-bar__index__user__list__notice
+          お知らせ
+        %h1.mypage-bar__index__user__list__todo
+          やることリスト
+      .mypage-bar__index__user__product
+        = image_tag "hoge.png", class: "mypage-bar__index__user__product__image"
+        %p.mypage-bar__index__user__product__text
+          サバの水煮を購入しました。
+        %i.fas.fa-chevron-right
+      .mypage-bar__index__user__product
+        = image_tag "hoge.png", class: "mypage-bar__index__user__product__image"
+        %p.mypage-bar__index__user__product__text
+          サバの水煮を購入しました。
+        %i.fas.fa-chevron-right
+      .mypage-bar__index__user__show
+        %p.mypage-bar__index__user__show__display-btn
+          一覧を見る
+    .mypage-bar__index__buy
+      %h1.mypage-bar__index__buy__tittle
+        購入した商品
+      .mypage-bar__index__buy__list
+        %h1.mypage-bar__index__buy__list__doing
+          取引中
+        %h1.mypage-bar__index__buy__list__history
+          過去の商品
+      .mypage-bar__index__buy__product
+        = image_tag "hoge.png", class: "mypage-bar__index__buy__product__image"
+        %p.mypage-bar__index__buy__product__text
+          サバの水煮を購入しました。受け取り評価をしてください。
+        %i.fas.fa-chevron-right
+      .mypage-bar__index__buy__product
+        = image_tag "hoge.png", class: "mypage-bar__index__buy__product__image"
+        %p.mypage-bar__index__buy__product__text
+          サバの水煮を購入しました。受け取り評価をしてください。
+        %i.fas.fa-chevron-right
+      .mypage-bar__index__buy__show
+        %p.mypage-bar__index__buy__show__display-btn
+          一覧を見る
