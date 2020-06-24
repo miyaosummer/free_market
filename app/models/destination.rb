@@ -7,7 +7,7 @@ class Destination < ApplicationRecord
   VALID_POSTAL_CODE = /\A\d{3}-\d{4}\z/i
 
 #テーブル間のアソシエーション
-  belongs_to :user
+  belongs_to :user, optional: true
   belongs_to_active_hash :prefecture
 
 #各項目のバリデーション
@@ -19,6 +19,7 @@ class Destination < ApplicationRecord
   validates :prefecture_id,    presence: true, numericality: { less_than: 49 }
   validates :city,             presence: true, length: { maximum: 50 }
   validates :block,            presence: true, length: { maximum: 50 }
-  validates :phone_number,     format: { with: /\A\d{10,11}\z/, message: 'の入力が正しくありません'}
+  #携帯電話の番号にバリデーションをつけるべきか？
+  # validates :phone_number,     format: { with: /\A\d{10,11}\z\-/, message: 'の入力が正しくありません'}
   
 end

@@ -10,7 +10,8 @@ FactoryBot.define do
     city                {"新宿区"} 
     block               {"青山"}
     building            {"野原ビル"} 
-    phone_number        {"080-3344-3348"} 
+    phone_number        {"08033443348"} 
+    user_id             {"1"}
   end
 
 end

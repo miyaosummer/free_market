@@ -1,13 +1,22 @@
 class DestinationsController < ApplicationController
+
+  def index
+    @destination = Destination.new
+  end
   
   def new
     @destination = Destination.new
-    # @prefecture = Destination.new
   end
 
   def create
-    destination = Destination.create(create_params)
-    redirect_to root_path
+    @destination = Destination.new(create_params)
+    
+    if @destination.save
+      redirect_to root_path
+    else
+      render action: :new
+    end
+    
   end
 
   def edit
