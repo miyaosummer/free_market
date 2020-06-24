@@ -104,15 +104,21 @@ describe Destination do
       expect(destination.errors[:last_name_kana]).to include("is too long (maximum is 35 characters)")#JavaScriptでエラーメッセージを表示させる際にメッセージを修正する
     end
 
-    it "postal_codeが8文字以下の時は住所登録できる" do
-      destination = build(:destination, postal_code: "12345678") #8文字
+    it "postal_codeが7文字の時は住所登録できる" do
+      destination = build(:destination, postal_code: "1234567") #7文字
       expect(destination).to be_valid
     end
 
-    it "postal_codeが8文字以下の時は住所登録できない" do
+    it "postal_codeが9文字以上の時は住所登録できない" do
       destination = build(:destination, postal_code: "123456789") #9文字
       destination.valid?
-      expect(destination.errors[:postal_code]).to include("is too long (maximum is 8 characters)")#JavaScriptでエラーメッセージを表示させる際にメッセージを修正する
+      expect(destination.errors[:postal_code]).to include("is the wrong length (should be 7 characters)")#JavaScriptでエラーメッセージを表示させる際にメッセージを修正する
+    end
+
+    it "postal_codeが6文字以下の時は住所登録できない" do
+      destination = build(:destination, postal_code: "123456") #6文字
+      destination.valid?
+      expect(destination.errors[:postal_code]).to include("is the wrong length (should be 7 characters)")#JavaScriptでエラーメッセージを表示させる際にメッセージを修正する
     end
 
     it "prefecture_idが49未満の時は住所登録できる" do
@@ -151,27 +157,39 @@ describe Destination do
 
 #入力された文字種に関するテストコード
 
-    it "first_name_kanaが全てカタカナの時は住所登録できる" do
+    it "first_name_kanaが全て全角カタカナの時は住所登録できる" do
       destination = build(:destination, first_name_kana: "アイウエオ")
       expect(destination).to be_valid
     end
 
-    it "first_name_kanaにカタカナ以外の文字が入っている時は住所登録ができない" do
+    it "first_name_kana内に半角カタカナが含まれていても住所登録ができる" do
+      destination = build(:destination, first_name_kana: "アイウエｵ")
+      expect(destination).to be_valid
+    end
+
+    it "first_name_kanaにひらがなが入っている時は住所登録ができない" do
       destination = build(:destination, first_name_kana: "アイウエお") 
       destination.valid?
       expect(destination.errors[:first_name_kana]).to include("はカタカナで入力して下さい")#JavaScriptでエラーメッセージを表示させる際にメッセージを修正する
     end
+
 
     it "last_name_kanaが全てカタカナの時は住所登録できる" do
       destination = build(:destination, last_name_kana: "アイウエオ")
       expect(destination).to be_valid
     end
 
-    it "last_name_kanaにカタカナ以外の文字が入っている時は住所登録ができない" do
+    it "first_name_kana内に半角カタカナが含まれていても住所登録ができる" do
+      destination = build(:destination, last_name_kana: "アイウエｵ")
+      expect(destination).to be_valid
+    end
+
+    it "last_name_kanaにひらがなが入っている時は住所登録ができない" do
       destination = build(:destination, last_name_kana: "アイウエお") 
       destination.valid?
       expect(destination.errors[:last_name_kana]).to include("はカタカナで入力して下さい")#JavaScriptでエラーメッセージを表示させる際にメッセージを修正する
     end
+
 
   end
 end
