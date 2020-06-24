@@ -8,11 +8,12 @@
   height: auto;
   background-color: whitesmoke;
   display: flex;
+  justify-content: center;
 
   .destinations-form{
     width: 650px;
     height: auto;
-    margin: 50px 100px 50px 25px;
+    margin : 50px 0px;
     background-color: white;
     &__tittle{
       text-align: center;
