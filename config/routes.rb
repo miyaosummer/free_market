@@ -4,9 +4,19 @@ Rails.application.routes.draw do
   resources :users ,only: [:index,:new, :show]
   resources :destinations ,only: [:index, :new, :create, :edit, :update]
   resources :logs ,only: :index
-  resources :products ,only: [:new, :show] do
+  resources :products do
     collection do
       get 'purchase'
+    end
+    # :idなし
+    collection do
+      get 'get_product_category_children', defaults: { format: 'json' }
+      get 'get_product_category_grandchildren', defaults: { format: 'json' }
+    end
+    # :idあり
+    member do
+      get 'get_product_category_children', defaults: { format: 'json' }
+      get 'get_product_category_grandchildren', defaults: { format: 'json' }
     end
   end
 end
