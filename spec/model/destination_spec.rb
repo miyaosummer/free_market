@@ -109,8 +109,8 @@ describe Destination do
       expect(destination).to be_valid
     end
 
-    it "postal_codeが9文字以上の時は住所登録できない" do
-      destination = build(:destination, postal_code: "123456789") #9文字
+    it "postal_codeが8文字以上の時は住所登録できない" do
+      destination = build(:destination, postal_code: "12345678") #8文字
       destination.valid?
       expect(destination.errors[:postal_code]).to include("is the wrong length (should be 7 characters)")#JavaScriptでエラーメッセージを表示させる際にメッセージを修正する
     end
