@@ -3,7 +3,7 @@
     メニュー
   .menu
     .menu__mypage
-      =link_to "マイページ", "#",class: "menu__mypage__link"
+      =link_to "マイページ", user_path(current_user.id),class: "menu__mypage__link"
       %i.fas.fa-chevron-right
     .menu__product
       =link_to "出品する", new_product_path ,class: "menu__product__link"
@@ -24,7 +24,7 @@
       =link_to "プロフィール編集", "#" ,class: "config__user__link"
       %i.fas.fa-chevron-right
     .config__destinations
-      =link_to "発送元・お届け先住所登録", "#" ,class: "config__destinations__link"
+      =link_to "発送元・お届け先住所登録", new_destination_path ,class: "config__destinations__link"
       %i.fas.fa-chevron-right
     .config__card
       =link_to "クレジットカード登録", "#" ,class: "config__card__link"
