@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
+  before_action :set_product_category_parent, only: :new
 
   def new
     @product = Product.new
@@ -8,11 +9,6 @@ class ProductsController < ApplicationController
 
   def create
     Product.create(product_params)
-  before_action :set_product_category_parent, only: :new
-
-  def new
-    @product = Product.new
-  end
 
   def show
   end
