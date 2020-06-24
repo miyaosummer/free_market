@@ -21,18 +21,25 @@
             = text_field_tag "number", "", class: "number", placeholder: "半角数字のみ", maxlength: "16", type: "text", id: "card_number"
             .signup-card__main__container__register-form__image
               .visa
+                -# = image_tag "visa.png", class: "visa"
                 %img( src="https://pcweb-assets.mercdn.net/assets/img/card/visa.svg?3222000695")
               .mastercard
+                -# = image_tag "mastercard.png", class: "mastercard"
                 %img( src="https://pcweb-assets.mercdn.net/assets/img/card/master-card.svg?3222000695")
               .SAISONcard
+                -# = image_tag "SAISONcard.png", class: "SAISONcard"
                 %img( src="https://pcweb-assets.mercdn.net/assets/img/card/saison-card.svg?3222000695")
               .JCB
+                -# = image_tag "JCB.png", class: "JCB"
                 %img( src="https://pcweb-assets.mercdn.net/assets/img/card/jcb.svg?3222000695")
               .AmericanExpress
+                -# = image_tag "AmericanExpress.png", class: "AmericanExpress"
                 %img( src="https://pcweb-assets.mercdn.net/assets/img/card/american_express.svg?3222000695")
               .DinersClub
+                -# = image_tag "DinersClub.png", class: "DinersClub"
                 %img( src="https://pcweb-assets.mercdn.net/assets/img/card/dinersclub.svg?3222000695")
               .DISCOVER
+                -# = image_tag "DISCOVER.png", class: "DISCOVER"
                 %img( src="https://pcweb-assets.mercdn.net/assets/img/card/discover.svg?3222000695")
 
             -# 有効期限 入力フォーム

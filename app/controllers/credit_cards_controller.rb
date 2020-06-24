@@ -20,6 +20,7 @@ class CreditCardsController < ApplicationController
       ) 
       @card = CreditCard.new(user_id: user_id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
+        # redirect_to purchase_products_path
         redirect_to controller: :users, action: :done
       else
         redirect_to action: "new"
