@@ -1,15 +1,14 @@
 
-h1{
-  font-weight: bold;
-  font-size: 16px;
-  margin-bottom: 5px;
-}
-
 
 .side-bar{
   min-width: 280px;
   height: auto;
   margin: 50px 25px 50px 200px;
+  h1{
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
   .menu{
     background-color: white;
     margin-bottom: 50px;
