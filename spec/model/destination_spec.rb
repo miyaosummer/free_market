@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe Destination do
   describe '#create' do
+  
 #全項目の条件を満たした時は住所登録ができる
     it "全項目の条件を満たした場合は住所登録ができる" do
       destination = build(:destination)
@@ -149,6 +150,28 @@ describe Destination do
     end
 
 #入力された文字種に関するテストコード
+
+    it "first_name_kanaが全てカタカナの時は住所登録できる" do
+      destination = build(:destination, first_name_kana: "アイウエオ")
+      expect(destination).to be_valid
+    end
+
+    it "first_name_kanaにカタカナ以外の文字が入っている時は住所登録ができない" do
+      destination = build(:destination, first_name_kana: "アイウエお") 
+      destination.valid?
+      expect(destination.errors[:first_name_kana]).to include("はカタカナで入力して下さい")#JavaScriptでエラーメッセージを表示させる際にメッセージを修正する
+    end
+
+    it "last_name_kanaが全てカタカナの時は住所登録できる" do
+      destination = build(:destination, last_name_kana: "アイウエオ")
+      expect(destination).to be_valid
+    end
+
+    it "last_name_kanaにカタカナ以外の文字が入っている時は住所登録ができない" do
+      destination = build(:destination, last_name_kana: "アイウエお") 
+      destination.valid?
+      expect(destination.errors[:last_name_kana]).to include("はカタカナで入力して下さい")#JavaScriptでエラーメッセージを表示させる際にメッセージを修正する
+    end
 
   end
 end
