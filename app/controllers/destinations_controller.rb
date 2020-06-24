@@ -1,9 +1,5 @@
 class DestinationsController < ApplicationController
 
-  def index
-    @destination = Destination.new
-  end
-  
   def new
     @destination = Destination.new
   end
@@ -20,6 +16,7 @@ class DestinationsController < ApplicationController
   end
 
   def edit
+    @destination = Destination.find(params[:id])
   end
 
   def update
