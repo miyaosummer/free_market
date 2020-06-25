@@ -32,25 +32,40 @@
           %h2.show__main__product__content__information__name
             = @product.name
 
-            -# 編集・削除ボタン↓
-          -# - if user_signed_in? && current_user.id == @product.seller_id
-          %ul.show__main__product__content__information__btn
-            %li
-              = link_to "編集する", "#", class: "show__main__product__content__information__btn--edit", method: :get
-            %li
-              = link_to "削除する", "#", class: "show__main__product__content__information__btn--delete", method: :delete
-
-          .show__main__product__content__information__body
-            %ul 
+          -# 編集・削除ボタン（現在のユーザーが出品者かどうかで場合分け）
+          -if user_signed_in? && current_user.id == @product.seller_id
+            %ul.show__main__product__content__information__btn
               %li
-                = image_tag @product.product_images[0].image.url
-                %ul
-                  %li
-                    = image_tag @product.product_images[0].image.url
-                  %li
+                = link_to "編集する", "#", class: "show__main__product__content__information__btn--edit", method: :get
+              %li
+                = link_to "削除する", "#", class: "show__main__product__content__information__btn--delete", method: :delete
+          -else
+
+          -# 商品が存在しているか否かで場合分け
+          -if @product.buyer_id.present?
+            .show__main__product__content__information__body
+              %ul 
+                %li
+                  = image_tag @product.product_images[0].image.url
+                  %ul
+                    %li
+                      = image_tag @product.product_images[0].image.url
+                    %li
                     
-                  %li
+                    %li
+              .show__main__product__content__information__body--soldout
+
+          -else
+            .show__main__product__content__information__body
+              %ul 
+                %li
+                  = image_tag @product.product_images[0].image.url
+                  %ul
+                    %li
+                      = image_tag @product.product_images[0].image.url
+                    %li
                     
+                    %li
 
           .show__main__product__content__information__price
             %span
@@ -60,7 +75,7 @@
               %span
                 (税込)
               %span
-                送料込み
+                = @product.postage
 
           .show__main__product__content__information__introduction
             = @product.description
@@ -72,28 +87,30 @@
                   %th
                     出品者
                   %td
-                    -# hoge
-                    -# = @product.seller_id
-                    -# ↑分かりません。。。
+                    = @product.seller.nickname
                 %tr
+                  -# 後ほどカテゴリ機能で実装予定
                   %th
                     カテゴリー
                   %td
                     = link_to "#", class: "show__main__product__content__information__table__category" do
-                      -# ベビー・キッズ
+                      ベビー・キッズ
                     %br/
                     = link_to "#", class: "show__main__product__content__information__table__category" do
-                      -# ベビー服(男女兼用) ~95cm
+                      ベビー服(男女兼用) ~95cm
                     %br/
                     = link_to "#", class: "show__main__product__content__information__table__category" do
-                      -# アウター
-                    -# 後ほど実装予定
+                      アウター
                 %tr
                   %th
                     ブランド
                   %td
-                    -# = @product.product_brands.brand_name
-                    -# 後ほど実装予定
+                    -# ブランド名があるかないかで場合分け
+                    -if @product.product_brand != nil
+                      = @product.product_brand.brand_name
+                      
+                    -else
+                      
                 %tr
                   %th
                     商品のサイズ
@@ -121,24 +138,30 @@
                   %td
                     = @product.shipping_day_id
 
-          -# ↓ユーザーが出品者かそうで無いかで場合分け
+          -# ユーザーが出品者かそうで無いかでボタン表示の場合分け
+          - if user_signed_in? && current_user.id == @product.seller_id
 
-          .show__main__product__content__information__option
-            %ul.show__main__product__content__information__option__btn
-              %li.show__main__product__content__information__option__btn--favorite
-                = icon('fa', 'star')
-                お気に入り 0
-            %ul.show__main__product__content__information__option__btn
-              %li.show__main__product__content__information__option__btn--purchase
-                = link_to purchase_products_path(@product), class: "show__main__product__content__information__option__btn--purchase" do
-                  購入画面に進む
-            %ul.show__main__product__content__information__option__btn
-              %li.show__main__product__content__information__option__btn--report
-                = link_to "#", class: "show__main__product__content__information__option__btn--report" do
-                  = icon('fa', 'flag')
-                  不適切な商品の通報
-
-
+          - else
+            .show__main__product__content__information__option 
+              %ul.show__main__product__content__information__option__btn
+                %li.show__main__product__content__information__option__btn--favorite
+                  = icon('fa', 'star')
+                  お気に入り 0
+              -# 商品が品切れかどうかで場合分け
+              - if @product.buyer_id != nil
+                %ul.show__main__product__content__information__option__btn
+                  %li.show__main__product__content__information__option__btn--soldout
+                    品切れ中
+              - else
+                %ul.show__main__product__content__information__option__btn
+                  %li.show__main__product__content__information__option__btn--purchase
+                    = link_to purchase_products_path(@product), class: "show__main__product__content__information__option__btn--purchase" do
+                      購入画面に進む
+              %ul.show__main__product__content__information__option__btn
+                %li.show__main__product__content__information__option__btn--report
+                  = link_to "#", class: "show__main__product__content__information__option__btn--report" do
+                    = icon('fa', 'flag')
+                    不適切な商品の通報
 
         .show__main__product__content__comment
           %ul.show__main__product__content__comment__text
@@ -164,20 +187,21 @@
 
       .show__main__product__related
         = link_to "#", class: "show__main__product__related__items" do
+          -# カテゴリ機能で修正予定
           ベビー・キッズをもっと見る
         %ul.show__main__product__related__lists
           %li.show__main__product__related__lists__list
-            -# = link_to "#", class: "" do 一旦コメントアウト
-            .show__main__product__related__lists__list__img
+            = link_to "#", class: ".show__main__product__related__lists__list" do
+              .show__main__product__related__lists__list__img
 
-            .show__main__product__related__lists__list__body
-              %h3
-              .show__main__product__related__lists__list__body__details
-                %ul
-                  %li
-                  %li
-                    = icon('', '')
-                %p  
+              .show__main__product__related__lists__list__body
+                %h3
+                .show__main__product__related__lists__list__body__details
+                  %ul
+                    %li
+                    %li
+                      = icon('', '')
+                  %p  
 
   .show__banner
     = render "shared/bottom-banner"
