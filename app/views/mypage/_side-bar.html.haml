@@ -24,7 +24,7 @@
       =link_to "プロフィール編集", "#" ,class: "config__user__link"
       %i.fas.fa-chevron-right
     .config__destinations
-      -if @destination.nil?
+      -if current_user.destination.nil?
         =link_to "発送元・お届け先住所登録", new_user_destination_path(current_user.id) ,class: "config__destinations__link"
         %i.fas.fa-chevron-right
       -else
