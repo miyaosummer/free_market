@@ -1,12 +1,14 @@
 class DestinationsController < ApplicationController
 
   def new
+    @user = User.find(params[:user_id])
     @destination = Destination.new
   end
 
   def create
+    @user = User.find(params[:user_id])
     @destination = Destination.new(create_params)
-    
+
     if @destination.save
       redirect_to root_path
     else
