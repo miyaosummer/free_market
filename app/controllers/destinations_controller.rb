@@ -18,7 +18,8 @@ class DestinationsController < ApplicationController
   end
 
   def edit
-    @destination = Destination.find(params[:id])
+    @user = User.find(params[:user_id])
+    @destination = Destination.find_by(user_id: current_user.id)
   end
 
   def update
