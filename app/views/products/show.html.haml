@@ -10,15 +10,15 @@
       %li 
         = icon('fa', 'angle-right')
       %li 
-        ベビー・キッズ
+        = @product.product_category.root.name
       %li
         = icon('fa', 'angle-right')
       %li
-        ベビー服(男女兼用)~95cm
+        = @product.product_category.parent.name
       %li
         = icon('fa', 'angle-right')
       %li 
-        アウター
+        = @product.product_category.name
       %li
         = icon('fa', 'angle-right')
       %li.show__navbar--last
@@ -89,13 +89,13 @@
                     カテゴリー
                   %td
                     = link_to "#", class: "show__main__product__content__information__table__category" do
-                      ベビー・キッズ
+                      = @product.product_category.root.name
                     %br/
                     = link_to "#", class: "show__main__product__content__information__table__category" do
-                      ベビー服(男女兼用) ~95cm
+                      = @product.product_category.parent.name
                     %br/
                     = link_to "#", class: "show__main__product__content__information__table__category" do
-                      アウター
+                      = @product.product_category.name
                 %tr
                   %th
                     ブランド
