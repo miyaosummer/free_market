@@ -4,7 +4,7 @@
       .mypage-bar__index__user__title
         = image_tag "member_photo_noimage_thumb.png", class: "mypage-bar__index__user__title__icon"
         %p.mypage-bar__index__user__icon__title__name
-          Name
+          =@user.nickname
       .mypage-bar__index__user__list
         %h1.mypage-bar__index__user__list__notice
           お知らせ
