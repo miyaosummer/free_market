@@ -121,17 +121,6 @@ describe Destination do
       expect(destination.errors[:postal_code]).to include("is the wrong length (should be 7 characters)")#JavaScriptでエラーメッセージを表示させる際にメッセージを修正する
     end
 
-    it "prefecture_idが49未満の時は住所登録できる" do
-      destination = build(:destination, prefecture_id: "48")
-      expect(destination).to be_valid
-    end
-
-    it "prefecture_idが49以上の時は住所登録できない" do
-      destination = build(:destination, prefecture_id: "49") 
-      destination.valid?
-      expect(destination.errors[:prefecture_id]).to include("must be less than 49")#JavaScriptでエラーメッセージを表示させる際にメッセージを修正する
-    end
-
     it "cityが50文字以下の時は住所登録できる" do
       destination = build(:destination, city: "アイウエオアイウエオアイウエオアイウエオアイウエオアイウエオアイウエオアイウエオアイウエオアイウエオ") #50文字
       expect(destination).to be_valid
