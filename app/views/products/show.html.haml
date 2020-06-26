@@ -50,9 +50,11 @@
                   %ul
                     %li
                       = image_tag @product.product_images[0].image.url
-                    %li
-                    
-                    %li
+                    -# %li
+                    -#   = image_tag @product.product_images[0].image.url
+                    -# %li
+                    -#   = image_tag @product.product_images[0].image.url
+                      
               .show__main__product__content__information__body--soldout
 
           -else
@@ -64,8 +66,9 @@
                     %li
                       = image_tag @product.product_images[0].image.url
                     %li
-                    
+                      = image_tag @product.product_images[0].image.url
                     %li
+                      = image_tag @product.product_images[0].image.url
 
           .show__main__product__content__information__price
             %span
