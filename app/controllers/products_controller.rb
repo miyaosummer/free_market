@@ -10,8 +10,15 @@ class ProductsController < ApplicationController
   end
   
   def destroy
-    @product.destroy
-    redirect_to root_path
+    if @product.seller_id == current_user.id
+      if @product.destroy
+       redirect_to root_path
+      else
+       redirect_to product_path(@product)
+      end
+    else
+      redirect_to product_path(@product)
+    end
   end
 
   def purchase
