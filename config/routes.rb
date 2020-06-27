@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       get 'get_product_category_grandchildren', defaults: { format: 'json' }
     end
   end
-  resources :credit_cards, only:[:index, :new, :create, :show]do
+  resources :credit_cards, only:[:index, :new, :show]do
     collection do
       post 'pay', to: 'credit_cards#pay' # payjpでトークン化を行う
       post 'delete', to: 'credit_cards#delete'
