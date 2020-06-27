@@ -1,16 +1,25 @@
 class ProductsController < ApplicationController
   before_action :set_product_category_parent, only: :new
+  before_action :get_product, only: [:show, :destroy]
 
   def new
     @product = Product.new
   end
 
   def show
-    @product = Product.find(params[:id])
   end
   
+  def destroy
+    if @product.seller_id == current_user.id && @product.destroy
+       redirect_to root_path
+    else
+      redirect_to product_path(@product)
+    end
+  end
+
   def purchase
   end
+
 
   # 親カテゴリーに紐づく子カテゴリーの配列を取得
   def get_product_category_children
@@ -31,5 +40,9 @@ private
 
   def product_params
     params.require(:product).permit(:name,:description,:price,:seller_id,:buyer_id,:product_category_id,:product_condition_id,:postage_way_id,:postage,:shipping_day_id,:product_brand_id,:product_size_id,:prefecture_id)
+  end
+
+  def get_product
+    @product = Product.find(params[:id])
   end
 end

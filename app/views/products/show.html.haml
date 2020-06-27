@@ -38,7 +38,7 @@
               %li
                 = link_to "編集する", "#", class: "show__main__product__content__information__btn--edit", method: :get
               %li
-                = link_to "削除する", "#", class: "show__main__product__content__information__btn--delete", method: :delete
+                = link_to "削除する", product_path(@product), class: "show__main__product__content__information__btn--delete", method: :delete
           -else
 
           -# 商品が存在しているか否かで場合分け
