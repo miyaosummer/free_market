@@ -2,7 +2,7 @@
   .forgetpass__header
     = render "devise/sessions/header"
   .forgetpass__main
-    .forgetpass__main__tittle
+    .forgetpass__main__title
       %h2 パスワードをお忘れの方
     .forgetpass__main__form
       = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
