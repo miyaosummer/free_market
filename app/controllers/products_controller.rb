@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!, only: [:new]
   before_action :set_product_category_parent, only: :new
   before_action :get_product, only: [:show, :destroy]
 
