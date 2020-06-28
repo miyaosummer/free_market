@@ -6,12 +6,32 @@
         必須
     %p.putup__main__upload__description
       最大10枚までアップロードできます
-    = f.fields_for :product_images do |image|
-      -# %textarea{class: "putup__main__upload__image-box", rows: "5", placeholder:'ドラッグアンドドロップまたはクリックしてファイルをアップロード'}
       
-      #image-box.putup__main__upload__image-box
-        = image.file_field :image
+    .putup__main__upload__image-box
+      #image-box
+        = f.fields_for :product_images do |image|
+          .js-file_group{data: {index: image.index}}
+            = image.file_field :image, {class: "js-file", required: "required"}
+            %label{ for: "product_product_images_attributes_0_image", class: "label-box__0" }
+            %span.js-remove 削除
+        -if @product.persisted?
+          .js-file_group{data: {index: @product.product_images.count}}
+            = file_field_tag :image, name: "product[product_images_attributes][#{@product.product_images.count}][image]", class: 'js-file'
+            %span.js-remove 削除
 
+          -# .preview-box
+          -# .label-box
+          -#   %label{ for: "product_product_images_attributes_0_image", class: "label-box__0" }
+          -#     クリックして画像をアップロードしてください
+          -# .hidden-box
+          -#   = image.file_field :image, {class: "js-file", style: "display:none", required: "required"}
+
+          -# .js-file_group{data: {index: image.index}}
+
+            -# = image.file_field :image, {class: "js-file", style: "display:none", required: "required", multiple: :true }
+            -# %label{for: "item_images_attributes_0_image", class: "abel-box", id: "label-box--0"}
+              -# = icon('fas', 'camera', class: 'photo-icon')
+      -# %textarea{class: "putup__main__upload__image-box", rows: "5", placeholder:'ドラッグアンドドロップまたはクリックしてファイルをアップロード'}
 
   %hr.putup__main__separate-line
 

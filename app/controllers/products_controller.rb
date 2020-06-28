@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
   before_action :set_product_category_parent, only: :new
+  before_action :set_product, except: [:index, :new, :create]
 
   def new
     @product = Product.new
@@ -54,7 +55,12 @@ private
       # :product_size_id,
       :prefecture_id,
       product_images_attributes: [:image, :_destroy, :id]
-      ).merge(seller_id: current_user.id).merge(postage: "送料込み").merge(product_size_id: "1")
+      ).merge(seller_id: current_user.id).merge(product_size_id: "1")
       #---> postageとproduct_size_idはNULL制約が入っており、かつ入力できないためMergeで強制的に入れています
   end
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
+  
 end
