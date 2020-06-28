@@ -36,7 +36,7 @@
           -if user_signed_in? && current_user.id == @product.seller_id
             %ul.show__main__product__content__information__btn
               %li
-                = link_to "編集する", "#", class: "show__main__product__content__information__btn--edit", method: :get
+                = link_to "編集する", edit_product_path(@product), class: "show__main__product__content__information__btn--edit", method: :get
               %li
                 = link_to "削除する", product_path(@product), class: "show__main__product__content__information__btn--delete", method: :delete
           -else

@@ -1,10 +1,31 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
   before_action :set_product_category_parent, only: :new
-  before_action :get_product, only: [:show, :destroy]
+  before_action :get_product, only: [:show, :destroy, :edit, :update]
 
   def new
     @product = Product.new
+    @product.product_images.new
+  end
+
+  def create
+    @product = Product.new(product_params)
+    if @product.save
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @product.update(product_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   def show
@@ -40,7 +61,19 @@ private
   end
 
   def product_params
-    params.require(:product).permit(:name,:description,:price,:seller_id,:buyer_id,:product_category_id,:product_condition_id,:postage_way_id,:postage,:shipping_day_id,:product_brand_id,:product_size_id,:prefecture_id)
+    params.require(:product).permit(
+      :name,
+      :description,
+      :price,
+      :product_category_id,
+      :product_condition_id,
+      :postage_way_id,
+      :shipping_day_id,
+      :product_brand_id,
+      :product_size_id,
+      :prefecture_id,
+      product_images_attributes: [:image, :_destroy, :id]
+    ).merge(seller_id: current_user.id).merge(product_size_id: "1")
   end
 
   def get_product

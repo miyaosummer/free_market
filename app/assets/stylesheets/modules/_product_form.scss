@@ -1,0 +1,17 @@
+#image-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+
+  #preview-box{
+
+  }
+
+  .label-box {
+    &__0 {
+      width: 100%;
+      background-color: blue;
+    }
+  }
+}
