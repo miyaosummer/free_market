@@ -55,7 +55,7 @@ Things you may want to cover:
 |prefecture_id   |string    |null: false|
 |city            |string    |null: false|
 |block           |string    |null: false|
-|building        |string    |null: false|
+|building        |string    |           |
 |phone_number    |string    |           |
 |user_id         |references|null: false, foreign_key: true|
 
@@ -93,14 +93,13 @@ Things you may want to cover:
 |description         |text       |null: false|
 |price               |integer    |null: false|
 |seller_id           |references |null: false, foreign_key: true|
-|buyer_id            |references |null: false, foreign_key: true|
+|buyer_id            |references |             foreign_key: true|
 |product_category_id |references |null: false, foreign_key: true|
 |product_condition_id|string     |null: false|
 |postage_way_id      |string     |null: false|
-|postage             |string     |null: false|
 |shipping_day_id     |string     |null: false|
-|product_brand_id    |references |foreign_key: true|
-|product_size_id     |string     |           |
+|product_brand_id    |references |             foreign_key: true|
+|product_size_id     |string     |null: false|
 |prefecture_id       |string     |null: false|
 
 ### Association
@@ -121,7 +120,7 @@ Things you may want to cover:
 ## product_images table
 |Column     |Type       |Options    |
 |-----------|-----------|-----------|
-|image      |text       |null: false|
+|image      |string     |null: false|
 |product_id |references |null: false, foreign_key: true|
 
 ### Association
