@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root "tops#index"
-  resources :users ,only: [:new, :show]
+    resources :users ,only: [:index,:new, :show] do
+      resources :destinations ,only: [:index, :new, :create, :edit, :update]
+    end
   resources :logs ,only: :index
   resources :products do
     collection do

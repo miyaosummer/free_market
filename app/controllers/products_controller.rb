@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
   before_action :set_product_category_parent, only: :new
-  before_action :set_product, except: [:index, :new, :create]
+  before_action :get_product, only: [:show, :destroy]
 
   def new
     @product = Product.new
@@ -20,8 +20,17 @@ class ProductsController < ApplicationController
   def show
   end
   
+  def destroy
+    if @product.seller_id == current_user.id && @product.destroy
+       redirect_to root_path
+    else
+      redirect_to product_path(@product)
+    end
+  end
+
   def purchase
   end
+
 
   # 親カテゴリーに紐づく子カテゴリーの配列を取得
   def get_product_category_children
@@ -59,8 +68,8 @@ private
       #---> postageとproduct_size_idはNULL制約が入っており、かつ入力できないためMergeで強制的に入れています
   end
 
-  def set_product
+  def get_product
     @product = Product.find(params[:id])
   end
-  
 end
+
