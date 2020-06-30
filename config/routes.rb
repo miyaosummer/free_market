@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root "tops#index"
-    resources :users ,only: [:index,:new, :show] do
+    resources :users ,only: [:index, :new, :show] do
+      get 'credit', to: 'users#credit'
+      get 'credit_destroy', to: 'users#credit_destroy'
       resources :destinations ,only: [:index, :new, :create, :edit, :update]
     end
   resources :logs ,only: :index
