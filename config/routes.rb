@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root "tops#index"
   resources :users ,only: [:index,:new, :show] do
-    get 'logout'
+    member do
+      get 'logout'
+    end
     resources :destinations ,only: [:index, :new, :create, :edit, :update] 
   end
   resources :logs ,only: :index
