@@ -1,4 +1,13 @@
+.logout-main{
+  width: 100%;
+  height: auto;
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: center;
+}
+
 .logout{
+  width: 650px;
   &__main{
     text-align: center;
     height: 100vh;
@@ -9,7 +18,7 @@
       background-color: white;
       box-shadow: 0 0 4px gray;
       height: auto;
-      width: 32%;
+      width: 100%;
       min-width: 500px;
       margin: 0 auto;
       &__index{
