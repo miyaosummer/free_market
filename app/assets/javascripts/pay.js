@@ -39,7 +39,7 @@ document.addEventListener(
             document.inputForm.submit();
             alert("登録が完了しました");
           } else {
-            alert("カード情報が正しくありません。");
+            alert("カード情報が正しくありません");
           }
 
         });

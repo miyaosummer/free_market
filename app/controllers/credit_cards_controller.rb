@@ -23,15 +23,31 @@ class CreditCardsController < ApplicationController
 
   # PAY.JPとCardデータベースを削除
   def delete 
-    card = CreditCard.where(user_id: current_user.id).first
-    if card.blank?
+    @card = CreditCard.find_by(user_id: current_user.id)
+    if @card.blank?
+      redirect_to action: "credit"
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer = Payjp::Customer.retrieve(card.customer_id)
+      # ログインユーザーのクレジットカード情報からPay.jpに登録されているカスタマー情報を引き出す
+      customer = Payjp::Customer.retrieve(@card.customer_id)
       customer.delete
-      card.delete
+      @card.delete
+      # 削除が完了しているか判断
+      if @card.credit_destroy
+        redirect_to user_path(current_user.id), alert: "削除完了しました"
+      else
+        redirect_to credit_card_path(current_user.id), alert: "削除できませんでした"
+      end
     end
-      redirect_to action: "new"
+    # card = CreditCard.where(user_id: current_user.id).first
+    # if card.blank?
+    # else
+    #   Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    #   customer = Payjp::Customer.retrieve(card.customer_id)
+    #   customer.delete
+    #   card.delete
+    # end
+    #   redirect_to action: "new"
   end
 
   #CardのデータPAY.JPに送り情報を取り出す

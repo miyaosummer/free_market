@@ -9,52 +9,68 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @destination = @user.destination
   end
-  
+
+######################## クレジットカード関連 ########################
+
+  def credit_new
+    card = CreditCard.where(user_id: current_user.id)
+    if card.exists?
+      redirect_to action: "credit_show" 
+    end
+  end
+
   # クレジットカード登録
-  def credit
+  def credit_create
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    customer = Payjp::Customer.create(card: params['payjp-token'], metadata: {user_id: current_user.id})
+    @card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
+    if @card.save
+      redirect_to user_path(current_user.id), notice: "登録が完了しました"
+    else
+      redirect_to action: "credit_new", alert: "カード情報が正しくありません"
+    end
+  end
+
+  # クレジットカード情報
+  def credit_show
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    card = CreditCard.where(user_id: current_user.id).first
+    if card.blank?
+      redirect_to action: "credit_new" 
+    end
     @user = current_user
-    #current_user.idでログインしているユーザーのみ登録ができるようにする
     @card = CreditCard.find_by(user_id: current_user.id)
-    # ログインユーザーのクレジットカード情報からPay.jpに登録されているカスタマー情報を引き出す
     customer = Payjp::Customer.retrieve(@card.customer_id)
-    # カスタマー情報からカードの情報を引き出す
     @customer_card = customer.cards.retrieve(@card.card_id)
     @card_brand = @customer_card.brand
     case @card_brand
     when "Visa"
       @card_src = "visa.png"
     when "JCB"
-      @card_src = "jcb.png"
+      @card_src = "JCB.png"
     when "MasterCard"
-      @card_src = "master.png"
+      @card_src = "mastercard.png"
     when "American Express"
-      @card_src = "amex.png"
+      @card_src = "AmericanExpress.png"
     when "Diners Club"
-      @card_src = "diners.png"
+      @card_src = "DinersClub.png"
     when "Discover"
-      @card_src = "discover.png"
+      @card_src = "DISCOVER.png"
     end
-    #カード登録がまだならshowページへ飛ぶ
-    # redirect_to action: "show" if card.exists?
   end
 
-  # クレジットカード削除
   def credit_destroy
     @card = CreditCard.find_by(user_id: current_user.id)
     if @card.blank?
       redirect_to action: "credit"
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      # ログインユーザーのクレジットカード情報からPay.jpに登録されているカスタマー情報を引き出す
       customer = Payjp::Customer.retrieve(@card.customer_id)
       customer.delete
-      @card.delete
-      # 削除が完了しているか判断
-      if @card.credit_destroy
-        redirect_to users_path(current_user.id), alert: "削除完了しました"
+      if @card.delete
+        redirect_to user_path(current_user.id), notice: "削除完了しました"
       else
-        redirect_to credit_card_path(current_user.id), alert: "削除できませんでした"
+        redirect_to user_path(current_user.id), alert: "削除できませんでした"
       end
     end
   end

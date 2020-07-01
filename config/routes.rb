@@ -2,8 +2,12 @@ Rails.application.routes.draw do
   devise_for :users
   root "tops#index"
     resources :users ,only: [:index, :new, :show] do
-      get 'credit', to: 'users#credit'
-      get 'credit_destroy', to: 'users#credit_destroy'
+      member do
+        get 'credit_new', to: 'users#credit_new'
+        get 'credit_create', to: 'users#credit_create'
+        get 'credit_show', to: 'users#credit_show'
+        delete 'credit_destroy', to: 'users#credit_destroy'
+      end
       resources :destinations ,only: [:index, :new, :create, :edit, :update]
     end
   resources :logs ,only: :index
@@ -22,7 +26,7 @@ Rails.application.routes.draw do
       get 'get_product_category_grandchildren', defaults: { format: 'json' }
     end
   end
-  resources :credit_cards, only:[:index, :new, :show]do
+  resources :credit_cards, only:[:index, :new, :show, :delete] do
     collection do
       post 'pay', to: 'credit_cards#pay' # payjpでトークン化を行う
       post 'delete', to: 'credit_cards#delete'

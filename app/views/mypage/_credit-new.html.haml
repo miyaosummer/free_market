@@ -3,7 +3,6 @@
 
     .signup-card
 
-    - if @user.credit_card.blank?
       .signup-card__main
 
         .signup-card__main__container
@@ -87,27 +86,3 @@
             #card_token
             .signup-card__main__container__register-form__btn
             = submit_tag "登 録", class: "signup-card__main__container__register-form__btn", id: "token_submit"
-
-    - else
-      .confirmation
-        .confirmation__main
-          .confirmation__main__title
-            クレジットカード情報
-          .confirmation__main__info
-            .confirmation__main__info__brand
-              = image_tag "#{@card_src}", class: "confirmation__main__info__brand__img", alt: @card_brand
-            .confirmation__main__info__numbers
-              .number
-                = "**** **** **** " + @customer_card.last4
-              .expiration-date
-                .expiration-date__label
-                  有効期限
-                .expiration-date__info
-                  - exp_month = @customer_card.exp_month.to_s
-                  - exp_year = @customer_card.exp_year.to_s.slice(2,3)
-                  = exp_month + " / " + exp_year
-
-          .destroy__function
-            .destroy__function__link
-              = link_to user_path(current_user.id), method: :delete, class: "destroy__function__link__btn" do
-                削除する
