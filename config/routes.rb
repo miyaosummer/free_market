@@ -26,11 +26,12 @@ Rails.application.routes.draw do
       get 'get_product_category_grandchildren', defaults: { format: 'json' }
     end
   end
-  resources :credit_cards, only:[:index, :new, :show, :delete] do
-    collection do
-      post 'pay', to: 'credit_cards#pay' # payjpでトークン化を行う
-      post 'delete', to: 'credit_cards#delete'
-      post 'show', to: 'credit_cards#show'
-    end
+  resources :credit_cards, only:[:new, :create, :show, :destroy] do
+    # member do
+    #   get 'new', to: 'credit_cards#new'
+    #   post 'create', to: 'credit_cards#create'
+    #   get 'show', to: 'credit_cards#show'
+    #   delete 'destroy', to: 'credit_cards#destroy'
+    # end
   end
 end

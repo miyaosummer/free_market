@@ -62,7 +62,7 @@ class UsersController < ApplicationController
   def credit_destroy
     @card = CreditCard.find_by(user_id: current_user.id)
     if @card.blank?
-      redirect_to action: "credit"
+      redirect_to action: "credit_new"
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(@card.customer_id)
