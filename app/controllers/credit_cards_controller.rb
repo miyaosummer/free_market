@@ -5,7 +5,7 @@ class CreditCardsController < ApplicationController
   def new
     card = CreditCard.where(user_id: current_user.id)
     if card.exists?
-      redirect_to action: "show" 
+      redirect_to purchase_products_path(current_user.id) 
     end
   end
 
