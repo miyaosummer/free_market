@@ -21,7 +21,7 @@ class CreditCardsController < ApplicationController
     end
   end
 
-# クレジットカード情報
+  # クレジットカード情報
   def show
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     card = CreditCard.where(user_id: current_user.id).first
@@ -63,6 +63,20 @@ class CreditCardsController < ApplicationController
         redirect_to purchase_products_path(current_user.id), alert: "削除できませんでした"
       end
     end
+  end
+
+  def pay
+    @card = CreditCard.where(user_id: current_user.id).first
+    @product = Product.find(params[:id])
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    charge = Payjp::Charge.create(
+      amount: @product.price,
+      customer: Payjp::Customer.retrieve(@card.customer_id),
+      currency: 'jpy'
+    )
+    @product_buyer= Product.find(params[:id])
+    @product_buyer.update( buyer_id: current_user.id)
+    redirect_to purchase_products_path(current_user.id)
   end
 
 end

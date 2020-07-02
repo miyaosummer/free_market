@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @destination = @user.destination
   end
 
-######################## クレジットカード関連 ########################
+######################## ↓↓ クレジットカード関連 ↓↓ ########################
 
   def credit_new
     card = CreditCard.where(user_id: current_user.id)
@@ -46,10 +46,10 @@ class UsersController < ApplicationController
     case @card_brand
     when "Visa"
       @card_src = "visa.png"
-    when "JCB"
-      @card_src = "JCB.png"
     when "MasterCard"
       @card_src = "mastercard.png"
+    when "JCB"
+      @card_src = "JCB.png"
     when "American Express"
       @card_src = "AmericanExpress.png"
     when "Diners Club"
@@ -74,5 +74,7 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  ######################## ↑↑ クレジットカード関連 ↑↑ ########################
 
 end

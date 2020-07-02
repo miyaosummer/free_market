@@ -35,7 +35,7 @@
               支払い方法
             - if current_user.credit_card.nil?
               %p.purchase__main__payment-info__innner__form__user-info__text
-                = link_to "/credit_cards/new" , class: "purchase__main__payment-info__innner__form__user-info__text" do
+                = link_to credit_new_product_path(current_user.id), class: "purchase__main__payment-info__innner__form__user-info__text" do
                   = icon('fas', 'plus-circle')
                   登録してください
             - else
