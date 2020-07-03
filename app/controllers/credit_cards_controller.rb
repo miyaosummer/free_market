@@ -5,7 +5,7 @@ class CreditCardsController < ApplicationController
   def new
     card = CreditCard.where(user_id: current_user.id)
     if card.exists?
-      redirect_to action: "credit_show" 
+      redirect_to action: "show" 
     end
   end
 
@@ -15,9 +15,10 @@ class CreditCardsController < ApplicationController
     customer = Payjp::Customer.create(card: params['payjp-token'], metadata: {user_id: current_user.id})
     @card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
     if @card.save
-      redirect_to user_path(current_user), notice: "登録が完了しました"
+      # redirect_to users_path(current_user), notice: "登録が完了しました"
+      redirect_to purchase_products(current_user), notice: "登録が完了しました"
     else
-      redirect_to action: "credit_new", alert: "カード情報が正しくありません"
+      redirect_to action: "new", alert: "カード情報が正しくありません"
     end
   end
 
@@ -26,7 +27,7 @@ class CreditCardsController < ApplicationController
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     card = CreditCard.where(user_id: current_user.id).first
     if card.blank?
-      redirect_to action: "credit_new" 
+      redirect_to action: "new" 
     end
     @user = current_user
     @card = CreditCard.find_by(user_id: current_user.id)
@@ -52,15 +53,15 @@ class CreditCardsController < ApplicationController
   def destroy
     @card = CreditCard.find_by(user_id: current_user.id)
     if @card.blank?
-      redirect_to action: "credit_new"
+      redirect_to action: "new"
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(@card.customer_id)
       customer.delete
       if @card.delete
-        redirect_to user_path(current_user.id), notice: "削除完了しました"
+        redirect_to purchase_products(current_user), notice: "削除完了しました"
       else
-        redirect_to user_path(current_user.id), alert: "削除できませんでした"
+        redirect_to purchase_products(current_user), alert: "削除できませんでした"
       end
     end
   end
