@@ -1,0 +1,19 @@
+// .category__index{
+//   display: none;
+// }
+
+// .nav__left__category:hover .category__index__parents__list{
+//   background-color: greenyellow;
+// }
+
+.parent_category{
+  background-color: greenyellow;
+  position: relative;
+  z-index: 1;
+}
+
+.child_category{
+  background-color: hotpink;
+  position: relative;
+  z-index: 1;
+}
