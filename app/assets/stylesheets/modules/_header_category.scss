@@ -9,6 +9,7 @@
 
 .nav__left__category{
   position: relative;
+  z-index: 1;
   .category_list{
     visibility: hidden;
     display: flex;
@@ -16,7 +17,7 @@
     background-color:white;
     margin-right: 5px;
     .parents_list{
-      box-shadow: 0 5px 5px 0 black;
+      box-shadow: 0 1px 1px 0 black;
       width: 200px;
       overflow: hidden;
     }
@@ -30,12 +31,12 @@
       margin-right: 3px;
     }
     .children_list{
-      box-shadow: 0 5px 5px 0 black;
+      box-shadow: 0 1px 1px 0 black;
       background-color: white;
     }
     .grand_children_list{
       background-color: white;
-      box-shadow: 0 5px 5px 0 black;
+      box-shadow: 0 1px 1px 0 black;
     }
     .grand_child_category{
       padding: 0px 5px;
@@ -51,17 +52,14 @@
 }
 .parent_category:hover{
   background-color: #99ffff;
-  margin-right: 3px;
 }
 
 .child_category:hover{
   background-color:lightblue;
-  margin-right: 3px;
 }
 
 .grand_child_category:hover{
   background-color: lightskyblue;
-  margin-right: 3px;
 }
 
 .nav__left__category:hover .category_list{
