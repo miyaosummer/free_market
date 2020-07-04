@@ -12,17 +12,17 @@
             
     .header__inner__nav.nav
       .nav__left
-        = link_to "#" , class: ".nav__left__category" do
+        %h1.nav__left__category
           カテゴリー
           .category_list
             .parents_list
               - @parents.each do |parent|
                 = link_to "#{parent.name}", "#", class: "parent_category",id: "#{parent.id}"
             .children_list
-              - @product_category_children.each do |parent|
-                = link_to "#{parent.name}", "#", class: "child_category",id: "#{parent.id}"
+              -# - @product_category_children.each do |parent|
+              -#   = link_to "#{parent.name}", "#", class: "child_category",id: "#{parent.id}"
             .grand_children_list
-        = link_to "#" , class: ".nav__left__brand" do
+        %h1.nav__left__brand
           ブランド
 
       .nav__right
