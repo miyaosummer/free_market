@@ -22,8 +22,10 @@
     }
     .parent_category{
       margin-right: 3px;
+      padding: 0px 5px;
     }
     .child_category{
+      padding: 0px 5px;
       width: 200px;
       margin-right: 3px;
     }
@@ -36,6 +38,7 @@
       box-shadow: 0 5px 5px 0 black;
     }
     .grand_child_category{
+      padding: 0px 5px;
       width: 250px;
       margin-right: 3px;
     }
@@ -47,17 +50,17 @@
   color: blue;
 }
 .parent_category:hover{
-  background-color:#99ffff;
+  background-color: #99ffff;
   margin-right: 3px;
 }
 
 .child_category:hover{
-  background-color:gray;
+  background-color:lightblue;
   margin-right: 3px;
 }
 
 .grand_child_category:hover{
-  background-color: lightslategray;
+  background-color: lightskyblue;
   margin-right: 3px;
 }
 
