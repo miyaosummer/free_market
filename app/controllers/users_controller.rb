@@ -8,5 +8,4 @@ class UsersController < ApplicationController
     @destination = @user.destination
   end
   
-  
 end
