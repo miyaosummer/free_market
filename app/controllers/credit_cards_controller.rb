@@ -2,8 +2,13 @@ class CreditCardsController < ApplicationController
 
   require "payjp"
 
+  before_action :set_product, only: [:show, :pay]
+  before_action :card_present, only:[:new, :show, :destroy]
+  before_action :take_card, only:[:show, :pay]
+  before_action :set_api_key
+
+
   def new
-    card = CreditCard.where(user_id: current_user.id)
     if card.exists?
       redirect_to action: "show" 
     end
@@ -12,12 +17,10 @@ class CreditCardsController < ApplicationController
 
   # クレジットカード登録
   def create
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     customer = Payjp::Customer.create(card: params['payjp-token'], metadata: {user_id: current_user.id})
     @card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
     if @card.save
-      # redirect_to users_path(current_user), notice: "登録が完了しました"
-      redirect_to purchase_products_path(current_user), notice: "登録が完了しました"
+      render template: "products/purchase", notice: "登録が完了しました"
     else
       redirect_to action: "new", alert: "カード情報が正しくありません"
     end
@@ -25,10 +28,8 @@ class CreditCardsController < ApplicationController
 
   # クレジットカード情報
   def show
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-    card = CreditCard.where(user_id: current_user.id).first
     if card.blank?
-      redirect_to action: "new" 
+      redirect_to action: "new"
     end
     @user = current_user
     @card = CreditCard.find_by(user_id: current_user.id)
@@ -79,6 +80,32 @@ class CreditCardsController < ApplicationController
     @product_buyer= Product.find(params[:id])
     @product_buyer.update(buyer_id: current_user.id)
     redirect_to purchase_products_path(current_user.id)
+  end
+
+  private
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
+  def card_present
+    @card = CreditCard.where(user_id: current_user.id).first if CreditCard.where(user_id: current_user.id).present?
+  end
+
+  def set_api_key
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+  end
+
+  def set_customer
+    @customer = Payjp::Customer.retrieve(@card.customer_id)
+  end
+
+  def set_card_information
+    @card_information = @customer.cards.retrieve(@card.card_id)
+  end
+
+  def take_card
+    @card = Card.find_by(user_id: current_user.id)
   end
 
 end

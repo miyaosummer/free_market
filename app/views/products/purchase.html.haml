@@ -33,7 +33,7 @@
           .purchase__main__payment-info__innner__form__user-info
             %h3.purchase__main__payment-info__innner__form__user-info__pay-method
               支払い方法
-            - if current_user.credit_card.nil?
+            - if current_user.credit_card.blank?
               %p.purchase__main__payment-info__innner__form__user-info__text
                 = link_to new_credit_card_path, class: "purchase__main__payment-info__innner__form__user-info__text" do
                   = icon('fas', 'plus-circle')
@@ -46,7 +46,7 @@
                     = image_tag "#{@card_src}", class: "confirmation__main__info__brand__img", alt: @card_brand
                   .confirmation__main__info__numbers
                     .number
-                      = "**** **** **** " + @customer_card.last4
+                      = "**** **** **** " + @card_information.last4
                     .expiration-date
                       .expiration-date__label
                         有効期限
