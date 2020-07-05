@@ -7,6 +7,7 @@ class CreditCardsController < ApplicationController
     if card.exists?
       redirect_to action: "show" 
     end
+    @card = CreditCard.new
   end
 
   # クレジットカード登録
@@ -16,7 +17,7 @@ class CreditCardsController < ApplicationController
     @card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
     if @card.save
       # redirect_to users_path(current_user), notice: "登録が完了しました"
-      redirect_to purchase_products(current_user), notice: "登録が完了しました"
+      redirect_to purchase_products_path(current_user), notice: "登録が完了しました"
     else
       redirect_to action: "new", alert: "カード情報が正しくありません"
     end
@@ -59,9 +60,9 @@ class CreditCardsController < ApplicationController
       customer = Payjp::Customer.retrieve(@card.customer_id)
       customer.delete
       if @card.delete
-        redirect_to purchase_products(current_user), notice: "削除完了しました"
+        redirect_to purchase_products_path(current_user), notice: "削除完了しました"
       else
-        redirect_to purchase_products(current_user), alert: "削除できませんでした"
+        redirect_to purchase_products_path(current_user), alert: "削除できませんでした"
       end
     end
   end
@@ -76,7 +77,7 @@ class CreditCardsController < ApplicationController
       currency: 'jpy'
     )
     @product_buyer= Product.find(params[:id])
-    @product_buyer.update( buyer_id: current_user.id)
+    @product_buyer.update(buyer_id: current_user.id)
     redirect_to purchase_products_path(current_user.id)
   end
 
