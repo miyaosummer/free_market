@@ -12,4 +12,5 @@ class Product < ApplicationRecord
   belongs_to :buyer, class_name: 'User', :foreign_key => 'buyer_id', optional: true
   belongs_to :product_category
   belongs_to :product_brand, optional: true
+  accepts_nested_attributes_for :product_images, allow_destroy: true
 end
