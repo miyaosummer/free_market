@@ -9,10 +9,10 @@ class CreditCardsController < ApplicationController
 
 
   def new
-    if card.exists?
-      redirect_to action: "show" 
+    if @card.present?
+      set_customer
+      set_card_information
     end
-    @card = CreditCard.new
   end
 
   # クレジットカード登録
@@ -28,14 +28,12 @@ class CreditCardsController < ApplicationController
 
   # クレジットカード情報
   def show
-    if card.blank?
+    if @card.blank?
       redirect_to action: "new"
     end
     @user = current_user
     @card = CreditCard.find_by(user_id: current_user.id)
-    customer = Payjp::Customer.retrieve(@card.customer_id)
-    @customer_card = customer.cards.retrieve(@card.card_id)
-    @card_brand = @customer_card.brand
+    @card_brand = @card_information.brand
     case @card_brand
     when "Visa"
       @card_src = "visa.png"

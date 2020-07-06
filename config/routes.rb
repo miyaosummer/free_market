@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       get 'get_product_category_grandchildren', defaults: { format: 'json' }
     end
   end
-  resources :credit_cards, only:[:index, :new, :create, :show, :destroy] do
+  resources :credit_cards, only:[:new, :create, :show, :destroy] do
     member do
       post 'pay'
     end
