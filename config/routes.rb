@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root "tops#index"
-  resources :users ,only: [:index,:new, :show] do
+  resources :users ,only: [:index,:show] do
     member do
       get 'logout'
     end

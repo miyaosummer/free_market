@@ -18,6 +18,9 @@ class ProductsController < ApplicationController
   end
 
   def purchase
+    if current_user.destination
+      @destination = Destination.find_by(user_id: current_user.id)
+    end
   end
 
 
