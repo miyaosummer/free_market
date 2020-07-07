@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2020_06_15_042351) do
     t.string "prefecture_id", null: false
     t.string "city", null: false
     t.string "block", null: false
-    t.string "building", null: false
+    t.string "building"
     t.string "phone_number"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -87,7 +87,6 @@ ActiveRecord::Schema.define(version: 2020_06_15_042351) do
     t.bigint "product_category_id", null: false
     t.string "product_condition_id", null: false
     t.string "postage_way_id", null: false
-    t.string "postage", null: false
     t.string "shipping_day_id", null: false
     t.bigint "product_brand_id"
     t.string "product_size_id", null: false

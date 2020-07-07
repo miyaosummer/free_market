@@ -4,29 +4,32 @@ class CreditCardsController < ApplicationController
 
   before_action :set_product, only: [:show, :pay]
   before_action :card_present, only:[:new, :show, :destroy]
-  before_action :take_card, only:[:show, :pay]
   before_action :set_api_key
+  before_action :set_customer, only:[:show]
+  before_action :set_card_information, only:[:show]
+  before_action :take_card, only:[:show, :pay]
 
-
-  def new
-    if @card.present?
-      set_customer
-      set_card_information
-    end
+  # 一覧表示
+  def index
   end
 
-  # クレジットカード登録
+  # 新規作成
+  def new
+    @card = CreditCard.new
+  end
+
+  # 登録
   def create
     customer = Payjp::Customer.create(card: params['payjp-token'], metadata: {user_id: current_user.id})
     @card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
     if @card.save
-      render template: "products/purchase", notice: "登録が完了しました"
+      redirect_to action: "purchase", notice: "登録が完了しました"
     else
       redirect_to action: "new", alert: "カード情報が正しくありません"
     end
   end
 
-  # クレジットカード情報
+  # 情報表示
   def show
     if @card.blank?
       redirect_to action: "new"
@@ -50,6 +53,7 @@ class CreditCardsController < ApplicationController
     end
   end
 
+  # 削除
   def destroy
     @card = CreditCard.find_by(user_id: current_user.id)
     if @card.blank?
@@ -66,10 +70,9 @@ class CreditCardsController < ApplicationController
     end
   end
 
-  def pay
+  # 購入
+  def purchase
     @card = CreditCard.where(user_id: current_user.id).first
-    @product = Product.find(params[:id])
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     charge = Payjp::Charge.create(
       amount: @product.price,
       customer: Payjp::Customer.retrieve(@card.customer_id),
@@ -77,7 +80,7 @@ class CreditCardsController < ApplicationController
     )
     @product_buyer= Product.find(params[:id])
     @product_buyer.update(buyer_id: current_user.id)
-    redirect_to purchase_products_path(current_user.id)
+    redirect_to root_path(current_user.id)
   end
 
   private
@@ -103,7 +106,7 @@ class CreditCardsController < ApplicationController
   end
 
   def take_card
-    @card = Card.find_by(user_id: current_user.id)
+    @card = CreditCard.find_by(user_id: current_user.id)
   end
 
 end

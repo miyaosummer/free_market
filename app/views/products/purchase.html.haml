@@ -33,9 +33,9 @@
           .purchase__main__payment-info__innner__form__user-info
             %h3.purchase__main__payment-info__innner__form__user-info__pay-method
               支払い方法
-            - if current_user.credit_card.blank?
+            - if @card.blank?
               %p.purchase__main__payment-info__innner__form__user-info__text
-                = link_to new_credit_card_path, class: "purchase__main__payment-info__innner__form__user-info__text" do
+                = link_to credit_new_user_path(current_user.id), class: "purchase__main__payment-info__innner__form__user-info__text" do
                   = icon('fas', 'plus-circle')
                   登録してください
             - else
@@ -51,8 +51,8 @@
                       .expiration-date__label
                         有効期限
                       .expiration-date__info
-                        - exp_month = @customer_card.exp_month.to_s
-                        - exp_year = @customer_card.exp_year.to_s.slice(2,3)
+                        - exp_month = @card_information.exp_month.to_s
+                        - exp_year = @card_information.exp_year.to_s.slice(2,3)
                         = exp_month + " / " + exp_year
                 .destroy-btn
                   = link_to purchase_products_path, method: :delete, class: "destroy-btn" do
