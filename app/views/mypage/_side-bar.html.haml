@@ -34,5 +34,5 @@
       =link_to "クレジットカード登録", "#" ,class: "config__card__link"
       %i.fas.fa-chevron-right
     .config__logout
-      =link_to "ログアウト", "#" ,class: "config__logout__link"
+      =link_to "ログアウト", logout_user_path(current_user.id) ,class: "config__logout__link"
       %i.fas.fa-chevron-right
