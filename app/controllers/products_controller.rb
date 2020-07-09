@@ -83,6 +83,7 @@ class ProductsController < ApplicationController
   end
   ######################## ▲ クレジットカード関連 ▲ ########################
 
+  # 購入確認ページ
   def purchase
     if @card.present?
       @user = current_user
@@ -103,6 +104,9 @@ class ProductsController < ApplicationController
         @card_src = "DISCOVER.png"
       end
     end
+    if current_user.destination
+      @destination = Destination.find_by(user_id: current_user.id)
+    end
   end
 
   # 購入
@@ -116,21 +120,15 @@ class ProductsController < ApplicationController
     @product_buyer= Product.find(params[:id])
     @product_buyer.update(buyer_id: current_user.id)
     redirect_to root_path(current_user.id)
+  end
   
   def destroy
     if @product.seller_id == current_user.id && @product.destroy
-       redirect_to root_path
+      redirect_to root_path
     else
       redirect_to product_path(@product)
     end
   end
-
-  def purchase
-    if current_user.destination
-      @destination = Destination.find_by(user_id: current_user.id)
-    end
-  end
-
 
   # 親カテゴリーに紐づく子カテゴリーの配列を取得
   def get_product_category_children
@@ -155,7 +153,9 @@ private
 
   ######################## ▼ クレジットカード関連 ▼ ########################
   def set_product
-    @product = Product.find(params[:id])
+    if @product.exist?
+      @product = Product.find(params[:id])
+    end
   end
 
   def card_present
