@@ -20,8 +20,7 @@ class UsersController < ApplicationController
   
   # 新規作成
   def credit_new
-    @@path = Rails.application.routes.recognize_path(request.referer)
-    binding.pry
+    # @@path = Rails.application.routes.recognize_path(request.referer)
     if @card.present?
       redirect_to action: "credit_show"
     else
@@ -33,7 +32,7 @@ class UsersController < ApplicationController
   def credit_create
     customer = Payjp::Customer.create(card: params['payjp-token'], metadata: {user_id: current_user.id})
     @card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
-#遷移元の情報を条件分岐に加える
+    # 遷移元の情報を条件分岐に加える
     if @card.save
       redirect_to user_path(current_user), notice: "登録が完了しました"
     else

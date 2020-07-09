@@ -1,6 +1,6 @@
 .form-wrapper
   -# = form_tag(credit_create_product_path, method: :post, id: 'charge-form',  name: "inputForm") do
-  = form_with model: @card, local: true, html: {name: "inputForm"}, class: 'form-wrapper', id: 'charge-form' do |form|
+  = form_with url: credit_create_product_path, model: @card, local: true, html: {name: "inputForm"}, class: 'form-wrapper', id: 'charge-form' do |form|
 
     .signup-creditcard
 

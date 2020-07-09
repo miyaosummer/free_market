@@ -17,10 +17,8 @@ Rails.application.routes.draw do
       post 'credit_create', to:'products#credit_create'
       get 'credit_show', to:'products#credit_show'
       delete 'credit_destroy', to:'products#credit_destroy'
-      post 'pay'
-    end
-    collection do
       get 'purchase'
+      post 'pay'
     end
     # :idなし
     collection do
