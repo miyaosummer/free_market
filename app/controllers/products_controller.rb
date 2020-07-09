@@ -1,7 +1,6 @@
 class ProductsController < ApplicationController
 
   before_action :set_product_category_parent, only: :new
-  # before_action :product_params, only: :show
 
   def new
     @product = Product.new
