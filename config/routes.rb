@@ -13,11 +13,13 @@ Rails.application.routes.draw do
     collection do
       get 'get_product_category_children', defaults: { format: 'json' }
       get 'get_product_category_grandchildren', defaults: { format: 'json' }
+      get 'get_product_size', defaults: { format: 'json' }
     end
     # :idあり
     member do
       get 'get_product_category_children', defaults: { format: 'json' }
       get 'get_product_category_grandchildren', defaults: { format: 'json' }
+      get 'get_product_size', defaults: { format: 'json' }
     end
   end
 end
