@@ -61,10 +61,14 @@
           .purchase__main__payment-info__innner__form__user-info
             %h3.purchase__main__payment-info__innner__form__user-info__destination
               配送先
-            %p.purchase__main__payment-info__innner__form__user-info__text
-              = link_to "#" , class: "purchase__main__payment-info__innner__form__user-info__text" do
-                = icon('fas', 'plus-circle')
-                登録してください
+            -if current_user.destination.nil?
+              %p.purchase__main__payment-info__innner__form__user-info__text
+                = link_to new_user_destination_path(current_user.id) , class: "purchase__main__payment-info__innner__form__user-info__text" do
+                  = icon('fas', 'plus-circle')
+                  登録してください
+            -else
+              %p.purchase__main__payment-info__innner__form__user-info__text
+                ="#{@destination.city}#{@destination.block}#{@destination.building}"
 
           .purchase__main__payment-info__innner__form__submit
             %input{type: "submit", class: "purchase__main__payment-info__innner__form__submit__submit-btn", value:'購入する'}
