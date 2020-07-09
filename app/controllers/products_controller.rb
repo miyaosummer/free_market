@@ -153,9 +153,7 @@ private
 
   ######################## ▼ クレジットカード関連 ▼ ########################
   def set_product
-    if @product.exist?
-      @product = Product.find(params[:id])
-    end
+    @product = Product.find(params[:id])
   end
 
   def card_present
