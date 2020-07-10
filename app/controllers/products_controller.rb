@@ -34,6 +34,11 @@ class ProductsController < ApplicationController
     @product_category_grandchildren = ProductCategory.find("#{params[:product_category_child_id]}").children
   end
 
+  # サイズの配列を取得
+  def get_product_size
+    @product_sizes = ProductSize.find_all_by_group "#{params[:product_size_id]}"
+  end
+
 private
 
   # 親カテゴリーの配列を取得
