@@ -1,63 +1,153 @@
 //--- putup images --//
+$(function() {
+  // 配列を用意
+  var inputs = [];
 
-$(function(){
-  // 画像用のinputを生成する関数
-  const buildFileField = (num)=> {
-    const html = `<div data-index="${num}" class="js-file_group">
-                    <input class="js-file" type="file"
-                    name="product[images_attributes][${num}][image]"
-                    id="product_images_attributes_${num}_image"><br>
-                    <div class="js-remove">削除</div>
-                  </div>`;
+  // プレビューのhtml生成
+  function buildImagePreview(ln) {
+    const html = `
+    <div data-index="${ln}" class="preview">
+      <div data-index="${ln}" class="preview__product-image">
+        <img src="" width="118px" height="118px">
+      </div>
+      <div class="preview__action">
+        <i class="fa fa-trash preview__action__delete"></i>
+      </div>
+    </div>`;
     return html;
   }
-  // プレビュー用のimgタグを生成する関数
-  const buildImg = (index, url)=> {
-    const html= `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
+  // Inputボックスの生成（display: noneで隠れているため、ビューには見えません）
+  function buildInputArea(index) {
+    const html = `
+      <input data-index="${index}" name="product[product_images_attributes][${index}][image]" id="upload-image[${index}]" class="upload-image" type="file">
+    `;
     return html;
   }
+  // プレビュー追加
+  $(document).on('change', 'input[type="file"].upload-image', function(e){
+    // inputを追加する
+    let numInputs = $('.upload-image').length;
+    $('.dropzone-box').append(buildInputArea(numInputs));
 
-  // file_fieldのnameに動的なindexをつける為の配列
-  let fileIndex = [1,2,3,4,5,6,7,8,9,10];
-  // 既に使われているindexを除外
-  lastIndex = $('.js-file_group:last').data('index');
-  fileIndex.splice(0, lastIndex);
+    // labelの向き先をinputの一番うしろにする
+    $('.dropzone-box').attr('for', function(){
+      return 'upload-image[' + numInputs + ']'
+    });
 
-  $('.hidden-destroy').hide();
+    // previewを追加
+    // 選択したフィアルをfileに格納
+    let file = $(this).prop('files')[0];
+    // fileReaderを起動
+    let fileReader = new FileReader();
+    // inputs配列にデータを格納
+    inputs.push($(this));
+    // inputs配列の長さを計る
+    let inputsLen = inputs.length;
+    // fileReaderがロードできたら、previewsにプレビューを追加する
+    fileReader.onload = function(e) {
+      // 配列は0からなので、length-1する
+      let inputsIndex = inputsLen - 1;
+      // #image-boxの先頭にpreviewを追加
+      $('.dropzone-area').before(buildImagePreview(inputsIndex));
+      // previewにimageを追加 ※セレクタに変数を使いたい場合は↓のようにする
+      $('[data-index="' + inputsIndex + '"]').children('img').attr({src: e.target.result});
+    }
+    fileReader.readAsDataURL(file)
 
-  $('#image-box').on('change', '.js-file', function(e){
-    const targetIndex = $(this).parent().data('index');
-    // ファイルのブラウザ上でURLを取得する
-    const file = e.target.files[0];
-    const blobUrl = window.URL.createObjectURL(file);
-
-    // 該当indexを持つimgタグがあれば取得して変数imgに入れる（画像変更の処理）
-    if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
-      img.setAttribute('src', blobUrl);
-    } else { //新規画像追加の処理
-     $('#previews').append(buildImg(targetIndex, blobUrl));
-     // fileIndexの戦闘の数字を使ってinputを作る
-     $('#image-box').append(buildFileField(fileIndex[0]));
-     fileIndex.shift();
-     // 末尾の数に1足した数を追加する
-     fileIndex.push(fileIndex[fileIndex.length -1] +1)
+    // インプット領域の幅調整
+    // 1段目の処理
+    if(inputsLen < 5){
+      $('.dropzone-area').css({
+        'width': `calc(100% - ( 121px * ${inputsLen}))`
+      })
+    }
+    // 2枚以降は、labelをカメラアイコンにする
+    if(inputsLen == 1){
+      $('.dropzone-area').find('p').replaceWith('<i class="fa fa-camera dropzone-box__icon"></i>')
+    }
+    // 0枚のときはアイコンからテキストに変える
+    if(inputsLen == 0){
+      $('.dropzone-area').find('i').replaceWith('<p class="dropzone-box__text">ここをクリックして画像を追加してください</p>')
+    }
+    // 5枚以上のときは1段目boxを隠して、2段目を出現させる
+    if(inputsLen >= 5) {
+      $('.dropzone-area').css({
+        'width': '100%'
+      })
+    }
+    // 6枚目以降の処理
+    if(inputsLen > 5) {
+      $('.dropzone-area').css({
+        'width': `calc(100% - ( 121px * ${inputsLen -5 }))`
+      })
+    }
+    // 10枚になったらdropzone-areaを隠す
+    if(inputsLen == 10){
+      $('.dropzone-area').css({
+        'display': 'none'
+      })
     }
   });
 
-  $('#image-box').on('click', '.js-remove', function() {
-    const targetIndex = $(this).parent().data('index')
-    // 該当indexを振られているチェックボックスを取得する
-    const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
-    // もしチェックボックスが存在すればチェックを入れる
-    if (hiddenCheck) hiddenCheck.prop('checked', true);
+  // 削除機能
+  $(document).on('click', '.preview__action__delete', function(){
+    // 削除するプレビューの親要素を取得
+    let targetPreview = $(this).parent().parent();
+    // 削除するプレビューのインデックスを取得（inputファイルを消すためのインデックス）
+    let targetDataIndex = $(targetPreview).data('index');
+    // プレビューとインプットを削除
+    $('[data-index="' + targetDataIndex + '"]').remove();
 
-    $(this).parent().remove();
-    $(`img[data-index="${targetIndex}"]`).remove();
-    // 画像入力欄が0個にならないようにしておく
-    if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
-  });
-})
+    // labelの向き先をinputの一番うしろにする
+    let numInputs = $('.upload-image').length - 1;
+    $('.dropzone-box').attr('for', function(){
+      return 'upload-image[' + numInputs + ']'
+    });
+    
+    // inputs配列から削除
+    inputs.splice(targetDataIndex, 1);
 
+    // 各要素の連番を再設定
+    // 各インプット要素のインデックス番号を整頓する
+    $('.dropzone-box .upload-image').each(function(index){
+      // ***upload-image達のインデックスを整頓
+      $(this).attr({'name': `product[product_images_attributes][${index}][image]`});
+      // ↓これはキャッシュの内容を変えるっぽい attrで変えよう
+      // $(this).data('index', `'${index}'`);
+      $(this).attr('data-index', index);
+      $(this).attr('id', `upload-image[${index}]`);
+    })
+    // プレビュー要素のインデックス番号を整頓する
+    $('.preview').each(function(index){
+      $(this).attr('data-index', index);
+      $(this).children('.preview__product-image').attr('data-index', index);
+    })
+
+    // インプット領域の幅調整
+    // upload-imageの個数が4個以下なら
+    if($('.upload-image').length - 1 < 5){
+      $('.dropzone-area').css({
+        'width': `calc(100% - ( 121px * ${$('.upload-image').length - 1}))`
+      });
+    }
+    // 0のときはアイコンをテキストに変えてあげる
+    if($('.upload-image').length -1 == 0){
+      $('.dropzone-area').find('i').replaceWith('<p class="dropzone-box__text">ここをクリックして画像を追加してください</p>')
+    }
+    // upload-imageの個数が5個以上なら
+    if($('.upload-image').length - 1 >= 5){
+      $('.dropzone-area').css({
+        'width': `calc(100% - ( 121px * ${($('.upload-image').length - 1)-5}))`
+      });
+    }
+    // 10個→9個になったときにインプット領域を復活させる
+    if($('.upload-image').length -1 == 9){
+      $('.dropzone-area').css({
+        'display': 'block'
+      })
+    }
+  })
+});
 //--- end putup images--//
 
 function appendOption(category) {

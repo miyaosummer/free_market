@@ -1,11 +1,12 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
-  before_action :set_product_category_parent, only: :new
+  before_action :set_product_category_parent, only: [:new, :create, :edit, :update]
   before_action :get_product, only: [:show, :destroy, :edit, :update]
 
   def new
     @product = Product.new
-    @product.product_images.new
+    @product.product_images.build
+    @product_category_parents = ProductCategory.where(ancestry: nil)
   end
 
   def create
