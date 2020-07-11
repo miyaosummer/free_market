@@ -2,6 +2,7 @@
   box-sizing: border-box;
 }
 
+//-- クレジットカード未登録 --//
 .signup-creditcard {
   width: 100%;
   background-color: whitesmoke;
@@ -48,38 +49,33 @@
           display: flex;
           margin: 6px 0 0 216px;
           .visa {
-            height: 9%;
-            width: 9%;
+            -webkit-animation: fadeIn 1.0s ease;
+            animation: fadeIn 1.0s ease;
           }
           .mastercard {
-            height: 6.5%;
-            width: 6.5%;
-            margin-left: 6px;
-          }
-          .SAISONcard {
-            height: 7%;
-            width: 7%;
-            margin: 2px 0 0 6px;
+            -webkit-animation: fadeIn 1.5s ease;
+            animation: fadeIn 1.5s ease;
+            margin-left: 2px;
           }
           .JCB {
-            height: 6%;
-            width: 6%;
-            margin-left: 6px;
+            -webkit-animation: fadeIn 2.0s ease;
+            animation: fadeIn 2.0s ease;
+            margin-left: 2px;
           }
           .AmericanExpress {
-            height: 5%;
-            width: 5%;
-            margin-left: 6px;
+            -webkit-animation: fadeIn 2.5s ease;
+            animation: fadeIn 2.5s ease;
+            margin-left: 2px;
           }
           .DinersClub {
-            height: 7%;
-            width: 7%;
-            margin-left: 6px;
+            -webkit-animation: fadeIn 3.0s ease;
+            animation: fadeIn 3.0s ease;
+            margin-left: 2px;
           }
           .DISCOVER {
-            height: 7%;
-            width: 7%;
-            margin-left: 6px;
+            -webkit-animation: fadeIn 3.5s ease;
+            animation: fadeIn 3.5s ease;
+            margin-left: 2px;
           }
         }
         
@@ -97,7 +93,7 @@
           font-size: 12px;
         }
 
-        // input関連
+        //-- input関連 --//
         .number, .cvc {
           height: 50px;
           width: 300px;
@@ -187,5 +183,68 @@
       font-size: 12px;
       padding-bottom: 50px;
     }
+  }
+}
+
+//-- クレジットカード登録済 --//
+.purchase-confirmation {
+  &__title {
+    margin-top: 6px;
+  }
+  &__info {
+    &__brand {
+      margin-top: 12px;
+      &__img {
+        height: 24%;
+        width: 24%;
+      }
+    }
+    &__numbers {
+      &__number {
+        margin-top: 6px;
+      }
+      &__expiration-date {
+        &__label {
+          margin-top: 12px;
+        }
+        &__info {
+
+        }
+      }
+    }
+  }
+  &__destroy-btn {
+    float: right;
+    margin: -24px 12px 0 0;
+    a {
+      height: 48px;
+      width: 100px;
+      cursor: pointer;
+      background-color: $white;
+      border: 1px solid $main-color;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 600;
+      color: $main-color;
+      text-align: center;
+      padding: 12px;
+    }
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

@@ -42,23 +42,24 @@
                       = icon('fas', 'plus-circle')
                       登録してください
                 - else
-                  %p.purchase__main__payment-info__innner__form__user-info__text
-                    クレジットカード情報
-                    .confirmation__main__info
-                      .confirmation__main__info__brand
-                        = image_tag "#{@card_src}", class: "confirmation__main__info__brand__img", alt: @card_brand
-                      .confirmation__main__info__numbers
-                        .number
+                  .purchase-confirmation
+                    .purchase-confirmation__title
+                      クレジットカード情報
+                    .purchase-confirmation__info
+                      .purchase-confirmation__info__brand
+                        = image_tag "#{@card_src}", class: "purchase-confirmation__info__brand__img", alt: @card_brand
+                      .purchase-confirmation__info__numbers
+                        .purchase-confirmation__info__numbers__number
                           = "**** **** **** " + @card_information.last4
-                        .expiration-date
-                          .expiration-date__label
+                        .purchase-confirmation__info__numbers__expiration-date
+                          .purchase-confirmation__info__numbers__expiration-date__label
                             有効期限
-                          .expiration-date__info
+                          .purchase-confirmation__info__numbers__expiration-date__info
                             - exp_month = @card_information.exp_month.to_s
                             - exp_year = @card_information.exp_year.to_s.slice(2,3)
                             = exp_month + " / " + exp_year
-                    .destroy-btn
-                      = link_to credit_destroy_product_path, method: :delete, class: "destroy-btn" do
+                    .purchase-confirmation__destroy-btn
+                      = link_to credit_destroy_product_path, method: :delete, class: "purchase-confirmation__destroy-btn" do
                         削除する
 
               .purchase__main__payment-info__innner__form__user-info

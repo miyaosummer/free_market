@@ -40,39 +40,34 @@
         &__image {
           display: flex;
           margin: 6px 0 0 176px;
-          .visa {
-            height: 9%;
-            width: 9%;
+          .mypage-visa {
+            -webkit-animation: fadeIn 1.0s ease;
+            animation: fadeIn 1.0s ease;
           }
-          .mastercard {
-            height: 6.5%;
-            width: 6.5%;
-            margin-left: 6px;
+          .mypage-mastercard {
+            -webkit-animation: fadeIn 1.5s ease;
+            animation: fadeIn 1.5s ease;
+            margin-left: 2px;
           }
-          .SAISONcard {
-            height: 7%;
-            width: 7%;
-            margin: 2px 0 0 6px;
+          .mypage-JCB {
+            -webkit-animation: fadeIn 2.0s ease;
+            animation: fadeIn 2.0s ease;
+            margin-left: 2px;
           }
-          .JCB {
-            height: 6%;
-            width: 6%;
-            margin-left: 6px;
+          .mypage-AmericanExpress {
+            -webkit-animation: fadeIn 2.5s ease;
+            animation: fadeIn 2.5s ease;
+            margin-left: 2px;
           }
-          .AmericanExpress {
-            height: 5%;
-            width: 5%;
-            margin-left: 6px;
+          .mypage-DinersClub {
+            -webkit-animation: fadeIn 3.0s ease;
+            animation: fadeIn 3.0s ease;
+            margin-left: 2px;
           }
-          .DinersClub {
-            height: 7%;
-            width: 7%;
-            margin-left: 6px;
-          }
-          .DISCOVER {
-            height: 7%;
-            width: 7%;
-            margin-left: 6px;
+          .mypage-DISCOVER {
+            -webkit-animation: fadeIn 3.5s ease;
+            animation: fadeIn 3.5s ease;
+            margin-left: 2px;
           }
         }
         
@@ -213,5 +208,22 @@
         padding: 12px;
       }
     }
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
