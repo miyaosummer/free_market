@@ -12,4 +12,14 @@ class Product < ApplicationRecord
   belongs_to :buyer, class_name: 'User', :foreign_key => 'buyer_id', optional: true
   belongs_to :product_category
   belongs_to :product_brand, optional: true
+
+  #検索の際に入力された文字列を取得する
+  def self.search(search)
+    if search
+      Product.where('name LIKE(?)', "%#{search}%")
+    else
+      Product.all
+    end
+  end
+
 end

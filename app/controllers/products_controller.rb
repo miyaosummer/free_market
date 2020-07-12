@@ -2,7 +2,13 @@ class ProductsController < ApplicationController
   before_action :set_product_category_parent, only: :new
   before_action :get_product, only: [:show, :destroy]
 
+  def index
+    @products = Product.search(params[:keyword])
+    @keyword = params[:keyword]
+  end
+
   def new
+
     @product = Product.new
   end
 
