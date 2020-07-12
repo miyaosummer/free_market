@@ -3,12 +3,24 @@ class ProductsController < ApplicationController
   before_action :get_product, only: [:show, :destroy]
 
   def index
-    @products = Product.search(params[:keyword])
+
+    if params[:keyword] == ""
+      redirect_to root_path
+    end
+
+    #検索文字を取得（空欄含む）
     @keyword = params[:keyword]
+    #検索文字を空欄で区切ったものを取得
+    keywords = params[:keyword].split(/[[:blank:]]+/).select(&:present?)
+    @products = Product.all
+    #区切ったワード事に検索を行う。すべての条件を満たす商品のみ検索に引っかかる。
+    keywords.each do |keyword|
+      @products = @products.where("name LIKE ?", "%#{keyword}%")
+    end
+
   end
 
   def new
-
     @product = Product.new
   end
 

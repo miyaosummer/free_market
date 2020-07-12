@@ -1,11 +1,7 @@
 .results
   .results__title
-    -if @keyword.present?
-      %h2.results__title__present
-        ="「#{@keyword}」の検索結果"
-    - else
-      %h2.results__title__nil
-        商品一覧
+    %h2.results__title__present
+      ="「#{@keyword}」の検索結果"
   .results__main
     - if @products.present?
       - @products.each do |product|
