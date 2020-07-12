@@ -1,3 +1,279 @@
+//--- validate ---//
+$(function(){
+  // エラーメッセージ生成
+  function buildInputError(text){
+    const html = `
+    <div class="input-error">${text}</div>
+    `;
+    return html;
+  }
+  // エラーチェック関数 ※submitボタンが押されたときの処理です。
+  function formChecker(){
+    // エラーをリセットするためすべてのinpu-errorを削除
+    $('.input-error').remove();
+    // resultのデフォルト値をtrueに切り替え
+    let result = true;
+
+    // 画像のエラー処理
+    if($('.preview__product-image').length == 0){
+      console.log('画像がありません');
+      $('.putup__main__upload').append(buildInputError('画像がありません'));
+      result = false;
+    };
+    // 商品名のエラー処理
+    if($('.putup__main__name__text-box').val() == ""){
+      $('.putup__main__name').append(buildInputError('商品名を入力してください'));
+      result = false;
+    };
+    if($('.putup__main__name__text-box').val().length > 40){
+      console.log($('.putup__main__name__text-box').val().length + "文字のためエラー");
+      $('.putup__main__name').append(buildInputError('文字数が40字を超えています'));
+      result = false;
+    }
+    // 商品の説明のエラー処理
+    if($('.putup__main__description__text-box').val() == ""){
+      $('.putup__main__description').append(buildInputError('商品の説明を入力してください'));
+      result = false;
+    }
+    if($('.putup__main__description__text-box').val().length > 1000){
+      console.log($('.putup__main__description__text-box').val().length + "文字のためエラー");
+      $('.putup__main__description').append(buildInputError('文字数が1000字を超えています'));
+      result = false;
+    }
+    // カテゴリーのエラー処理
+    if($('#product_category_parent').val() == 0){
+      console.log('親カテゴリー未選択');
+      $('.putup__main__category').append(buildInputError('カテゴリーを選択してください'));
+      result = false;
+    }
+    if($('#product_category_parent').val() > 0 && $('#product_category_children').val() == 0){
+      console.log('子カテゴリー未選択');
+      $('.putup__main__category').append(buildInputError('カテゴリーを選択してください'));
+      result = false;
+    }
+    if($('#product_category_children').val() > 0 && $('#product_category_grandchildren').val() == 0){
+      console.log('孫カテゴリー未選択');
+      $('.putup__main__category').append(buildInputError('カテゴリーを選択してください'));
+      result = false;
+    }
+    // 商品の状態のエラー処理
+    if($('.putup__main__condition__select-box').val() == 0){
+      console.log('商品の状態未選択');
+      $('.putup__main__condition').append(buildInputError('商品の状態を選択してください'));
+      result = false;
+    }
+    // 配送料負担のエラー処理
+    if($('.putup__main__postage-way__select-box').val() == 0){
+      console.log('配送料の負担未選択');
+      $('.putup__main__postage-way').append(buildInputError('配送料の負担を選択してください'));
+      result = false;
+    }
+    // 発送元の地域のエラー処理
+    if($('.putup__main__prefecture__select-box').val() == 0){
+      console.log('発送元の地域未選択');
+      $('.putup__main__prefecture').append(buildInputError('発送元の地域を選択してください'));
+      result = false;
+    }
+    // 発送までの日数のエラー処理
+    if($('.putup__main__shipping-day__select-box').val() == 0){
+      console.log('発送までの日数未選択');
+      $('.putup__main__shipping-day').append(buildInputError('発送までの日数を選択してください'));
+      result = false;
+    }
+    // 価格のエラー処理
+    if($('.putup__main__price__contents__content__frame__input__number-box').val().length == 0){
+      console.log('価格未入力');
+      $('.putup__main__price__contents__content').append(buildInputError('価格を入力してください'));
+      result = false;
+    }
+
+    // スクロール位置の設定
+    let position = $('.input-error').parent().offset().top;
+    // スクロールさせる
+    $('html,body').animate({
+      scrollTop : position
+    }, {
+      queue : false
+    });
+    // 結果をリターン
+    return result;
+  }
+
+  // Submitボタン押されたらエラーチェックを走らせる
+  $('.putup__main__form').submit(function(e){
+    if(!formChecker()){
+      console.log('formChecker=false');
+      e.preventDefault();
+      return false;
+    }
+  });
+
+  // --- keyup & blur functions ---//
+  // 商品名__keyup
+  $('.putup__main__name__text-box').keyup(function(){
+    if($(this).parent().find('.input-error').length > 0){
+      $(this).parent().find('.input-error').remove();
+    }
+    if($(this).val().length > 40){
+      console.log($('.putup__main__name__text-box').val().length + "文字のためエラー");
+      $('.putup__main__name').append(buildInputError('文字数が40字を超えています'));
+    }
+  });
+  // 商品名__blur
+  $('.putup__main__name__text-box').blur(function(){
+    if($(this).val().length == 0){
+      if($(this).parent().find('.input-error').length == 0){
+        $('.putup__main__name').append(buildInputError('商品名を入力してください'));
+      }
+    }
+  });
+
+  // 商品の説明__keyup
+  $('.putup__main__description__text-box').keyup(function(){
+    if($(this).parent().find('.input-error').length > 0){
+      $(this).parent().find('.input-error').remove();
+    }
+    if($(this).val().length > 1000){
+      console.log($('.putup__main__description__text-box').val().length + "文字のためエラー");
+      $('.putup__main__description').append(buildInputError('文字数が1000字を超えています'));
+    }
+  });
+  // 商品の説明__blur
+  $('.putup__main__description__text-box').blur(function(){
+    if($(this).val().length == 0){
+      if($(this).parent().find('.input-error').length == 0){
+        $('.putup__main__description').append(buildInputError('商品に説明を入力してください'));
+      }
+    }
+  });
+
+  // カテゴリー__blur & change
+  // 親カテゴリー__blur & change
+  $(document).on('blur', '#product_category_parent',function(){
+    if($(this).val() == 0){
+      if($(this).parent().find('.input-error').length == 0){
+        $('.putup__main__category').append(buildInputError('カテゴリーを選択してください'));
+      }
+    }
+  });
+  $(document).on('change', '#product_category_parent', function(){
+    if($(this).val() > 0){
+      $(this).parent().find('.input-error').remove();
+    }
+  });
+  // 子カテゴリー__blur & change
+  $(document).on('blur', '#product_category_children',function(){
+    if($(this).val() == 0){
+      if($(this).parent().parent().find('.input-error').length == 0){
+        $('.putup__main__category').append(buildInputError('カテゴリーを選択してください'));
+      }
+    }
+  });
+  $(document).on('change', '#product_category_children', function(){
+    if($(this).val() > 0){
+      $(this).parent().parent().find('.input-error').remove();
+    }
+  });
+  // 孫カテゴリー__blur & change
+  $(document).on('blur', '#product_category_grandchildren',function(){
+    if($(this).val() == 0){
+      if($(this).parent().parent().parent().find('.input-error').length == 0){
+        $('.putup__main__category').append(buildInputError('カテゴリーを選択してください'));
+      }
+    }
+  });
+  $(document).on('change', '#product_category_grandchildren', function(){
+    if($(this).val() > 0){
+      $(this).parent().parent().parent().find('.input-error').remove();
+    }
+  });
+
+  // 商品の状態__blur & change
+  $('#product_condition').blur(function(){
+    if($(this).val() == 0){
+      if($(this).parent().find('.input-error').length == 0){
+        $('.putup__main__condition').append(buildInputError('商品の状態を選択してください'));
+      }
+    }
+  });
+  $('#product_condition').change(function(){
+    if($(this).val().length > 0){
+      $(this).parent().find('.input-error').remove();
+    }
+  });
+
+  // 配送料の負担__blur & change
+  $('#postage_way').blur(function(){
+    if($(this).val() == 0){
+      if($(this).parent().find('.input-error').length == 0){
+        $('.putup__main__postage-way').append(buildInputError('商品の状態を選択してください'));
+      }
+    }
+  });
+  $('#postage_way').change(function(){
+    if($(this).val().length > 0){
+      $(this).parent().find('.input-error').remove();
+    }
+  });
+
+  // 配送元の地域__blur & change
+  $('#prefecture').blur(function(){
+    if($(this).val() == 0){
+      if($(this).parent().find('.input-error').length == 0){
+        $('.putup__main__prefecture').append(buildInputError('商品の状態を選択してください'));
+      }
+    }
+  });
+  $('#prefecture').change(function(){
+    if($(this).val().length > 0){
+      $(this).parent().find('.input-error').remove();
+    }
+  });
+
+  // 配送までの日数__blur & change
+  $('#shipping_day').blur(function(){
+    if($(this).val() == 0){
+      if($(this).parent().find('.input-error').length == 0){
+        $('.putup__main__shipping-day').append(buildInputError('商品の状態を選択してください'));
+      }
+    }
+  });
+  $('#shipping_day').change(function(){
+    if($(this).val().length > 0){
+      $(this).parent().find('.input-error').remove();
+    }
+  });
+
+  // 販売価格__keyup
+  $('#price').keyup(function(){
+    if(299 < $(this).val() && $(this).val() < 10000000){
+      if($(this).parents('.putup__main__price__contents__content').find('.input-error').length > 0){
+        $(this).parents('.putup__main__price__contents__content').find('.input-error').remove();
+      }
+      let price = $(this).val();
+      let fee = price * 0.1;
+      let profit = price - fee;
+      let display_fee = fee.toLocaleString();
+      let display_profit = profit.toLocaleString();
+      $('.putup__main__commission__contents__content__frame__input__calc-result').text('¥' + display_fee);
+      $('.putup__main__profit__contents__content__frame__input__calc-result').text('¥' + display_profit);
+    } else {
+      $('.putup__main__commission__contents__content__frame__input__calc-result').text('ー');
+      $('.putup__main__profit__contents__content__frame__input__calc-result').text('ー');
+    }
+  });
+  // 販売価格__blur
+  $('#price').blur(function(){
+    if($(this).val().length == 0){
+      if($(this).parents('.putup__main__price__contents__content').find('.input-error').length == 0){
+        $('.putup__main__price__contents__content').append(buildInputError('販売価格を入力してください'));
+      }
+    }
+  });
+  // ---  end keyup & blur functions ---//
+});
+//--- end validate ---//
+
 //--- putup images --//
 $(function() {
   // 配列を用意
@@ -51,6 +327,10 @@ $(function() {
       $('.dropzone-area').before(buildImagePreview(inputsIndex));
       // previewにimageを追加 ※セレクタに変数を使いたい場合は↓のようにする
       $('[data-index="' + inputsIndex + '"]').children('img').attr({src: e.target.result});
+      // input-errorを隠す ※error処理
+      $('.putup__main__upload .input-error').css({
+        'display': 'none'
+      });
     }
     fileReader.readAsDataURL(file)
 
@@ -67,7 +347,7 @@ $(function() {
     }
     // 0枚のときはアイコンからテキストに変える
     if(inputsLen == 0){
-      $('.dropzone-area').find('i').replaceWith('<p class="dropzone-box__text">ここをクリックして画像を追加してください</p>')
+      $('.dropzone-area').find('i').replaceWith('<p class="dropzone-box__text">ここをクリックして画像を追加してください</p>');
     }
     // 5枚以上のときは1段目boxを隠して、2段目を出現させる
     if(inputsLen >= 5) {
@@ -97,6 +377,10 @@ $(function() {
     let targetDataIndex = $(targetPreview).data('index');
     // プレビューとインプットを削除
     $('[data-index="' + targetDataIndex + '"]').remove();
+    // 隠していたinput-errorを出す
+    $('.putup__main__upload .input-error').css({
+      'display': 'block'
+    });
 
     // labelの向き先をinputの一番うしろにする
     let numInputs = $('.upload-image').length - 1;
@@ -110,10 +394,8 @@ $(function() {
     // 各要素の連番を再設定
     // 各インプット要素のインデックス番号を整頓する
     $('.dropzone-box .upload-image').each(function(index){
-      // ***upload-image達のインデックスを整頓
+      // upload-image達のインデックスを整頓
       $(this).attr({'name': `product[product_images_attributes][${index}][image]`});
-      // ↓これはキャッシュの内容を変えるっぽい attrで変えよう
-      // $(this).data('index', `'${index}'`);
       $(this).attr('data-index', index);
       $(this).attr('id', `upload-image[${index}]`);
     })
@@ -132,7 +414,7 @@ $(function() {
     }
     // 0のときはアイコンをテキストに変えてあげる
     if($('.upload-image').length -1 == 0){
-      $('.dropzone-area').find('i').replaceWith('<p class="dropzone-box__text">ここをクリックして画像を追加してください</p>')
+      $('.dropzone-area').find('i').replaceWith('<p class="dropzone-box__text">ここをクリックして画像を追加してください</p>');
     }
     // upload-imageの個数が5個以上なら
     if($('.upload-image').length - 1 >= 5){
@@ -150,80 +432,83 @@ $(function() {
 });
 //--- end putup images--//
 
-function appendOption(category) {
-  let html = 
-    `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
-  return html;
-}
 
-function appendProductCategoryChildrenBox(insertHTML) {
-  let productCategoryChildrenHtml = '';
-  productCategoryChildrenHtml = 
-    `<select class="putup__main__category__select-box" id="product_category_children">
-       <option value="" data-category="">選択してください</option>
-       ${insertHTML}</select>`;
-  $('#children_box').append(productCategoryChildrenHtml);
-}
-
-function appendProductCategoryGrandchildrenBox(insertHTML) {
-  let productCategoryGrandChildrenHtml = '';
-  productCategoryGrandChildrenHtml = 
-    `<select class="putup__main__category__select-box" id="product_category_grandchildren" name="item[category_id]">
-       <option value="" data-category="">選択してください</option>
-       ${insertHTML}</select>`;
-  $('#grandchildren_box').append(productCategoryGrandChildrenHtml);
-}
-
-$(document).on("change","#product_category_parent", function() {
-  let productParentCategory =  $("#product_category_parent").val();
-  if (productParentCategory != "") {
-    $.ajax( {
-      type: 'GET',
-      url: 'get_product_category_children',
-      data: { product_category_parent_name: productParentCategory },
-      dataType: 'json'
-    })
-    .done(function(children) {
-      $("#children_box").empty();
-      $("#grandchildren_box").empty();
-      let insertHTML = '';
-      children.forEach(function(child) {
-        insertHTML += appendOption(child);
-      });
-      appendProductCategoryChildrenBox(insertHTML);
-    })
-    .fail(function() {
-      alert('商品子カテゴリーの取得に失敗');
-    })
-  }else{
-    $("#children_box").empty();
-    $("#grandchildren_box").empty();
+$(function(){
+  function appendOption(category) {
+    let html = 
+      `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
+    return html;
   }
-});
 
-$(document).on('change', '#children_box', function() {
-  let child_id = $('#product_category_children option:selected').data('category');
-  if (child_id != ""){
-    $.ajax({
-      url: 'get_product_category_grandchildren',
-      type: 'GET',
-      data: { product_category_child_id: child_id },
-      datatype: 'json'
-    })
-    .done(function(grandchildren) {
-      if (grandchildren.length != 0) {
+  function appendProductCategoryChildrenBox(insertHTML) {
+    let productCategoryChildrenHtml = '';
+    productCategoryChildrenHtml = 
+      `<select class="putup__main__category__select-box" id="product_category_children">
+        <option value="" data-category="">選択してください</option>
+        ${insertHTML}</select>`;
+    $('#children_box').append(productCategoryChildrenHtml);
+  }
+
+  function appendProductCategoryGrandchildrenBox(insertHTML) {
+    let productCategoryGrandChildrenHtml = '';
+    productCategoryGrandChildrenHtml = 
+      `<select class="putup__main__category__select-box" id="product_category_grandchildren" name="product[product_category_id]">
+        <option value="" data-category="">選択してください</option>
+        ${insertHTML}</select>`;
+    $('#grandchildren_box').append(productCategoryGrandChildrenHtml);
+  }
+
+  $(document).on("change","#product_category_parent", function() {
+    let productParentCategory =  $("#product_category_parent").val();
+    if (productParentCategory != "") {
+      $.ajax( {
+        type: 'GET',
+        url: 'get_product_category_children',
+        data: { product_category_parent_name: productParentCategory },
+        dataType: 'json'
+      })
+      .done(function(children) {
+        $("#children_box").empty();
         $("#grandchildren_box").empty();
         let insertHTML = '';
-        grandchildren.forEach(function(grandchild) {
-          insertHTML += appendOption(grandchild);
+        children.forEach(function(child) {
+          insertHTML += appendOption(child);
         });
-        appendProductCategoryGrandchildrenBox(insertHTML);
-      }
-    })
-    .fail(function() {
-      alert('商品孫カテゴリーの取得に失敗');
-    })
-  }else{
-    $("#grandchildren_box").empty();
-  }
+        appendProductCategoryChildrenBox(insertHTML);
+      })
+      .fail(function() {
+        alert('商品子カテゴリーの取得に失敗');
+      })
+    }else{
+      $("#children_box").empty();
+      $("#grandchildren_box").empty();
+    }
+  });
+
+  $(document).on('change', '#children_box', function() {
+    let child_id = $('#product_category_children option:selected').data('category');
+    if (child_id != ""){
+      $.ajax({
+        url: 'get_product_category_grandchildren',
+        type: 'GET',
+        data: { product_category_child_id: child_id },
+        datatype: 'json'
+      })
+      .done(function(grandchildren) {
+        if (grandchildren.length != 0) {
+          $("#grandchildren_box").empty();
+          let insertHTML = '';
+          grandchildren.forEach(function(grandchild) {
+            insertHTML += appendOption(grandchild);
+          });
+          appendProductCategoryGrandchildrenBox(insertHTML);
+        }
+      })
+      .fail(function() {
+        alert('商品孫カテゴリーの取得に失敗');
+      })
+    }else{
+      $("#grandchildren_box").empty();
+    }
+  });
 });
