@@ -17,7 +17,7 @@
     height: auto;
     margin : 50px 0px;
     &__title{
-      margin: 0px 10px 0px 20px;
+      text-align: center;
       &__present{
         font-size: 20px;
         font-weight: bold;
@@ -39,7 +39,7 @@
       display: flex;
       justify-content: left;
       flex-wrap: wrap;
-      margin: 10px 0px 0px 20px;
+      margin-top: 10px;
       .item {
         width: 220px;
         height: 240px;
@@ -84,6 +84,7 @@
         &--nil {
           height: 150px;
           line-height: 150px;
+          margin: 0 auto;
         }
     
         &__image-box{
