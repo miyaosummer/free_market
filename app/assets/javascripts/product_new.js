@@ -7,13 +7,12 @@ $(function(){
     `;
     return html;
   }
-  // エラーチェック関数 ※submitボタンが押されたときの処理です。
+  // エラーチェック関数 ※submitボタンが押されたときの処理
   function formChecker(){
-    // エラーをリセットするためすべてのinpu-errorを削除
+    // エラーをリセットするためすべてのinput-errorを削除
     $('.input-error').remove();
     // resultのデフォルト値をtrueに切り替え
     let result = true;
-
     // 画像のエラー処理
     if($('.preview__product-image').length == 0){
       console.log('画像がありません');
@@ -95,7 +94,7 @@ $(function(){
     }, {
       queue : false
     });
-    // 結果をリターン
+
     return result;
   }
 
@@ -109,7 +108,7 @@ $(function(){
   });
 
   // --- keyup & blur functions ---//
-  // 商品名__keyup
+  // 商品名 keyup時のエラー処理
   $('.putup__main__name__text-box').keyup(function(){
     if($(this).parent().find('.input-error').length > 0){
       $(this).parent().find('.input-error').remove();
@@ -119,7 +118,7 @@ $(function(){
       $('.putup__main__name').append(buildInputError('文字数が40字を超えています'));
     }
   });
-  // 商品名__blur
+  // 商品名 blur時のエラー処理
   $('.putup__main__name__text-box').blur(function(){
     if($(this).val().length == 0){
       if($(this).parent().find('.input-error').length == 0){
@@ -127,8 +126,7 @@ $(function(){
       }
     }
   });
-
-  // 商品の説明__keyup
+  // 商品の説明 keyup時のエラー処理
   $('.putup__main__description__text-box').keyup(function(){
     if($(this).parent().find('.input-error').length > 0){
       $(this).parent().find('.input-error').remove();
@@ -138,7 +136,7 @@ $(function(){
       $('.putup__main__description').append(buildInputError('文字数が1000字を超えています'));
     }
   });
-  // 商品の説明__blur
+  // 商品の説明 blur時のエラー処理
   $('.putup__main__description__text-box').blur(function(){
     if($(this).val().length == 0){
       if($(this).parent().find('.input-error').length == 0){
@@ -146,9 +144,7 @@ $(function(){
       }
     }
   });
-
-  // カテゴリー__blur & change
-  // 親カテゴリー__blur & change
+  // 親カテゴリー blur時のエラー処理
   $(document).on('blur', '#product_category_parent',function(){
     if($(this).val() == 0){
       if($(this).parent().find('.input-error').length == 0){
@@ -156,12 +152,13 @@ $(function(){
       }
     }
   });
+  // 親カテゴリー エラー解決処理
   $(document).on('change', '#product_category_parent', function(){
     if($(this).val() > 0){
       $(this).parent().find('.input-error').remove();
     }
   });
-  // 子カテゴリー__blur & change
+  // 子カテゴリー blur時のエラー処理
   $(document).on('blur', '#product_category_children',function(){
     if($(this).val() == 0){
       if($(this).parent().parent().find('.input-error').length == 0){
@@ -169,12 +166,13 @@ $(function(){
       }
     }
   });
+  // 子カテゴリー エラー解決処理
   $(document).on('change', '#product_category_children', function(){
     if($(this).val() > 0){
       $(this).parent().parent().find('.input-error').remove();
     }
   });
-  // 孫カテゴリー__blur & change
+  // 孫カテゴリー blur時のエラー処理
   $(document).on('blur', '#product_category_grandchildren',function(){
     if($(this).val() == 0){
       if($(this).parent().parent().parent().find('.input-error').length == 0){
@@ -182,13 +180,13 @@ $(function(){
       }
     }
   });
+  // 孫カテゴリー エラー解決処理
   $(document).on('change', '#product_category_grandchildren', function(){
     if($(this).val() > 0){
       $(this).parent().parent().parent().find('.input-error').remove();
     }
   });
-
-  // 商品の状態__blur & change
+  // 商品の状態 blur時のエラー処理
   $('#product_condition').blur(function(){
     if($(this).val() == 0){
       if($(this).parent().find('.input-error').length == 0){
@@ -196,13 +194,14 @@ $(function(){
       }
     }
   });
+  // 商品の状態 エラー解決処理
   $('#product_condition').change(function(){
     if($(this).val().length > 0){
       $(this).parent().find('.input-error').remove();
     }
   });
 
-  // 配送料の負担__blur & change
+  // 配送料の負担 blur時のエラー処理
   $('#postage_way').blur(function(){
     if($(this).val() == 0){
       if($(this).parent().find('.input-error').length == 0){
@@ -210,13 +209,14 @@ $(function(){
       }
     }
   });
+  // 配送料の負担 エラー解決処理
   $('#postage_way').change(function(){
     if($(this).val().length > 0){
       $(this).parent().find('.input-error').remove();
     }
   });
 
-  // 配送元の地域__blur & change
+  // 配送元の地域 blur時のエラー処理
   $('#prefecture').blur(function(){
     if($(this).val() == 0){
       if($(this).parent().find('.input-error').length == 0){
@@ -224,13 +224,14 @@ $(function(){
       }
     }
   });
+  // 配送元の地域 エラー解決処理
   $('#prefecture').change(function(){
     if($(this).val().length > 0){
       $(this).parent().find('.input-error').remove();
     }
   });
 
-  // 配送までの日数__blur & change
+  // 配送までの日数 blur時のエラー処理
   $('#shipping_day').blur(function(){
     if($(this).val() == 0){
       if($(this).parent().find('.input-error').length == 0){
@@ -238,20 +239,22 @@ $(function(){
       }
     }
   });
+  // 配送までの日数 エラー解決処理
   $('#shipping_day').change(function(){
     if($(this).val().length > 0){
       $(this).parent().find('.input-error').remove();
     }
   });
 
-  // 販売価格__keyup
+  // 販売価格 keyup時のエラー処理
   $('#price').keyup(function(){
     if(299 < $(this).val() && $(this).val() < 10000000){
       if($(this).parents('.putup__main__price__contents__content').find('.input-error').length > 0){
         $(this).parents('.putup__main__price__contents__content').find('.input-error').remove();
       }
+      // 販売手数料、販売利益の処理
       let price = $(this).val();
-      let fee = price * 0.1;
+      let fee = Math.floor(price * 0.1);
       let profit = price - fee;
       let display_fee = fee.toLocaleString();
       let display_profit = profit.toLocaleString();
@@ -262,7 +265,7 @@ $(function(){
       $('.putup__main__profit__contents__content__frame__input__calc-result').text('ー');
     }
   });
-  // 販売価格__blur
+  // 販売価格 blur時のエラー処理
   $('#price').blur(function(){
     if($(this).val().length == 0){
       if($(this).parents('.putup__main__price__contents__content').find('.input-error').length == 0){
@@ -279,7 +282,7 @@ $(function() {
   // 配列を用意
   var inputs = [];
 
-  // プレビューのhtml生成
+  // プレビュー生成
   function buildImagePreview(ln) {
     const html = `
     <div data-index="${ln}" class="preview">
@@ -292,7 +295,7 @@ $(function() {
     </div>`;
     return html;
   }
-  // Inputボックスの生成（display: noneで隠れているため、ビューには見えません）
+  // Inputボックス生成（display: noneで隠れているため、ビューには見えません）
   function buildInputArea(index) {
     const html = `
       <input data-index="${index}" name="product[product_images_attributes][${index}][image]" id="upload-image[${index}]" class="upload-image" type="file">
@@ -321,11 +324,10 @@ $(function() {
     let inputsLen = inputs.length;
     // fileReaderがロードできたら、previewsにプレビューを追加する
     fileReader.onload = function(e) {
-      // 配列は0からなので、length-1する
       let inputsIndex = inputsLen - 1;
-      // #image-boxの先頭にpreviewを追加
+      // preview追加
       $('.dropzone-area').before(buildImagePreview(inputsIndex));
-      // previewにimageを追加 ※セレクタに変数を使いたい場合は↓のようにする
+      // previewにimageを追加
       $('[data-index="' + inputsIndex + '"]').children('img').attr({src: e.target.result});
       // input-errorを隠す ※error処理
       $('.putup__main__upload .input-error').css({
@@ -443,7 +445,7 @@ $(function(){
   function appendProductCategoryChildrenBox(insertHTML) {
     let productCategoryChildrenHtml = '';
     productCategoryChildrenHtml = 
-      `<select class="putup__main__category__select-box" id="product_category_children">
+      `<select class="putup__main__category__select-box" id="product_category_children" name="product[product_category_id]">
         <option value="" data-category="">選択してください</option>
         ${insertHTML}</select>`;
     $('#children_box').append(productCategoryChildrenHtml);
