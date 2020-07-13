@@ -4,20 +4,21 @@ class ProductsController < ApplicationController
 
   def index
 
-    if params[:keyword] == ""
+    if params[:keyword] == "" || params[:keyword] == " " || params[:keyword] == "　"
       redirect_to root_path
     end
 
+    @products = Product.all
     #検索文字を取得（空欄含む）
     @keyword = params[:keyword]
     #検索文字を空欄で区切ったものを取得
-    keywords = params[:keyword].split(/[[:blank:]]+/).select(&:present?)
-    @products = Product.all
+    split_keywords = params[:keyword].split(/[[:blank:]]+/).select(&:present?)
     #区切ったワード事に検索を行う。すべての条件を満たす商品のみ検索に引っかかる。
-    keywords.each do |keyword|
+    split_keywords.each do |keyword|
+      next if keyword.blank?
       @products = @products.where("name LIKE ?", "%#{keyword}%")
     end
-
+    
   end
 
   def new
