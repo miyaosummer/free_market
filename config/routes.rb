@@ -16,7 +16,6 @@ Rails.application.routes.draw do
     member do
       get 'credit_new', to:'products#credit_new'
       post 'credit_create', to:'products#credit_create'
-      get 'credit_show', to:'products#credit_show'
       delete 'credit_destroy', to:'products#credit_destroy'
       get 'purchase'
       post 'pay'

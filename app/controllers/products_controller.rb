@@ -12,15 +12,14 @@ class ProductsController < ApplicationController
 
   ######################## ▼ クレジットカード関連 ▼ ########################
   # users_controllerにも記述あり
-
   require "payjp"
 
-  before_action :set_product, only: [:credit_show, :purchase, :pay]
-  before_action :card_present, only:[:credit_new, :credit_show, :credit_destroy, :purchase]
+  before_action :set_product, only: [:purchase, :pay]
+  before_action :card_present, only:[:credit_new, :credit_destroy, :purchase]
   before_action :set_api_key
-  before_action :set_customer, only:[:credit_show, :purchase]
-  before_action :set_card_information, only:[:credit_show, :purchase]
-  before_action :take_card, only:[:credit_show, :purchase, :pay]
+  before_action :set_customer, only:[:purchase]
+  before_action :set_card_information, only:[:purchase]
+  before_action :take_card, only:[:purchase, :pay]
 
   # 新規作成
   def credit_new
@@ -36,9 +35,9 @@ class ProductsController < ApplicationController
     customer = Payjp::Customer.create(card: params['payjp-token'], metadata: {user_id: current_user.id})
     @card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
     if @card.save
-      redirect_to purchase_product_path(current_user), notice: "登録が完了しました"
+      redirect_to purchase_product_path(current_user)
     else
-      redirect_to action: "credit_new", alert: "カード情報が正しくありません"
+      redirect_to action: "credit_new"
     end
   end
 
