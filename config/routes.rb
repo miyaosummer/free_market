@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       delete 'credit_destroy', to:'products#credit_destroy'
       get 'purchase'
       post 'pay'
+      get 'purchased'
     end
     # :idなし
     collection do

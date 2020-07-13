@@ -42,29 +42,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  # # 情報表示
-  # def credit_show
-  #   if @card.present?
-  #     @user = current_user
-  #     @card = CreditCard.find_by(user_id: current_user.id)
-  #     @card_brand = @card_information.brand
-  #     case @card_brand
-  #     when "Visa"
-  #       @card_src = "visa.png"
-  #     when "MasterCard"
-  #       @card_src = "mastercard.png"
-  #     when "JCB"
-  #       @card_src = "JCB.png"
-  #     when "American Express"
-  #       @card_src = "AmericanExpress.png"
-  #     when "Diners Club"
-  #       @card_src = "DinersClub.png"
-  #     when "Discover"
-  #       @card_src = "DISCOVER.png"
-  #     end
-  #   end
-  # end
-
   # 削除
   def credit_destroy
     @card = CreditCard.find_by(user_id: current_user.id)
@@ -119,7 +96,10 @@ class ProductsController < ApplicationController
     )
     @product_buyer= Product.find(params[:id])
     @product_buyer.update(buyer_id: current_user.id)
-    redirect_to root_path(current_user.id)
+    redirect_to purchased_product_path(current_user.id)
+  end
+
+  def purchased
   end
   
   def destroy
