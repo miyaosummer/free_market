@@ -3,14 +3,14 @@ class ProductsController < ApplicationController
   before_action :get_product, only: [:show, :destroy]
 
   def index
-
+    #検索ワードが存在するか否かで分岐
     if params[:keyword].present?
       @products = Product.all
       #検索文字を取得（空欄含む）
       @keyword = params[:keyword]
       #検索文字を空欄で区切ったものを変数split_keywordに代入
       split_keywords = params[:keyword].split(/[[:blank:]]+/).select(&:present?)
-      #区切ったワード事に検索を行う。すべての条件を満たす商品のみ検索に引っかかる。
+      #区切ったワード事に検索を行う。すべての条件を満たす商品のみ検索結果に引っかかる。
       split_keywords.each do |keyword|
         @products = @products.where("name LIKE ?", "%#{keyword}%")
       end
