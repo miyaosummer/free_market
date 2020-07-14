@@ -22,6 +22,26 @@ $(function() {
         })
       });
     });
+
+    //子カテゴリからカーソルが離れた時に孫カテゴリと子カテゴリを削除する
+    // $(".children_list").on("mouseout", function() {
+    //   c = $(".child_category").remove();//一度子カテゴリを
+    //   g = $(".grand_child_category").remove();//孫カテゴリも
+    //   $(".parent_category").on("mouseover", function() {
+    //     $(".child_category").append(c)
+    //   });
+    // });
+    //孫カテゴリからカーソルが離れた時に孫カテゴリと子カテゴリを削除する
+    // $(".grand_children_list").on("mouseout", function() {
+    //   c = $(".child_category").remove();//一度子カテゴリを
+    //   g = $(".grand_child_category").remove();//孫カテゴリも
+    //   $(".parent_category").on("mouseover", function() {
+    //     $(".child_category").append(c)
+    //   });
+    //   $(".child_category").on("mouseover",function(){
+    //     $(".grand_child_category").append(g)
+    //   });
+    // });
     
     // 孫カテゴリを追加する。子要素と同じ動き
     function buildGrandChildHTML(child){
