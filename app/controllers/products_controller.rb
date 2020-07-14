@@ -12,7 +12,6 @@ class ProductsController < ApplicationController
       split_keywords = params[:keyword].split(/[[:blank:]]+/).select(&:present?)
       #区切ったワード事に検索を行う。すべての条件を満たす商品のみ検索に引っかかる。
       split_keywords.each do |keyword|
-
         @products = @products.where("name LIKE ?", "%#{keyword}%")
       end
     else
