@@ -8,8 +8,6 @@ $(function() {
   
     $(".parent_category").on("mouseover", function() {
       var id = this.id//どのリンクにマウスが乗ってるか
-      // $(".now-selected-red").removeClass("now-selected-red")//赤色のcssのため
-      // $('#' + id).addClass("now-selected-red");//赤色のcssのためです
       $(".child_category").remove();//一度子カテゴリを
       $(".grand_child_category").remove();//孫カテゴリも
       $.ajax({
@@ -34,8 +32,6 @@ $(function() {
   
     $(document).on("mouseover", ".child_category", function () {//子カテゴリーのリストは動的に追加されたHTMLである
       var id = this.id
-      // $(".now-selected-gray").removeClass("now-selected-gray");//灰色のcssのため
-      // $('#' + id).addClass("now-selected-gray");//灰色のcssのため
       $.ajax({
         type: 'GET',
         url: '/tops/get_header_category_grandchildren',
