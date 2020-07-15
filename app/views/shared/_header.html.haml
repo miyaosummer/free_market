@@ -14,14 +14,12 @@
       .nav__left
         %h1.nav__left__category
           %span.nav__left__category__title カテゴリー
-          .category_list
-            .parents_list
+          .nav__left__category__list
+            .nav__left__category__list__parents
               - @parents.each do |parent|
                 = link_to "#{parent.name}", "#", class: "parent_category",id: "#{parent.id}"
-            .children_list
-              -# - @product_category_children.each do |parent|
-              -#   = link_to "#{parent.name}", "#", class: "child_category",id: "#{parent.id}"
-            .grand_children_list
+            .nav__left__category__list__children 
+            .nav__left__category__list__grand-children
         %h1.nav__left__brand
           ブランド
 
