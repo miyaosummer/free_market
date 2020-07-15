@@ -3,7 +3,7 @@
     = render "header_products"
 
   .putup__main
-    = form_for @product do |f|
+    = form_for @product, :url => {controller: "products", action: "new"} do |f|
       .putup__main__upload
         %label.putup__main__upload__title
           出品画像
