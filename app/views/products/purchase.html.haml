@@ -13,16 +13,19 @@
           .purchase__main__product-info__inner
             .purchase__main__product-info__inner__content
               %h3.purchase__main__product-info__inner__content__img
-                %img(src="https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png")/
+                = image_tag @product.product_images[0].image.url
               .purchase__main__product-info__inner__content__detail
                 .purchase__main__product-info__inner__content__detail
                   %p.purchase__main__product-info__inner__content__detail__name
-                    product3
+                    = @product.name
                   %p.purchase__main__product-info__inner__content__detail__price
                     %span
-                      ¥30000
+                      ¥
+                      = @product.price
                     %span.purchase__main__product-info__inner__content__detail__price__tax
-                      (税込) 送料込み
+                      (税込)
+                      %br/
+                      = @product.postage_way_id
 
         .purchase__main__payment-info
           .purchase__main__payment-info__innner
@@ -31,7 +34,8 @@
                 .purchase__main__payment-info__innner__form__table__pay-label
                   支払い金額
                 .purchase__main__payment-info__innner__form__table__pay-amount
-                  ¥30000
+                  ¥
+                  = @product.price
 
               .purchase__main__payment-info__innner__form__user-info
                 %h3.purchase__main__payment-info__innner__form__user-info__pay-method

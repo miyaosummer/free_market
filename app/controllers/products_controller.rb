@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
   # users_controllerにも記述あり
   require "payjp"
 
-  before_action :set_product, only: [:purchase, :pay]
+  before_action :set_product, only: [:credit_create, :purchase, :pay]
   before_action :card_present, only:[:credit_new, :credit_destroy, :purchase]
   before_action :set_api_key
   before_action :set_customer, only:[:purchase]
@@ -35,7 +35,7 @@ class ProductsController < ApplicationController
     customer = Payjp::Customer.create(card: params['payjp-token'], metadata: {user_id: current_user.id})
     @card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
     if @card.save
-      redirect_to purchase_product_path(current_user)
+      redirect_to purchase_product_path(@@product.id)
     else
       redirect_to action: "credit_new"
     end
@@ -51,9 +51,9 @@ class ProductsController < ApplicationController
       customer = Payjp::Customer.retrieve(@card.customer_id)
       customer.delete
       if @card.delete
-        redirect_to purchase_product_path(current_user), notice: "削除完了しました"
+        redirect_to purchase_product_path(@product.id), notice: "削除完了しました"
       else
-        redirect_to purchase_product_path(current_user), alert: "削除できませんでした"
+        redirect_to purchase_product_path(@product.id), alert: "削除できませんでした"
       end
     end
   end
@@ -61,6 +61,7 @@ class ProductsController < ApplicationController
 
   # 購入確認ページ
   def purchase
+    @@product = Product.find(params[:id])
     if @card.present?
       @user = current_user
       @card = CreditCard.find_by(user_id: current_user.id)
@@ -88,14 +89,19 @@ class ProductsController < ApplicationController
   # 購入
   def pay
     @card = CreditCard.where(user_id: current_user.id).first
-    charge = Payjp::Charge.create(
-      amount: @product.price,
-      customer: Payjp::Customer.retrieve(@card.customer_id),
-      currency: 'jpy'
-    )
-    @product_buyer= Product.find(params[:id])
-    @product_buyer.update(buyer_id: current_user.id)
-    redirect_to purchased_product_path(current_user.id)
+    @destination = Destination.find_by(user_id: current_user.id)
+    if @card.present? && @destination.present?
+      charge = Payjp::Charge.create(
+        amount: @product.price,
+        customer: Payjp::Customer.retrieve(@card.customer_id),
+        currency: 'jpy'
+      )
+      @product_buyer= Product.find(params[:id])
+      @product_buyer.update(buyer_id: current_user.id)
+      redirect_to purchased_product_path(current_user.id)
+    else
+      redirect_to purchase_product_path(@product.id)
+    end
   end
 
   def purchased
