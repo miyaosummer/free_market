@@ -17,6 +17,7 @@ $(function() {
   //「カテゴリー」テキストにマウスが乗った時の処理
     $(".nav__left__category__title").on("mouseover", function() {
       $('.nav__left__category__title').css('font-weight','bold')
+      $(".selected-parent").removeClass("selected-parent")//背景色をつけるために設定済みのクラスを配置する。まずは初期化
       $(".child_category").remove();//一度子カテゴリを削除することで「カテゴリー」テキストにマウスが乗るたびに親カテゴリのみ表示される。
       $(".grand_child_category").remove();//孫カテゴリも削除する。理由は同上
     });
@@ -52,6 +53,10 @@ $(function() {
     $(".category_list").on("mouseout", function() {
       $('.nav__left__category__title').css('font-weight','normal')
     });
+
+
+
+
     //子カテゴリからカーソルが離れた時に孫カテゴリと子カテゴリを削除する
     // $(".nav__left__category").on("mouseover", function() {
     //   c = $(".child_category").remove();//一度子カテゴリを
