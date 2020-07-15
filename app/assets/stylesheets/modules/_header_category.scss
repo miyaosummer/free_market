@@ -1,15 +1,9 @@
-// .category__index{
-//   display: none;
-// }
-
-// .nav__left__category:hover .category__index__parents__list{
-//   background-color: greenyellow;
-// }
-
 
 .nav__left__category{
   position: relative;
-  z-index: 1;
+  span{
+    display: block;
+  }
   .category_list{
     visibility: hidden;
     display: flex;
@@ -47,21 +41,16 @@
   }
 }
 
-
-.nav__left__category:hover {
-  color: blue;
-}
-.parent_category:hover{
+.selected-parent{
   background-color: #99ffff;
 }
 
-.child_category:hover{
-  background-color:lightblue;
+.selected-child{
+  background-color: lightblue;
 }
 
 .grand_child_category:hover{
   background-color: lightskyblue;
-
 }
 
 .nav__left__category:hover .category_list{
