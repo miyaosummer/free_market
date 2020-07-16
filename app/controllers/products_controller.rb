@@ -41,12 +41,12 @@ class ProductsController < ApplicationController
   # users_controllerにも記述あり
   require "payjp"
 
-  before_action :set_product, only:[:credit_new, :credit_create, :credit_destroy, :purchase, :pay]
   before_action :card_present, only:[:credit_new, :credit_destroy, :purchase]
   before_action :set_api_key
   before_action :set_customer, only:[:purchase]
   before_action :set_card_information, only:[:purchase]
   before_action :take_card, only:[:purchase, :pay]
+  before_action :get_product, only:[:credit_new, :credit_create, :credit_destroy, :purchase, :pay]
 
   # 新規作成
   def credit_new
@@ -137,10 +137,6 @@ private
   end
 
   ######################## ▼ クレジットカード関連 ▼ ########################
-  def set_product
-    @product = Product.find(params[:id])
-  end
-
   def card_present
     @card = CreditCard.where(user_id: current_user.id).first if CreditCard.where(user_id: current_user.id).present?
   end
