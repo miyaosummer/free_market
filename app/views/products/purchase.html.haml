@@ -42,7 +42,7 @@
                   支払い方法
                 - if @card.blank?
                   %p.purchase__main__payment-info__innner__form__user-info__text
-                    = link_to credit_new_product_path(current_user.id), class: "purchase__main__payment-info__innner__form__user-info__text" do
+                    = link_to credit_new_product_path(@product.id), class: "purchase__main__payment-info__innner__form__user-info__text" do
                       = icon('fas', 'plus-circle')
                       登録してください
                 - else

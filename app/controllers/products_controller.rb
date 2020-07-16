@@ -10,11 +10,38 @@ class ProductsController < ApplicationController
   def show
   end
 
+  # 購入確認ページ
+  def purchase
+    @@product = Product.find(params[:id])
+    if @card.present?
+      @user = current_user
+      @card = CreditCard.find_by(user_id: current_user.id)
+      @card_brand = @card_information.brand
+      case @card_brand
+      when "Visa"
+        @card_src = "visa.png"
+      when "MasterCard"
+        @card_src = "mastercard.png"
+      when "JCB"
+        @card_src = "JCB.png"
+      when "American Express"
+        @card_src = "AmericanExpress.png"
+      when "Diners Club"
+        @card_src = "DinersClub.png"
+      when "Discover"
+        @card_src = "DISCOVER.png"
+      end
+    end
+    if current_user.destination
+      @destination = Destination.find_by(user_id: current_user.id)
+    end
+  end
+
   ######################## ▼ クレジットカード関連 ▼ ########################
   # users_controllerにも記述あり
   require "payjp"
 
-  before_action :set_product, only: [:credit_create, :purchase, :pay]
+  before_action :set_product, only:[:credit_new, :credit_create, :credit_destroy, :purchase, :pay]
   before_action :card_present, only:[:credit_new, :credit_destroy, :purchase]
   before_action :set_api_key
   before_action :set_customer, only:[:purchase]
@@ -51,40 +78,13 @@ class ProductsController < ApplicationController
       customer = Payjp::Customer.retrieve(@card.customer_id)
       customer.delete
       if @card.delete
-        redirect_to purchase_product_path(@product.id), notice: "削除完了しました"
+        redirect_to purchase_product_path(@@product.id), notice: "削除完了しました"
       else
-        redirect_to purchase_product_path(@product.id), alert: "削除できませんでした"
+        redirect_to purchase_product_path(@@product.id), alert: "削除できませんでした"
       end
     end
   end
   ######################## ▲ クレジットカード関連 ▲ ########################
-
-  # 購入確認ページ
-  def purchase
-    @@product = Product.find(params[:id])
-    if @card.present?
-      @user = current_user
-      @card = CreditCard.find_by(user_id: current_user.id)
-      @card_brand = @card_information.brand
-      case @card_brand
-      when "Visa"
-        @card_src = "visa.png"
-      when "MasterCard"
-        @card_src = "mastercard.png"
-      when "JCB"
-        @card_src = "JCB.png"
-      when "American Express"
-        @card_src = "AmericanExpress.png"
-      when "Diners Club"
-        @card_src = "DinersClub.png"
-      when "Discover"
-        @card_src = "DISCOVER.png"
-      end
-    end
-    if current_user.destination
-      @destination = Destination.find_by(user_id: current_user.id)
-    end
-  end
 
   # 購入
   def pay
@@ -100,7 +100,7 @@ class ProductsController < ApplicationController
       @product_buyer.update(buyer_id: current_user.id)
       redirect_to purchased_product_path(current_user.id)
     else
-      redirect_to purchase_product_path(@product.id)
+      redirect_to purchase_product_path(@@product.id)
     end
   end
 
