@@ -1,7 +1,14 @@
 class ProductsController < ApplicationController
 
+  require "payjp"
+
   before_action :set_product_category_parent, only: :new
-  before_action :get_product, only: [:show, :destroy]
+  before_action :card_present, only:[:credit_new, :credit_destroy, :purchase]
+  before_action :set_api_key
+  before_action :set_customer, only:[:purchase]
+  before_action :set_card_information, only:[:purchase]
+  before_action :take_card, only:[:purchase, :pay]
+  before_action :get_product, only: [:show, :destroy, :credit_new, :credit_create, :credit_destroy, :purchase, :pay]
 
   def new
     @product = Product.new
@@ -39,14 +46,6 @@ class ProductsController < ApplicationController
 
   ######################## ▼ クレジットカード関連 ▼ ########################
   # users_controllerにも記述あり
-  require "payjp"
-
-  before_action :card_present, only:[:credit_new, :credit_destroy, :purchase]
-  before_action :set_api_key
-  before_action :set_customer, only:[:purchase]
-  before_action :set_card_information, only:[:purchase]
-  before_action :take_card, only:[:purchase, :pay]
-  before_action :get_product, only:[:credit_new, :credit_create, :credit_destroy, :purchase, :pay]
 
   # 新規作成
   def credit_new
@@ -136,7 +135,6 @@ private
     params.require(:product).permit(:name,:description,:price,:seller_id,:buyer_id,:product_category_id,:product_condition_id,:postage_way_id,:postage,:shipping_day_id,:product_brand_id,:product_size_id,:prefecture_id)
   end
 
-  ######################## ▼ クレジットカード関連 ▼ ########################
   def card_present
     @card = CreditCard.where(user_id: current_user.id).first if CreditCard.where(user_id: current_user.id).present?
   end
@@ -160,7 +158,6 @@ private
   def take_card
     @card = CreditCard.find_by(user_id: current_user.id)
   end
-  ######################## ▲ クレジットカード関連 ▲ ########################
 
   def get_product
     @product = Product.find(params[:id])
