@@ -4,7 +4,8 @@ class ProductsController < ApplicationController
 
   before_action :set_product_category_parent, only: :new
   before_action :card_present, only:[:credit_new, :credit_destroy, :purchase]
-  before_action :set_api_key
+  before_action :get_payjp_info
+  # before_action :set_api_key
   before_action :set_customer, only:[:purchase]
   before_action :set_card_information, only:[:purchase]
   before_action :take_card, only:[:purchase, :pay]
@@ -61,7 +62,7 @@ class ProductsController < ApplicationController
     customer = Payjp::Customer.create(card: params['payjp-token'], metadata: {user_id: current_user.id})
     @card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
     if @card.save
-      redirect_to purchase_product_path(@@product.id)
+      redirect_to purchase_product_path(@product.id)
     else
       redirect_to action: "credit_new"
     end
@@ -73,13 +74,17 @@ class ProductsController < ApplicationController
     if @card.blank?
       redirect_to action: "credit_new"
     else
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      if Rails.env == 'development'
+        Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      else
+        Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
+      end
       customer = Payjp::Customer.retrieve(@card.customer_id)
       customer.delete
       if @card.delete
-        redirect_to purchase_product_path(@@product.id), notice: "削除完了しました"
+        redirect_to purchase_product_path(@product.id), notice: "削除完了しました"
       else
-        redirect_to purchase_product_path(@@product.id), alert: "削除できませんでした"
+        redirect_to purchase_product_path(@product.id), alert: "削除できませんでした"
       end
     end
   end
@@ -139,9 +144,17 @@ private
     @card = CreditCard.where(user_id: current_user.id).first if CreditCard.where(user_id: current_user.id).present?
   end
 
-  def set_api_key
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+  def get_payjp_info
+    if Rails.env == 'development'
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    else
+      Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
+    end
   end
+
+  # def set_api_key
+  #   Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
+  # end
 
   def set_customer
     if @card.present?

@@ -76,9 +76,9 @@ class UsersController < ApplicationController
       customer = Payjp::Customer.retrieve(@card.customer_id)
       customer.delete
       if @card.delete
-        redirect_to user_path(current_user), notice: "削除完了しました"
+        redirect_to user_path, notice: "削除完了しました"
       else
-        redirect_to user_path(current_user), alert: "削除できませんでした"
+        redirect_to user_path, alert: "削除できませんでした"
       end
     end
   end
