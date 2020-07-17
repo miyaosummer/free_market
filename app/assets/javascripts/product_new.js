@@ -281,7 +281,6 @@ $(function(){
 $(function() {
   // 配列を用意
   var inputs = [];
-
   // プレビュー生成
   function buildImagePreview(ln) {
     const html = `
@@ -307,12 +306,10 @@ $(function() {
     // inputを追加する
     let numInputs = $('.upload-image').length;
     $('.dropzone-box').append(buildInputArea(numInputs));
-
     // labelの向き先をinputの一番うしろにする
     $('.dropzone-box').attr('for', function(){
       return 'upload-image[' + numInputs + ']'
     });
-
     // previewを追加
     // 選択したフィアルをfileに格納
     let file = $(this).prop('files')[0];
@@ -335,7 +332,6 @@ $(function() {
       });
     }
     fileReader.readAsDataURL(file)
-
     // インプット領域の幅調整
     // 1段目の処理
     if(inputsLen < 5){
@@ -370,7 +366,6 @@ $(function() {
       })
     }
   });
-
   // 削除機能
   $(document).on('click', '.preview__action__delete', function(){
     // 削除するプレビューの親要素を取得
