@@ -13,4 +13,22 @@ class Product < ApplicationRecord
   belongs_to :product_category
   belongs_to :product_brand, optional: true
   accepts_nested_attributes_for :product_images, allow_destroy: true
+
+  #各項目のバリデーション
+  with_options presence:true do
+    validates :name
+    validates :price
+    validates :description
+    validates :product_category_id
+    validates :product_condition_id
+    validates :postage_way_id
+    validates :shipping_day_id
+    validates :prefecture_id
+  end
+
+  #文字数制限や価格のしきい値
+  validates :name                 , length: { maximum: 40 }
+  validates :description          , length: { maximum: 1000 }
+  validates :price                , numericality: {greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
+
 end
