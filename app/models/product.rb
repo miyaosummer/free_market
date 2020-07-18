@@ -25,10 +25,11 @@ class Product < ApplicationRecord
     validates :shipping_day_id
     validates :prefecture_id
   end
-
   #文字数制限や価格のしきい値
   validates :name                 , length: { maximum: 40 }
   validates :description          , length: { maximum: 1000 }
   validates :price                , numericality: {greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
+  #画像枚数のバリデーション
+  validates :product_images       , length: { maximum: 10}
 
 end

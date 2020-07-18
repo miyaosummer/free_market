@@ -1,8 +1,7 @@
 require 'rails_helper'
-
 describe Product do
   describe '#create' do
-  
+
 #全項目の条件を満たした時は投稿できる
     it "全ての必須項目が入力されていたら投稿ができる" do
       user = create(:user)
@@ -102,6 +101,21 @@ describe Product do
       product = build(:product, price:10000000)
       product.valid?
       expect(product.errors[:price]).to include("must be less than or equal to 9999999")
+    end
+
+#画像複数投稿時のチェック
+    it "product_imageが11枚以上のときは投稿できない" do
+      user = create(:user)
+      category = create(:product_category)
+      product = build(:product_has_11_images)
+      product.valid?
+      expect(product.errors[:product_images]).to include("is too long (maximum is 10 characters)")
+    end
+    it "product_imageが10枚のときは投稿できる" do
+      user = create(:user)
+      category = create(:product_category)
+      product = build(:product_has_10_images)
+      expect(product).to be_valid
     end
   end
 end
