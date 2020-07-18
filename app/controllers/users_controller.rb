@@ -83,6 +83,7 @@ class UsersController < ApplicationController
       end
     end
   end
+  ######################## ▲ クレジットカード関連 ▲ ########################
 
   private
 
@@ -105,7 +106,6 @@ class UsersController < ApplicationController
   def take_card
     @card = CreditCard.find_by(user_id: current_user.id)
   end
-  ######################## ▲ クレジットカード関連 ▲ ########################
 
   def logout
   end
