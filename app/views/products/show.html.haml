@@ -150,8 +150,14 @@
               - else
                 %ul.show__main__product__content__information__option__btn
                   %li.show__main__product__content__information__option__btn--purchase
-                    = link_to purchase_products_path(@product), class: "show__main__product__content__information__option__btn--purchase" do
-                      購入画面に進む
+                    -# ユーザーがログインしているか否かで場合分け
+                    - if user_signed_in?
+                      = link_to purchase_products_path(@product), class: "show__main__product__content__information__option__btn--purchase" do
+                        購入画面に進む
+                    - else 
+                      = link_to new_user_session_path, class: "show__main__product__content__information__option__btn--purchase" do
+                        購入には登録が必要です
+
               %ul.show__main__product__content__information__option__btn
                 %li.show__main__product__content__information__option__btn--report
                   = link_to "#", class: "show__main__product__content__information__option__btn--report" do

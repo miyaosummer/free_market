@@ -1,0 +1,6 @@
+.logout
+  .logout__main
+    .logout__main__form
+      .logout__main__form__index
+        %p ログアウトしますか？
+      = link_to "ログアウトする", destroy_user_session_path, method: :delete, class:"logout__main__form__btn"

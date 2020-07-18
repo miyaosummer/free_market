@@ -125,6 +125,27 @@
     &__select-box--grandchildren{
     }
   }
+  &__size{
+    padding-top: 40px;
+    &__title{
+      margin-left: 40px;
+      font-weight: bold;
+      font-size: 14px;
+      &__imperative{
+        border-radius: 2px;
+        padding: 2px 4px;
+        font-size: 12px;
+        background-color:#99FFFF;
+      }
+    }
+    &__select-box{
+      margin: 20px 40px 0px 40px;
+      height: 40px;
+      width: calc(100% - 80px);
+      border-color: #DDDDDD;
+      border-radius: 5px;
+    }
+  }
   &__brand{
     padding-top: 40px;
     &__title{
