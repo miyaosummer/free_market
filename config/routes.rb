@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
   resources :logs ,only: :index
   resources :products do
+    resources :comments, only: :create
     collection do
       get 'purchase'
     end
