@@ -463,7 +463,7 @@ function appendProductSizeBox(insertHTML) {
      必須
      </span>
      </p>
-     <select class="putup__main__size__select-box" id="product_size">
+     <select class="putup__main__size__select-box" id="product_size" name="product[product_size_id]">
      <option value="">選択してください</option>${insertHTML}</select>
      </div>`;
   $('#size_box').append(productSizeHtml);
