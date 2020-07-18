@@ -82,7 +82,7 @@ private
       :product_size_id,
       :prefecture_id,
       product_images_attributes: [:image, :_destroy, :id]
-    ).merge(seller_id: current_user.id).merge(product_size_id: "1") #product_size_idは仮で固定値を入れています。
+    ).merge(seller_id: current_user.id)
   end
 
   def get_product

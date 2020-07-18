@@ -44,6 +44,7 @@
     = f.collection_select :product_category_id, ProductCategory.where(id: 1..13), :id, :name,  {prompt: '選択してください'},{class: "putup__main__category__select-box",id: "product_category_parent"}
     .putup__main__category__select-box--children#children_box
     .putup__main__category__select-box--grandchildren#grandchildren_box
+    .putup__main__size__select-box--size#size_box
 
   .putup__main__brand
     %p.putup__main__brand__title
