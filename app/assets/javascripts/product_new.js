@@ -247,7 +247,7 @@ $(function(){
   });
 
   // 販売価格 keyup時のエラー処理
-  $('#price').keyup(function(){
+  $('#price').on('change keyup', function(){
     if(299 < $(this).val() && $(this).val() < 10000000){
       if($(this).parents('.putup__main__price__contents__content').find('.input-error').length > 0){
         $(this).parents('.putup__main__price__contents__content').find('.input-error').remove();
