@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   require "payjp"
   
   before_action :card_present, only:[:credit_new, :credit_show, :credit_destroy]
-  # before_action :get_payjp_info
   before_action :set_api_key
   before_action :set_customer, only:[:credit_show]
   before_action :set_card_information, only:[:credit_show]
@@ -90,14 +89,6 @@ class UsersController < ApplicationController
   def card_present
     @card = CreditCard.where(user_id: current_user.id).first if CreditCard.where(user_id: current_user.id).present?
   end
-
-  # def get_payjp_info
-  #   if Rails.env == 'development'
-  #     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-  #   else
-  #     Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
-  #   end
-  # end
 
   def set_api_key
     Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
