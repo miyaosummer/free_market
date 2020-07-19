@@ -15,7 +15,6 @@ $(function(){
     let result = true;
     // 画像のエラー処理
     if($('.preview__product-image').length == 0){
-      console.log('画像がありません');
       $('.putup__main__upload').append(buildInputError('画像がありません'));
       result = false;
     };
@@ -25,7 +24,6 @@ $(function(){
       result = false;
     };
     if($('.putup__main__name__text-box').val().length > 40){
-      console.log($('.putup__main__name__text-box').val().length + "文字のためエラー");
       $('.putup__main__name').append(buildInputError('文字数が40字を超えています'));
       result = false;
     }
@@ -35,53 +33,44 @@ $(function(){
       result = false;
     }
     if($('.putup__main__description__text-box').val().length > 1000){
-      console.log($('.putup__main__description__text-box').val().length + "文字のためエラー");
       $('.putup__main__description').append(buildInputError('文字数が1000字を超えています'));
       result = false;
     }
     // カテゴリーのエラー処理
     if($('#product_category_parent').val() == 0){
-      console.log('親カテゴリー未選択');
       $('.putup__main__category').append(buildInputError('カテゴリーを選択してください'));
       result = false;
     }
     if($('#product_category_parent').val() > 0 && $('#product_category_children').val() == 0){
-      console.log('子カテゴリー未選択');
       $('.putup__main__category').append(buildInputError('カテゴリーを選択してください'));
       result = false;
     }
     if($('#product_category_children').val() > 0 && $('#product_category_grandchildren').val() == 0){
-      console.log('孫カテゴリー未選択');
       $('.putup__main__category').append(buildInputError('カテゴリーを選択してください'));
       result = false;
     }
     // 商品の状態のエラー処理
     if($('.putup__main__condition__select-box').val() == 0){
-      console.log('商品の状態未選択');
       $('.putup__main__condition').append(buildInputError('商品の状態を選択してください'));
       result = false;
     }
     // 配送料負担のエラー処理
     if($('.putup__main__postage-way__select-box').val() == 0){
-      console.log('配送料の負担未選択');
       $('.putup__main__postage-way').append(buildInputError('配送料の負担を選択してください'));
       result = false;
     }
     // 発送元の地域のエラー処理
     if($('.putup__main__prefecture__select-box').val() == 0){
-      console.log('発送元の地域未選択');
       $('.putup__main__prefecture').append(buildInputError('発送元の地域を選択してください'));
       result = false;
     }
     // 発送までの日数のエラー処理
     if($('.putup__main__shipping-day__select-box').val() == 0){
-      console.log('発送までの日数未選択');
       $('.putup__main__shipping-day').append(buildInputError('発送までの日数を選択してください'));
       result = false;
     }
     // 価格のエラー処理
     if($('.putup__main__price__contents__content__frame__input__number-box').val().length == 0){
-      console.log('価格未入力');
       $('.putup__main__price__contents__content').append(buildInputError('価格を入力してください'));
       result = false;
     }
@@ -113,7 +102,6 @@ $(function(){
       $(this).parent().find('.input-error').remove();
     }
     if($(this).val().length > 40){
-      console.log($('.putup__main__name__text-box').val().length + "文字のためエラー");
       $('.putup__main__name').append(buildInputError('文字数が40字を超えています'));
     }
   });
@@ -131,7 +119,6 @@ $(function(){
       $(this).parent().find('.input-error').remove();
     }
     if($(this).val().length > 1000){
-      console.log($('.putup__main__description__text-box').val().length + "文字のためエラー");
       $('.putup__main__description').append(buildInputError('文字数が1000字を超えています'));
     }
   });
