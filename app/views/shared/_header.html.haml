@@ -12,9 +12,15 @@
             
     .header__inner__nav.nav
       .nav__left
-        = link_to "#" , class: "nav__left__category" do
-          カテゴリー
-        = link_to "#" , class: ".nav__left__brand" do
+        %h1.nav__left__category
+          %span.nav__left__category__title カテゴリー
+          .nav__left__category__list
+            .nav__left__category__list__parents
+              - @parents.each do |parent|
+                = link_to "#{parent.name}", "#", class: "parent_category",id: "#{parent.id}"
+            .nav__left__category__list__children 
+            .nav__left__category__list__grand-children
+        %h1.nav__left__brand
           ブランド
 
       .nav__right

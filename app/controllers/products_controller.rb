@@ -9,9 +9,39 @@ class ProductsController < ApplicationController
   before_action :set_card_information, only:[:purchase]
   before_action :take_card, only:[:purchase, :pay]
   before_action :get_product, only: [:show, :destroy, :credit_new, :credit_create, :credit_destroy, :purchase, :pay]
+  before_action :authenticate_user!, only: [:new]
+  before_action :set_product_category_parent, only: [:new, :create, :edit, :update]
+  before_action :get_product, only: [:show, :destroy, :edit, :update]
 
   def new
     @product = Product.new
+    @product.product_images.build
+    @product_category_parents = ProductCategory.where(ancestry: nil)
+  end
+
+  def create
+    @product = Product.new(product_params)
+    if @product.product_size_id.present?
+      @product.product_size_id = ProductSize.find_by_id(product_params[:product_size_id]).name
+    else
+      @product.product_size_id = "サイズなし"
+    end
+    if @product.save
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @product.update(product_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   def show
@@ -123,6 +153,11 @@ class ProductsController < ApplicationController
     @product_category_grandchildren = ProductCategory.find("#{params[:product_category_child_id]}").children
   end
 
+  # サイズの配列を取得
+  def get_product_size
+    @product_sizes = ProductSize.find_all_by_group "#{params[:product_size_id]}"
+  end
+
 private
 
   # 親カテゴリーの配列を取得
@@ -131,7 +166,19 @@ private
   end
 
   def product_params
-    params.require(:product).permit(:name,:description,:price,:seller_id,:buyer_id,:product_category_id,:product_condition_id,:postage_way_id,:postage,:shipping_day_id,:product_brand_id,:product_size_id,:prefecture_id)
+    params.require(:product).permit(
+      :name,
+      :description,
+      :price,
+      :product_category_id,
+      :product_condition_id,
+      :postage_way_id,
+      :shipping_day_id,
+      :product_brand_id,
+      :product_size_id,
+      :prefecture_id,
+      product_images_attributes: [:image, :_destroy, :id]
+    ).merge(seller_id: current_user.id)
   end
 
   def card_present

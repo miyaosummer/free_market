@@ -17,6 +17,19 @@ Rails.application.routes.draw do
       get 'credit_new', to:'products#credit_new'
       post 'credit_create', to:'products#credit_create'
       delete 'credit_destroy', to:'products#credit_destroy'
+  resources :tops, only: [:index, :new] do
+    #Ajaxで動くアクションのルートを作成
+    collection do
+      get 'get_header_category_children', defaults: { format: 'json' }
+      get 'get_header_category_grandchildren', defaults: { format: 'json' }
+    end
+    member do
+      get 'get_header_category_children', defaults: { format: 'json' }
+      get 'get_header_category_grandchildren', defaults: { format: 'json' }
+    end
+  end
+  resources :products do
+    collection do
       get 'purchase'
       post 'pay'
       get 'purchased'
@@ -25,11 +38,13 @@ Rails.application.routes.draw do
     collection do
       get 'get_product_category_children', defaults: { format: 'json' }
       get 'get_product_category_grandchildren', defaults: { format: 'json' }
+      get 'get_product_size', defaults: { format: 'json' }
     end
     # :idあり
     member do
       get 'get_product_category_children', defaults: { format: 'json' }
       get 'get_product_category_grandchildren', defaults: { format: 'json' }
+      get 'get_product_size', defaults: { format: 'json' }
     end
   end
 end

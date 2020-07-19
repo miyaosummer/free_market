@@ -15,7 +15,7 @@ CarrierWave.configure do |config|
       region: 'ap-northeast-1'
     }
     config.fog_directory  = 'free-market-72-c'
-    config.asset_host = 'https://s3-your_region.amazonaws.com/free-market-72-c'
+    config.asset_host = 'https://free-market-72-c.s3.amazonaws.com'
   else
     config.storage :file # 開発環境:public/uploades下に保存
     config.enable_processing = false if Rails.env.test? #test:処理をスキップ

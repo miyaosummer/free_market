@@ -1,0 +1,51 @@
+#image-box {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .preview {
+    width: 118px;
+    margin: 0 3px 3px 0;
+    background-color: whitesmoke;
+
+    &__product-image {
+      height: 118px;
+      width: 118px;
+    }
+    &__action{
+      display: flex;
+      justify-content: center;
+      height: 27px;
+      border-top: solid 3px white;
+      i {
+        line-height: 27px;
+      }
+    }
+  }
+  .dropzone-area {
+    width: 100%;
+    height: 145px;
+    border: dashed 1px lightgray;
+    border-radius: 3px;
+    background-color: whitesmoke;
+    margin-bottom: 3px;
+    text-align: center;
+
+    .dropzone-box__text {
+      width: 100%;
+      height: 100%;
+      line-height: 145px;
+    }
+    .dropzone-box__icon {
+      width: 100%;
+      height: 100%;
+      line-height: 145px;
+    }
+
+    input {
+      display: none;
+    }
+  }
+}
+
