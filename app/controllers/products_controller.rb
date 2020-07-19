@@ -18,6 +18,9 @@ class ProductsController < ApplicationController
   end
 
   def purchase
+    if current_user.destination
+      @destination = Destination.find_by(user_id: current_user.id)
+    end
   end
 
 
@@ -29,6 +32,11 @@ class ProductsController < ApplicationController
   # 子カテゴリーに紐づく孫カテゴリーの配列を取得
   def get_product_category_grandchildren
     @product_category_grandchildren = ProductCategory.find("#{params[:product_category_child_id]}").children
+  end
+
+  # サイズの配列を取得
+  def get_product_size
+    @product_sizes = ProductSize.find_all_by_group "#{params[:product_size_id]}"
   end
 
 private

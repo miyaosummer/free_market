@@ -22,6 +22,22 @@ function appendProductCategoryGrandchildrenBox(insertHTML) {
   $('#grandchildren_box').append(productCategoryGrandChildrenHtml);
 }
 
+function appendProductSizeBox(insertHTML) {
+  let productSizeHtml = '';
+  productSizeHtml = 
+    `<div class='putup__main__size'>
+     <p class='putup__main__size__title'>
+     サイズ
+     <span class='putup__main__size__title__imperative'>
+     必須
+     </span>
+     </p>
+     <select class="putup__main__size__select-box" id="product_size">
+     <option value="">選択してください</option>${insertHTML}</select>
+     </div>`;
+  $('#size_box').append(productSizeHtml);
+}
+
 $(document).on("change","#product_category_parent", function() {
   let productParentCategory =  $("#product_category_parent").val();
   if (productParentCategory != "") {
@@ -34,6 +50,7 @@ $(document).on("change","#product_category_parent", function() {
     .done(function(children) {
       $("#children_box").empty();
       $("#grandchildren_box").empty();
+      $("#size_box").empty();
       let insertHTML = '';
       children.forEach(function(child) {
         insertHTML += appendOption(child);
@@ -46,9 +63,9 @@ $(document).on("change","#product_category_parent", function() {
   }else{
     $("#children_box").empty();
     $("#grandchildren_box").empty();
+    $("#size_box").empty();
   }
 });
-
 $(document).on('change', '#children_box', function() {
   let child_id = $('#product_category_children option:selected').data('category');
   if (child_id != ""){
@@ -61,6 +78,7 @@ $(document).on('change', '#children_box', function() {
     .done(function(grandchildren) {
       if (grandchildren.length != 0) {
         $("#grandchildren_box").empty();
+        $("#size_box").empty();
         let insertHTML = '';
         grandchildren.forEach(function(grandchild) {
           insertHTML += appendOption(grandchild);
@@ -73,5 +91,48 @@ $(document).on('change', '#children_box', function() {
     })
   }else{
     $("#grandchildren_box").empty();
+    $("#size_box").empty();
   }
 });
+
+$(document).on('change', '#grandchildren_box', function() {
+  let child_id = $('#product_category_children option:selected').data('category');
+  let grandchildId = $('#product_category_grandchildren option:selected').data('category');
+
+  if(clothesShoeJudgement(child_id, grandchildId) != ""){
+    $.ajax({
+      url: 'get_product_size',
+      type: 'GET',
+      data: { product_size_id: clothes_shoe_judgement_val },
+      datatype: 'json'
+    })
+    .done(function(sizes) {
+      $("#size_box").empty();
+      let insertHTML = '';
+      sizes.forEach(function(size) {
+        insertHTML += appendOption(size);
+      });
+      appendProductSizeBox(insertHTML);
+  })
+  .fail(function() {
+    alert('商品サイズの取得に失敗');
+  })
+  }else{
+    $("#size_box").empty();
+  }
+});
+
+function clothesShoeJudgement(child, grandchild) {
+  clothes_size_array     = [14, 29, 44, 57, 63, 79, 150, 163, 178, 210, 255];
+  Ladies_shoe_size_array = [68, 82];
+  Mens_shoe_size_array   = [188, 260];
+  if (clothes_size_array.includes(child) || clothes_size_array.includes(grandchild)){
+    return clothes_shoe_judgement_val = 1;
+  }else if(Ladies_shoe_size_array.includes(child) || Ladies_shoe_size_array.includes(grandchild)){
+    return clothes_shoe_judgement_val = 2;
+  }else if(Mens_shoe_size_array.includes(child) || Mens_shoe_size_array.includes(grandchild)){
+    return clothes_shoe_judgement_val = 3;
+  }else{
+    return clothes_shoe_judgement_val = "";
+  }
+}
