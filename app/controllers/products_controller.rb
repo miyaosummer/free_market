@@ -73,11 +73,6 @@ class ProductsController < ApplicationController
     if @card.blank?
       redirect_to action: "credit_new"
     else
-      if Rails.env == 'development'
-        Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      else
-        Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
-      end
       customer = Payjp::Customer.retrieve(@card.customer_id)
       customer.delete
       if @card.delete
