@@ -1,3 +1,9 @@
+.input-error{
+  margin: 20px 0px 0px 40px;
+  font-size: 14px;
+  color: red;
+}
+
 .putup{
   width: 100%;
   background-color: whitesmoke;
@@ -13,8 +19,7 @@
   }
 
   &__main{
-    width: 50%;
-    min-width: 500px;
+    max-width: 700px;
     margin:0 auto;
     background-color: white;
     &__upload{
@@ -54,6 +59,7 @@
     }
     &__text-box{
       margin: 20px 40px 0px 40px;
+      padding: 14px;
       height: 40px;
       width: calc(100% - 80px);
       border-color: #DDDDDD;
@@ -77,6 +83,7 @@
     }
     &__text-box{
       margin: 20px 40px 0px 40px;
+      padding: 14px;
       width: calc(100% - 80px);
       border-color: #DDDDDD;
       border-style: solid;
@@ -154,6 +161,7 @@
     }
     &__text-box{
       margin: 20px 40px 0px 40px;
+      padding: 14px;
       height: 40px;
       width: calc(100% - 80px);
       border-color: #DDDDDD;
