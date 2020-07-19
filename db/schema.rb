@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_26_103705) do
+ActiveRecord::Schema.define(version: 2020_07_19_081641) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "comment", null: false
@@ -46,6 +46,27 @@ ActiveRecord::Schema.define(version: 2020_06_26_103705) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_destinations_on_user_id"
+  end
+
+  create_table "drafts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "price"
+    t.bigint "seller_id"
+    t.bigint "buyer_id"
+    t.bigint "product_category_id"
+    t.string "product_condition_id"
+    t.string "postage_way_id"
+    t.string "shipping_day_id"
+    t.bigint "product_brand_id"
+    t.string "product_size_id"
+    t.string "prefecture_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["buyer_id"], name: "index_drafts_on_buyer_id"
+    t.index ["product_brand_id"], name: "index_drafts_on_product_brand_id"
+    t.index ["product_category_id"], name: "index_drafts_on_product_category_id"
+    t.index ["seller_id"], name: "index_drafts_on_seller_id"
   end
 
   create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -131,6 +152,10 @@ ActiveRecord::Schema.define(version: 2020_06_26_103705) do
   add_foreign_key "comments", "users"
   add_foreign_key "credit_cards", "users"
   add_foreign_key "destinations", "users"
+  add_foreign_key "drafts", "product_brands"
+  add_foreign_key "drafts", "product_categories"
+  add_foreign_key "drafts", "users", column: "buyer_id"
+  add_foreign_key "drafts", "users", column: "seller_id"
   add_foreign_key "favorites", "products"
   add_foreign_key "favorites", "users"
   add_foreign_key "product_images", "products"
