@@ -1,0 +1,145 @@
+= form_with model: @product, local: true, class: "putup__main__form" do |f|
+  .putup__main__upload
+    .putup__main__upload__title
+      出品画像
+      %span.putup__main__upload__title__imperative
+        必須
+    %p.putup__main__upload__description
+      最大10枚までアップロードできます
+
+      .putup__main__upload__image-box
+        = f.fields_for :product_images do |image|
+          #image-box
+            .dropzone-area
+              = image.label :image, class: "dropzone-box", for: "upload-image[0]" do
+                %p.dropzone-box__text ここをクリックして画像を追加してください
+                .dropzone-area__inputs
+                  = image.file_field :image, {'data-index': 0, name:'product[product_images_attributes][0][image]', id: "upload-image[0]", class: "upload-image"}
+  %hr.putup__main__separate-line
+
+  .putup__main__name
+    .putup__main__name__title
+      = f.label :name, "商品名"
+      %span.putup__main__name__title__imperative
+        必須
+    = f.text_field :name, placeholder: "40文字まで", class: "putup__main__name__text-box"
+  .putup__main__description 
+    .putup__main__description__title
+      = f.label :description, "商品の説明"
+      %span.putup__main__description__title__imperative
+        必須
+    = f.text_area :description, rows: "8", placeholder:"商品の説明（必須 1,000文字以内）&#13;&#10;（色、素材、重さ、定価、注意点など）&#13;&#10;&#13;&#10;例）2010年頃に1万円で購入したジャケットです。&#13;&#10;ライトグレーで傷はありません。&#13;&#10;あわせやすいのでおすすめです。".html_safe, class: "putup__main__description__text-box"
+
+  %hr.putup__main__separate-line
+
+  .putup__main__product-detail 
+    %p.putup__main__product-detail__title
+      商品の詳細
+
+  .putup__main__category 
+    %p.putup__main__category__title
+      = f.label :product_category_id, "カテゴリー"
+      %span.putup__main__category__title__imperative
+        必須
+    = f.collection_select :product_category_id, ProductCategory.where(id: 1..13), :id, :name,  {prompt: '選択してください'},{class: "putup__main__category__select-box",id: "product_category_parent"}
+    .putup__main__category__select-box--children#children_box
+    .putup__main__category__select-box--grandchildren#grandchildren_box
+    .putup__main__size__select-box--size#size_box
+
+  .putup__main__brand
+    %p.putup__main__brand__title
+      ブランド
+      %span.putup__main__brand__title__optional
+        任意
+    %input{type: "text", class: "putup__main__brand__text-box", placeholder:'例）シャネル'}
+
+  .putup__main__condition
+    %p.putup__main__condition__title
+      商品の状態
+      %span.putup__main__condition__title__imperative
+        必須
+    = f.collection_select :product_condition_id, ProductCondition.all, :name, :name,  {prompt: '選択してください'},{class: "putup__main__condition__select-box",id: "product_condition"}
+
+  %hr.putup__main__separate-line
+
+  .putup__main__delivery 
+    %p.putup__main__delivery__title
+      配送について
+      = link_to "?", 'https://www.mercari.com/jp/help_center/article/68/', class:"putup__main__delivery__title__icon" 
+
+  .putup__main__postage-way
+    %p.putup__main__postage-way__title
+      =f.label :postage_way_id, "配送料の負担"
+      %span.putup__main__postage-way__title__imperative
+        必須
+    = f.collection_select :postage_way_id, PostageWay.all, :name, :name,  {prompt: '選択してください'}, {class: "putup__main__postage-way__select-box",id: "postage_way"}
+
+  .putup__main__prefecture
+    %p.putup__main__prefecture__title
+      = f.label :prefecture_id, "発送元の地域"
+      %span.putup__main__prefecture__title__imperative
+        必須
+    = f.collection_select :prefecture_id, Prefecture.all, :name, :name,  {prompt: '選択してください'}, {class: "putup__main__prefecture__select-box",id: "prefecture"}
+
+  .putup__main__shipping-day
+    %p.putup__main__shipping-day__title
+      = f.label :shipping_day_id, "発送までの日数"
+      %span.putup__main__shipping-day__title__imperative
+        必須
+    = f.collection_select :shipping_day_id, ShippingDay.all, :name, :name, {prompt: '選択してください'}, {class: "putup__main__shipping-day__select-box", id: "shipping_day"}
+
+  %hr.putup__main__separate-line
+
+  .putup__main__price-range
+    %p.putup__main__price-range__title
+      価格（¥300〜9,999,999）
+      = link_to "?", 'https://www.mercari.com/jp/help_center/article/64/', class:"putup__main__price-range__title__icon" 
+
+  .putup__main__price
+    %ul.putup__main__price__contents
+      %li.putup__main__price__contents__content
+        .putup__main__price__contents__content__frame
+          .putup__main__price__contents__content__frame__title-box
+            %label.putup__main__price__contents__content__frame__title-box__title
+              = f.label :price, "販売価格"
+              %span.putup__main__price__contents__content__frame__title-box__title__imperative
+                必須
+          .putup__main__price__contents__content__frame__input
+            %p.putup__main__price__contents__content__frame__input__yen
+              ¥
+            = f.number_field :price, id: 'price', class: "putup__main__price__contents__content__frame__input__number-box", placeholder: '0', min: "300", max: "9999999"
+
+  .putup__main__commission
+    %ul.putup__main__commission__contents
+      %li.putup__main__commission__contents__content
+        .putup__main__commission__contents__content__frame
+          .putup__main__commission__contents__content__frame__title-box
+            %label.putup__main__commission__contents__content__frame__title-box__title
+              販売手数料（10%）
+          .putup__main__commission__contents__content__frame__input
+            %p.putup__main__commission__contents__content__frame__input__calc-result
+              ー
+
+  %hr.putup__main__separate-line
+
+  .putup__main__profit
+    %ul.putup__main__profit__contents
+      %li.putup__main__profit__contents__content
+        .putup__main__profit__contents__content__frame
+          .putup__main__profit__contents__content__frame__title-box
+            %label.putup__main__profit__contents__content__frame__title-box__title
+              販売利益
+          .putup__main__profit__contents__content__frame__input
+            %p.putup__main__profit__contents__content__frame__input__calc-result
+              ー
+
+  .putup__main__submit
+    = f.submit "出品する", class: "putup__main__submit__submit-btn"
+
+  .putup__main__draft
+    %input{type: "submit", class: "putup__main__draft__submit-btn", value:'下書きに保存'}
+
+  .putup__main__page-transition
+    %p.putup__main__page-transition__title
+      = link_to "#", class: "putup__main__page-transition__title__link" do
+        もどる
