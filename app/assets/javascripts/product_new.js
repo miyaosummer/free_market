@@ -101,7 +101,6 @@ $(function(){
   // Submitボタン押されたらエラーチェックを走らせる
   $('.putup__main__form').submit(function(e){
     if(!formChecker()){
-      console.log('formChecker=false');
       e.preventDefault();
       return false;
     }
@@ -438,7 +437,7 @@ function appendOption(category) {
 function appendProductCategoryChildrenBox(insertHTML) {
   let productCategoryChildrenHtml = '';
   productCategoryChildrenHtml = 
-    `<select class="putup__main__category__select-box" id="product_category_children">
+    `<select class="putup__main__category__select-box" id="product_category_children" name="product[product_category_id]">
        <option value="" data-category="">選択してください</option>
        ${insertHTML}</select>`;
   $('#children_box').append(productCategoryChildrenHtml);
@@ -447,7 +446,7 @@ function appendProductCategoryChildrenBox(insertHTML) {
 function appendProductCategoryGrandchildrenBox(insertHTML) {
   let productCategoryGrandChildrenHtml = '';
   productCategoryGrandChildrenHtml = 
-    `<select class="putup__main__category__select-box" id="product_category_grandchildren" name="item[category_id]">
+    `<select class="putup__main__category__select-box" id="product_category_grandchildren" name="product[product_category_id]">
        <option value="" data-category="">選択してください</option>
        ${insertHTML}</select>`;
   $('#grandchildren_box').append(productCategoryGrandChildrenHtml);
