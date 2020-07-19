@@ -11,7 +11,11 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.product_size_id = ProductSize.find_by_id(product_params[:product_size_id]).name
+    if @product.product_size_id.present?
+      @product.product_size_id = ProductSize.find_by_id(product_params[:product_size_id]).name
+    else
+      @product.product_size_id = "サイズなし"
+    end
     if @product.save
       redirect_to root_path
     else
