@@ -3,6 +3,7 @@ class DestinationsController < ApplicationController
   def new
     @user = User.find(params[:user_id])
     @destination = Destination.new
+    @card = CreditCard.find_by(user_id: current_user.id)
     #遷移元のコントローラー名、アクション名を取得
     @@path = Rails.application.routes.recognize_path(request.referer)
   end
@@ -12,7 +13,7 @@ class DestinationsController < ApplicationController
     @destination = Destination.new(destination_params)
     #住所が保存できた場合、newアクションからの遷移元により遷移先を分岐させる。
     if @destination.save && @@path[:controller] == "products" && @@path[:action] == "purchase"
-      redirect_to purchase_products_path
+      redirect_to purchase_product_path(@@path)
     elsif @destination.save && @@path[:controller] == "users" && @@path[:action] == "show"
       redirect_to user_path(current_user.id)
     else

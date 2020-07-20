@@ -3,17 +3,17 @@ class ProductsController < ApplicationController
   require "payjp"
 
   before_action :set_product_category_parent, only: :new
+  before_action :get_product, only: [:show, :destroy, :credit_new, :credit_create, :credit_destroy, :purchase, :pay]
   before_action :card_present, only:[:credit_new, :credit_destroy, :purchase]
   before_action :set_api_key
   before_action :set_customer, only:[:purchase]
   before_action :set_card_information, only:[:purchase]
-  before_action :take_card, only:[:purchase, :pay]
-  before_action :get_product, only: [:show, :destroy, :credit_new, :credit_create, :credit_destroy, :purchase, :pay]
-  before_action :authenticate_user!, only: [:new]
+  before_action :take_card, only:[:purchase, :pay,:credit_destroy]
+  before_action :authenticate_user, only: [:new]
   before_action :set_product_category_parent, only: [:new, :create, :edit, :update]
-  before_action :get_product, only: [:show, :destroy, :edit, :update]
 
   def new
+    @card = Credit_card.find_by(user_id: current_user.id)
     @product = Product.new
     @product.product_images.build
     @product_category_parents = ProductCategory.where(ancestry: nil)
@@ -49,10 +49,8 @@ class ProductsController < ApplicationController
 
   # 購入確認ページ
   def purchase
-    @@product = Product.find(params[:id])
     if @card.present?
       @user = current_user
-      @card = CreditCard.find_by(user_id: current_user.id)
       @card_brand = @card_information.brand
       case @card_brand
       when "Visa"
@@ -99,7 +97,6 @@ class ProductsController < ApplicationController
 
   # 削除
   def credit_destroy
-    @card = CreditCard.find_by(user_id: current_user.id)
     if @card.blank?
       redirect_to action: "credit_new"
     else

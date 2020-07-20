@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     if user_signed_in? && current_user.id ==  params[:id].to_i
       @user = User.find(params[:id])
       @destination = @user.destination
+      @card = CreditCard.find_by(user_id: current_user.id)
     else
       redirect_to root_path
     end
