@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   require "payjp"
 
   before_action :set_product_category_parent, only: :new
-  before_action :get_product, only: [:show, :destroy, :credit_new, :credit_create, :credit_destroy, :purchase, :pay]
+  before_action :get_product, only: [:show, :destroy, :credit_new, :credit_create, :credit_destroy, :purchase]
   before_action :card_present, only:[:credit_new, :credit_destroy, :purchase]
   before_action :set_api_key
   before_action :set_customer, only:[:purchase]
@@ -70,6 +70,7 @@ class ProductsController < ApplicationController
     if current_user.destination
       @destination = Destination.find_by(user_id: current_user.id)
     end
+    @@buy_product = @product
   end
 
   ######################## ▼ クレジットカード関連 ▼ ########################
@@ -117,15 +118,14 @@ class ProductsController < ApplicationController
     @destination = Destination.find_by(user_id: current_user.id)
     if @card.present? && @destination.present?
       charge = Payjp::Charge.create(
-        amount: @product.price,
+        amount: @@buy_product.price,
         customer: Payjp::Customer.retrieve(@card.customer_id),
         currency: 'jpy'
       )
-      @product_buyer= Product.find(params[:id])
-      @product_buyer.update(buyer_id: current_user.id)
-      redirect_to purchased_product_path(current_user.id)
+      @@buy_product.update(buyer_id: current_user.id)
+      redirect_to purchased_products_path
     else
-      redirect_to purchase_product_path(@@product.id)
+      redirect_to purchase_product_path(@@buy_product.id)
     end
   end
 
