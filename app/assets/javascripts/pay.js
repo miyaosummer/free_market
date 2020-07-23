@@ -6,9 +6,7 @@ document.addEventListener(
       let btn = document.getElementById("token_submit");
 
       btn.addEventListener("click", e => {
-        
         e.preventDefault();
-        
         let card = {
           number: document.getElementById("card_number").value,
           cvc: document.getElementById("cvc").value,
