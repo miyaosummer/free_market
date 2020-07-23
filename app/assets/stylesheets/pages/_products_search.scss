@@ -1,0 +1,141 @@
+.search-area{
+  width: 100%;
+  min-width: 750px;
+  height: auto;
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  background-color: whitesmoke;
+  .results{
+    width: 750px;
+    height: auto;
+    margin : 50px 0px;
+    &__title{
+      text-align: center;
+      &__present{
+        font-size: 20px;
+        font-weight: bold;
+        color: black;
+        padding: 0.1em 1em;
+        border-top: solid 2px #99FFFF;
+        border-bottom: solid 2px #99FFFF;
+      }
+      &__nil{
+        font-size: 20px;
+        font-weight: bold;
+        color: black;
+        padding: 0.1em 1em;
+        border-top: solid 2px #99FFFF;
+        border-bottom: solid 2px #99FFFF;
+      }
+    }
+    &__main{
+      display: flex;
+      justify-content: left;
+      flex-wrap: wrap;
+      margin-top: 10px;
+      .item {
+        width: 220px;
+        height: 240px;
+        margin: 10px;
+        background-color: $white;
+        box-shadow: 0 0 10px rgba($black,0.2);
+  
+        a {
+          text-decoration: none;
+        }
+    
+        &:hover {
+          opacity: 0.5 ;
+        }
+    
+        &--soldout {
+          position: relative;
+    
+          &:before {
+            content: "";
+            position: absolute;
+            z-index: 10;
+            left: 0;
+            top: 0;
+            border-bottom: 5em solid transparent;
+            border-left: 5em solid $main-color;
+          }
+          &:after {
+            content: "SOLD";
+            position: absolute;
+            color: $white;
+            font-weight: bold;
+            letter-spacing: 2px;
+            z-index: 11;
+            left: 5px;
+            top: 18px;
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+          }
+        }
+    
+        &--nil {
+          height: 150px;
+          line-height: 150px;
+          margin: 0 auto;
+        }
+    
+        &__image-box{
+          width: 220px;
+          height: 150px;
+          position: relative;
+          overflow: hidden;
+          margin: 0;
+          z-index: auto;
+    
+          &__image {
+            position: absolute;
+            width: 100%;
+            height: 150px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: auto;
+            object-fit: cover;
+          }
+        }
+    
+        &__caption {
+          width: 100%;
+          padding: 16px;
+    
+          &__name {
+            color: $black;
+            line-height: 1.5;
+            font-size: 16px;
+            text-align: left;
+          }
+    
+          &__details {
+            display: flex;
+            justify-content: space-between;
+            
+            &__price {
+              color: $black;
+              &::after {
+                content: "円";
+              }
+            }
+    
+            &__like {
+              color: $black;
+            }
+          }
+    
+          &__tax {
+             color: $black;
+             font-size: 10px;
+             text-align: left;
+          }
+        }
+      }
+    }
+  }
+}
