@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :destinations ,only: [:index, :new, :create, :edit, :update] 
   end
   resources :logs ,only: :index
-  resources :products ,only: [:new, :show] do
+  resources :products ,only: [:new, :create, :show, :edit, :index] do
     member do
       get 'credit_new', to:'products#credit_new'
       post 'credit_create', to:'products#credit_create'

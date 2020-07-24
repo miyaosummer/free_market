@@ -8,9 +8,9 @@
       %p 購入が完了しました
     .purchased__container__transition
       .purchased__container__transition__top
-        =link_to "トップページへ戻る", root_path , class: "purchased__transition__top"
+        = link_to "トップページへ戻る", root_path, class: "purchased__transition__top"
       .purchased__container__transition__mypage
-        =link_to "マイページへ戻る", user_path , class: "purchased__transition__mypage"
+        = link_to "マイページへ戻る", user_path(current_user.id), class: "purchased__transition__mypage"
 
 
   .purchased__footer
