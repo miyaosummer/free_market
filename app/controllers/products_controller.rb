@@ -7,8 +7,8 @@ class ProductsController < ApplicationController
   before_action :set_api_key
   before_action :set_customer, only:[:purchase]
   before_action :set_card_information, only:[:purchase]
-  before_action :take_card, only:[:purchase, :pay,:credit_destroy]
-  before_action :get_product, only: [:show, :destroy, :credit_new, :credit_create, :credit_destroy, :purchase]
+  before_action :take_card, only:[:purchase, :pay, :credit_destroy]
+  before_action :get_product, only: [:show, :destroy, :edit, :update, :credit_new, :credit_create, :credit_destroy, :purchase]
   before_action :authenticate_user!, only: :new
   before_action :set_product_category_parent, only: [:new, :create, :edit, :update]
   
