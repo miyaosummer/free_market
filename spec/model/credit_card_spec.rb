@@ -23,4 +23,5 @@ describe CreditCard do
       expect(card.errors[:card_id]).to include("can't be blank")
     end
   end
+  
 end

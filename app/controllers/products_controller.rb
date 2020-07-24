@@ -9,11 +9,11 @@ class ProductsController < ApplicationController
   before_action :set_customer, only:[:purchase]
   before_action :set_card_information, only:[:purchase]
   before_action :take_card, only:[:purchase, :pay,:credit_destroy]
-  before_action :authenticate_user, only: [:new]
+  before_action :authenticate_user!, only: :new
   before_action :set_product_category_parent, only: [:new, :create, :edit, :update]
 
   def new
-    @card = Credit_card.find_by(user_id: current_user.id)
+    # @card = Credit_card.find_by(user_id: current_user.id)
     @product = Product.new
     @product.product_images.build
     @product_category_parents = ProductCategory.where(ancestry: nil)
