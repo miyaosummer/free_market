@@ -10,19 +10,20 @@
     position: absolute;
     background-color:white;
     height: 448px;
+    z-index: 1;
     &__parents{
-      box-shadow: 0 1px 1px 0 black;
+      box-shadow: 0 0 1px 0 black;
       width: 200px;
       overflow: hidden;
     }
     &__children{
-      box-shadow: 0 1px 1px 0 black;
+      box-shadow: 0 0 1px 0 black;
       background-color: white;
       overflow: hidden;
     }
     &__grand-children{
       background-color: white;
-      box-shadow: 0 1px 1px 0 black;
+      box-shadow: 0 0 1px 0 black;
       overflow: hidden;
     }
     .parent_category{

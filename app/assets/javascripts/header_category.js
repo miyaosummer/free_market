@@ -24,6 +24,9 @@ $(function() {
       //孫カテゴリも削除する。理由は同上
       $(".grand_child_category").remove();
     });
+    $(".nav__left__category__title").on("mouseout", function() {
+      $('.nav__left__category__title').css('font-weight','normal')
+    });
 
     $(".parent_category").on("mouseover", function() {
       //マウスが乗っているリンクのid番号を取得する
