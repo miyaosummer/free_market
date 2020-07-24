@@ -88,7 +88,7 @@ class UsersController < ApplicationController
   private
 
   def card_present
-    @card = CreditCard.where(user_id: current_user.id).first if CreditCard.where(user_id: current_user.id).present?
+    @card = CreditCard.find_by(user_id: current_user.id) if CreditCard.find_by(user_id: current_user.id).present?
   end
 
   def set_api_key

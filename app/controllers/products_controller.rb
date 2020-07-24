@@ -133,7 +133,7 @@ class ProductsController < ApplicationController
 
   # 購入
   def pay
-    @card = CreditCard.where(user_id: current_user.id).first
+    @card = CreditCard.find_by(user_id: current_user.id)
     @destination = Destination.find_by(user_id: current_user.id)
     if @card.present? && @destination.present?
       charge = Payjp::Charge.create(
@@ -198,7 +198,7 @@ private
   end
 
   def card_present
-    @card = CreditCard.where(user_id: current_user.id).first if CreditCard.where(user_id: current_user.id).present?
+    @card = CreditCard.find_by(user_id: current_user.id) if CreditCard.find_by(user_id: current_user.id).present?
   end
 
   def set_api_key
