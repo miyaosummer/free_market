@@ -256,6 +256,10 @@ a{
               border: 1px solid $main-color;
               border-radius: 100px;
             }
+            &__unlogin{
+              font-weight: bold;
+              color: $black;
+            }
           }
         }
       }

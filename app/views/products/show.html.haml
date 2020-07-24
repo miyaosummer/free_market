@@ -163,17 +163,24 @@
                     = icon('fa', 'flag')
                     不適切な商品の通報
 
+        -# コメント投稿フォーム↓（このコメントは後ほど削除予定）
         .show__main__product__content__comment
+          -# ユーザーの投稿したコメントの表示（このコメントは後ほど削除予定）
           %ul.show__main__product__content__comment__text
-          %form(class="show__main__product__content__comment__form" action="#" method="post")
-            %textarea(name="" class="show__main__product__content__comment__form__textarea" id="comment_body")
-            %p.show__main__product__content__comment__form__notice
-              相手のことを考え丁寧なコメントを心がけましょう。
-              %br/
-              不快な言葉遣いなどは利用制限や退会処分となることがあります。
-            %button(name="button" class="show__main__product__content__comment__form__button" type="submit" )
-              = icon('fa', 'comment')
-              コメントする
+          -# ユーザーがログインしているか否かでコメント投稿フォームの表示切り替え
+          - if current_user
+            %form(class="show__main__product__content__comment__form" action="#" method="post")
+              %textarea(name="" class="show__main__product__content__comment__form__textarea" id="comment_body")
+              %p.show__main__product__content__comment__form__notice
+                相手のことを考え丁寧なコメントを心がけましょう。
+                %br/
+                不快な言葉遣いなどは利用制限や退会処分となることがあります。
+              %button(name="button" class="show__main__product__content__comment__form__button" type="submit" )
+                = icon('fa', 'comment')
+                コメントする
+          - else 
+            %p.show__main__product__content__comment__form__unlogin
+              ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
 
       %ul.show__main__product__links 
         %li
