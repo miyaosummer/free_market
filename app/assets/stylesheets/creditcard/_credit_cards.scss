@@ -47,35 +47,6 @@
         &__image {
           display: flex;
           margin: 6px 0 0 216px;
-          .visa {
-            -webkit-animation: fadeIn 1.0s ease;
-            animation: fadeIn 1.0s ease;
-          }
-          .mastercard {
-            -webkit-animation: fadeIn 1.5s ease;
-            animation: fadeIn 1.5s ease;
-            margin-left: 2px;
-          }
-          .JCB {
-            -webkit-animation: fadeIn 2.0s ease;
-            animation: fadeIn 2.0s ease;
-            margin-left: 2px;
-          }
-          .AmericanExpress {
-            -webkit-animation: fadeIn 2.5s ease;
-            animation: fadeIn 2.5s ease;
-            margin-left: 2px;
-          }
-          .DinersClub {
-            -webkit-animation: fadeIn 3.0s ease;
-            animation: fadeIn 3.0s ease;
-            margin-left: 2px;
-          }
-          .DISCOVER {
-            -webkit-animation: fadeIn 3.5s ease;
-            animation: fadeIn 3.5s ease;
-            margin-left: 2px;
-          }
         }
         
         .form-require {
@@ -243,4 +214,34 @@
   to {
     opacity: 1;
   }
+}
+
+.visa {
+  -webkit-animation: fadeIn 1.0s ease;
+  animation: fadeIn 1.0s ease;
+}
+.mastercard {
+  -webkit-animation: fadeIn 1.5s ease;
+  animation: fadeIn 1.5s ease;
+  margin-left: 2px;
+}
+.JCB {
+  -webkit-animation: fadeIn 2.0s ease;
+  animation: fadeIn 2.0s ease;
+  margin-left: 2px;
+}
+.AmericanExpress {
+  -webkit-animation: fadeIn 2.5s ease;
+  animation: fadeIn 2.5s ease;
+  margin-left: 2px;
+}
+.DinersClub {
+  -webkit-animation: fadeIn 3.0s ease;
+  animation: fadeIn 3.0s ease;
+  margin-left: 2px;
+}
+.DISCOVER {
+  -webkit-animation: fadeIn 3.5s ease;
+  animation: fadeIn 3.5s ease;
+  margin-left: 2px;
 }
