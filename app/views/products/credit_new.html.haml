@@ -21,17 +21,17 @@
             = text_field_tag "number", "", class: "number", placeholder: "半角数字のみ", maxlength: "16", type: "text", id: "card_number"
             .signup-creditcard__main__container__register-form__image
               .visa
-                = image_tag "visa.png", size: "64x24"
+                = image_tag asset_path("visa.png", size: "64x24")
               .mastercard
-                = image_tag "mastercard.png", size: "32x24"
+                = image_tag asset_path("mastercard.png", size: "32x24")
               .JCB
-                = image_tag "JCB.png", size: "32x24"
+                = image_tag asset_path("JCB.png", size: "32x24")
               .AmericanExpress
-                = image_tag "AmericanExpress.png", size: "24x24"
+                = image_tag asset_path("AmericanExpress.png", size: "24x24")
               .DinersClub
-                = image_tag "DinersClub.png", size: "72x24"
+                = image_tag asset_path("DinersClub.png", size: "72x24")
               .DISCOVER
-                = image_tag "DISCOVER.png", size: "32x24"
+                = image_tag asset_path("DISCOVER.png", size: "32x24")
 
             -# 有効期限 入力フォーム
             .signup-creditcard__main__container__register-form__label
