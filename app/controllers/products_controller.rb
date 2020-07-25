@@ -7,6 +7,8 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @product.comments.includes(:user)
   end
   
   def destroy
