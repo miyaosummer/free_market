@@ -152,7 +152,7 @@
                   %li.show__main__product__content__information__option__btn--purchase
                     -# ユーザーがログインしているか否かで場合分け
                     - if user_signed_in?
-                      = link_to purchase_products_path(@product), class: "show__main__product__content__information__option__btn--purchase" do
+                      = link_to purchase_product_path(@product), class: "show__main__product__content__information__option__btn--purchase" do
                         購入画面に進む
                     - else 
                       = link_to new_user_session_path, class: "show__main__product__content__information__option__btn--purchase" do
