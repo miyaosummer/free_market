@@ -2,9 +2,10 @@
   box-sizing: border-box;
 }
 
-.input-error {
-  margin: 20px 0px 0px 40px;
-  font-size: 14px;
+.creditcard-error {
+  margin: 12px 0px 0px 176px;
+  font-size: 12px;
+  font-weight: 600;
   color: red;
 }
 
@@ -42,13 +43,12 @@
 
       &__register-form {
         text-align: left;
+
+        //-- カード番号 入力フォーム --//
         &__label {
           font-size: 14px;
           font-weight: 600;
           margin: 36px 0 0 216px;
-        }
-        .icon {
-          color: gray;
         }
         &__image {
           display: flex;
@@ -65,12 +65,15 @@
           padding: 4px;
           vertical-align: top;
         }
+        .creditcard-icon {
+          color: gray;
+        }
         .term-label {
           font-size: 12px;
         }
 
         //-- input関連 --//
-        .number, .cvc {
+        .creditcard-number, .cvc {
           height: 50px;
           width: 300px;
           border: 1px solid #CCCCCC;
@@ -79,7 +82,7 @@
           margin: 4px 0 0 216px;
           padding: 12px;
         }
-        .number:focus, .cvc:focus {
+        .creditcard-number:focus, .cvc:focus {
           border: 1px solid $main-color;
           outline: 0;
         }
@@ -203,51 +206,4 @@
       padding: 12px;
     }
   }
-}
-
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.visa {
-  -webkit-animation: fadeIn 1.0s ease;
-  animation: fadeIn 1.0s ease;
-}
-.mastercard {
-  -webkit-animation: fadeIn 1.5s ease;
-  animation: fadeIn 1.5s ease;
-  margin-left: 2px;
-}
-.JCB {
-  -webkit-animation: fadeIn 2.0s ease;
-  animation: fadeIn 2.0s ease;
-  margin-left: 2px;
-}
-.AmericanExpress {
-  -webkit-animation: fadeIn 2.5s ease;
-  animation: fadeIn 2.5s ease;
-  margin-left: 2px;
-}
-.DinersClub {
-  -webkit-animation: fadeIn 3.0s ease;
-  animation: fadeIn 3.0s ease;
-  margin-left: 2px;
-}
-.DISCOVER {
-  -webkit-animation: fadeIn 3.5s ease;
-  animation: fadeIn 3.5s ease;
-  margin-left: 2px;
 }

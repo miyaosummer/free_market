@@ -10,67 +10,70 @@
           .mypage-card__main__container__register-form
             
             -# カード番号 入力フォーム
-            .mypage-card__main__container__register-form__label
-              = icon 'fas', 'credit-card', class: "icon"
-              %label カード番号
-              %span.form-require 必須
-            = text_field_tag "number", "", class: "number", placeholder: "半角数字のみ", maxlength: "16", type: "text", id: "card_number"
-            .mypage-card__main__container__register-form__image
-              .visa
-                = image_tag asset_path("visa.png"), size: "64x24"
-              .mastercard
-                = image_tag asset_path("mastercard.png"), size: "32x24"
-              .JCB
-                = image_tag asset_path("JCB.png"), size: "32x24"
-              .AmericanExpress
-                = image_tag asset_path("AmericanExpress.png"), size: "24x24"
-              .DinersClub
-                = image_tag asset_path("DinersClub.png"), size: "72x24"
-              .DISCOVER
-                = image_tag asset_path("DISCOVER.png"), size: "32x24"
+            .mypage-card__main__container__register-form__number
+              .mypage-card__main__container__register-form__number__label
+                = icon 'fas', 'credit-card', class: "creditcard-icon"
+                %label カード番号
+                %span.form-require 必須
+              = text_field_tag "number", "", class: "creditcard-number", placeholder: "半角数字のみ", maxlength: "16", type: "text", id: "card_number"
+              .mypage-card__main__container__register-form__number__image
+                .mypage-visa
+                  = image_tag asset_path("visa.png"), size: "64x24"
+                .mypage-mastercard
+                  = image_tag asset_path("mastercard.png"), size: "32x24"
+                .mypage-JCB
+                  = image_tag asset_path("JCB.png"), size: "32x24"
+                .mypage-AmericanExpress
+                  = image_tag asset_path("AmericanExpress.png"), size: "24x24"
+                .mypage-DinersClub
+                  = image_tag asset_path("DinersClub.png"), size: "72x24"
+                .mypage-DISCOVER
+                  = image_tag asset_path("DISCOVER.png"), size: "32x24"
 
             -# 有効期限 入力フォーム
-            .mypage-card__main__container__register-form__label
-              = icon 'fas', 'stopwatch', class: "icon"
-              %label 有効期限
-              %span.form-require 必須
+            .mypage-card__main__container__register-form__period
+              .mypage-card__main__container__register-form__period__label
+                = icon 'fas', 'stopwatch', class: "creditcard-icon"
+                %label 有効期限
+                %span.form-require 必須
 
-            .term
-              %select{ name: "exp_month", type: "text", class: "input-term", id: "exp_month"}
-                %option{ value: "1"} 01
-                %option{ value: "2"} 02
-                %option{ value: "3"} 03
-                %option{ value: "4"} 04
-                %option{ value: "5"} 05
-                %option{ value: "6"} 06
-                %option{ value: "7"} 07
-                %option{ value: "8"} 08
-                %option{ value: "9"} 09
-                %option{ value: "10"}10
-                %option{ value: "11"}11
-                %option{ value: "12"}12
-              %span.term-label 月
+              .term
+                %select{ name: "exp_month", type: "text", class: "input-term", id: "exp_month"}
+                  %option{ value: "1"} 01
+                  %option{ value: "2"} 02
+                  %option{ value: "3"} 03
+                  %option{ value: "4"} 04
+                  %option{ value: "5"} 05
+                  %option{ value: "6"} 06
+                  %option{ value: "7"} 07
+                  %option{ value: "8"} 08
+                  %option{ value: "9"} 09
+                  %option{ value: "10"}10
+                  %option{ value: "11"}11
+                  %option{ value: "12"}12
+                %span.term-label 月
 
-              %select{ name: "exp_year", type: "text", class: "input-term", id: "exp_year"}
-                %option{ value: "2020"} 20
-                %option{ value: "2021"} 21
-                %option{ value: "2022"} 22
-                %option{ value: "2023"} 23
-                %option{ value: "2024"} 24
-                %option{ value: "2025"} 25
-                %option{ value: "2026"} 26
-                %option{ value: "2027"} 27
-                %option{ value: "2028"} 28
-                %option{ value: "2029"} 29
-                %option{ value: "2030"} 30
-              %span.term-label 年
+                %select{ name: "exp_year", type: "text", class: "input-term", id: "exp_year"}
+                  %option{ value: "2020"} 20
+                  %option{ value: "2021"} 21
+                  %option{ value: "2022"} 22
+                  %option{ value: "2023"} 23
+                  %option{ value: "2024"} 24
+                  %option{ value: "2025"} 25
+                  %option{ value: "2026"} 26
+                  %option{ value: "2027"} 27
+                  %option{ value: "2028"} 28
+                  %option{ value: "2029"} 29
+                  %option{ value: "2030"} 30
+                %span.term-label 年
 
             -# セキュリティコード入力フォーム
-            .mypage-card__main__container__register-form__label
-              = icon 'fas', 'key', class: "icon"
-              %label セキュリティコード
-              %span.form-require 必須
-            = text_field_tag "cvc", "", class: "cvc", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc"
+            .mypage-card__main__container__register-form__security
+              .mypage-card__main__container__register-form__security__label
+                = icon 'fas', 'key', class: "creditcard-icon"
+                %label セキュリティコード
+                %span.form-require 必須
+              = text_field_tag "cvc", "", class: "cvc", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc"
 
             #card_token
             .mypage-card__main__container__register-form__btn
