@@ -1,4 +1,4 @@
-//---- validates ----//
+//---- validates < mypage > ----//
 $(function(){
   // エラーメッセージ生成
   function buildInputError(text) {
@@ -65,9 +65,7 @@ $(function(){
 });
 
 
-
-
-//---- validates ----//
+//---- validates < purchase page > ----//
 $(function(){
   // エラーメッセージ生成
   function buildInputError(text) {
