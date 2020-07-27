@@ -24,6 +24,18 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    # @grandchild = @product.product_category
+    # @child = @grandchild.parent
+    # @parent = @grandchild.parent.parent
+    # 親セレクトボックスの初期値(配列)
+    @category_parent_array = ProductCategory.where(ancestry: nil).each do |parent|
+    # categoriesテーブルから親カテゴリーのみを抽出、配列に格納
+  
+      
+    end
+    @category_child_array = @product.product_category.parent.parent.children
+    @category_grandchild_array = @product.product_category.parent.children
+    @product_size = @product.product_size
   end
 
   def update
