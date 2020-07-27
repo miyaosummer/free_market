@@ -2,6 +2,13 @@
   box-sizing: border-box;
 }
 
+.mypage-creditcard-error {
+  margin: 12px 0px 0px 176px;
+  font-size: 12px;
+  font-weight: 600;
+  color: red;
+}
+
 //---- クレジットカード未登録 ----//
 .mypage-card {
   width: auto;
@@ -57,7 +64,6 @@
             }
           }
         }
-
         //-- 有効期限 入力フォーム --//
         &__period {
           &__label {
@@ -66,7 +72,6 @@
             margin: 36px 0 0 176px;
           }
         }
-
         //-- セキュリティコード入力フォーム --//
         &__security {
           &__label {

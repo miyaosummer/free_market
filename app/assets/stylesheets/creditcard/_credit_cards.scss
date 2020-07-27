@@ -3,7 +3,7 @@
 }
 
 .creditcard-error {
-  margin: 12px 0px 0px 176px;
+  margin: 12px 0px 0px 216px;
   font-size: 12px;
   font-weight: 600;
   color: red;
@@ -45,16 +45,49 @@
         text-align: left;
 
         //-- カード番号 入力フォーム --//
-        &__label {
-          font-size: 14px;
-          font-weight: 600;
-          margin: 36px 0 0 216px;
+        &__number {
+          &__label {
+            font-size: 14px;
+            font-weight: 600;
+            margin: 36px 0 0 216px;
+          }
+          &__image {
+            display: flex;
+            margin: 6px 0 0 216px;
+            .mastercard {
+              margin-left: 2px;
+            }
+            .JCB {
+              margin-left: 2px;
+            }
+            .AmericanExpress {
+              margin-left: 2px;
+            }
+            .DinersClub {
+              margin-left: 2px;
+            }
+            .DISCOVER {
+              margin-left: 2px;
+            }
+          }
         }
-        &__image {
-          display: flex;
-          margin: 6px 0 0 216px;
+        //-- 有効期限 入力フォーム --//
+        &__period {
+          &__label {
+            font-size: 14px;
+            font-weight: 600;
+            margin: 36px 0 0 216px;
+          }
         }
-        
+        //-- セキュリティコード入力フォーム --//
+        &__security {
+          &__label {
+            font-size: 14px;
+            font-weight: 600;
+            margin: 36px 0 0 216px;
+          }
+        }
+
         .form-require {
           background-color: $main-color;
           color: $white;
