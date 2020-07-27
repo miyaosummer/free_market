@@ -41,27 +41,32 @@
                 = link_to "削除する", product_path(@product), class: "show__main__product__content__information__btn--delete", method: :delete
           -else
 
-          -# 商品が存在しているか否かで場合分け
+          -# ↓複数画像表示の修正予定（このコメントは後ほど削除する）
+          -# 商品が存在しているか否かで売り切れ表示の場合分け
           -if @product.buyer_id.present?
-            .show__main__product__content__information__body
-              %ul 
-                %li
+            .show__main__product__content__information__image
+              %ul.show__main__product__content__information__image__top
+                %li.show__main__product__content__information__image__top--list
                   = image_tag @product.product_images[0].image.url
-                  %ul
-                    %li
-                      = image_tag @product.product_images[0].image.url
+              %ul.show__main__product__content__information__image__sub
+                - @product.product_images.each do |product_image|
+                  %li.show__main__product__content__information__image__sub--list
+                    = image_tag product_image.image.url
+                    -# 子画像3枚区切りで表示する（このコメントは後ほど削除する）
                       
-              .show__main__product__content__information__body--soldout
+              .show__main__product__content__information__image--soldout
 
           -else
-            .show__main__product__content__information__body
-              %ul 
-                %li
+            .show__main__product__content__information__image
+              %ul.show__main__product__content__information__image__top
+                %li.show__main__product__content__information__image__top--list
                   = image_tag @product.product_images[0].image.url
-                  %ul
-                    %li
-                      = image_tag @product.product_images[0].image.url
-                    
+              %ul.show__main__product__content__information__image__sub
+                - @product.product_images.each do |product_image|
+                  %li.show__main__product__content__information__image__sub--list
+                    = image_tag product_image.image.url
+                    -# 子画像3枚区切りで表示する（このコメントは後ほど削除する）
+
           .show__main__product__content__information__price
             %span
               ¥
@@ -141,6 +146,7 @@
                 %li.show__main__product__content__information__option__btn--favorite
                   = icon('fa', 'star')
                   お気に入り 0
+
               -# 商品が品切れかどうかで場合分け
               - if @product.buyer_id != nil
                 %ul.show__main__product__content__information__option__btn
@@ -163,21 +169,20 @@
                     = icon('fa', 'flag')
                     不適切な商品の通報
 
-        -# コメント投稿フォーム↓（このコメントは後ほど削除予定）
         .show__main__product__content__comment
-          -# ユーザーの投稿したコメントの表示（このコメントは後ほど削除予定）
           %ul.show__main__product__content__comment__text
+            -# %h4＜コメント一覧＞ ※入れるか迷い中
+            - if @comments
+              - @comments.each do |comment| 
+                %li.show__main__product__content__comment__text__list
+                  .show__main__product__content__comment__text__list--name
+                    = comment.user.nickname
+                    ：
+                  .show__main__product__content__comment__text__list--sentence
+                    = comment.comment
+                
           -# ユーザーがログインしているか否かでコメント投稿フォームの表示切り替え
           - if current_user
-            -# %form(class="show__main__product__content__comment__form" action="#" method="post")
-            -#   %textarea(name="" class="show__main__product__content__comment__form__textarea" id="comment_body")
-            -#   %p.show__main__product__content__comment__form__notice
-            -#     相手のことを考え丁寧なコメントを心がけましょう。
-            -#     %br/
-            -#     不快な言葉遣いなどは利用制限や退会処分となることがあります。
-            -#   %button(name="button" class="show__main__product__content__comment__form__button" type="submit" )
-            -#     = icon('fa', 'comment')
-            -#     コメントする
             = form_with(model: [@product, @comment], class: "show__main__product__content__comment__form", local: true) do |form|
               = form.text_area :comment, placeholder: "", class: "show__main__product__content__comment__form__textarea", id: "comment_body"
               %p.show__main__product__content__comment__form__notice

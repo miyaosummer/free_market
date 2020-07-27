@@ -2,11 +2,6 @@
   box-sizing: border-box;
 }
 
-img {
-  // width: 100%;
-  vertical-align: bottom;
-}
-
 a{
   text-decoration: none;
 }
@@ -76,33 +71,37 @@ a{
             }
           }
 
-          &__body{
+          &__image{
             margin: 16px 0 0;
             position: relative;
-            ul{
+            &__top{
               width: 560px;
               margin: 0 auto;
               display: flex;
-              li{
+              &--list{
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 img{
                   height: 346px;
+                  width: 100%;
                   object-fit: cover;
+                  vertical-align: bottom;
                 }
-                ul{
-                  margin-top: 10px;
-                  display: flex;
-                  justify-content: center;
-                  li{
-                    width: 25%;
-                    margin: 0 10px 0 0;
-                    img{
-                      height: 87px;
-                      object-fit: cover;
-                    }
-                  }
+              }
+            }
+            &__sub{
+              margin-top: 10px;
+              display: flex;
+              justify-content: center;
+              &--list{
+                width: 25%;
+                margin: 0 10px 0 0;
+                img{
+                  height: 87px;
+                  width: 100%;
+                  object-fit: cover;
+                  vertical-align: bottom;
                 }
               }
             }
@@ -150,6 +149,7 @@ a{
             line-height: 1.5;
             font-size: 18px;
             margin-bottom: 30px;
+            word-wrap: normal;
           }
           
           &__table{
@@ -230,7 +230,21 @@ a{
           margin: 10px 0;
           text-align: center;
           &__text{
-           
+            padding-bottom: 24px;
+            &__list{
+              // 調整中
+              margin: 15px;
+              // padding: 5px;
+              // margin-top: 15px;
+              display: flex;
+              justify-content: space-between;
+              &--name{
+                
+              }
+              &--sentence{
+                
+              }
+            }
           }
           #comment_body{
             width: 100%;
