@@ -124,6 +124,13 @@
     }
     &__select-box--grandchildren{
     }
+    .box--parent{
+      margin: 20px 40px 0px 40px;
+      height: 40px;
+      width: calc(100% - 80px);
+      border-color: #DDDDDD;
+      border-radius: 5px;
+    }
     .box--child{
       margin: 20px 40px 0px 40px;
       height: 40px;

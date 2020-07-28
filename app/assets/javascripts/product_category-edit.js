@@ -39,9 +39,19 @@ function appendProductSizeBox(insertHTML) {
   $('#size_box').append(productSizeHtml);
 }
 
-$(document).on("change","#product_category_parent", function() {
-  let productParentCategory =  $("#product_category_parent").val();
-  console.log(productParentCategory)
+$(document).on("change",".box--parent", function() {
+  let productParentCategory =  $(".box--parent").val();
+
+  if (!productParentCategory){
+    $(".box--child").remove();
+    $(".box--grand-child").remove();
+    $(".putup__main__size").remove();
+    $("#children_box").empty();
+    $("#grandchildren_box").empty();
+    $("#size_box").empty();
+    return false;
+  }
+
   if (productParentCategory != "") {
     $.ajax( {
       type: 'GET',
@@ -52,6 +62,7 @@ $(document).on("change","#product_category_parent", function() {
     .done(function(children) {
       $(".box--child").remove();
       $(".box--grand-child").remove();
+      $(".putup__main__size").remove();
       $("#children_box").empty();
       $("#grandchildren_box").empty();
       $("#size_box").empty();
@@ -67,16 +78,26 @@ $(document).on("change","#product_category_parent", function() {
   }else{
     $(".box--child").remove();
     $(".box--grand-child").remove();
+    $(".putup__main__size").remove();
     $("#children_box").empty();
     $("#grandchildren_box").empty();
     $("#size_box").empty();
   }
 });
-$(document).on('change', '#children_box', function() {
+$(document).on('change', '.box--child', function() {
   // let child_id = $('#product_category_children').data('category');
   let child_id = $(this).val()
-  console.log($(this))
-  console.log(child_id)
+  // console.log($(this))
+  // console.log(child_id)
+
+  if (!child_id){
+    $(".box--grand-child").remove();
+    $(".putup__main__size").remove();
+    $("#grandchildren_box").empty();
+    $("#size_box").empty();
+    return false;
+  }
+
   if (child_id != ""){
     $.ajax({
       url: 'get_product_category_grandchildren',
@@ -87,6 +108,7 @@ $(document).on('change', '#children_box', function() {
     .done(function(grandchildren) {
       if (grandchildren.length != 0) {
         $(".box--grand-child").remove();
+        $(".putup__main__size").remove();
         $("#grandchildren_box").empty();
         $("#size_box").empty();
         let insertHTML = '';
@@ -101,16 +123,17 @@ $(document).on('change', '#children_box', function() {
     })
   }else{
     $(".box--grand-child").remove();
+    $(".putup__main__size").remove();
     $("#grandchildren_box").empty();
     $("#size_box").empty();
   }
 });
 
-$(document).on('change', '#grandchildren_box', function() {
-  let child_id = $('#children_box').val()
-  let grandchildId = $('#product_category_grandchildren option:selected').data('category');
+$(document).on('change', '.putup__main__category__select-box--grandchildren', function() {
+  let child_id = $('.box--child').val()
+  let grandchildId = $('.box--grand-child').val();
+  // console.log("うんこ")
   console.log(child_id)
-  console.log(grandchildId)
   if(clothesShoeJudgement(child_id, grandchildId) != ""){
     $.ajax({
       url: 'get_product_size',

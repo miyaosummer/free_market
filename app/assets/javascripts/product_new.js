@@ -515,6 +515,8 @@ $(document).on('change', '#children_box', function() {
 $(document).on('change', '#grandchildren_box', function() {
   let child_id = $('#product_category_children option:selected').data('category');
   let grandchildId = $('#product_category_grandchildren option:selected').data('category');
+  console.log = (child_id)
+  console.log = (grandchildId)
 
   if(clothesShoeJudgement(child_id, grandchildId) != ""){
     $.ajax({
