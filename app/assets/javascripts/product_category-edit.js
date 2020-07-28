@@ -38,7 +38,7 @@ function appendProductSizeBox(insertHTML) {
      </div>`;
   $('#size_box').append(productSizeHtml);
 }
-
+//編集時、親カテゴリが変更された時に、すでに存在していた子カテゴリ〜サイズのセレクトボックスを削除する。
 $(document).on("change",".box--parent", function() {
   let productParentCategory =  $(".box--parent").val();
 
@@ -84,6 +84,7 @@ $(document).on("change",".box--parent", function() {
     $("#size_box").empty();
   }
 });
+//編集時、子カテゴリが変更された時に、すでに存在していた孫カテゴリ〜サイズのセレクトボックスを削除する。
 $(document).on('change', '.box--child', function() {
   let child_id = $(this).val()
 

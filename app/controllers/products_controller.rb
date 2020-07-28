@@ -24,10 +24,9 @@ class ProductsController < ApplicationController
   end
 
   def edit
-
+    #初期値となる親カテゴリ〜サイズ（あれば）を取得する
     @category_parent_array = ProductCategory.where(ancestry: nil).each do |parent|
     end
-
     @product.product_category.root
     @category_child_array = @product.product_category.root.children
     if @product.product_category.root.indirects.present?
@@ -36,16 +35,20 @@ class ProductsController < ApplicationController
     if @product.product_size.present?
       @product_size = @product.product_size
     end
+
   end
 
   def update
+    #rangeA ~ Dでサイズを持たないカテゴリidの一覧を取得。
     rangeA = ("88".."149").to_a
     rangeB = ("198".."209").to_a
     rangeC = ("216".."254").to_a
     rangeD = ("269".."380").to_a
+    #編集したカテゴリidに該当していないかチェックする。カテゴリidを持っていないカテゴリ、且つサイズidを持っている場合、サイズidを削除する
     if (rangeA.include?("#{product_params[:product_category_id]}") || rangeB.include?("#{product_params[:product_category_id]}") || rangeC.include?("#{product_params[:product_category_id]}") || rangeD.include?("#{product_params[:product_category_id]}") )&& product_params[:product_size_id].present?
       product_params[:product_size_id].chop!
     end
+    #削除したサイズidに"サイズなし"という文字列をいれる
     if product_params[:product_size_id].blank?
       @product.product_size_id = "サイズなし"
     end

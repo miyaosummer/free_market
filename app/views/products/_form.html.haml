@@ -31,7 +31,7 @@
     = f.text_area :description, rows: "8", placeholder:"商品の説明（必須 1,000文字以内）&#13;&#10;（色、素材、重さ、定価、注意点など）&#13;&#10;&#13;&#10;例）2010年頃に1万円で購入したジャケットです。&#13;&#10;ライトグレーで傷はありません。&#13;&#10;あわせやすいのでおすすめです。".html_safe, class: "putup__main__description__text-box"
 
   %hr.putup__main__separate-line
-
+  //newアクションかeditアクションによって表示をかえる
   - if controller.action_name == "new"
     .putup__main__product-detail 
     %p.putup__main__product-detail__title
@@ -54,6 +54,7 @@
         = f.label :product_category_id, "カテゴリー"
         %span.putup__main__category__title__imperative
           必須
+          //空欄になっているセレクトボックス の下に初期値を持ったセレクトボックスをそれぞれ配置
       = f.select :product_category_id, options_for_select(@category_parent_array.map{|c|[c.name, c.id]}, @product.product_category.root.id), {}, {class: "putup__main__category__select-box, box--parent",id: "product_category_parent"}
       .putup__main__category__select-box--children#children_box
       = f.select :product_category_id, options_for_select(@category_child_array.map{|c|[c[:name], c[:id], {'data-category'=>c[:id], 'id'=>c[:id]}]}, @product.product_category.parent.id), {}, {class: "putup__main__category__select-box--children, box--child",id: "product_category_children"}
