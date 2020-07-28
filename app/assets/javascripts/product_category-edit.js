@@ -85,10 +85,7 @@ $(document).on("change",".box--parent", function() {
   }
 });
 $(document).on('change', '.box--child', function() {
-  // let child_id = $('#product_category_children').data('category');
   let child_id = $(this).val()
-  // console.log($(this))
-  // console.log(child_id)
 
   if (!child_id){
     $(".box--grand-child").remove();
@@ -128,46 +125,3 @@ $(document).on('change', '.box--child', function() {
     $("#size_box").empty();
   }
 });
-
-$(document).on('change', '.putup__main__category__select-box--grandchildren', function() {
-  let child_id = $('.box--child').val()
-  let grandchildId = $('.box--grand-child').val();
-  // console.log("うんこ")
-  console.log(child_id)
-  if(clothesShoeJudgement(child_id, grandchildId) != ""){
-    $.ajax({
-      url: 'get_product_size',
-      type: 'GET',
-      data: { product_size_id: clothes_shoe_judgement_val },
-      datatype: 'json'
-    })
-    .done(function(sizes) {
-      $("#size_box").empty();
-      let insertHTML = '';
-      sizes.forEach(function(size) {
-        insertHTML += appendOption(size);
-      });
-      appendProductSizeBox(insertHTML);
-  })
-  .fail(function() {
-    alert('商品サイズの取得に失敗');
-  })
-  }else{
-    $("#size_box").empty();
-  }
-});
-
-function clothesShoeJudgement(child, grandchild) {
-  clothes_size_array     = [14, 29, 44, 57, 63, 79, 150, 163, 178, 210, 255];
-  Ladies_shoe_size_array = [68, 82];
-  Mens_shoe_size_array   = [188, 260];
-  if (clothes_size_array.includes(child) || clothes_size_array.includes(grandchild)){
-    return clothes_shoe_judgement_val = 1;
-  }else if(Ladies_shoe_size_array.includes(child) || Ladies_shoe_size_array.includes(grandchild)){
-    return clothes_shoe_judgement_val = 2;
-  }else if(Mens_shoe_size_array.includes(child) || Mens_shoe_size_array.includes(grandchild)){
-    return clothes_shoe_judgement_val = 3;
-  }else{
-    return clothes_shoe_judgement_val = "";
-  }
-}

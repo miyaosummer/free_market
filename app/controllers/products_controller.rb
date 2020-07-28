@@ -24,26 +24,32 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    # @grandchild = @product.product_category
-    # @child = @grandchild.parent
-    # @parent = @grandchild.parent.parent
-    # 親セレクトボックスの初期値(配列)
+
     @category_parent_array = ProductCategory.where(ancestry: nil).each do |parent|
     end
 
     @product.product_category.root
     @category_child_array = @product.product_category.root.children
-    # @category_grandchild_array = @product.product_category.root.indirects
     if @product.product_category.root.indirects.present?
       @category_grandchild_array = @product.product_category.parent.children
     end
     if @product.product_size.present?
       @product_size = @product.product_size
     end
-    # binding.pry
   end
 
   def update
+    rangeA = ("88".."149").to_a
+    rangeB = ("198".."209").to_a
+    rangeC = ("216".."254").to_a
+    rangeD = ("269".."380").to_a
+    if (rangeA.include?("#{product_params[:product_category_id]}") || rangeB.include?("#{product_params[:product_category_id]}") || rangeC.include?("#{product_params[:product_category_id]}") || rangeD.include?("#{product_params[:product_category_id]}") )&& product_params[:product_size_id].present?
+      product_params[:product_size_id].chop!
+    end
+    if product_params[:product_size_id].blank?
+      @product.product_size_id = "サイズなし"
+    end
+
     if @product.update(product_params)
       redirect_to root_path
     else
