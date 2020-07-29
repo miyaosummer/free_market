@@ -1,39 +1,37 @@
-.sign-up{
+.sign-up {
   height: 100vh;
   width: 100%;
   background-color: whitesmoke;
-  &__header{
+  &__header {
     text-align: center;
-    &__logo{
-      margin:30px 0px;
+    &__logo {
+      margin: 30px 0px;
       width: 150px;
     }
-    &__logo:hover{
+    &__logo:hover {
       opacity: 0.7;
     }
   }
-  &__main{
+  &__main {
     text-align: center;
-    &__form{
+    &__form {
       background-color: white;
       box-shadow: 0 0 4px gray;
       height: auto;
       width: 32%;
       min-width: 500px;
       margin: 0 auto;
-      &__index{
-        border-bottom:1px lightgray solid ;
+      &__index {
+        border-bottom: 1px solid lightgray;
+        font-size: 24px;
+        font-weight: bold;
         padding: 30px 0px;
-        p{
-          font-size: 25px;
-          font-weight: bold;
-        }
       }
-      &__login{
+      &__login {
         padding: 30px 0px;
-        &__sns{
+        &__sns {
           margin-bottom: 10px;
-          &__mail{
+          &__mail {
             margin: 0px auto 10px;
             text-decoration: none;
             border-radius: 5px;
@@ -45,10 +43,10 @@
             background-color: red;
             font-size: 12px;
           }
-          &__mail:hover{
+          &__mail:hover {
             opacity: 0.7;
           }
-          &__google{
+          &__google {
             margin: 10px auto;
             text-decoration: none;
             border-radius: 5px;
@@ -60,7 +58,10 @@
             border: 1px black solid;
             font-size: 12px;
           }
-          &__facebook{
+          &__google:hover {
+            opacity: 0.7;
+          }
+          &__facebook {
             margin: 0px auto 10px;
             text-decoration: none;
             border-radius: 5px;
@@ -72,7 +73,10 @@
             background-color: #3b5998;
             font-size: 12px;
           }
-          &__apple{
+          &__facebook:hover {
+            opacity: 0.7;
+          }
+          &__apple {
             margin: 0px auto 10px;
             text-decoration: none;
             border-radius: 5px;
@@ -84,12 +88,15 @@
             background-color: black;
             font-size: 12px;
           }
+          &__apple:hover {
+            opacity: 0.7;
+          }
         }
-        &__notice{
+        &__notice {
           margin: auto;
           text-align: left;
           width: 300px;
-          font-size: 14px;
+          font-size: 12px;
           color: gray;
         }
       }
