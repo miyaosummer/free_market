@@ -11,8 +11,6 @@ $(function(){
   function formChecker() {
     // エラーをリセットするためすべてのcreditcard-errorを削除
     $('.mypage-creditcard-error').remove();
-    // resultのデフォルト値をtrueに切り替え
-    let result = true;
 
     // スクロール位置の設定
     let position = $('.mypage-creditcard-error').parent().offset().top;
@@ -22,7 +20,7 @@ $(function(){
     }, {
       queue : false
     });
-    return result;
+    return true;
   }
 
   // Submitボタン押されたらエラーチェックを走らせる
@@ -78,8 +76,6 @@ $(function(){
   function formChecker() {
     // エラーをリセットするためすべてのcreditcard-errorを削除
     $('.creditcard-error').remove();
-    // resultのデフォルト値をtrueに切り替え
-    let result = true;
 
     // スクロール位置の設定
     let position = $('.creditcard-error').parent().offset().top;
@@ -89,7 +85,7 @@ $(function(){
     }, {
       queue : false
     });
-    return result;
+    return true;
   }
 
   // Submitボタン押されたらエラーチェックを走らせる
