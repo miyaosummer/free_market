@@ -1,44 +1,46 @@
-.sign-up{
-  &__main{
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.sign-up {
+  &__main {
     text-align: center;
-    &__form{
-      background-color: white;
-      box-shadow: 0 0 4px gray;
+    &__form {
       height: auto;
       width: 32%;
       min-width: 500px;
+      background-color: $white;
+      border-radius: 1px;
+      box-shadow: 0 0 3.6px gray;
       margin: 0 auto;
-      &__index{
-        border-bottom:1px lightgray solid ;
-        padding: 30px 0px;
-        p{
-          font-size: 25px;
-          font-weight: bold;
-        }
+      
+      &__index {
+        font-size: 24px;
+        font-weight: bold;
+        border-bottom: 1px solid lightgray;
+        padding: 36px 0px;
       }
         
-      &__notice{
+      &__notice {
+        font-size: 14px;
+        color: $black;
+        text-align: center;
         margin-top: 20px;
-        p{
-          font-size: 16px;
-          text-align: center;
-          color: gray;
-        }
       }
 
-        &__btn{
-          display: inline-block;
-          text-decoration: none;
-          border-radius: 5px;
-          font-size: 10pt;
-          text-align: center;
-          cursor: pointer;
-          margin: 20px 0px;
-          width: 300px;
-          line-height: 40px;
-          background: #99FFFF;
-          color: black;
-        }
+      &__btn {
+        display: inline-block;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 10pt;
+        text-align: center;
+        cursor: pointer;
+        margin: 20px 0px;
+        width: 300px;
+        line-height: 40px;
+        background: $main-color;
+        color: $white;
+      }
     }
   }
 }

@@ -1,10 +1,12 @@
 .signin
+
   .signin__header
     = render "header"
+
   .signin__main
     .signin__main__form
       .signin__main__form__signup
-        %p アカウントをお持ちでない方はこちら
+        アカウントをお持ちでない方はこちら
         = link_to "新規会員登録", new_user_registration_path, class: "signin__main__form__signup__vanar"
       .signin__main__form__login
         .signin__main__form__login__sns
@@ -16,12 +18,13 @@
             Googleでログイン
         .signin__main__form__login__input
           = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "signin__main__form__login__input__mail"
+            = f.email_field :email, autocomplete: "email", placeholder: "メールアドレス", class: "signin__main__form__login__input__mail"
             %br
             = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: "signin__main__form__login__input__pass"
             %br
             %h3 私はロボットではありません
             = f.submit "ログイン", class: "signin__main__form__login__input__btn"
             = render "devise/shared/links"
+
   .signin__footer
     = render "footer"

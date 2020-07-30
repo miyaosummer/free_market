@@ -11,9 +11,10 @@
     &__logo {
       margin: 30px 0px;
       width: 150px;
+      transition: 0.4s;
     }
     &__logo:hover {
-      opacity: 0.7;
+      opacity: 0.6;
     }
   }
   //-- クレジットカード未登録 --//
@@ -115,7 +116,7 @@
           outline: 0;
         }
         #token_submit:hover {
-          opacity: 0.7;
+          opacity: 0.6;
         }
       }
     }
@@ -144,9 +145,10 @@
     }
     &__logo {
       width: 150px;
+      transition: 0.4s;
     }
     &__logo:hover {
-      opacity: 0.7;
+      opacity: 0.6;
     }
     p {
       text-align: center;
@@ -197,51 +199,4 @@
       padding: 12px;
     }
   }
-}
-
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.visa {
-  -webkit-animation: fadeIn 1.0s ease;
-  animation: fadeIn 1.0s ease;
-}
-.mastercard {
-  -webkit-animation: fadeIn 1.5s ease;
-  animation: fadeIn 1.5s ease;
-  margin-left: 2px;
-}
-.JCB {
-  -webkit-animation: fadeIn 2.0s ease;
-  animation: fadeIn 2.0s ease;
-  margin-left: 2px;
-}
-.AmericanExpress {
-  -webkit-animation: fadeIn 2.5s ease;
-  animation: fadeIn 2.5s ease;
-  margin-left: 2px;
-}
-.DinersClub {
-  -webkit-animation: fadeIn 3.0s ease;
-  animation: fadeIn 3.0s ease;
-  margin-left: 2px;
-}
-.DISCOVER {
-  -webkit-animation: fadeIn 3.5s ease;
-  animation: fadeIn 3.5s ease;
-  margin-left: 2px;
 }

@@ -6,7 +6,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def after_sign_in_path_for(resource)
-    logs_path
+    if request.fullpath.include?("sign_in")
+      login_logs_path
+    else
+      logs_path
+    end
   end
 
     # 親カテゴリーに紐づく子カテゴリーの配列を取得

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root "tops#index"
-  resources :users ,only: [:index, :new, :show] do
+  resources :users, only: [:index, :new, :show] do
     member do
       get 'credit_new', to:'users#credit_new'
       post 'credit_create', to:'users#credit_create'
@@ -9,10 +9,14 @@ Rails.application.routes.draw do
       delete 'credit_destroy', to:'users#credit_destroy'
       get 'logout'
     end
-    resources :destinations ,only: [:index, :new, :create, :edit, :update] 
+    resources :destinations, only: [:index, :new, :create, :edit, :update] 
   end
-  resources :logs ,only: :index
-  resources :products ,only: [:new, :create, :show, :edit, :update, :index, :destroy] do
+  resources :logs, only: [:index] do
+    collection do
+      get 'login'
+    end
+  end
+  resources :products, only: [:new, :create, :show, :edit, :update, :index, :destroy] do
     member do
       get 'credit_new', to:'products#credit_new'
       post 'credit_create', to:'products#credit_create'

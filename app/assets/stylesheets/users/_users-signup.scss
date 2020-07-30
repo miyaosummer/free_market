@@ -11,6 +11,7 @@
     &__logo {
       margin: 30px 0px;
       width: 150px;
+      transition: 0.4s;
     }
     &__logo:hover {
       opacity: 0.7;
@@ -166,6 +167,7 @@
           font-weight: 600;
           color: $white;
           margin: 36px 0 0 216px;
+          cursor: pointer;
         }
       }
     }
@@ -194,6 +196,7 @@
     }
     &__logo {
       width: 150px;
+      transition: 0.4s;
     }
     &__logo:hover {
       opacity: 0.7;
