@@ -13,6 +13,7 @@
           
           -# ニックネーム
           .signup__main__container__register-form__label-top
+            %i.fas.fa-user
             = f.label :nickname, "ニックネーム"
             %span.form-require 必須
           .input
@@ -20,6 +21,7 @@
 
           -# メールアドレス
           .signup__main__container__register-form__label-top
+            %i.fas.fa-envelope
             = f.label :email, "メールアドレス"
             %span.form-require 必須
           .input
@@ -27,8 +29,8 @@
 
           -# パスワード  
           .signup__main__container__register-form__label-top
+            %i.fas.fa-key
             = f.label :password, "パスワード"
-            -# - if @minimum_password_length
             %span.form-require 必須
           .input
             = f.password_field :password, class: "input-full", autocomplete: "off", autocomplete: "new-password", placeholder: "6文字以上の半角英数字"
@@ -47,6 +49,7 @@
 
           -# お名前(全角)  
           .signup__main__container__register-form__label-bottom
+            %i.fas.fa-user-circle
             = f.label :name, "お名前(全角)"
             %span.form-require 必須
           .input-name
@@ -57,6 +60,7 @@
 
           -# お名前カナ(全角)  
           .signup__main__container__register-form__label-bottom
+            %i.fas.fa-user-circle
             = f.label :name, "お名前カナ(全角)"
             %span.form-require 必須
           .input-name
@@ -67,6 +71,7 @@
 
           -# 生年月日
           .signup__main__container__register-form__label-bottom
+            %i.fas.fa-birthday-cake
             = f.label :birthday, "生年月日"
             %span.form-require 必須
           .signup__main__container__register-form__input-birthday
@@ -79,12 +84,12 @@
               修正するにはお時間を頂く場合があります。
 
           .signup__main__container__register-form__actions
-            = f.submit "登 録",class: "signup__main__container__register-form__submit-btn"
+            = f.submit "登 録", class: "signup__main__container__register-form__submit-btn"
 
           .signup__main__container__register-form__about
             =  link_to "#" do
               本人情報の登録について
-              = icon 'fas', 'chevron-right', class:"about-icon"
+              = icon 'fas', 'chevron-right', class: "about-icon"
 
           .signup__main__container__register-form__form-policy
             %p
