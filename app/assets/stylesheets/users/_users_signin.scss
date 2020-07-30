@@ -1,32 +1,36 @@
-.signin{
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.signin {
   width: 100%;
   background-color: whitesmoke;
-  &__header{
+  &__header {
     text-align: center;
-    &__logo{
+    &__logo {
       margin:30px 0px;
       width: 150px;
     }
-    &__logo:hover{
+    &__logo:hover {
       opacity: 0.7;
     }
   }
-  &__main{
+  &__main {
     text-align: center;
-    &__form{
+    &__form {
       background-color: white;
       box-shadow: 0 0 4px gray;
       height: auto;
       width: 32%;
       min-width: 500px;
       margin: 0 auto;
-      &__signup{
+      &__signup {
         border-bottom:1px lightgray solid ;
         padding: 30px 0px;
-        p{
+        p {
           font-size: 14px;
         }
-        &__vanar{
+        &__vanar {
           margin: 10px auto 0px;
           text-decoration: none;
           border-radius: 5px;
@@ -39,11 +43,11 @@
           font-size: 14px;
         }
       }
-      &__login{
+      &__login {
         padding: 30px 0px;
-        &__sns{
+        &__sns {
           margin-bottom: 30px;
-          &__facebook{
+          &__facebook {
             margin: 0px auto 10px;
             text-decoration: none;
             border-radius: 5px;
@@ -55,7 +59,7 @@
             background-color: #3b5998;
             font-size: 12px;
           }
-          &__google{
+          &__google {
             margin: 10px auto;
             text-decoration: none;
             border-radius: 5px;
@@ -68,19 +72,33 @@
             font-size: 12px;
           }
         }
-        &__input{
-          padding: 10px 0px;
-          &__mail{
+        &__input {
+          font-size: 14px;
+          &__mail {
             line-height: 40px;
-            width: 294px;
-            margin-bottom: 20px;
+            width: 300px;
+            border: 1px solid #CCCCCC;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            padding-left: 6px;
           }
-          &__pass{
+          &__mail:focus {
+            border: 1px solid $main-color;
+            outline: 0;
+          }
+          &__pass {
             line-height: 40px;
-            width: 294px;
+            width: 300px;
+            border: 1px solid #CCCCCC;
+            border-radius: 4px;
             margin-bottom: 30px;
+            padding-left: 6px;
           }
-          h3{
+          &__pass:focus {
+            border: 1px solid $main-color;
+            outline: 0;
+          }
+          h3 {
             margin: 0 auto;
             background-color: lightslategray;
             line-height: 60px;
@@ -90,7 +108,7 @@
             font-size: 12px;
             font-weight: lighter;
           }
-          &__btn{
+          &__btn {
             display: inline-block;
             border-radius: 5px;
             font-size: 10pt;
@@ -103,46 +121,47 @@
             color: #ffffff;
             border: 2px solid #ff0000;
           }
-          &__forget{
+          &__forget {
             text-decoration: none;
+            font-size: 12px;
             color: red;
           }
-          &__forget:hover{
-            color:blue;
+          &__forget:hover {
+            color: $main-color;
             
           }
         }
       }
     }
   }
-  &__footer{
+  &__footer {
     text-align: center;
     width: 100%;
-    &__list{
+    &__list {
       display: flex;
       justify-content: center;
       margin: 20px 0px;
-      &__left{
+      &__left {
         list-style: none;
         font-size: 12px;
       }
-      &__center{
+      &__center {
         list-style: none;
         font-size: 12px;
         margin: 0px 10px;
       }
-      &__right{
+      &__right {
         list-style: none;
         font-size: 12px;
       }
     }
-    &__logo{
+    &__logo {
       width: 150px;
     }
-    &__logo:hover{
+    &__logo:hover {
       opacity: 0.7;
     }
-    &__sitename{
+    &__sitename {
       text-align: center;
       font-size: 12px;
       padding-bottom: 50px;
