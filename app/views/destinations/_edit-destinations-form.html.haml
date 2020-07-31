@@ -6,69 +6,67 @@
       - if @destination.errors.any?
         %h3
           入力した内容にエラーが
-          =@destination.errors.count
+          = @destination.errors.count
           件あります
         %ul
           - @destination.errors.full_messages.each do |message|
             %li= message
       .destinations-form__index__group
-        = f.label "お名前",class:"destinations-form__index__group__name"
+        %i.fas.fa-user-circle
+        = f.label "お名前", class: "destinations-form__index__group__name"
         %span.destinations-form__index__group__name__imperative
           必須
-        <br>
-        = f.text_field :last_name,placeholder:"例）山田",class:"destinations-form__index__group__first-name"
-        <br>
-        = f.text_field :first_name,placeholder:"例）彩",class:"destinations-form__index__group__last-name"
+        = f.text_field :last_name, placeholder: "例）山田", class: "destinations-form__index__group__first-name"
+        = f.text_field :first_name, placeholder: "例）彩", class: "destinations-form__index__group__last-name"
 
       .destinations-form__index__group
-        = f.label "お名前（カナ）",class:"destinations-form__index__group__kana"
+        %i.fas.fa-user-circle
+        = f.label "お名前（カナ）", class:"destinations-form__index__group__kana"
         %span.destinations-form__index__group__kana__imperative
           必須
-        <br>
-        = f.text_field :last_name_kana,placeholder:"例）ヤマダ",class:"destinations-form__index__group__first-kana"
-        <br>
-        = f.text_field :first_name_kana,placeholder:"例）アヤ",class:"destinations-form__index__group__last-kana"
+        = f.text_field :last_name_kana, placeholder: "例）ヤマダ", class: "destinations-form__index__group__first-kana"
+        = f.text_field :first_name_kana, placeholder: "例）アヤ", class: "destinations-form__index__group__last-kana"
 
       .destinations-form__index__group
-        = f.label "郵便番号",class:"destinations-form__index__group__postal-code"
+        %i.fas.fa-map-marker-alt
+        = f.label "郵便番号", class: "destinations-form__index__group__postal-code"
         %span.destinations-form__index__group__postal-code__imperative
           必須
-        <br>
-        = f.text_field :postal_code,placeholder:"例）123-4567",class:"destinations-form__index__group__postal-code__field"
+        = f.text_field :postal_code, placeholder: "例）123-4567", class: "destinations-form__index__group__postal-code__field"
 
       .destinations-form__index__group
-        = f.label "都道府県",class:"destinations-form__index__group__prefectures"
+        %i.fas.fa-city
+        = f.label "都道府県", class: "destinations-form__index__group__prefectures"
         %span.destinations-form__index__group__prefectures__imperative
           必須
-        <br>
         = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: ""}, {class: "destinations-form__index__group__prefectures__box"}
 
       .destinations-form__index__group
-        = f.label "市区町村",class:"destinations-form__index__group__city"
+        %i.fas.fa-city
+        = f.label "市区町村", class: "destinations-form__index__group__city"
         %span.destinations-form__index__group__city__imperative
           必須
-        <br>
-        = f.text_field :city,placeholder:"例）新宿区",class:"destinations-form__index__group__city__field"
+        = f.text_field :city, placeholder: "例）新宿区", class: "destinations-form__index__group__city__field"
 
       .destinations-form__index__group
-        = f.label "番地",class:"destinations-form__index__group__block"
+        %i.fas.fa-city
+        = f.label "番地", class: "destinations-form__index__group__block"
         %span.destinations-form__index__group__block__imperative
           必須
-        <br>
-        = f.text_field :block,placeholder:"例）青山1-1-1",class:"destinations-form__index__group__block__field"
+        = f.text_field :block, placeholder: "例）青山1-1-1",class: "destinations-form__index__group__block__field"
 
       .destinations-form__index__group
-        = f.label "建物名",class:"destinations-form__index__group__building"
+        %i.far.fa-building
+        = f.label "建物名", class: "destinations-form__index__group__building"
         %span.destinations-form__index__group__building__imperative
           任意
-        <br>
-        = f.text_field :building,placeholder:"例）野原ビル201",class:"destinations-form__index__group__building__field"
+        = f.text_field :building, placeholder: "例）野原ビル201", class: "destinations-form__index__group__building__field"
 
       .destinations-form__index__group
-        = f.label "電話番号",class:"destinations-form__index__group__phone-number"
+        %i.fas.fa-mobile-alt
+        = f.label "電話番号", class: "destinations-form__index__group__phone-number"
         %span.destinations-form__index__group__phone-number__imperative
           任意
-        <br>
-        = f.text_field :phone_number,placeholder:"例）080-1234-5678",class:"destinations-form__index__group__phone-number__field"
+        = f.text_field :phone_number, placeholder: "例）080-1234-5678", class: "destinations-form__index__group__phone-number__field"
       
-      =f.submit "登録する",class:"destinations-form__index__submit-btn"
+      =f.submit "登録する", class: "destinations-form__index__submit-btn"

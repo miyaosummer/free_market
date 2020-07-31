@@ -31,6 +31,10 @@
       min-width: 500px;
       height: 100%;
       padding: 36px 125px;
+      i {
+        color: gray;
+      }
+      
       // 名前入力フォーム
       &__group {
         margin-bottom: 36px;
@@ -57,7 +61,10 @@
           font-size: 14px;
           margin-top: 5px;
           padding: 12px;
-
+          &:focus {
+            border: 1px solid $main-color;
+            outline: 0;
+          }
         }
         &__last-name {
           width: 350px;
@@ -67,6 +74,10 @@
           font-size: 14px;
           margin-top: 5px;
           padding: 12px;
+          &:focus {
+            border: 1px solid $main-color;
+            outline: 0;
+          }
         }
 
         //かな入力フォーム
@@ -92,6 +103,10 @@
           font-size: 14px;
           margin-top: 5px;
           padding: 12px;
+          &:focus {
+            border: 1px solid $main-color;
+            outline: 0;
+          }
         }
         &__last-kana {
           width: 350px;
@@ -101,6 +116,10 @@
           font-size: 14px;
           margin-top: 5px;
           padding: 12px;
+          &:focus {
+            border: 1px solid $main-color;
+            outline: 0;
+          }
         }
 
         //郵便番号入力フォーム
@@ -115,6 +134,10 @@
             font-size: 14px;
             margin-top: 5px;
             padding: 12px;
+            &:focus {
+              border: 1px solid $main-color;
+              outline: 0;
+            }
           }
           &__imperative {
             background-color: $main-color;
@@ -140,6 +163,10 @@
             font-size: 14px;
             margin-top: 5px;
             padding: 12px;
+            &:focus {
+              border: 1px solid $main-color;
+              outline: 0;
+            }
           }
           &__imperative {
             background-color: $main-color;
@@ -165,6 +192,10 @@
             font-size: 14px;
             margin-top: 5px;
             padding: 12px;
+            &:focus {
+              border: 1px solid $main-color;
+              outline: 0;
+            }
           }
           &__imperative {
             background-color: $main-color;
@@ -190,6 +221,10 @@
             font-size: 14px;
             margin-top: 5px;
             padding: 12px;
+            &:focus {
+              border: 1px solid $main-color;
+              outline: 0;
+            }
           }
           &__imperative {
             background-color: $main-color;
@@ -215,6 +250,10 @@
             font-size: 14px;
             margin-top: 5px;
             padding: 12px;
+            &:focus {
+              border: 1px solid $main-color;
+              outline: 0;
+            }
           }
           &__imperative {
             background-color: gray;
@@ -240,6 +279,10 @@
             font-size: 14px;
             margin-top: 5px;
             padding: 12px;
+            &:focus {
+              border: 1px solid $main-color;
+              outline: 0;
+            }
           }
           &__imperative {
             background-color: gray;
