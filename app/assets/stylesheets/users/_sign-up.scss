@@ -8,9 +8,9 @@
       margin: 30px 0px;
       width: 150px;
       transition: 0.4s;
-    }
-    &__logo:hover {
-      opacity: 0.6;
+      &:hover {
+        opacity: 0.6;
+      }
     }
   }
   &__main {
@@ -44,9 +44,9 @@
             background-color: #ff3333;
             font-size: 12px;
             transition: 0.4s;
-          }
-          &__mail:hover {
-            opacity: 0.6;
+            &:hover {
+              opacity: 0.6;
+            }
           }
           &__google {
             margin: 10px auto;
@@ -60,9 +60,9 @@
             border: 1px black solid;
             font-size: 12px;
             transition: 0.4s;
-          }
-          &__google:hover {
-            opacity: 0.6;
+            &:hover {
+              opacity: 0.6;
+            }
           }
           &__facebook {
             margin: 0px auto 10px;
@@ -76,9 +76,9 @@
             background-color: #3b5998;
             font-size: 12px;
             transition: 0.4s;
-          }
-          &__facebook:hover {
-            opacity: 0.6;
+            &:hover {
+              opacity: 0.6;
+            }
           }
           &__apple {
             margin: 0px auto 10px;
@@ -92,9 +92,9 @@
             background-color: black;
             font-size: 12px;
             transition: 0.4s;
-          }
-          &__apple:hover {
-            opacity: 0.6;
+            &:hover {
+              opacity: 0.6;
+            }
           }
         }
         &__notice {

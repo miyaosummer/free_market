@@ -11,9 +11,9 @@
       margin:30px 0px;
       width: 150px;
       transition: 0.4s;
-    }
-    &__logo:hover {
-      opacity: 0.6;
+      &:hover {
+        opacity: 0.6;
+      }
     }
   }
   &__main {
@@ -42,9 +42,9 @@
           margin: 10px auto 0px;
           padding: 10px 0px;
           transition: 0.4s;
-        }
-        &__vanar:hover {
-          opacity: 0.6;
+          &:hover {
+            opacity: 0.6;
+          }
         }
       }
       &__login {
@@ -63,9 +63,9 @@
             background-color: #3b5998;
             font-size: 12px;
             transition: 0.4s;
-          }
-          &__facebook:hover {
-            opacity: 0.6;
+            &:hover {
+              opacity: 0.6;
+            }
           }
           &__google {
             margin: 10px auto;
@@ -79,9 +79,9 @@
             border: 1px black solid;
             font-size: 12px;
             transition: 0.4s;
-          }
-          &__google:hover {
-            opacity: 0.6;
+            &:hover {
+              opacity: 0.6;
+            }
           }
         }
         &__input {
@@ -93,10 +93,10 @@
             border-radius: 4px;
             margin-bottom: 12px;
             padding-left: 6px;
-          }
-          &__mail:focus {
-            border: 1px solid $main-color;
-            outline: 0;
+            &:focus {
+              border: 1px solid $main-color;
+              outline: 0;
+            }
           }
           &__pass {
             line-height: 40px;
@@ -105,11 +105,12 @@
             border-radius: 4px;
             margin-bottom: 30px;
             padding-left: 6px;
+            &:focus {
+              border: 1px solid $main-color;
+              outline: 0;
+            }
           }
-          &__pass:focus {
-            border: 1px solid $main-color;
-            outline: 0;
-          }
+          
           h3 {
             margin: 0 auto;
             background-color: lightslategray;
@@ -134,9 +135,9 @@
             line-height: 40px;
             cursor: pointer;
             transition: 0.4s;
-          }
-          &__btn:hover {
-            opacity: 0.6;
+            &:hover {
+              opacity: 0.6;
+            }
           }
 
           &__forget {
@@ -144,9 +145,9 @@
             font-size: 12px;
             color: #ff3333;
             transition: 0.4s;
-          }
-          &__forget:hover {
-            color: $main-color;
+            &:hover {
+              color: $main-color;
+            }
           }
         }
       }
@@ -176,9 +177,9 @@
     &__logo {
       width: 150px;
       transition: 0.4s;
-    }
-    &__logo:hover {
-      opacity: 0.7;
+      &:hover {
+        opacity: 0.7;
+      }
     }
     &__sitename {
       text-align: center;
