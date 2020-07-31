@@ -14,7 +14,7 @@
   .menu {
     background-color: white;
     margin-bottom: 50px;
-    //マイページへのリンク
+    // マイページへのリンク
     &__mypage {
       display: flex;
       align-items: center;
@@ -94,7 +94,7 @@
       opacity: 1;
     }
 
-    //出品した商品ページへのリンク
+    // 出品した商品ページへのリンク
     &__exhibition {
       display: flex;
       align-items: center;
@@ -121,7 +121,7 @@
       opacity: 1;
     }
 
-    //購入した商品ページへのリンク
+    // 購入した商品ページへのリンク
     &__buy {
       display: flex;
       align-items: center;
@@ -152,7 +152,7 @@
     .config {
       background-color: white;
 
-      //購入した商品ページへのリンク
+      // 購入した商品ページへのリンク
       &__user {
         display: flex;
         align-items: center;
@@ -178,7 +178,7 @@
         margin-right: 15px;
         opacity: 1;
       }
-      //発送元、お届け先住所登録ページへのリンク
+      // 発送元、お届け先住所登録ページへのリンク
       &__destinations {
         display: flex;
         align-items: center;
@@ -204,7 +204,7 @@
         margin-right: 15px;
         opacity: 1;
       }
-      //クレジットカード登録ページへのリンク
+      // クレジットカード登録ページへのリンク
       &__card {
         display: flex;
         align-items: center;
