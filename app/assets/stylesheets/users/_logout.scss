@@ -20,7 +20,7 @@
     padding-top: 50px;
     &__form {
       background-color: white;
-      box-shadow: 0 0 4px gray;
+      box-shadow: 0 0 3.6px gray;
       height: auto;
       width: 100%;
       min-width: 500px;
@@ -30,22 +30,23 @@
         padding: 30px 0px;
         p {
           font-size: 20px;
-          font-weight: bold;
+          font-weight: 600;
         }
       }
 
       &__btn {
         display: inline-block;
         text-decoration: none;
-        border-radius: 5px;
-        font-size: 10pt;
-        text-align: center;
-        cursor: pointer;
-        margin: 20px 0px;
         width: 300px;
         line-height: 40px;
         background: $main-color;
+        font-size: 12px;
+        font-weight: 600;
         color: $white;
+        text-align: center;
+        border-radius: 4px;
+        margin: 20px 0px;
+        cursor: pointer;
         transition: 0.4s;
         &:hover {
           opacity: 0.6;

@@ -148,6 +148,9 @@
             &:hover {
               color: $main-color;
             }
+            &:focus {
+              border: 1px solid #ff3333;
+            }
           }
         }
       }

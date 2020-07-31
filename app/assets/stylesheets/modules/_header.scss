@@ -36,10 +36,10 @@
             border-radius: 4px;
             margin: 2px;
             padding: 6px;
-          }
-          &__input:focus {
-            border: 1px solid $main-color;
-            outline: 0;
+            &:focus {
+              border: 1px solid $main-color;
+              outline: 0;
+            }
           }
           &__button {
             background-color: $main-color;
@@ -54,10 +54,10 @@
               width: 20px;
               height: 20px;
             }
-          }
-          &__button:focus {
-            border: 1px solid $main-color;
-            outline: 0;
+            &:focus {
+              border: 1px solid $main-color;
+              outline: 0;
+            }
           }
         }
       }
