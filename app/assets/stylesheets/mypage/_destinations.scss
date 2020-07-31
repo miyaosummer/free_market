@@ -33,10 +33,10 @@
       padding: 36px 125px;
       // 名前入力フォーム
       &__group {
-        margin-bottom: 20px;
-        padding-left: 20px ;
+        margin-bottom: 36px;
+        padding-left: 20px;
         &__name {
-          font-size: 13px;
+          font-size: 14px;
           font-weight: bold;
           &__imperative {
             background-color: $main-color;
@@ -62,7 +62,7 @@
 
         //かな入力フォーム
         &__kana {
-          font-size: 13px;
+          font-size: 14px;
           font-weight: bold;
           &__imperative {
             background-color: $main-color;
@@ -88,7 +88,7 @@
 
         //郵便番号入力フォーム
         &__postal-code {
-          font-size: 13px;
+          font-size: 14px;
           font-weight: bold;
           &__field {
             width: 350px;
@@ -109,7 +109,7 @@
 
         //都道府県入力フォーム
         &__prefectures {
-          font-size: 13px;
+          font-size: 14px;
           font-weight: bold;
           &__box {
             width: 350px;
@@ -129,15 +129,15 @@
         }
 
         //市区町村入力フォーム
-        &__city{
-          font-size: 13px;
+        &__city {
+          font-size: 14px;
           font-weight: bold;
-          &__field{
+          &__field {
             width: 350px;
             height: 45px;
             margin-top: 5px;
           }
-          &__imperative{
+          &__imperative {
             background-color: $main-color;
             color: $white;
             font-size: 12px;
@@ -150,15 +150,15 @@
         }
 
         //番地入力フォーム
-        &__block{
-          font-size: 13px;
+        &__block {
+          font-size: 14px;
           font-weight: bold;
-          &__field{
+          &__field {
             width: 350px;
             height: 45px;
             margin-top: 5px;
           }
-          &__imperative{
+          &__imperative {
             background-color: $main-color;
             color: $white;
             font-size: 12px;
@@ -172,7 +172,7 @@
 
         //建物入力フォーム
         &__building {
-          font-size: 13px;
+          font-size: 14px;
           font-weight: bold;
           &__field {
             width: 350px;
@@ -193,7 +193,7 @@
 
         //電話番号入力フォーム
         &__phone-number {
-          font-size: 13px;
+          font-size: 14px;
           font-weight: bold;
           &__field {
             width: 350px;
