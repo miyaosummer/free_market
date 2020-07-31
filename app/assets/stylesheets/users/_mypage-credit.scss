@@ -138,7 +138,7 @@
           outline: 0;
         }
         #token_submit:hover {
-          opacity: 0.7;
+          opacity: 0.6;
         }
       }
     }
@@ -209,22 +209,5 @@
         padding: 12px;
       }
     }
-  }
-}
-
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }
