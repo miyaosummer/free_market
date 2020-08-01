@@ -16,16 +16,16 @@
         = f.label "お名前", class: "destinations-form__index__group__name"
         %span.destinations-form__index__group__name__imperative
           必須
-        = f.text_field :last_name, placeholder: "例）山田", class: "destinations-form__index__group__first-name"
-        = f.text_field :first_name, placeholder: "例）彩", class: "destinations-form__index__group__last-name"
+        = f.text_field :last_name, placeholder: "例）山田", class: "destinations-form__index__group__last-name"
+        = f.text_field :first_name, placeholder: "例）彩", class: "destinations-form__index__group__first-name"
 
       .destinations-form__index__group
         %i.fas.fa-user-circle
         = f.label "お名前（カナ）", class:"destinations-form__index__group__kana"
         %span.destinations-form__index__group__kana__imperative
           必須
-        = f.text_field :last_name_kana, placeholder: "例）ヤマダ", class: "destinations-form__index__group__first-kana"
-        = f.text_field :first_name_kana, placeholder: "例）アヤ", class: "destinations-form__index__group__last-kana"
+        = f.text_field :last_name_kana, placeholder: "例）ヤマダ", class: "destinations-form__index__group__last-kana"
+        = f.text_field :first_name_kana, placeholder: "例）アヤ", class: "destinations-form__index__group__first-kana"
 
       .destinations-form__index__group
         %i.fas.fa-map-marker-alt
