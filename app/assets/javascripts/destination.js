@@ -40,7 +40,7 @@ $(function(){
   });
   // last-name blur時のエラー処理
   $('#destinations_last_name').blur(function(){
-    if($(this).val().length < 16){
+    if($(this).val().length < 6){
       if($(this).parent().find('.destination-error').length == 0){
         $('#destinations_last_name').append(buildInputError('カード番号 (半角数字16桁) を入力してください'));
       }
