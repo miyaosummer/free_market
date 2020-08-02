@@ -7,14 +7,27 @@
     %p.putup__main__upload__description
       最大10枚までアップロードできます
 
-      .putup__main__upload__image-box
-        = f.fields_for :product_images do |image|
-          #image-box
-            .dropzone-area
-              = image.label :image, class: "dropzone-box", for: "upload-image[0]" do
-                %p.dropzone-box__text ここをクリックして画像を追加してください
-                .dropzone-area__inputs
-                  = image.file_field :image, {'data-index': 0, name:'product[product_images_attributes][0][image]', id: "upload-image[0]", class: "upload-image"}
+
+    .putup__main__upload__image-box
+      #image-box
+        - if @product.persisted?
+          - @product.product_images.each_with_index do |img, i|
+            %div{class: "preview", data:{index: i+100}}
+              %div{class: "preview__product-image", data:{index: i+100}}
+                = image_tag img.image.url, width: "118", height: "118"
+              %div{class: "preview__action"}
+                %i.fa.fa-trash.preview__action__delete
+        .dropzone-area
+          %label.dropzone-box{for: "upload-image[0]"}
+            %p.dropzone-box__text ここをクリックして画像を追加してください
+          .dropzone-area__inputs
+            = f.fields_for :product_images do |image|
+              - if image.object.persisted?
+                = image.file_field :image, data:{index: image.index},class:'upload-image',id: "upload-image["+"#{image.index}"+"]"
+                = image.check_box :_destroy, data:{index: image.index + 100}, class:'hidden-destroy', id: "destroy-image["+"#{image.index}"+"]"
+              - else
+                = image.file_field :image, {'data-index': 0, name:'product[product_images_attributes][0][image]', id: "upload-image[0]", class: "upload-image"}
+
   %hr.putup__main__separate-line
 
   .putup__main__name
