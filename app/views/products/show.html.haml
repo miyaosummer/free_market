@@ -110,7 +110,10 @@
                   %th
                     商品のサイズ
                   %td
-                    = @product.product_size_id
+                    -if @product.product_size.present?
+                      = @product.product_size.name
+                    - else
+                      サイズなし
                 %tr
                   %th
                     商品の状態
