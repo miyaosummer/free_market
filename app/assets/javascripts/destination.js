@@ -27,7 +27,18 @@ $(function(){
   $('.destinations-form__index').submit(function(e){
     if(!formChecker()){
       e.preventDefault();
+      alert('入力が完了していません');
       return false;
+    }
+  });
+
+  $('destinations-form__index__submit-btn').addEventListener('click', (e) => {
+    // デフォルトのイベントをキャンセル
+    e.preventDefault();
+    if($(this).val().length == 0) {
+      
+    } else {
+      document.commit.submit();
     }
   });
 
@@ -40,9 +51,9 @@ $(function(){
   });
   // last-name blur時のエラー処理
   $('#destinations_last_name').blur(function(){
-    if($(this).val().length < 6){
+    if($(this).val().length == 0){
       if($(this).parent().find('.destination-error').length == 0){
-        $('.destinations-form__index__group').append(buildInputError('お名前を入力してください'));
+        $('.destinations-form__index__group-name').append(buildInputError('お名前を入力してください'));
       }
     }
   });
@@ -54,80 +65,81 @@ $(function(){
   });
   // first-name blur時のエラー処理
   $('#destinations_first_name').blur(function(){
-    if($(this).val().length < 6){
+    if($(this).val().length == 0){
       if($(this).parent().find('.destination-error').length == 0){
-        $('destinations-form__index__group__name').append(buildInputError('お名前を入力してください'));
+        $('.destinations-form__index__group-name').append(buildInputError('お名前を入力してください'));
       }
     }
   });
   // last-kana keyup時のエラー処理
-  $('.destinations-form__index__group__last-kana').keyup(function(){
+  $('#destinations_last_name_kana').keyup(function(){
     if($(this).parent().find('.destination-error').length > 0){
       $(this).parent().find('.destination-error').remove();
     }
   });
   // last-kana blur時のエラー処理
-  $('.destinations-form__index__group__last-kana').blur(function(){
-    if($(this).val().length < 16){
+  $('#destinations_last_name_kana').blur(function(){
+    if($(this).val().length == 0){
       if($(this).parent().find('.destination-error').length == 0){
-        $('.destinations-form__index__group__last-kana').append(buildInputError('カード番号 (半角数字16桁) を入力してください'));
+        $('.destinations-form__index__group-kana').append(buildInputError('お名前（カナ）を入力してください'));
       }
     }
   });
   // first-kana keyup時のエラー処理
-  $('.destinations-form__index__group__first-kana').keyup(function(){
+  $('#destinations_first_name_kana').keyup(function(){
     if($(this).parent().find('.destination-error').length > 0){
       $(this).parent().find('.destination-error').remove();
     }
   });
   // first-kana blur時のエラー処理
-  $('.destinations-form__index__group__first-kana').blur(function(){
-    if($(this).val().length < 16){
+  $('#destinations_first_name_kana').blur(function(){
+    if($(this).val().length == 0){
       if($(this).parent().find('.destination-error').length == 0){
-        $('.destinations-form__index__group__first-kana').append(buildInputError('カード番号 (半角数字16桁) を入力してください'));
+        $('.destinations-form__index__group-kana').append(buildInputError('お名前（カナ）を入力してください'));
       }
     }
   });
   // 郵便番号 keyup時のエラー処理
-  $('.destinations-form__index__group__postal-code__field').keyup(function(){
+  $('#destination_postal_code').keyup(function(){
     if($(this).parent().find('.destination-error').length > 0){
       $(this).parent().find('.destination-error').remove();
     }
   });
   // 郵便番号 blur時のエラー処理
-  $('.destinations-form__index__group__postal-code__field').blur(function(){
+  $('#destination_postal_code').blur(function(){
     if($(this).val().length < 16){
       if($(this).parent().find('.destination-error').length == 0){
-        $('.destinations-form__index__group__postal-code__field').append(buildInputError('カード番号 (半角数字16桁) を入力してください'));
+        $('.destinations-form__index__group-postal-code').append(buildInputError('郵便番号を入力してください'));
       }
     }
   });
   // 市区町村 keyup時のエラー処理
-  $('.destinations-form__index__group__city__field').keyup(function(){
+  $('#destination_city').keyup(function(){
     if($(this).parent().find('.destination-error').length > 0){
       $(this).parent().find('.destination-error').remove();
     }
   });
   // 市区町村 blur時のエラー処理
-  $('.destinations-form__index__group__city__field').blur(function(){
+  $('#destination_city').blur(function(){
     if($(this).val().length < 16){
       if($(this).parent().find('.destination-error').length == 0){
-        $('.destinations-form__index__group__city__field').append(buildInputError('カード番号 (半角数字16桁) を入力してください'));
+        $('.destinations-form__index__group-city').append(buildInputError('市区町村を入力してください'));
       }
     }
   });
   // 番地 keyup時のエラー処理
-  $('.destinations-form__index__group__block__field').keyup(function(){
+  $('#destination_block').keyup(function(){
     if($(this).parent().find('.destination-error').length > 0){
       $(this).parent().find('.destination-error').remove();
     }
   });
   // 番地 blur時のエラー処理
-  $('.destinations-form__index__group__block__field').blur(function(){
+  $('#destination_block').blur(function(){
     if($(this).val().length < 16){
       if($(this).parent().find('.destination-error').length == 0){
-        $('.destinations-form__index__group__block__field').append(buildInputError('カード番号 (半角数字16桁) を入力してください'));
+        $('.destinations-form__index__group-block').append(buildInputError('番地を入力してください'));
       }
     }
   });
 });
+
