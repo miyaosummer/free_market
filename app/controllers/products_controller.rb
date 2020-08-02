@@ -11,9 +11,8 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    if @product.product_size_id.present?
-      @product.product_size_id = ProductSize.find_by_id(product_params[:product_size_id]).name
-    else
+    # product_size_idが空欄の時はサイズなしと表示させる。
+    if product_params[:product_size_id].blank?
       @product.product_size_id = "サイズなし"
     end
     if @product.save
@@ -35,7 +34,6 @@ class ProductsController < ApplicationController
     if @product.product_size.present?
       @product_size = @product.product_size
     end
-
   end
 
   def update
