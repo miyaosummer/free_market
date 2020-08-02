@@ -68,7 +68,7 @@
             サイズ
             %span.putup__main__size__title__imperative
               必須
-          = f.collection_select :product_size_id, ProductSize.where(group: @product_size.group), :id, :name, {selected: @product_size.id}, {class: "putup__main__size__select-box, putup__main__size__select-box--size, box--size",id:"size_box"}
+          = f.collection_select :product_size_id, ProductSize.where(group: @product_size.group), :name, :name, {selected: @product_size.id}, {class: "putup__main__size__select-box, putup__main__size__select-box--size, box--size",id:"size_box"}
   .putup__main__brand
     %p.putup__main__brand__title
       ブランド
