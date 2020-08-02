@@ -42,7 +42,7 @@ $(function(){
   $('#destinations_last_name').blur(function(){
     if($(this).val().length < 6){
       if($(this).parent().find('.destination-error').length == 0){
-        $('.destinations-form__index__group__name').append(buildInputError('お名前を入力してください'));
+        $('.destinations-form__index__group').append(buildInputError('お名前を入力してください'));
       }
     }
   });
