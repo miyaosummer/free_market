@@ -59,9 +59,9 @@
       .putup__main__category__select-box--children#children_box
       = f.select :product_category_id, options_for_select(@category_child_array.map{|c|[c[:name], c[:id], {'data-category'=>c[:id], 'id'=>c[:id]}]}, @product.product_category.parent.id), {}, {class: "putup__main__category__select-box--children, box--child",id: "product_category_children"}
       .putup__main__category__select-box--grandchildren#grandchildren_box
-    .putup__main__size__select-box--size#size_box
-    -if @product.product_category.root.indirects.present?
-      = f.select :product_category_id, options_for_select(@category_grandchild_array.map{|c|[c[:name], c[:id], {'data-category'=>c[:id], 'id'=>c[:id]}]}, @product.product_category.id), {}, {class: "putup__main__category__select-box--grandchildren, box--grand-child",id:"product_category_grandchildren"}
+      .putup__main__size__select-box--size#size_box
+      -if @product.product_category.root.indirects.present?
+        = f.select :product_category_id, options_for_select(@category_grandchild_array.map{|c|[c[:name], c[:id], {'data-category'=>c[:id], 'id'=>c[:id]}]}, @product.product_category.id), {}, {class: "putup__main__category__select-box--grandchildren, box--grand-child",id:"product_category_grandchildren"}
     -if @product.product_size.present?
       .putup__main__size
         %p.putup__main__size__title

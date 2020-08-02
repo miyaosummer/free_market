@@ -126,3 +126,4 @@ $(document).on('change', '.box--child', function() {
     $("#size_box").empty();
   }
 });
+
