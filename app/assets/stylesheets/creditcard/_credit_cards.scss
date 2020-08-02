@@ -2,6 +2,13 @@
   box-sizing: border-box;
 }
 
+.creditcard-error {
+  margin: 12px 0px 0px 216px;
+  font-size: 12px;
+  font-weight: 600;
+  color: red;
+}
+
 .signup-creditcard {
   width: 100%;
   background-color: whitesmoke;
@@ -36,19 +43,51 @@
 
       &__register-form {
         text-align: left;
-        &__label {
-          font-size: 14px;
-          font-weight: 600;
-          margin: 36px 0 0 216px;
+
+        //-- カード番号 入力フォーム --//
+        &__number {
+          &__label {
+            font-size: 14px;
+            font-weight: 600;
+            margin: 36px 0 0 216px;
+          }
+          &__image {
+            display: flex;
+            margin: 6px 0 0 216px;
+            .mastercard {
+              margin-left: 2px;
+            }
+            .JCB {
+              margin-left: 2px;
+            }
+            .AmericanExpress {
+              margin-left: 2px;
+            }
+            .DinersClub {
+              margin-left: 2px;
+            }
+            .DISCOVER {
+              margin-left: 2px;
+            }
+          }
         }
-        .icon {
-          color: gray;
+        //-- 有効期限 入力フォーム --//
+        &__period {
+          &__label {
+            font-size: 14px;
+            font-weight: 600;
+            margin: 36px 0 0 216px;
+          }
         }
-        &__image {
-          display: flex;
-          margin: 6px 0 0 216px;
+        //-- セキュリティコード入力フォーム --//
+        &__security {
+          &__label {
+            font-size: 14px;
+            font-weight: 600;
+            margin: 36px 0 0 216px;
+          }
         }
-        
+
         .form-require {
           background-color: $main-color;
           color: $white;
@@ -59,12 +98,15 @@
           padding: 4px;
           vertical-align: top;
         }
+        .creditcard-icon {
+          color: gray;
+        }
         .term-label {
           font-size: 12px;
         }
 
         //-- input関連 --//
-        .number, .cvc {
+        .creditcard-number, .cvc {
           height: 50px;
           width: 300px;
           border: 1px solid #CCCCCC;
@@ -73,7 +115,7 @@
           margin: 4px 0 0 216px;
           padding: 12px;
         }
-        .number:focus, .cvc:focus {
+        .creditcard-number:focus, .cvc:focus {
           border: 1px solid $main-color;
           outline: 0;
         }
@@ -86,7 +128,7 @@
             border: 1px solid #CCCCCC;
             border-radius: 4px;
             font-size: 14px;
-            color: #888888;
+            color: $black;
             padding: 8px;
           }
           .term-label {
@@ -197,51 +239,4 @@
       padding: 12px;
     }
   }
-}
-
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.visa {
-  -webkit-animation: fadeIn 1.0s ease;
-  animation: fadeIn 1.0s ease;
-}
-.mastercard {
-  -webkit-animation: fadeIn 1.5s ease;
-  animation: fadeIn 1.5s ease;
-  margin-left: 2px;
-}
-.JCB {
-  -webkit-animation: fadeIn 2.0s ease;
-  animation: fadeIn 2.0s ease;
-  margin-left: 2px;
-}
-.AmericanExpress {
-  -webkit-animation: fadeIn 2.5s ease;
-  animation: fadeIn 2.5s ease;
-  margin-left: 2px;
-}
-.DinersClub {
-  -webkit-animation: fadeIn 3.0s ease;
-  animation: fadeIn 3.0s ease;
-  margin-left: 2px;
-}
-.DISCOVER {
-  -webkit-animation: fadeIn 3.5s ease;
-  animation: fadeIn 3.5s ease;
-  margin-left: 2px;
 }
