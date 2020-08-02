@@ -8,6 +8,7 @@ a{
 
 .show{
   width: 100%;
+  color: $black;
 
   &__navbar{
     width: 100%;
@@ -195,6 +196,7 @@ a{
                 padding: 6px 10px;
                 border-radius: 40px;
                 border: 1px solid #ffb340;
+                cursor: pointer;
               }
               &--soldout{
                 font-size: 20px;
@@ -232,9 +234,10 @@ a{
           margin: 10px 0;
           &__text{
             padding-bottom: 24px;
-            // word-break: break-all;
+            word-break: break-all;
             &__list{
               margin: 15px;
+              position: relative;
               &__name{
                 margin-bottom: 5px;
                 display: flex;
@@ -245,6 +248,14 @@ a{
                   margin-left: 10px;
                   margin-bottom: 3px;
                   padding: 2px;
+                }
+              }
+              &__btn{
+                font-size: 14px;
+                position: absolute;
+                right: 0;
+                &--delete{
+
                 }
               }
               &__sentence{
@@ -259,7 +270,7 @@ a{
           
           &__form{
             text-align: center;
-            &__textarea{
+            &__textbox{
               width: 100%;
               min-height: 104px;
               padding: 10px;
@@ -271,7 +282,7 @@ a{
               margin: 10px 0;
               text-align: left;
             }
-            &__button{
+            &__submit{
               width: 60%;
               background: $main-color;
               color: $white;
@@ -280,12 +291,14 @@ a{
               line-height: 48px;
               border: 1px solid $main-color;
               border-radius: 100px;
+              cursor: pointer;
             }
             &__unlogin{
               color: #999999;
               font-size: 18px;
               font-weight: bold;
               margin-bottom: 20px;
+              text-align: center;
             }
           }
         }

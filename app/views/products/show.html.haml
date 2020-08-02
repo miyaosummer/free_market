@@ -173,37 +173,44 @@
 
         .show__main__product__content__comment
           %ul.show__main__product__content__comment__text
-            -# %h4＜コメント一覧＞ ※入れるか迷い中
             - if @comments
               - @comments.each do |comment| 
                 %li.show__main__product__content__comment__text__list
                   .show__main__product__content__comment__text__list__name
                     = comment.user.nickname
+
                     -# 出品者のコメントの場合、出品者と分かるように表示
                     - if comment.user_id == @product.seller_id
                       %p.show__main__product__content__comment__text__list__name--seller
                         出品者
                     - else 
 
+                    -# コメントした本人のみ削除ボタンを表示
+                    -if user_signed_in? && current_user.id == comment.user_id
+                      %ul.show__main__product__content__comment__text__list__btn
+                        %li
+                          = link_to "コメントを削除する", product_comment_path(comment.product.id, comment.id), class: "show__main__product__content__comment__text__list__btn--delete", method: :delete
+                    -else
+
                   .show__main__product__content__comment__text__list__sentence
                     = comment.comment
                 
           -# ユーザーがログインしているか否かでコメント投稿フォームの表示切り替え
           - if current_user
-            = form_with(model: [@product, @comment], class: "show__main__product__content__comment__form", local: true) do |form|
-              = form.text_area :comment, placeholder: "", class: "show__main__product__content__comment__form__textarea"
+            = form_with(model: [@product, @comment], class: "show__main__product__content__comment__form", local: true, id: "new_comment") do |form|
+              = form.text_area :comment, placeholder: "500文字まで入力可能です", maxlength: 500,  class: "show__main__product__content__comment__form__textbox"
               %p.show__main__product__content__comment__form__notice
                 相手のことを考え丁寧なコメントを心がけましょう。
                 %br/
                 不快な言葉遣いなどは利用制限や退会処分となることがあります。
-              = form.submit "コメントする", class: "show__main__product__content__comment__form__button"
+              = form.submit "コメントする", class: "show__main__product__content__comment__form__submit"
               -# = icon('fa', 'comment')
               -# ↑後ほど修正予定
           - else 
             %p.show__main__product__content__comment__form__unlogin
               ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
 
-          // ↑コメント機能部分↑ //
+        // ↑コメント機能部分↑ //
 
       %ul.show__main__product__links 
         %li
