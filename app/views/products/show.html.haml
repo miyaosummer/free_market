@@ -52,7 +52,7 @@
                 - @product.product_images.each do |product_image|
                   %li.show__main__product__content__information__image__sub--list
                     = image_tag product_image.image.url
-                    -# 子画像3枚区切りで表示する（このコメントは後ほど削除する）
+                    -# 子画像3~5枚区切りで表示する（このコメントは後ほど削除する）
                       
               .show__main__product__content__information__image--soldout
 
@@ -65,7 +65,7 @@
                 - @product.product_images.each do |product_image|
                   %li.show__main__product__content__information__image__sub--list
                     = image_tag product_image.image.url
-                    -# 子画像3枚区切りで表示する（このコメントは後ほど削除する）
+                    -# 子画像3~5枚区切りで表示する（このコメントは後ほど削除する）
 
           .show__main__product__content__information__price
             %span
@@ -169,22 +169,29 @@
                     = icon('fa', 'flag')
                     不適切な商品の通報
 
+        // ↓コメント機能部分↓ //
+
         .show__main__product__content__comment
           %ul.show__main__product__content__comment__text
             -# %h4＜コメント一覧＞ ※入れるか迷い中
             - if @comments
               - @comments.each do |comment| 
                 %li.show__main__product__content__comment__text__list
-                  .show__main__product__content__comment__text__list--name
+                  .show__main__product__content__comment__text__list__name
                     = comment.user.nickname
-                    ：
-                  .show__main__product__content__comment__text__list--sentence
+                    -# 出品者のコメントの場合、出品者と分かるように表示
+                    - if comment.user_id == @product.seller_id
+                      %p.show__main__product__content__comment__text__list__name--seller
+                        出品者
+                    - else 
+
+                  .show__main__product__content__comment__text__list__sentence
                     = comment.comment
                 
           -# ユーザーがログインしているか否かでコメント投稿フォームの表示切り替え
           - if current_user
             = form_with(model: [@product, @comment], class: "show__main__product__content__comment__form", local: true) do |form|
-              = form.text_area :comment, placeholder: "", class: "show__main__product__content__comment__form__textarea", id: "comment_body"
+              = form.text_area :comment, placeholder: "", class: "show__main__product__content__comment__form__textarea"
               %p.show__main__product__content__comment__form__notice
                 相手のことを考え丁寧なコメントを心がけましょう。
                 %br/
@@ -195,6 +202,8 @@
           - else 
             %p.show__main__product__content__comment__form__unlogin
               ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
+
+          // ↑コメント機能部分↑ //
 
       %ul.show__main__product__links 
         %li

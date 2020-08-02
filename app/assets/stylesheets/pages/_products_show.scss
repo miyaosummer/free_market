@@ -94,9 +94,11 @@ a{
               margin-top: 10px;
               display: flex;
               justify-content: center;
+              // 画像の折り返し(一旦保留)※このコメントは後ほど削除予定
+              flex-wrap: wrap;
               &--list{
                 width: 25%;
-                margin: 0 10px 0 0;
+                margin: 10px 10px 0 0;
                 img{
                   height: 87px;
                   width: 100%;
@@ -110,7 +112,7 @@ a{
                 content: "";
                 position: absolute;
                 z-index: 10;
-                left: 180px;
+                left: 30px;
                 top: 0;
                 border-bottom: 5em solid transparent;
                 border-left: 5em solid $main-color;
@@ -122,7 +124,7 @@ a{
                 font-weight: bold;
                 letter-spacing: 2px;
                 z-index: 11;
-                left: 185px;
+                left: 35px;
                 top: 18px;
                 -webkit-transform: rotate(-45deg);
                 transform: rotate(-45deg);
@@ -228,31 +230,40 @@ a{
           background-color: $white;
           padding: 24px;
           margin: 10px 0;
-          text-align: center;
           &__text{
             padding-bottom: 24px;
+            // word-break: break-all;
             &__list{
-              // 調整中
               margin: 15px;
-              // padding: 5px;
-              // margin-top: 15px;
-              display: flex;
-              justify-content: space-between;
-              &--name{
-                
+              &__name{
+                margin-bottom: 5px;
+                display: flex;
+                align-items: center;
+                &--seller{
+                  background-color: #eef0f4;
+                  font-size: 12px;
+                  margin-left: 10px;
+                  margin-bottom: 3px;
+                  padding: 2px;
+                }
               }
-              &--sentence{
-                
+              &__sentence{
+                background-color: #eef0f4;
+                font-size: 14px;
+                padding: 16px;
+                border-radius: 15px;
+                line-height: 1.5;
               }
             }
           }
-          #comment_body{
-            width: 100%;
-            min-height: 104px;
-            padding: 10px;
-          }
+          
           &__form{
-            
+            text-align: center;
+            &__textarea{
+              width: 100%;
+              min-height: 104px;
+              padding: 10px;
+            }
             &__notice{
               background-color: #f8f8f8;
               font-size: 14px;
@@ -271,8 +282,10 @@ a{
               border-radius: 100px;
             }
             &__unlogin{
+              color: #999999;
+              font-size: 18px;
               font-weight: bold;
-              color: $black;
+              margin-bottom: 20px;
             }
           }
         }
