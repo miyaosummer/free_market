@@ -32,16 +32,6 @@ $(function(){
     }
   });
 
-  $('destinations-form__index__submit-btn').addEventListener('click', (e) => {
-    // デフォルトのイベントをキャンセル
-    e.preventDefault();
-    if($(this).val().length == 0) {
-      
-    } else {
-      document.commit.submit();
-    }
-  });
-
   //---- keyup & blur functions ----//
   // last-name keyup時のエラー処理
   $('#destinations_last_name').keyup(function(){
@@ -113,6 +103,20 @@ $(function(){
       }
     }
   });
+  // // 都道府県 keyup時のエラー処理
+  // $('#destination_prefecture_id').keyup(function(){
+  //   if($(this).parent().find('.destination-error').$('[name=category_id]').val()){
+  //     $(this).parent().find('.destination-error').remove();
+  //   }
+  // });
+  // // 都道府県 blur時のエラー処理
+  // $('#destination_prefecture_id').blur(function(){
+  //   if($('[name=category_id]').val().val === ''){
+  //     if($('[name=category_id]').parent().find('.destination-error').val().val === ''){
+  //       $('.destinations-form__index__group-prefectures').append(buildInputError('都道府県を選択してください'));
+  //     }
+  //   }
+  // });
   // 市区町村 keyup時のエラー処理
   $('#destination_city').keyup(function(){
     if($(this).parent().find('.destination-error').length > 0){
