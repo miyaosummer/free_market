@@ -34,7 +34,7 @@ class ProductsController < ApplicationController
   end
 
   def update
-    necessary_size_array     = [14, 29, 44, 57, 63, 68, 79, 82, 150, 163, 178, 188, 210, 255, 260];
+    unnecessary_size_array     = [14, 29, 44, 57, 63, 68, 79, 82, 150, 163, 178, 188, 210, 255, 260];
     #編集した商品の子カテゴリ情報を取得。ノードの深さによって孫カテゴリが存在しているかを判断する。
     if ProductCategory.find(product_params[:product_category_id]).depth == 1
       product_category_children = ProductCategory.find(product_params[:product_category_id]).ancestry
@@ -43,7 +43,7 @@ class ProductsController < ApplicationController
     end
 
     #product_size_idを持っていて、サイズがないカテゴリだった場合、サイズidを削除する
-    if necessary_size_array.include?(product_category_children) && product_params[:product_size_id].present?
+    if unnecessary_size_array.include?(product_category_children) && product_params[:product_size_id].present?
       product_params[:product_size_id].chop!
     end
     #削除したサイズidに"サイズなし"という文字列をいれる
