@@ -1,7 +1,17 @@
 class CommentsController < ApplicationController
   def create
-    comment = Comment.create(comment_params)
-    redirect_to product_path(comment.product.id)
+    @comment = Comment.create(comment_params)
+    @seller_of_product = @comment.product.seller
+    @id_of_product = @comment.product.id
+    if @comment.save
+        respond_to do |format|
+          format.html { redirect_to product_path(params[:product_id])  }
+          format.json
+        end
+    else
+      flash[:alert] = "保存できませんでした"
+      redirect_to product_path(params[:product_id])
+    end
   end
 
   def destroy

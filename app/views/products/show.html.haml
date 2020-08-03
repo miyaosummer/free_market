@@ -40,8 +40,7 @@
               %li
                 = link_to "削除する", product_path(@product), class: "show__main__product__content__information__btn--delete", method: :delete
           -else
-
-          -# ↓複数画像表示の修正予定（このコメントは後ほど削除する）
+          
           -# 商品が存在しているか否かで売り切れ表示の場合分け
           -if @product.buyer_id.present?
             .show__main__product__content__information__image
@@ -52,8 +51,7 @@
                 - @product.product_images.each do |product_image|
                   %li.show__main__product__content__information__image__sub--list
                     = image_tag product_image.image.url
-                    -# 子画像3~5枚区切りで表示する（このコメントは後ほど削除する）
-                      
+                    
               .show__main__product__content__information__image--soldout
 
           -else
@@ -65,7 +63,6 @@
                 - @product.product_images.each do |product_image|
                   %li.show__main__product__content__information__image__sub--list
                     = image_tag product_image.image.url
-                    -# 子画像3~5枚区切りで表示する（このコメントは後ほど削除する）
 
           .show__main__product__content__information__price
             %span
