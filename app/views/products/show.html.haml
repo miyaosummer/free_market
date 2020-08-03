@@ -87,15 +87,23 @@
                   -# 後ほどカテゴリ機能で実装予定
                   %th
                     カテゴリー
-                  %td
-                    = link_to "#", class: "show__main__product__content__information__table__category" do
-                      = @product.product_category.root.name
-                    %br/
-                    = link_to "#", class: "show__main__product__content__information__table__category" do
-                      = @product.product_category.parent.name
-                    %br/
-                    = link_to "#", class: "show__main__product__content__information__table__category" do
-                      = @product.product_category.name
+                    -if @product.product_category.depth == 2
+                      %td
+                        = link_to "#", class: "show__main__product__content__information__table__category" do
+                          = @product.product_category.root.name
+                        %br/
+                        = link_to "#", class: "show__main__product__content__information__table__category" do
+                          = @product.product_category.parent.name
+                        %br/
+                        = link_to "#", class: "show__main__product__content__information__table__category" do
+                          = @product.product_category.name
+                    -else
+                      %td
+                        = link_to "#", class: "show__main__product__content__information__table__category" do
+                          = @product.product_category.root.name
+                        %br/
+                        = link_to "#", class: "show__main__product__content__information__table__category" do
+                          = @product.product_category.name
                 %tr
                   %th
                     ブランド
