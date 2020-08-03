@@ -55,7 +55,7 @@
         %span.putup__main__category__title__imperative
           必須
           //空欄になっているセレクトボックス の下に初期値を持ったセレクトボックスをそれぞれ配置
-      = f.select :product_category_id, options_for_select(@category_parent_array.map{|c|[c.name, c.id]}, @product.product_category.root.id), {}, {class: "putup__main__category__select-box, box--parent",id: "product_category_parent"}
+      = f.select :product_category_id, options_for_select(@product_category_parents.map{|c|[c.name, c.id]}, @product.product_category.root.id), {}, {class: "putup__main__category__select-box, box--parent",id: "product_category_parent"}
       .putup__main__category__select-box--children#children_box
       = f.select :product_category_id, options_for_select(@category_child_array.map{|c|[c[:name], c[:id], {'data-category'=>c[:id], 'id'=>c[:id]}]}, @product.product_category.parent.id), {}, {class: "putup__main__category__select-box--children, box--child",id: "product_category_children"}
       .putup__main__category__select-box--grandchildren#grandchildren_box

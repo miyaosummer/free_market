@@ -23,9 +23,6 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    #初期値となる親カテゴリ〜サイズ（あれば）を取得する
-    @category_parent_array = ProductCategory.where(ancestry: nil).each do |parent|
-    end
     @product.product_category.root
     @category_child_array = @product.product_category.root.children
     if @product.product_category.root.indirects.present?
