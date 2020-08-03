@@ -15,7 +15,6 @@ class ProductsController < ApplicationController
     if product_params[:product_size_id].blank?
       @product.product_size_id = "サイズなし"
     end
-    # binding.pry
     if @product.save
       redirect_to root_path
     else
