@@ -34,13 +34,16 @@ class ProductsController < ApplicationController
   end
 
   def update
-    #rangeA ~ Dでサイズを持たないカテゴリidの一覧を取得。
-    rangeA = ("88".."149").to_a
-    rangeB = ("198".."209").to_a
-    rangeC = ("216".."254").to_a
-    rangeD = ("269".."380").to_a
-    #編集したカテゴリidに該当していないかチェックする。カテゴリidを持っていないカテゴリ、且つサイズidを持っている場合、サイズidを削除する
-    if (rangeA.include?("#{product_params[:product_category_id]}") || rangeB.include?("#{product_params[:product_category_id]}") || rangeC.include?("#{product_params[:product_category_id]}") || rangeD.include?("#{product_params[:product_category_id]}") )&& product_params[:product_size_id].present?
+    necessary_size_array     = [14, 29, 44, 57, 63, 68, 79, 82, 150, 163, 178, 188, 210, 255, 260];
+    #編集した商品の子カテゴリ情報を取得。ノードの深さによって孫カテゴリが存在しているかを判断する。
+    if ProductCategory.find(product_params[:product_category_id]).depth == 1
+      product_category_children = ProductCategory.find(product_params[:product_category_id]).ancestry
+    else
+      product_category_children = ProductCategory.find(product_params[:product_category_id]).parent.ancestry
+    end
+
+    #product_size_idを持っていて、サイズがないカテゴリだった場合、サイズidを削除する
+    if necessary_size_array.include?(product_category_children) && product_params[:product_size_id].present?
       product_params[:product_size_id].chop!
     end
     #削除したサイズidに"サイズなし"という文字列をいれる
@@ -53,6 +56,7 @@ class ProductsController < ApplicationController
     else
       render :edit
     end
+
   end
 
   def show
