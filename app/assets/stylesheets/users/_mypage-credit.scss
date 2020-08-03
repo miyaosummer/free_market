@@ -40,33 +40,19 @@
         &__image {
           display: flex;
           margin: 6px 0 0 176px;
-          .mypage-visa {
-            -webkit-animation: fadeIn 1.0s ease;
-            animation: fadeIn 1.0s ease;
-          }
-          .mypage-mastercard {
-            -webkit-animation: fadeIn 1.5s ease;
-            animation: fadeIn 1.5s ease;
+          .mastercard {
             margin-left: 2px;
           }
-          .mypage-JCB {
-            -webkit-animation: fadeIn 2.0s ease;
-            animation: fadeIn 2.0s ease;
+          .JCB {
             margin-left: 2px;
           }
-          .mypage-AmericanExpress {
-            -webkit-animation: fadeIn 2.5s ease;
-            animation: fadeIn 2.5s ease;
+          .AmericanExpress {
             margin-left: 2px;
           }
-          .mypage-DinersClub {
-            -webkit-animation: fadeIn 3.0s ease;
-            animation: fadeIn 3.0s ease;
+          .DinersClub {
             margin-left: 2px;
           }
-          .mypage-DISCOVER {
-            -webkit-animation: fadeIn 3.5s ease;
-            animation: fadeIn 3.5s ease;
+          .DISCOVER {
             margin-left: 2px;
           }
         }
