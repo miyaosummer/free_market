@@ -9,7 +9,7 @@ $(function(){
   }
   // エラーチェック関数 ※submitボタンが押されたときの処理
   function formChecker() {
-    // エラーをリセットするためすべてのcreditcard-errorを削除
+    // エラーをリセットするためすべてのdestination-errorを削除
     $('.destination-error').remove();
 
     // スクロール位置の設定
