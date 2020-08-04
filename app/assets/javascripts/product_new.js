@@ -372,7 +372,6 @@ $(function() {
     });
     // 販売手数料、販売利益の処理
     let price = $('#price').val();
-    console.log(price);
     if (price > 0){
       let fee = Math.floor(price * 0.1);
       let profit = price - fee;
