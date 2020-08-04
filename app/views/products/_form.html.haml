@@ -6,15 +6,26 @@
         必須
     %p.putup__main__upload__description
       最大10枚までアップロードできます
+    .putup__main__upload__image-box
+      #image-box
+        - if @product.persisted?
+          - @product.product_images.each_with_index do |img, i|
+            %div{class: "preview", data:{index: i+100}}
+              %div{class: "preview__product-image", data:{index: i+100}}
+                = image_tag img.image.url, width: "118", height: "118"
+              %div{class: "preview__action"}
+                %i.fa.fa-trash.preview__action__delete
+        .dropzone-area
+          %label.dropzone-box{for: "upload-image[0]"}
+            %p.dropzone-box__text ここをクリックして画像を追加してください
+          .dropzone-area__inputs
+            = f.fields_for :product_images do |image|
+              - if image.object.persisted?
+                = image.file_field :image, data:{index: image.index, accept: "image/*"},class:'upload-image',id: "upload-image["+"#{image.index}"+"]"
+                = image.check_box :_destroy, data:{index: image.index + 100}, class:'hidden-destroy', id: "destroy-image["+"#{image.index}"+"]"
+              - else
+                = image.file_field :image, {'data-index': 0, name:'product[product_images_attributes][0][image]', id: "upload-image[0]", class: "upload-image", accept: "image/*"}
 
-      .putup__main__upload__image-box
-        = f.fields_for :product_images do |image|
-          #image-box
-            .dropzone-area
-              = image.label :image, class: "dropzone-box", for: "upload-image[0]" do
-                %p.dropzone-box__text ここをクリックして画像を追加してください
-                .dropzone-area__inputs
-                  = image.file_field :image, {'data-index': 0, name:'product[product_images_attributes][0][image]', id: "upload-image[0]", class: "upload-image"}
   %hr.putup__main__separate-line
 
   .putup__main__name
@@ -32,19 +43,44 @@
 
   %hr.putup__main__separate-line
 
-  .putup__main__product-detail 
+  //newアクションかeditアクションによって表示をかえる
+  - if controller.action_name == "new"
+    .putup__main__product-detail 
     %p.putup__main__product-detail__title
       商品の詳細
-
-  .putup__main__category 
-    %p.putup__main__category__title
-      = f.label :product_category_id, "カテゴリー"
-      %span.putup__main__category__title__imperative
-        必須
-    = f.collection_select :product_category_id, ProductCategory.where(id: 1..13), :id, :name,  {prompt: '選択してください'},{class: "putup__main__category__select-box",id: "product_category_parent"}
-    .putup__main__category__select-box--children#children_box
-    .putup__main__category__select-box--grandchildren#grandchildren_box
-    .putup__main__size__select-box--size#size_box
+    .putup__main__category 
+      %p.putup__main__category__title
+        = f.label :product_category_id, "カテゴリー"
+        %span.putup__main__category__title__imperative
+          必須
+      = f.collection_select :product_category_id, ProductCategory.where(id: 1..13), :id, :name,  {prompt: '選択してください'},{class: "putup__main__category__select-box",id: "product_category_parent"}
+      .putup__main__category__select-box--children#children_box
+      .putup__main__category__select-box--grandchildren#grandchildren_box
+      .putup__main__size__select-box--size#size_box
+  - else 
+    .putup__main__product-detail 
+    %p.putup__main__product-detail__title
+      商品の詳細
+    .putup__main__category 
+      %p.putup__main__category__title
+        = f.label :product_category_id, "カテゴリー"
+        %span.putup__main__category__title__imperative
+          必須
+          //空欄になっているセレクトボックス の下に初期値を持ったセレクトボックスをそれぞれ配置
+      = f.select :product_category_id, options_for_select(@product_category_parents.map{|c|[c.name, c.id]}, @product.product_category.root.id), {}, {class: "putup__main__category__select-box, box--parent",id: "product_category_parent"}
+      .putup__main__category__select-box--children#children_box
+      = f.select :product_category_id, options_for_select(@category_child_array.map{|c|[c[:name], c[:id], {'data-category'=>c[:id], 'id'=>c[:id]}]}, @product.product_category.parent.id), {}, {class: "putup__main__category__select-box--children, box--child",id: "product_category_children"}
+      .putup__main__category__select-box--grandchildren#grandchildren_box
+      .putup__main__size__select-box--size#size_box
+      -if @product.product_category.root.indirects.present?
+        = f.select :product_category_id, options_for_select(@category_grandchild_array.map{|c|[c[:name], c[:id], {'data-category'=>c[:id], 'id'=>c[:id]}]}, @product.product_category.id), {}, {class: "putup__main__category__select-box--grandchildren, box--grand-child",id:"product_category_grandchildren"}
+    -if @product.product_size.present?
+      .putup__main__size
+        %p.putup__main__size__title
+          サイズ
+          %span.putup__main__size__title__imperative
+            必須
+        = f.collection_select :product_size_id, ProductSize.where(group: @product_size.group), :id, :name, {selected: @product_size.id}, {class: "putup__main__size__select-box, putup__main__size__select-box--size, box--size",id:"size_box"}
 
   .putup__main__brand
     %p.putup__main__brand__title
@@ -134,8 +170,10 @@
               ー
 
   .putup__main__submit
-    = f.submit "出品する", class: "putup__main__submit__submit-btn"
-
+    - if controller.action_name == "new"
+      = f.submit "出品する", class: "putup__main__submit__submit-btn"
+    - else
+      = f.submit "変更を適用する", class: "putup__main__submit__submit-btn"
   .putup__main__draft
     %input{type: "submit", class: "putup__main__draft__submit-btn", value:'下書きに保存'}
 

@@ -39,9 +39,8 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    if @product.product_size_id.present?
-      @product.product_size_id = ProductSize.find_by_id(product_params[:product_size_id]).name
-    else
+    # product_size_idが空欄の時はサイズなしと表示させる。
+    if product_params[:product_size_id].blank?
       @product.product_size_id = "サイズなし"
     end
     if @product.save
@@ -52,9 +51,32 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @product.product_category.root
+    @category_child_array = @product.product_category.root.children
+    if @product.product_category.root.indirects.present?
+      @category_grandchild_array = @product.product_category.parent.children
+    end
+    if @product.product_size.present?
+      @product_size = @product.product_size
+    end
   end
 
   def update
+    unnecessary_size_array     = [14, 29, 44, 57, 63, 68, 79, 82, 150, 163, 178, 188, 210, 255, 260];
+    #編集した商品の子カテゴリ情報を取得。ノードの深さによって孫カテゴリが存在しているかを判断する。
+    if ProductCategory.find(product_params[:product_category_id]).depth == 1
+      product_category_children = ProductCategory.find(product_params[:product_category_id]).ancestry
+    else
+      product_category_children = ProductCategory.find(product_params[:product_category_id]).parent.ancestry
+    end
+    #product_size_idを持っていて、サイズがないカテゴリだった場合、サイズidを削除する
+    if unnecessary_size_array.include?(product_category_children) && product_params[:product_size_id].present?
+      product_params[:product_size_id].chop!
+    end
+    #削除したサイズidに"サイズなし"という文字列をいれる
+    if product_params[:product_size_id].blank?
+      @product.product_size_id = "サイズなし"
+    end
     if @product.update(product_params)
       redirect_to root_path
     else

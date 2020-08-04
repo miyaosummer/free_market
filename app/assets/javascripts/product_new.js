@@ -49,6 +49,11 @@ $(function(){
       $('.putup__main__category').append(buildInputError('カテゴリーを選択してください'));
       result = false;
     }
+    //サイズのエラー処理
+    if($('#product_size').val() == 0){
+      $('.putup__main__size').append(buildInputError('サイズを選択してください'));
+      result = false;
+    }
     // 商品の状態のエラー処理
     if($('.putup__main__condition__select-box').val() == 0){
       $('.putup__main__condition').append(buildInputError('商品の状態を選択してください'));
@@ -83,10 +88,8 @@ $(function(){
     }, {
       queue : false
     });
-
     return result;
   }
-
   // Submitボタン押されたらエラーチェックを走らせる
   $('.putup__main__form').submit(function(e){
     if(!formChecker()){
@@ -94,7 +97,6 @@ $(function(){
       return false;
     }
   });
-
   // --- keyup & blur functions ---//
   // 商品名 keyup時のエラー処理
   $('.putup__main__name__text-box').keyup(function(){
@@ -186,7 +188,6 @@ $(function(){
       $(this).parent().find('.input-error').remove();
     }
   });
-
   // 配送料の負担 blur時のエラー処理
   $('#postage_way').blur(function(){
     if($(this).val() == 0){
@@ -231,7 +232,6 @@ $(function(){
       $(this).parent().find('.input-error').remove();
     }
   });
-
   // 販売価格 keyup時のエラー処理
   $('#price').on('change keyup', function(){
     if(299 < $(this).val() && $(this).val() < 10000000){
@@ -259,19 +259,30 @@ $(function(){
       }
     }
   });
+  // サイズ エラー解決処理
+  $(document).on('change', '#product_size', function() {
+    if($(this).val().length > 0){
+      $(this).parent().find('.input-error').remove();
+    }
+  });
+  // サイズ blur時のエラー処理
+  $(document).on('blur', '#product_size', function() {
+    if($(this).val() == 0){
+      if($(this).parents('.putup__main__size__select-box').find('.input-error').length == 0){
+        $('.putup__main__size').append(buildInputError('サイズを選択してください'));
+      }
+    }
+  });
   // ---  end keyup & blur functions ---//
 });
 //--- end validate ---//
 
 //--- putup images --//
 $(function() {
-  // 配列を用意
-  var inputs = [];
-  // プレビュー生成
   function buildImagePreview(ln) {
     const html = `
-    <div data-index="${ln}" class="preview">
-      <div data-index="${ln}" class="preview__product-image">
+    <div class="preview" data-index="${ln}">
+      <div class="preview__product-image" data-index="${ln}">
         <img src="" width="118px" height="118px">
       </div>
       <div class="preview__action">
@@ -280,141 +291,201 @@ $(function() {
     </div>`;
     return html;
   }
-  // Inputボックス生成（display: noneで隠れているため、ビューには見えません）
   function buildInputArea(index) {
     const html = `
-      <input data-index="${index}" name="product[product_images_attributes][${index}][image]" id="upload-image[${index}]" class="upload-image" type="file">
+      <input data-index="${index}" name="product[product_images_attributes][${index}][image]" id="upload-image[${index}]" class="upload-image" accept="image/*" type="file">
     `;
     return html;
+  }
+  // dropzone-areaの縮小処理
+  function reductionDropzoneArea(previewLen) {
+    // 1段目の処理
+    if(previewLen < 5){
+      $('.dropzone-area').css({
+        'width': `calc(100% - ( 121px * ${previewLen}))`
+      })
+    }
+    // 2枚以降 labelをカメラアイコンにする
+    if(previewLen == 1){
+      $('.dropzone-area').find('p').replaceWith('<i class="fa fa-camera dropzone-box__icon"></i>')
+    }
+    // 0枚のとき アイコンからテキストに変える
+    if(previewLen == 0){
+      $('.dropzone-area').find('i').replaceWith('<p class="dropzone-box__text">ここをクリックして画像を追加してください</p>');
+    }
+    // 5枚以上のとき 1段目boxを隠し、2段目を出現させる
+    if(previewLen >= 5) {
+      $('.dropzone-area').css({
+        'width': '100%'
+      })
+    }
+    // 6枚目以降の処理
+    if(previewLen > 5) {
+      $('.dropzone-area').css({
+        'width': `calc(100% - ( 121px * ${previewLen -5 }))`
+      })
+    }
+    // 10枚になったらdropzone-areaを隠す
+    if(previewLen == 10){
+      $('.dropzone-area').css({
+        'display': 'none'
+      })
+    }
+  }
+  // dropzone-areaの拡大処理
+  function expansionDropzoneArea(uploadimageLen){
+    // upload-imageの個数が4個以下なら
+    if(uploadimageLen < 5){
+      $('.dropzone-area').css({
+        'width': `calc(100% - ( 121px * ${uploadimageLen}))`
+      });
+    }
+    // 0のときはアイコンをテキストに変えてあげる
+    if(uploadimageLen == 0){
+      $('.dropzone-area').find('i').replaceWith('<p class="dropzone-box__text">ここをクリックして画像を追加してください</p>');
+    }
+    // upload-imageの個数が5個以上なら
+    if(uploadimageLen >= 5){
+      $('.dropzone-area').css({
+        'width': `calc(100% - ( 121px * ${uploadimageLen-5}))`
+      });
+    }
+    // 10個→9個になったときにインプット領域を復活させる
+    if(uploadimageLen == 9){
+      $('.dropzone-area').css({
+        'display': 'block'
+      })
+    }
+  }
+  // 編集画面遷移時
+  // 登録済み画像の処理
+  if ($('.hidden-destroy').length > 0){
+    let registeredLen = $('.hidden-destroy').length
+    let previewLen = $('.preview').length;
+    reductionDropzoneArea(previewLen);
+    $('.dropzone-area').find('p').replaceWith('<i class="fa fa-camera dropzone-box__icon"></i>');
+    // inputbox追加
+    $('.dropzone-area__inputs').append(buildInputArea(registeredLen));
+    // labelの向き先をinputの一番うしろにする
+    $('.dropzone-box').attr('for', function(){
+      return 'upload-image[' + registeredLen + ']'
+    });
+    // 販売手数料、販売利益の処理
+    let price = $('#price').val();
+    if (price > 0){
+      let fee = Math.floor(price * 0.1);
+      let profit = price - fee;
+      let display_fee = fee.toLocaleString();
+      let display_profit = profit.toLocaleString();
+      $('.putup__main__commission__contents__content__frame__input__calc-result').text('¥' + display_fee);
+      $('.putup__main__profit__contents__content__frame__input__calc-result').text('¥' + display_profit);
+    }
   }
   // プレビュー追加
   $(document).on('change', 'input[type="file"].upload-image', function(e){
     // inputを追加する
     let numInputs = $('.upload-image').length;
-    $('.dropzone-box').append(buildInputArea(numInputs));
+    $('.dropzone-area__inputs').append(buildInputArea(numInputs));
     // labelの向き先をinputの一番うしろにする
     $('.dropzone-box').attr('for', function(){
       return 'upload-image[' + numInputs + ']'
     });
     // previewを追加
-    // 選択したフィアルをfileに格納
+    // 選択した画像ファイルをfile配列に格納、fileReaderでプレビューを作成
     let file = $(this).prop('files')[0];
-    // fileReaderを起動
-    let fileReader = new FileReader();
-    // inputs配列にデータを格納
-    inputs.push($(this));
-    // inputs配列の長さを計る
-    let inputsLen = inputs.length;
+    let fileReader = new FileReader(); // fileReaderを起動
+    let inputDataIndex = $(this).data('index');
     // fileReaderがロードできたら、previewsにプレビューを追加する
     fileReader.onload = function(e) {
-      let inputsIndex = inputsLen - 1;
       // preview追加
-      $('.dropzone-area').before(buildImagePreview(inputsIndex));
+      $('.dropzone-area').before(buildImagePreview(inputDataIndex));
       // previewにimageを追加
-      $('[data-index="' + inputsIndex + '"]').children('img').attr({src: e.target.result});
+      $('[data-index="' + inputDataIndex + '"]').children('img').attr({src: e.target.result});
       // input-errorを隠す ※error処理
       $('.putup__main__upload .input-error').css({
         'display': 'none'
       });
     }
     fileReader.readAsDataURL(file)
-    // インプット領域の幅調整
-    // 1段目の処理
-    if(inputsLen < 5){
-      $('.dropzone-area').css({
-        'width': `calc(100% - ( 121px * ${inputsLen}))`
-      })
-    }
-    // 2枚以降は、labelをカメラアイコンにする
-    if(inputsLen == 1){
-      $('.dropzone-area').find('p').replaceWith('<i class="fa fa-camera dropzone-box__icon"></i>')
-    }
-    // 0枚のときはアイコンからテキストに変える
-    if(inputsLen == 0){
-      $('.dropzone-area').find('i').replaceWith('<p class="dropzone-box__text">ここをクリックして画像を追加してください</p>');
-    }
-    // 5枚以上のときは1段目boxを隠して、2段目を出現させる
-    if(inputsLen >= 5) {
-      $('.dropzone-area').css({
-        'width': '100%'
-      })
-    }
-    // 6枚目以降の処理
-    if(inputsLen > 5) {
-      $('.dropzone-area').css({
-        'width': `calc(100% - ( 121px * ${inputsLen -5 }))`
-      })
-    }
-    // 10枚になったらdropzone-areaを隠す
-    if(inputsLen == 10){
-      $('.dropzone-area').css({
-        'display': 'none'
-      })
-    }
+    let previewLen = $('.preview').length;
+    reductionDropzoneArea(previewLen + 1);
   });
+  
   // 削除機能
   $(document).on('click', '.preview__action__delete', function(){
+    // 登録済み画像の削除チェックボックスの個数を取得
+    let registeredLen = $('.hidden-destroy').length;
     // 削除するプレビューの親要素を取得
     let targetPreview = $(this).parent().parent();
-    // 削除するプレビューのインデックスを取得（inputファイルを消すためのインデックス）
-    let targetDataIndex = $(targetPreview).data('index');
-    // プレビューとインプットを削除
-    $('[data-index="' + targetDataIndex + '"]').remove();
-    // 隠していたinput-errorを出す
-    $('.putup__main__upload .input-error').css({
-      'display': 'block'
-    });
-
+    // 削除するプレビューのindex番号を取得
+    let targetDataIndex = $(targetPreview).attr('data-index');
+    // チェックボックスを取得（登録済み画像）
+    const hiddenCheck = $(`input[data-index="${targetDataIndex}"].hidden-destroy`);
+    // もしチェックボックスが存在すればチェックを入れる
+    if (hiddenCheck) hiddenCheck.prop('checked', true);
+    // previewとinputを削除
+    if (targetDataIndex > 99){
+      // 登録済み画像はpreviewだけ削除
+      targetPreview.remove();
+    } else {
+      // 新規画像はinputとpreviewを両方とも削除
+      $('[data-index="' + targetDataIndex + '"]').remove();
+    };
+    // previewが0枚になったら隠していたinput-errorを出す
+    if($('.preview').length == 0){
+      $('.putup__main__upload .input-error').css({
+        'display': 'block'
+      });
+    };
     // labelの向き先をinputの一番うしろにする
     let numInputs = $('.upload-image').length - 1;
     $('.dropzone-box').attr('for', function(){
       return 'upload-image[' + numInputs + ']'
     });
-    
-    // inputs配列から削除
-    inputs.splice(targetDataIndex, 1);
-
-    // 各要素の連番を再設定
     // 各インプット要素のインデックス番号を整頓する
-    $('.dropzone-box .upload-image').each(function(index){
-      // upload-image達のインデックスを整頓
-      $(this).attr({'name': `product[product_images_attributes][${index}][image]`});
-      $(this).attr('data-index', index);
-      $(this).attr('id', `upload-image[${index}]`);
-    })
-    // プレビュー要素のインデックス番号を整頓する
-    $('.preview').each(function(index){
-      $(this).attr('data-index', index);
-      $(this).children('.preview__product-image').attr('data-index', index);
-    })
-
-    // インプット領域の幅調整
-    // upload-imageの個数が4個以下なら
-    if($('.upload-image').length - 1 < 5){
-      $('.dropzone-area').css({
-        'width': `calc(100% - ( 121px * ${$('.upload-image').length - 1}))`
+    if($('.hidden-destroy').length > 0){
+    // 編集画面時の処理(EDIT)
+      // upload-imageのindex番号を整頓
+      $('.dropzone-area__inputs .upload-image').each(function(index){
+        if(index < registeredLen){
+        } else {
+        // upload-image達のインデックスを整頓
+        $(this).attr({'name': `product[product_images_attributes][${index}][image]`});
+        $(this).attr('data-index', index);
+        $(this).attr('id', `upload-image[${index}]`);
+        };
       });
-    }
-    // 0のときはアイコンをテキストに変えてあげる
-    if($('.upload-image').length -1 == 0){
-      $('.dropzone-area').find('i').replaceWith('<p class="dropzone-box__text">ここをクリックして画像を追加してください</p>');
-    }
-    // upload-imageの個数が5個以上なら
-    if($('.upload-image').length - 1 >= 5){
-      $('.dropzone-area').css({
-        'width': `calc(100% - ( 121px * ${($('.upload-image').length - 1)-5}))`
-      });
-    }
-    // 10個→9個になったときにインプット領域を復活させる
-    if($('.upload-image').length -1 == 9){
-      $('.dropzone-area').css({
-        'display': 'block'
+      // preview要素のindex番号を整頓
+      $('.preview').each(function(index){
+        // hidden_destroyでチェックされている数をカウント
+        let checkCnt = $('.dropzone-area__inputs input:checkbox:checked').length;
+        if($(this).data('index') > 99){
+        } else {
+          $(this).attr('data-index', index + checkCnt);
+          $(this).children('.preview__product-image').attr('data-index', index+checkCnt);
+        };
       })
-    }
+    } else {
+    // 新規投稿時の処理(NEW)
+      // upload-imageのindex番号を整頓
+      $('.dropzone-area__inputs .upload-image').each(function(index){
+        $(this).attr({'name': `product[product_images_attributes][${index}][image]`});
+        $(this).attr('data-index', index);
+        $(this).attr('id', `upload-image[${index}]`);
+      });
+      // previewのindex番号を整頓
+      $('.preview').each(function(index){
+        $(this).attr('data-index', index);
+        $(this).children('.preview__product-image').attr('data-index', index);
+      })
+    };
+    let previewLen = $('.preview').length;
+    expansionDropzoneArea(previewLen);
   })
 });
 //--- end putup images--//
 
+//--- category function ---//
 function appendOption(category) {
   let html = 
     `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
@@ -553,3 +624,4 @@ function clothesShoeJudgement(child, grandchild) {
     return clothes_shoe_judgement_val = "";
   }
 }
+//--- end category function ---//
