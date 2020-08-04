@@ -67,9 +67,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  def show
-  end
-
   # 購入確認ページ
   def purchase
     if @card.present?

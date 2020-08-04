@@ -95,7 +95,6 @@ a{
               margin-top: 10px;
               display: flex;
               justify-content: center;
-              // 画像の折り返し(一旦保留)※このコメントは後ほど削除予定
               flex-wrap: wrap;
               &--list{
                 width: 25%;
@@ -292,6 +291,7 @@ a{
               border: 1px solid $main-color;
               border-radius: 100px;
               cursor: pointer;
+              outline:0;
             }
             &__unlogin{
               color: #999999;
