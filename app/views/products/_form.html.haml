@@ -170,8 +170,10 @@
               ー
 
   .putup__main__submit
-    = f.submit "出品する", class: "putup__main__submit__submit-btn"
-
+    - if controller.action_name == "new"
+      = f.submit "出品する", class: "putup__main__submit__submit-btn"
+    - else
+      = f.submit "変更を適用する", class: "putup__main__submit__submit-btn"
   .putup__main__draft
     %input{type: "submit", class: "putup__main__draft__submit-btn", value:'下書きに保存'}
 
