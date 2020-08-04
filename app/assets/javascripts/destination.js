@@ -1,4 +1,5 @@
 // animate()とは、オブジェクトの移動や透過率などを変更するアニメーションを実装するためのメソッド
+// append()は、html要素を動的に追加することができるメソッド
 // blur()とは、フォーム要素などでフォーカスが外れたタイミングで処理を実行できるメソッド
 // keyup()とは、キーボードのキーを離した際に処理を実行できるメソッド
 // offset()とは、画面上(document内)に配置したHTML要素の表示位置を座標で取得できるメソッド
@@ -18,6 +19,13 @@ $(function(){
   function formChecker() {
     // エラーをリセットするためすべてのdestination-errorを削除
     $('.destination-error').remove();
+    // resultのデフォルト値をtrueに切り替え
+    let result = true;
+    // LastNameのエラー処理
+    if($('#destinations_last_name').length == 0){
+      $('.destinations-form__index__group-name').append(buildInputError('お名前を入力してください'));
+      result = false;
+    };
 
     // スクロール位置の設定
     let position = $('.destination-error').parent().offset().top;
@@ -34,19 +42,18 @@ $(function(){
   $('.destinations-form__index').submit(function(e){
     if(!formChecker()){
       e.preventDefault();
-      alert("入力が完了していません");
       return false;
     }
   });
 
   //---- keyup & blur functions ----//
-  // last-name keyup時のエラー処理
+  // LastName keyup時のエラー処理
   $('#destinations_last_name').keyup(function(){
     if($(this).parent().find('.destination-error').length > 0){
       $(this).parent().find('.destination-error').remove();
     }
   });
-  // last-name blur時のエラー処理
+  // LastName blur時のエラー処理
   $('#destinations_last_name').blur(function(){
     if($(this).val().length == 0){
       if($(this).parent().find('.destination-error').length == 0){
@@ -54,13 +61,13 @@ $(function(){
       }
     }
   });
-  // first-name keyup時のエラー処理
+  // FirstName keyup時のエラー処理
   $('#destinations_first_name').keyup(function(){
     if($(this).parent().find('.destination-error').length > 0){
       $(this).parent().find('.destination-error').remove();
     }
   });
-  // first-name blur時のエラー処理
+  // FirstName blur時のエラー処理
   $('#destinations_first_name').blur(function(){
     if($(this).val().length == 0){
       if($(this).parent().find('.destination-error').length == 0){
@@ -68,13 +75,13 @@ $(function(){
       }
     }
   });
-  // last-kana keyup時のエラー処理
+  // LastKana keyup時のエラー処理
   $('#destinations_last_name_kana').keyup(function(){
     if($(this).parent().find('.destination-error').length > 0){
       $(this).parent().find('.destination-error').remove();
     }
   });
-  // last-kana blur時のエラー処理
+  // LastKana blur時のエラー処理
   $('#destinations_last_name_kana').blur(function(){
     if($(this).val().length == 0){
       if($(this).parent().find('.destination-error').length == 0){
@@ -82,13 +89,13 @@ $(function(){
       }
     }
   });
-  // first-kana keyup時のエラー処理
+  // FirstKana keyup時のエラー処理
   $('#destinations_first_name_kana').keyup(function(){
     if($(this).parent().find('.destination-error').length > 0){
       $(this).parent().find('.destination-error').remove();
     }
   });
-  // first-kana blur時のエラー処理
+  // FirstKana blur時のエラー処理
   $('#destinations_first_name_kana').blur(function(){
     if($(this).val().length == 0){
       if($(this).parent().find('.destination-error').length == 0){
