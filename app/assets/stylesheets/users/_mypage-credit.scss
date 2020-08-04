@@ -2,11 +2,18 @@
   box-sizing: border-box;
 }
 
-//-- クレジットカード未登録 --//
+.mypage-creditcard-error {
+  margin: 12px 0px 0px 176px;
+  font-size: 12px;
+  font-weight: 600;
+  color: red;
+}
+
+//---- クレジットカード未登録 ----//
 .mypage-card {
   width: auto;
   height: auto;
-  margin-top: 50px;
+  padding: 50px 0px;
   background-color: whitesmoke;
 
   &__main {
@@ -54,6 +61,48 @@
           }
           .DISCOVER {
             margin-left: 2px;
+
+        //-- カード番号 入力フォーム --//
+        &__number {
+          &__label {
+            font-size: 14px;
+            font-weight: 600;
+            margin: 36px 0 0 176px;
+          }
+          &__image {
+            display: flex;
+            margin: 6px 0 0 176px;
+            .mypage-mastercard {
+              margin-left: 2px;
+            }
+            .mypage-JCB {
+              margin-left: 2px;
+            }
+            .mypage-AmericanExpress {
+              margin-left: 2px;
+            }
+            .mypage-DinersClub {
+              margin-left: 2px;
+            }
+            .mypage-DISCOVER {
+              margin-left: 2px;
+            }
+          }
+        }
+        //-- 有効期限 入力フォーム --//
+        &__period {
+          &__label {
+            font-size: 14px;
+            font-weight: 600;
+            margin: 36px 0 0 176px;
+          }
+        }
+        //-- セキュリティコード入力フォーム --//
+        &__security {
+          &__label {
+            font-size: 14px;
+            font-weight: 600;
+            margin: 36px 0 0 176px;
           }
         }
         
@@ -67,12 +116,15 @@
           padding: 4px;
           vertical-align: top;
         }
+        .creditcard-icon {
+          color: gray;
+        }
         .term-label {
           font-size: 12px;
         }
 
         // input関連
-        .number, .cvc {
+        .creditcard-number, .cvc {
           height: 50px;
           width: 300px;
           border: 1px solid #CCCCCC;
@@ -81,7 +133,7 @@
           margin: 4px 0 0 176px;
           padding: 12px;
         }
-        .number:focus, .cvc:focus {
+        .creditcard-number:focus, .cvc:focus {
           border: 1px solid $main-color;
           outline: 0;
         }
@@ -94,7 +146,7 @@
             border: 1px solid #CCCCCC;
             border-radius: 4px;
             font-size: 14px;
-            color: #888888;
+            color: $black;
             padding: 8px;
           }
           .term-label {
