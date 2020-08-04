@@ -80,26 +80,7 @@
             margin: 36px 0 0 216px;
           }
         }
-        &__image {
-          display: flex;
-          margin: 6px 0 0 216px;
-          .mastercard {
-            margin-left: 2px;
-          }
-          .JCB {
-            margin-left: 2px;
-          }
-          .AmericanExpress {
-            margin-left: 2px;
-          }
-          .DinersClub {
-            margin-left: 2px;
-          }
-          .DISCOVER {
-            margin-left: 2px;
-          }
-        }
-            
+
         //-- セキュリティコード入力フォーム --//
         &__security {
           &__label {
