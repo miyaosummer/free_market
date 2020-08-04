@@ -357,8 +357,8 @@ $(function() {
       })
     }
   }
-
-  // 編集画面遷移時に新しいプレビューボックスを追加する処理
+  // 編集画面遷移時
+  // 登録済み画像の処理
   if ($('.hidden-destroy').length > 0){
     let registeredLen = $('.hidden-destroy').length
     let previewLen = $('.preview').length;
@@ -370,6 +370,17 @@ $(function() {
     $('.dropzone-box').attr('for', function(){
       return 'upload-image[' + registeredLen + ']'
     });
+    // 販売手数料、販売利益の処理
+    let price = $('#price').val();
+    console.log(price);
+    if (price > 0){
+      let fee = Math.floor(price * 0.1);
+      let profit = price - fee;
+      let display_fee = fee.toLocaleString();
+      let display_profit = profit.toLocaleString();
+      $('.putup__main__commission__contents__content__frame__input__calc-result').text('¥' + display_fee);
+      $('.putup__main__profit__contents__content__frame__input__calc-result').text('¥' + display_profit);
+    }
   }
   // プレビュー追加
   $(document).on('change', 'input[type="file"].upload-image', function(e){
