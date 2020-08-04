@@ -267,7 +267,7 @@ Product.create!(
   postage_way_id: '送料込み(出品者負担)',
   # postage: '送料込み',
   shipping_day_id: '2〜3日で発送',
-  product_size_id: 'S',
+  product_size_id: '3',
   prefecture_id: '東京都'
 )
 Product.create!(
@@ -281,7 +281,7 @@ Product.create!(
   # postage: '着払い',
   shipping_day_id: '1〜2日で発送',
   product_brand_id: '1',
-  product_size_id: 'M',
+  product_size_id: '4',
   prefecture_id: '東京都'
 )
 Product.create!(
@@ -295,7 +295,7 @@ Product.create!(
   # postage: '送料込み',
   shipping_day_id: '4〜7日で発送',
   product_brand_id: '2',
-  product_size_id: 'M',
+  product_size_id: '4',
   prefecture_id: '大阪府'
 )
 

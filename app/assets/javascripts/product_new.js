@@ -49,6 +49,11 @@ $(function(){
       $('.putup__main__category').append(buildInputError('カテゴリーを選択してください'));
       result = false;
     }
+    //サイズのエラー処理
+    if($('#product_size').val() == 0){
+      $('.putup__main__size').append(buildInputError('サイズを選択してください'));
+      result = false;
+    }
     // 商品の状態のエラー処理
     if($('.putup__main__condition__select-box').val() == 0){
       $('.putup__main__condition').append(buildInputError('商品の状態を選択してください'));
@@ -254,7 +259,21 @@ $(function(){
       }
     }
   });
-// ---  end keyup & blur functions ---//
+  // サイズ エラー解決処理
+  $(document).on('change', '#product_size', function() {
+    if($(this).val().length > 0){
+      $(this).parent().find('.input-error').remove();
+    }
+  });
+  // サイズ blur時のエラー処理
+  $(document).on('blur', '#product_size', function() {
+    if($(this).val() == 0){
+      if($(this).parents('.putup__main__size__select-box').find('.input-error').length == 0){
+        $('.putup__main__size').append(buildInputError('サイズを選択してください'));
+      }
+    }
+  });
+  // ---  end keyup & blur functions ---//
 });
 //--- end validate ---//
 
@@ -274,7 +293,7 @@ $(function() {
   }
   function buildInputArea(index) {
     const html = `
-      <input data-index="${index}" name="product[product_images_attributes][${index}][image]" id="upload-image[${index}]" class="upload-image" type="file">
+      <input data-index="${index}" name="product[product_images_attributes][${index}][image]" id="upload-image[${index}]" class="upload-image" accept="image/*" type="file">
     `;
     return html;
   }
