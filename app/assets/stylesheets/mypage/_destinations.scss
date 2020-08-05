@@ -348,6 +348,10 @@
         &:hover {
           opacity: 0.6;
         }
+        &:focus {
+          border: 1px solid gray;
+          outline: 0;
+        }
       }
     }
   }

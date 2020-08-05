@@ -22,8 +22,38 @@ $(function(){
     // resultのデフォルト値をtrueに切り替え
     let result = true;
     // LastNameのエラー処理
-    if($('#destinations_last_name').length == 0){
-      $('.destinations-form__index__group-name').append(buildInputError('お名前を入力してください'));
+    if($('#destinations_last_name').val() == ""){
+      $('.destinations-form__index__group-name').append(buildInputError('お名前（姓）を入力してください'));
+      result = false;
+    };
+    // FirstNameのエラー処理
+    if($('#destinations_first_name').val() == ""){
+      $('.destinations-form__index__group-name').append(buildInputError('お名前（名）を入力してください'));
+      result = false;
+    };
+    // LastKanaのエラー処理
+    if($('#destinations_last_name_kana').val() == ""){
+      $('.destinations-form__index__group-kana').append(buildInputError('お名前（姓カナ）を入力してください'));
+      result = false;
+    };
+    // FirstKanaのエラー処理
+    if($('#destinations_first_name_kana').val() == ""){
+      $('.destinations-form__index__group-kana').append(buildInputError('お名前（名カナ）を入力してください'));
+      result = false;
+    };
+    // 郵便番号のエラー処理
+    if($('#destination_postal_code').val() == ""){
+      $('.destinations-form__index__group-postal-code').append(buildInputError('郵便番号を入力してください'));
+      result = false;
+    };
+    // 市区町村のエラー処理
+    if($('#destination_city').val() == ""){
+      $('.destinations-form__index__group-city').append(buildInputError('市区町村を入力してください'));
+      result = false;
+    };
+    // 市区町村のエラー処理
+    if($('#destination_block').val() == ""){
+      $('.destinations-form__index__group-block').append(buildInputError('番地を入力してください'));
       result = false;
     };
 
@@ -35,14 +65,16 @@ $(function(){
     }, {
       queue : false // 読み方: キュー
     });
-    return true;
+    return result;
   }
 
   // Submitボタン押されたらエラーチェックを走らせる
-  $('.destinations-form__index').submit(function(e){
+  $('.destinations-forms').submit(function(e){
+    e.preventDefault();
     if(!formChecker()){
-      e.preventDefault();
       return false;
+    } else {
+      $('.destinations-forms')[0].submit()
     }
   });
 
@@ -114,6 +146,20 @@ $(function(){
     if($(this).val().length == 0){
       if($(this).parent().find('.destination-error').length == 0){
         $('.destinations-form__index__group-postal-code').append(buildInputError('郵便番号を入力してください'));
+      }
+    }
+  });
+  // 都道府県 keyup時のエラー処理
+  $('#destination_prefecture_id').keyup(function(){
+    if($(this).parent().find('.destination-error').length > 0){
+      $(this).parent().find('.destination-error').remove();
+    }
+  });
+  // 都道府県 blur時のエラー処理
+  $('#destination_prefecture_id').blur(function(){
+    if($(this).val().length == 0){
+      if($(this).parent().find('.destination-error').length == 0){
+        $('.destinations-form__index__prefectures').append(buildInputError('都道府県を選択してください'));
       }
     }
   });
