@@ -250,6 +250,9 @@ a{
                 font-size: 13px;
                 position: absolute;
                 right: 0;
+                &--delete{
+                  color: $main-color;
+                }
               }
               &__sentence{
                 background-color: #eef0f4;

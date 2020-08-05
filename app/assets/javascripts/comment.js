@@ -14,7 +14,7 @@ $(function(){
     var HTML_deleteBtn = 
             `<ul class="show__main__product__content__comment__text__list__btn">
               <li>
-                <a rel="nofollow" data-method=delete href="/products/${comment.product_id}/comments/${comment.id}", class: "show__main__product__content__comment__text__list__btn--delete">コメントを削除する</a>
+                <a rel="nofollow" data-method=delete href="/products/${comment.product_id}/comments/${comment.id}", class: "show__main__product__content__comment__text__list__btn--delete" style="color: #3CCACE; font-size: 13px">コメントを削除する</a>
               </li>
             </ul>`
     
