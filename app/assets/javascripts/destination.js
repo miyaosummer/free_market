@@ -46,6 +46,11 @@ $(function(){
       $('.destinations-form__index__group-postal-code').append(buildInputError('郵便番号を入力してください'));
       result = false;
     };
+    // 都道府県のエラー処理
+    if($('#destination_prefecture_id').val() == ""){
+      $('.destinations-form__index__prefectures').append(buildInputError('郵便番号を入力してください'));
+      result = false;
+    };
     // 市区町村のエラー処理
     if($('#destination_city').val() == ""){
       $('.destinations-form__index__group-city').append(buildInputError('市区町村を入力してください'));
