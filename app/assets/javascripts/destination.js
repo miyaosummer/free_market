@@ -48,7 +48,7 @@ $(function(){
     };
     // 都道府県のエラー処理
     if($('#destination_prefecture_id').val() == ""){
-      $('.destinations-form__index__prefectures').append(buildInputError('郵便番号を入力してください'));
+      $('.destinations-form__index__group-prefectures').append(buildInputError('都道府県を選択してください'));
       result = false;
     };
     // 市区町村のエラー処理
