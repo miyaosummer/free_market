@@ -156,15 +156,15 @@ $(function(){
   });
   // 都道府県 keyup時のエラー処理
   $('#destination_prefecture_id').keyup(function(){
-    if($(this).parent().find('.destination-error').length > 0){
+    if($(this).parent().find('.destination-error').val() == ""){
       $(this).parent().find('.destination-error').remove();
     }
   });
   // 都道府県 blur時のエラー処理
   $('#destination_prefecture_id').blur(function(){
-    if($(this).val().length == 0){
-      if($(this).parent().find('.destination-error').length == 0){
-        $('.destinations-form__index__prefectures').append(buildInputError('都道府県を選択してください'));
+    if($(this).val() == ""){
+      if($(this).parent().find('.destination-error').val() == ""){
+        $('.destinations-form__index__group-prefectures').append(buildInputError('都道府県を選択してください'));
       }
     }
   });
