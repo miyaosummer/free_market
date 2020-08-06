@@ -8,7 +8,7 @@
       最大10枚までアップロードできます
     .putup__main__upload__image-box
       #image-box
-        - if @product.persisted?
+        - if @product.persisted? && @product.product_images.count > 0
           - @product.product_images.each_with_index do |img, i|
             %div{class: "preview", data:{index: i+100}}
               %div{class: "preview__product-image", data:{index: i+100}}

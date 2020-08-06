@@ -74,6 +74,9 @@ class ProductsController < ApplicationController
         @product_size = @product.product_size
       end
     end
+    if @product.public_flag == 0 && @product.product_images[0] == nil
+      @product.product_images.build
+    end
   end
 
   def update
