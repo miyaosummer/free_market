@@ -3,14 +3,6 @@
     発送元・お届け先住所登録
   .destinations-form__index
     = form_with(model: [@user,@destination],local: true, html:{class: "destinations-forms"}) do |f|
-      -# - if @destination.errors.any?
-      -#   %h3
-      -#     入力した内容にエラーが
-      -#     = @destination.errors.count
-      -#     件あります
-      -#   %ul
-      -#     - @destination.errors.full_messages.each do |message|
-      -#       %li= message
       .destinations-form__index__group-name
         %i.fas.fa-user-circle
         = f.label "お名前", class: "destinations-form__index__name"
