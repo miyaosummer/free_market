@@ -22,7 +22,7 @@
       %li
         = icon('fa', 'angle-right')
       %li.show__navbar--last
-        product3
+        = @product.name
 
   .show__main
 
@@ -40,28 +40,30 @@
               %li
                 = link_to "削除する", product_path(@product), class: "show__main__product__content__information__btn--delete", method: :delete
           -else
-
-          -# 商品が存在しているか否かで場合分け
+          
+          -# 商品が存在しているか否かで売り切れ表示の場合分け
           -if @product.buyer_id.present?
-            .show__main__product__content__information__body
-              %ul 
-                %li
+            .show__main__product__content__information__image
+              %ul.show__main__product__content__information__image__top
+                %li.show__main__product__content__information__image__top--list
                   = image_tag @product.product_images[0].image.url
-                  %ul
-                    %li
-                      = image_tag @product.product_images[0].image.url
-                      
-              .show__main__product__content__information__body--soldout
+              %ul.show__main__product__content__information__image__sub
+                - @product.product_images.each do |product_image|
+                  %li.show__main__product__content__information__image__sub--list
+                    = image_tag product_image.image.url
+                    
+              .show__main__product__content__information__image--soldout
 
           -else
-            .show__main__product__content__information__body
-              %ul 
-                %li
+            .show__main__product__content__information__image
+              %ul.show__main__product__content__information__image__top
+                %li.show__main__product__content__information__image__top--list
                   = image_tag @product.product_images[0].image.url
-                  %ul
-                    %li
-                      = image_tag @product.product_images[0].image.url
-                    
+              %ul.show__main__product__content__information__image__sub
+                - @product.product_images.each do |product_image|
+                  %li.show__main__product__content__information__image__sub--list
+                    = image_tag product_image.image.url
+
           .show__main__product__content__information__price
             %span
               ¥
@@ -84,7 +86,6 @@
                   %td
                     = @product.seller.nickname
                 %tr
-                  -# 後ほどカテゴリ機能で実装予定
                   %th
                     カテゴリー
                     -if @product.product_category.depth == 2
@@ -153,11 +154,12 @@
                 %li.show__main__product__content__information__option__btn--favorite
                   = icon('fa', 'star')
                   お気に入り 0
+
               -# 商品が品切れかどうかで場合分け
               - if @product.buyer_id != nil
                 %ul.show__main__product__content__information__option__btn
                   %li.show__main__product__content__information__option__btn--soldout
-                    品切れ中
+                    売り切れ中
               - else
                 %ul.show__main__product__content__information__option__btn
                   %li.show__main__product__content__information__option__btn--purchase
@@ -177,15 +179,43 @@
 
         .show__main__product__content__comment
           %ul.show__main__product__content__comment__text
-          %form(class="show__main__product__content__comment__form" action="#" method="post")
-            %textarea(name="" class="show__main__product__content__comment__form__textarea" id="comment_body")
-            %p.show__main__product__content__comment__form__notice
-              相手のことを考え丁寧なコメントを心がけましょう。
-              %br/
-              不快な言葉遣いなどは利用制限や退会処分となることがあります。
-            %button(name="button" class="show__main__product__content__comment__form__button" type="submit" )
-              = icon('fa', 'comment')
-              コメントする
+            - if @comments
+              - @comments.each do |comment| 
+                %li.show__main__product__content__comment__text__list
+                  .show__main__product__content__comment__text__list__name
+                    = comment.user.nickname
+
+                    -# 出品者のコメントの場合、出品者と分かるように表示
+                    - if comment.user_id == @product.seller_id
+                      %p.show__main__product__content__comment__text__list__name--seller
+                        出品者
+                    - else 
+
+                    -# コメントした本人のみ削除ボタンを表示
+                    -if user_signed_in? && current_user.id == comment.user_id
+                      %ul.show__main__product__content__comment__text__list__btn
+                        %li
+                          = link_to "コメントを削除する", product_comment_path(comment.product.id, comment.id), class: "show__main__product__content__comment__text__list__btn--delete", method: :delete
+                    -else
+
+                  .show__main__product__content__comment__text__list__sentence
+                    = comment.comment
+                
+          -# ユーザーがログインしているか否かでコメント投稿フォームの表示切り替え
+          - if current_user
+            = form_with(model: [@product, @comment], class: "show__main__product__content__comment__form", local: true, id: "new_comment") do |form|
+              = form.text_area :comment, placeholder: "500文字まで入力可能です", maxlength: 500,  class: "show__main__product__content__comment__form__textbox"
+              %p.show__main__product__content__comment__form__notice
+                相手のことを考え丁寧なコメントを心がけましょう。
+                %br/
+                不快な言葉遣いなどは利用制限や退会処分となることがあります。
+              = button_tag type: 'submit', class: "show__main__product__content__comment__form__submit" do
+                = icon('fa', 'comment')
+                コメントする
+
+          - else 
+            %p.show__main__product__content__comment__form__unlogin
+              ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
 
       %ul.show__main__product__links 
         %li
@@ -199,8 +229,8 @@
 
       .show__main__product__related
         = link_to "#", class: "show__main__product__related__items" do
-          -# カテゴリ機能で修正予定
-          ベビー・キッズをもっと見る
+          = @product.product_category.root.name
+          をもっと見る
         %ul.show__main__product__related__lists
           %li.show__main__product__related__lists__list
             = link_to "#", class: ".show__main__product__related__lists__list" do
@@ -220,7 +250,3 @@
 
   .show__footer
     = render "shared/footer"
-
-  -# 今後使用しない場合削除予定↓
-  .show__putupBtn
-    = render "shared/sell-btn"

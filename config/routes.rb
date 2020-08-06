@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
   resources :logs ,only: :index
   resources :products ,only: [:new, :create, :show, :edit, :update, :index, :destroy] do
+    resources :comments, only: [:create, :destroy]
     member do
       get 'credit_new', to:'products#credit_new'
       post 'credit_create', to:'products#credit_create'

@@ -37,6 +37,11 @@ class ProductsController < ApplicationController
     @product_category_parents = ProductCategory.where(ancestry: nil)
   end
 
+  def show
+    @comment = Comment.new
+    @comments = @product.comments.includes(:user)
+  end
+  
   def create
     @product = Product.new(product_params)
     # product_size_idが空欄の時はサイズなしと表示させる。
@@ -82,9 +87,6 @@ class ProductsController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def show
   end
 
   # 購入確認ページ

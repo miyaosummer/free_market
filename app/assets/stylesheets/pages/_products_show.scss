@@ -8,6 +8,7 @@ a{
 
 .show{
   width: 100%;
+  color: $black;
 
   &__navbar{
     width: 100%;
@@ -71,33 +72,35 @@ a{
             }
           }
 
-          &__body{
+          &__image{
             margin: 16px 0 0;
             position: relative;
-            ul{
+            &__top{
               width: 560px;
               margin: 0 auto;
               display: flex;
-              li{
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+              &--list{
                 img{
                   height: 346px;
+                  width: 100%;
                   object-fit: cover;
+                  vertical-align: bottom;
                 }
-                ul{
-                  margin-top: 10px;
-                  display: flex;
-                  justify-content: center;
-                  li{
-                    width: 25%;
-                    margin: 0 10px 0 0;
-                    img{
-                      height: 87px;
-                      object-fit: cover;
-                    }
-                  }
+              }
+            }
+            &__sub{
+              margin-top: 10px;
+              padding-left: 90px;
+              display: flex;
+              flex-wrap: wrap;
+              &--list{
+                width: 26%;
+                margin: 10px 10px 0 0;
+                img{
+                  height: 87px;
+                  width: 100%;
+                  object-fit: cover;
+                  vertical-align: bottom;
                 }
               }
             }
@@ -145,6 +148,7 @@ a{
             line-height: 1.5;
             font-size: 18px;
             margin-bottom: 30px;
+            word-wrap: normal;
           }
           
           &__table{
@@ -188,6 +192,7 @@ a{
                 padding: 6px 10px;
                 border-radius: 40px;
                 border: 1px solid #ffb340;
+                cursor: pointer;
               }
               &--soldout{
                 font-size: 20px;
@@ -223,17 +228,49 @@ a{
           background-color: $white;
           padding: 24px;
           margin: 10px 0;
-          text-align: center;
           &__text{
-           
+            padding-bottom: 24px;
+            word-break: break-all;
+            &__list{
+              margin: 15px;
+              position: relative;
+              &__name{
+                margin-bottom: 5px;
+                display: flex;
+                align-items: center;
+                &--seller{
+                  background-color: #eef0f4;
+                  font-size: 12px;
+                  margin-left: 10px;
+                  margin-bottom: 3px;
+                  padding: 2px;
+                }
+              }
+              &__btn{
+                font-size: 13px;
+                position: absolute;
+                right: 0;
+                &--delete{
+                  color: $main-color;
+                }
+              }
+              &__sentence{
+                background-color: #eef0f4;
+                font-size: 14px;
+                padding: 16px;
+                border-radius: 15px;
+                line-height: 1.5;
+              }
+            }
           }
-          #comment_body{
-            width: 100%;
-            min-height: 104px;
-            padding: 10px;
-          }
+          
           &__form{
-            
+            text-align: center;
+            &__textbox{
+              width: 100%;
+              min-height: 104px;
+              padding: 10px;
+            }
             &__notice{
               background-color: #f8f8f8;
               font-size: 14px;
@@ -241,7 +278,7 @@ a{
               margin: 10px 0;
               text-align: left;
             }
-            &__button{
+            &__submit{
               width: 60%;
               background: $main-color;
               color: $white;
@@ -250,6 +287,15 @@ a{
               line-height: 48px;
               border: 1px solid $main-color;
               border-radius: 100px;
+              cursor: pointer;
+              outline:0;
+            }
+            &__unlogin{
+              color: #999999;
+              font-size: 18px;
+              font-weight: bold;
+              margin-bottom: 20px;
+              text-align: center;
             }
           }
         }
