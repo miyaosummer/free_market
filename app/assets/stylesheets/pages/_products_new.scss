@@ -1,12 +1,12 @@
 .input-error{
   margin: 20px 0px 0px 40px;
   font-size: 14px;
-  color: red;
+  color: $red;
 }
 
 .putup{
   width: 100%;
-  background-color: whitesmoke;
+  background-color: $whitesmoke;
   &__header{
     text-align: center;
     &__logo{
@@ -21,9 +21,10 @@
   &__main{
     max-width: 700px;
     margin:0 auto;
-    background-color: white;
+    background-color: $white;
     &__upload{
       padding-top: 40px;
+
       &__title{
         margin-left: 40px;
         font-weight: bold;
@@ -32,7 +33,7 @@
           border-radius: 2px;
           padding: 2px 4px;
           font-size: 12px;
-          background-color:#99FFFF;
+          background-color:$imperative-blue;
         }
       }
       &__description{
@@ -54,7 +55,7 @@
         border-radius: 2px;
         padding: 2px 4px;
         font-size: 12px;
-        background-color:#99FFFF;
+        background-color:$imperative-blue;
       }
     }
     &__text-box{
@@ -62,7 +63,7 @@
       padding: 14px;
       height: 40px;
       width: calc(100% - 80px);
-      border-color: #DDDDDD;
+      border-color: $border-color;
       border-style: solid;
       border-width: 1px;
       border-radius: 5px;
@@ -78,14 +79,14 @@
         border-radius: 2px;
         padding: 2px 4px;
         font-size: 12px;
-        background-color:#99FFFF;
+        background-color:$imperative-blue;
       }
     }
     &__text-box{
       margin: 20px 40px 0px 40px;
       padding: 14px;
       width: calc(100% - 80px);
-      border-color: #DDDDDD;
+      border-color: $border-color;
       border-style: solid;
       border-width: 1px;
       border-radius: 5px;
@@ -95,7 +96,7 @@
     padding-top: 20px;
     &__title{
       margin-left: 40px;
-      color: gray;
+      color: $gray;
       font-weight: bold;
       font-size: 14px;
     }
@@ -110,19 +111,40 @@
         border-radius: 2px;
         padding: 2px 4px;
         font-size: 12px;
-        background-color:#99FFFF;
+        background-color:$imperative-blue;
       }
     }
     &__select-box{
       margin: 20px 40px 0px 40px;
       height: 40px;
       width: calc(100% - 80px);
-      border-color: #DDDDDD;
+      border-color: $border-color;
       border-radius: 5px;
     }
     &__select-box--children{
     }
     &__select-box--grandchildren{
+    }
+    .box--parent{
+      margin: 20px 40px 0px 40px;
+      height: 40px;
+      width: calc(100% - 80px);
+      border-color: $border-color;
+      border-radius: 5px;
+    }
+    .box--child{
+      margin: 20px 40px 0px 40px;
+      height: 40px;
+      width: calc(100% - 80px);
+      border-color: $border-color;
+      border-radius: 5px;
+    }
+    .box--grand-child{
+      margin: 20px 40px 0px 40px;
+      height: 40px;
+      width: calc(100% - 80px);
+      border-color: $border-color;
+      border-radius: 5px;
     }
   }
   &__size{
@@ -135,14 +157,21 @@
         border-radius: 2px;
         padding: 2px 4px;
         font-size: 12px;
-        background-color:#99FFFF;
+        background-color:$imperative-blue;
       }
     }
     &__select-box{
       margin: 20px 40px 0px 40px;
       height: 40px;
       width: calc(100% - 80px);
-      border-color: #DDDDDD;
+      border-color: $border-color;
+      border-radius: 5px;
+    }
+    .box--size{
+      margin: 20px 40px 0px 40px;
+      height: 40px;
+      width: calc(100% - 80px);
+      border-color: $border-color;
       border-radius: 5px;
     }
   }
@@ -156,7 +185,7 @@
         border-radius: 2px;
         padding: 2px 4px;
         font-size: 12px;
-        background-color:#DDDDDD;
+        background-color:$border-color;
       }
     }
     &__text-box{
@@ -164,7 +193,7 @@
       padding: 14px;
       height: 40px;
       width: calc(100% - 80px);
-      border-color: #DDDDDD;
+      border-color: $border-color;
       border-style: solid;
       border-width: 1px;
       border-radius: 5px;
@@ -180,14 +209,14 @@
         border-radius: 2px;
         padding: 2px 4px;
         font-size: 12px;
-        background-color:#99FFFF;
+        background-color:$imperative-blue;
       }
     }
     &__select-box{
       margin: 20px 40px 0px 40px;
       height: 40px;
       width: calc(100% - 80px);
-      border-color: #DDDDDD;
+      border-color: $border-color;
       border-radius: 5px;
     }
   }
@@ -195,16 +224,16 @@
     padding-top: 20px;
     &__title{
       margin-left: 40px;
-      color: gray;
+      color: $gray;
       font-weight: bold;
       font-size: 14px;
       &__icon{
         width: 16px;
         height: 16px;
         font-size: 12px;
-        color: black;
+        color: $black;
         border-radius: 50%;
-        background: #99FFFF;
+        background: $imperative-blue;
         text-align: center;
         text-decoration: none;
         display: inline-block;
@@ -221,14 +250,14 @@
         border-radius: 2px;
         padding: 2px 4px;
         font-size: 12px;
-        background-color:#99FFFF;
+        background-color:$imperative-blue;
       }
     }
     &__select-box{
       margin: 20px 40px 0px 40px;
       height: 40px;
       width: calc(100% - 80px);
-      border-color: #DDDDDD;
+      border-color: $border-color;
       border-radius: 5px;
     }
   }
@@ -242,14 +271,14 @@
         border-radius: 2px;
         padding: 2px 4px;
         font-size: 12px;
-        background-color:#99FFFF;
+        background-color:$imperative-blue;
       }
     }
     &__select-box{
       margin: 20px 40px 0px 40px;
       height: 40px;
       width: calc(100% - 80px);
-      border-color: #DDDDDD;
+      border-color: $border-color;
       border-radius: 5px;
     }
   }
@@ -263,14 +292,14 @@
         border-radius: 2px;
         padding: 2px 4px;
         font-size: 12px;
-        background-color:#99FFFF;
+        background-color:$imperative-blue;
       }
     }
     &__select-box{
       margin: 20px 40px 0px 40px;
       height: 40px;
       width: calc(100% - 80px);
-      border-color: #DDDDDD;
+      border-color: $border-color;
       border-radius: 5px;
     }
   }
@@ -278,16 +307,16 @@
     padding-top: 20px;
     &__title{
       margin-left: 40px;
-      color: gray;
+      color: $gray;
       font-weight: bold;
       font-size: 14px;
       &__icon{
         width: 16px;
         height: 16px;
         font-size: 12px;
-        color: black;
+        color: $black;
         border-radius: 50%;
-        background: #99FFFF;
+        background: $imperative-blue;
         text-align: center;
         text-decoration: none;
         display: inline-block;
@@ -312,7 +341,7 @@
                 border-radius: 2px;
                 padding: 2px 4px;
                 font-size: 12px;
-                background-color:#99FFFF;
+                background-color:$imperative-blue;
               }
             }
           }
@@ -326,7 +355,7 @@
               width: 80%;
               text-align: right;
               margin-left: 5%;
-              border-color: #DDDDDD;
+              border-color: $border-color;
               border-style: solid;
               border-width: 1px;
               border-radius: 5px;
@@ -398,8 +427,8 @@
       text-align: center;
       vertical-align: middle;
       border-style: solid;
-      border-color: #99FFFF;
-      background-color:#99FFFF;
+      border-color: $imperative-blue;
+      background-color:$imperative-blue;
     }
   }
   &__draft{
@@ -414,8 +443,8 @@
       text-align: center;
       vertical-align: middle;
       border-style: solid;
-      border-color: #DDDDDD;
-      background-color:#DDDDDD;
+      border-color: $border-color;
+      background-color:$border-color;
     }
   }
   &__page-transition{
@@ -439,14 +468,14 @@
       &__action{
         font-size: 12px;
         text-decoration: none;
-        color: #3399FF;
+        color: $strongblue;
       }
     }
   }
   &__separate-line{
     margin: 20px 0;
     height: 2px;
-    background-color: whitesmoke;
+    background-color: $whitesmoke;
     border: none;
   }
 }

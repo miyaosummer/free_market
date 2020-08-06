@@ -16,7 +16,8 @@ Rails.application.routes.draw do
       get 'login'
     end
   end
-  resources :products, only: [:new, :create, :show, :edit, :update, :index, :destroy] do
+  resources :products ,only: [:new, :create, :show, :edit, :update, :index, :destroy] do
+    resources :comments, only: [:create, :destroy]
     member do
       get 'credit_new', to:'products#credit_new'
       post 'credit_create', to:'products#credit_create'
