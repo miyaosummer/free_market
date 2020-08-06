@@ -75,11 +75,9 @@ $(function(){
 
   // Submitボタン押されたらエラーチェックを走らせる
   $('.destinations-forms').submit(function(e){
-    e.preventDefault();
     if(!formChecker()){
+      e.preventDefault();
       return false;
-    } else {
-      $('.destinations-forms')[0].submit()
     }
   });
 
