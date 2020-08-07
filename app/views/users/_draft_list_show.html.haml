@@ -1,0 +1,20 @@
+.draft
+  .draft__main
+    .draft__main__title
+      下書き一覧
+    - @drafts.each do |draft|
+      .draft__main__list
+        .draft__main__list__left
+        - if draft.product_images[0].presence
+          = image_tag "#{draft.product_images[0].image.url}", class:'draft__main__list__left__img'
+        - else
+          = image_tag "", class:'draft__main__list__left__img'
+        .draft__main__list__right
+          .draft__main__list__right__top
+          - if draft.name.blank?
+            = link_to "(タイトル未入力)", edit_product_path(draft) ,class: "draft__main__list__right__top__title"
+          - else 
+            = link_to draft.name, edit_product_path(draft) ,class: "draft__main__list__right__top__title"
+          .draft__main__list__right__bottom
+          ー
+    = paginate @drafts

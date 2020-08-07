@@ -151,15 +151,10 @@ describe Destination do
       expect(destination).to be_valid
     end
 
-    it "first_name_kana内に半角カタカナが含まれていても住所登録ができる" do
-      destination = build(:destination, first_name_kana: "アイウエｵ")
-      expect(destination).to be_valid
-    end
-
-    it "first_name_kanaにひらがなが入っている時は住所登録ができない" do
-      destination = build(:destination, first_name_kana: "アイウエお") 
+    it "first_name_kanaがひらがなで入力されている時住所登録ができない" do
+      destination = build(:destination, first_name_kana: "あいうえお") 
       destination.valid?
-      expect(destination.errors[:first_name_kana]).to include("はカタカナで入力して下さい")#JavaScriptでエラーメッセージを表示させる際にメッセージを修正する
+      expect(destination.errors[:first_name_kana]).to include("は全角カタカナで入力して下さい")
     end
 
 
@@ -168,15 +163,11 @@ describe Destination do
       expect(destination).to be_valid
     end
 
-    it "first_name_kana内に半角カタカナが含まれていても住所登録ができる" do
-      destination = build(:destination, last_name_kana: "アイウエｵ")
-      expect(destination).to be_valid
-    end
 
-    it "last_name_kanaにひらがなが入っている時は住所登録ができない" do
-      destination = build(:destination, last_name_kana: "アイウエお") 
+    it "last_name_kanaがひらがなで入力されている時は住所登録ができない" do
+      destination = build(:destination, last_name_kana: "あいうえお") 
       destination.valid?
-      expect(destination.errors[:last_name_kana]).to include("はカタカナで入力して下さい")#JavaScriptでエラーメッセージを表示させる際にメッセージを修正する
+      expect(destination.errors[:last_name_kana]).to include("は全角カタカナで入力して下さい")
     end
 
 

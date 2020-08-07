@@ -9,7 +9,7 @@
       =link_to "出品する", new_product_path, class: "menu__product__link"
       %i.fas.fa-chevron-right
     .menu__edit
-      =link_to "下書き一覧", "#", class: "menu__edit__link"
+      =link_to "下書き一覧", draft_list_show_user_path(current_user.id), class: "menu__edit__link"
       %i.fas.fa-chevron-right
     .menu__exhibition
       =link_to "出品した商品", "#", class: "menu__exhibition__link"

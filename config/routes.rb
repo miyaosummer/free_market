@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get 'credit_show', to:'users#credit_show'
       delete 'credit_destroy', to:'users#credit_destroy'
       get 'logout'
+      get 'draft_list_show', to:'users#draft_list_show'
     end
     resources :destinations, only: [:index, :new, :create, :edit, :update] 
   end

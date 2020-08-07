@@ -25,6 +25,13 @@ class UsersController < ApplicationController
     redirect_to destroy_user_session_path, notice: 'メッセージが送信されました'
   end
 
+  ######################## ▼ 下書き関連 ▼ ########################
+    # 情報表示
+    def draft_list_show
+      @drafts = Product.where(public_flag: '0', seller_id: current_user.id).order("created_at DESC").page(params[:page]).per(5)
+    end
+  ######################## ▲ 下書き関連 ▲ ########################
+
   ######################## ▼ クレジットカード関連 ▼ ########################
   # products_controllerにも記述あり
   

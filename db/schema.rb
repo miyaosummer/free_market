@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_26_103705) do
+ActiveRecord::Schema.define(version: 2020_08_04_145147) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "comment", null: false
@@ -79,20 +79,21 @@ ActiveRecord::Schema.define(version: 2020_06_26_103705) do
   end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "description", null: false
-    t.integer "price", null: false
+    t.string "name"
+    t.text "description"
+    t.integer "price"
     t.bigint "seller_id", null: false
     t.bigint "buyer_id"
-    t.bigint "product_category_id", null: false
-    t.string "product_condition_id", null: false
-    t.string "postage_way_id", null: false
-    t.string "shipping_day_id", null: false
+    t.string "product_condition_id"
+    t.string "postage_way_id"
+    t.string "shipping_day_id"
     t.bigint "product_brand_id"
-    t.string "product_size_id", null: false
-    t.string "prefecture_id", null: false
+    t.string "product_size_id"
+    t.string "prefecture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "product_category_id"
+    t.integer "public_flag", default: 0, null: false
     t.index ["buyer_id"], name: "index_products_on_buyer_id"
     t.index ["product_brand_id"], name: "index_products_on_product_brand_id"
     t.index ["product_category_id"], name: "index_products_on_product_category_id"
