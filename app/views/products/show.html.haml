@@ -40,41 +40,25 @@
               %li
                 = link_to "削除する", product_path(@product), class: "show__main__product__content__information__btn--delete", method: :delete
           -else
-          
-          -# 商品が存在しているか否かで売り切れ表示の場合分け
-          -if @product.buyer_id.present?
-            .show__main__product__content__information__image
-              .show__main__product__content__information__image__top
-                .show__main__product__content__information__image__top__stage
-                  .show__main__product__content__information__image__top--list
-                    - @product.product_images.each_with_index do |product_image,index|
-                      - if index == 0
-                        %div{class: "show__main__product__content__information__image__top--list__item" , data:{index: index}, style: "z-index:10;"}
-                          =image_tag product_image.image.url
-                      -else
-                        %div{class: "show__main__product__content__information__image__top--list__item", data:{index: index}, style: "z-index:1;"}
-                          =image_tag product_image.image.url
-              .show__main__product__content__information__image__sub
-                - @product.product_images.each_with_index do |product_image,index|
-                  %div{class: "show__main__product__content__information__image__sub--list", data:{index: index}}
-                    = image_tag product_image.image.url, {class: "sub-image"}
+
+          .show__main__product__content__information__image
+            .show__main__product__content__information__image__top
+              .show__main__product__content__information__image__top__stage
+                .show__main__product__content__information__image__top--list
+                  - @product.product_images.each_with_index do |product_image,index|
+                    - if index == 0
+                      %div{class: "show__main__product__content__information__image__top--list__item" , data:{index: index}, style: "z-index:10;"}
+                        =image_tag product_image.image.url
+                    -else
+                      %div{class: "show__main__product__content__information__image__top--list__item", data:{index: index}, style: "z-index:1;"}
+                        =image_tag product_image.image.url
+            .show__main__product__content__information__image__sub
+              - @product.product_images.each_with_index do |product_image,index|
+                %div{class: "show__main__product__content__information__image__sub--list", data:{index: index}}
+                  = image_tag product_image.image.url, {class: "sub-image"}
+            // 買い手がいたらSOLDOUTを付与
+            -if @product.buyer_id.present?
               .show__main__product__content__information__image--soldout
-          -else
-            .show__main__product__content__information__image
-              .show__main__product__content__information__image__top
-                .show__main__product__content__information__image__top__stage
-                  .show__main__product__content__information__image__top--list
-                    - @product.product_images.each_with_index do |product_image,index|
-                      - if index == 0
-                        %div{class: "show__main__product__content__information__image__top--list__item" , data:{index: index}, style: "z-index:10;"}
-                          =image_tag product_image.image.url
-                      -else
-                        %div{class: "show__main__product__content__information__image__top--list__item", data:{index: index}, style: "z-index:1;"}
-                          =image_tag product_image.image.url
-              .show__main__product__content__information__image__sub
-                - @product.product_images.each_with_index do |product_image,index|
-                  %div{class: "show__main__product__content__information__image__sub--list", data:{index: index}}
-                    = image_tag product_image.image.url, {class: "sub-image"}
 
           .show__main__product__content__information__price
             %span

@@ -83,7 +83,6 @@ a{
               &--list{
                 &__item{
                   position: absolute;
-                  right: -100;
                   width: 460px;
                   img{
                     height: 460px;
@@ -102,7 +101,7 @@ a{
               flex-wrap: wrap;
               &--list{
                 width: 112px;
-                margin: 2px 2px 0 0;
+                margin: 2px 2px 2px 0px;
                 .sub-image{
                   opacity: 0.5 ;
                 }
@@ -119,7 +118,7 @@ a{
                 content: "";
                 position: absolute;
                 z-index: 100;
-                left: 30px;
+                left: 80px;
                 top: 0;
                 border-bottom: 5em solid transparent;
                 border-left: 5em solid $main-color;
@@ -131,7 +130,7 @@ a{
                 font-weight: bold;
                 letter-spacing: 2px;
                 z-index: 101;
-                left: 35px;
+                left: 85px;
                 top: 18px;
                 -webkit-transform: rotate(-45deg);
                 transform: rotate(-45deg);
