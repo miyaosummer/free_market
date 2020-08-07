@@ -21,7 +21,7 @@ Things you may want to cover:
 
 * Deployment instructions
 
-# DB設計--------------------------------------------------------------------------------------
+# DB設計-------------------------------------------------
 
 ## users table
 |Column          |Type      |Options    |
@@ -89,27 +89,28 @@ Things you may want to cover:
 ## products table
 |Column              |Type       |Options    |
 |--------------------|-----------|-----------|
-|name                |string     |null: false|
-|description         |text       |null: false|
-|price               |integer    |null: false|
+|name                |string     |           |
+|description         |text       |           |
+|price               |integer    |           |
 |seller_id           |references |null: false, foreign_key: true|
 |buyer_id            |references |             foreign_key: true|
-|product_category_id |references |null: false, foreign_key: true|
-|product_condition_id|string     |null: false|
-|postage_way_id      |string     |null: false|
-|shipping_day_id     |string     |null: false|
+|product_category_id |references |             foreign_key: true|
+|product_condition_id|string     |           |
+|postage_way_id      |string     |           |
+|shipping_day_id     |string     |           |
 |product_brand_id    |references |             foreign_key: true|
-|product_size_id     |string     |null: false|
-|prefecture_id       |string     |null: false|
+|product_size_id     |string     |           |
+|prefecture_id       |string     |           |
+|public_flag         |integer    |null: false|
 
 ### Association
 - has_many :product_images, dependent: :destroy
 - has_many :comments, dependent: :destroy
 - has_many :favorites, dependent: :destroy
 - belongs_to :seller, class_name: 'User', :foreign_key => 'seller_id'
-- belongs_to :buyer,  class_name: 'User', :foreign_key => 'buyer_id'
-- belongs_to :product_category
-- belongs_to :product_brand
+- belongs_to :buyer,  class_name: 'User', :foreign_key => 'buyer_id', optional: true
+- belongs_to :product_category, optional: true
+- belongs_to :product_brand, optional: true
 - belongs_to_active_hash :product_condition
 - belongs_to_active_hash :postage_way
 - belongs_to_active_hash :shipping_day
