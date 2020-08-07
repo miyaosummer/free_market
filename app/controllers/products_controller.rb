@@ -44,48 +44,81 @@ class ProductsController < ApplicationController
   
   def create
     @product = Product.new(product_params)
+    @draft = Product.new(draft_params)
     # product_size_idが空欄の時はサイズなしと表示させる。
     if product_params[:product_size_id].blank?
       @product.product_size_id = "サイズなし"
     end
-    if @product.save
-      redirect_to root_path
+    # 出品と下書き保存で処理を分岐する
+    if params[:commit] == "出品する"
+      if @product.save
+        redirect_to root_path
+      else
+        render :new
+      end
+    elsif params[:commit] == "下書きに保存"
+      if @draft.save
+        redirect_to root_path
+      else
+        render :new
+      end
+    # 開発者がデバッグできるようにelse処理はコンソールへメッセージを出力
     else
-      render :new
+      puts "No expected submit button"
     end
   end
 
   def edit
-    @product.product_category.root
-    @category_child_array = @product.product_category.root.children
-    if @product.product_category.root.indirects.present?
-      @category_grandchild_array = @product.product_category.parent.children
+    if @product.product_category.present?
+      @product.product_category.root
+      @category_child_array = @product.product_category.root.children
+      if @product.product_category.root.indirects.present?
+        @category_grandchild_array = @product.product_category.parent.children
+      end
+      if @product.product_size.present?
+        @product_size = @product.product_size
+      end
     end
-    if @product.product_size.present?
-      @product_size = @product.product_size
+    if @product.public_flag == 0 && @product.product_images[0] == nil
+      @product.product_images.build
     end
   end
 
   def update
     unnecessary_size_array     = [14, 29, 44, 57, 63, 68, 79, 82, 150, 163, 178, 188, 210, 255, 260];
-    #編集した商品の子カテゴリ情報を取得。ノードの深さによって孫カテゴリが存在しているかを判断する。
-    if ProductCategory.find(product_params[:product_category_id]).depth == 1
-      product_category_children = ProductCategory.find(product_params[:product_category_id]).ancestry
-    else
-      product_category_children = ProductCategory.find(product_params[:product_category_id]).parent.ancestry
-    end
-    #product_size_idを持っていて、サイズがないカテゴリだった場合、サイズidを削除する
-    if unnecessary_size_array.include?(product_category_children) && product_params[:product_size_id].present?
-      product_params[:product_size_id].chop!
+
+    if (product_params[:product_category_id]).present?
+      #編集した商品の子カテゴリ情報を取得。ノードの深さによって孫カテゴリが存在しているかを判断する。
+      if ProductCategory.find(product_params[:product_category_id]).depth == 1
+        product_category_children = ProductCategory.find(product_params[:product_category_id]).ancestry
+      else
+        product_category_children = ProductCategory.find(product_params[:product_category_id]).parent.ancestry
+      end
+      #product_size_idを持っていて、サイズがないカテゴリだった場合、サイズidを削除する
+      if unnecessary_size_array.include?(product_category_children) && product_params[:product_size_id].present?
+        product_params[:product_size_id].chop!
+      end
     end
     #削除したサイズidに"サイズなし"という文字列をいれる
     if product_params[:product_size_id].blank?
       @product.product_size_id = "サイズなし"
     end
-    if @product.update(product_params)
-      redirect_to root_path
+    # 出品商品への変更と下書き保存の上書きで処理を分岐する
+    if params[:commit] == "変更を適用する"
+      if @product.update(product_params)
+        redirect_to root_path
+      else
+        render :edit
+      end
+    elsif params[:commit] == "下書きを上書きして保存"
+      if @product.update(draft_params)
+        redirect_to root_path
+      else
+        render :edit
+      end
+    # 開発者がデバッグできるようにelse処理はコンソールへメッセージを出力
     else
-      render :edit
+      puts "No expected submit button"
     end
   end
 
@@ -218,7 +251,23 @@ private
       :product_size_id,
       :prefecture_id,
       product_images_attributes: [:image, :_destroy, :id]
-    ).merge(seller_id: current_user.id)
+    ).merge(seller_id: current_user.id).merge(public_flag: "1")
+  end
+
+  def draft_params
+    params.require(:product).permit(
+      :name,
+      :description,
+      :price,
+      :product_category_id,
+      :product_condition_id,
+      :postage_way_id,
+      :shipping_day_id,
+      :product_brand_id,
+      :product_size_id,
+      :prefecture_id,
+      product_images_attributes: [:image, :_destroy, :id]
+    ).merge(seller_id: current_user.id).merge(public_flag: "0")
   end
 
   def card_present

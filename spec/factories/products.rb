@@ -29,6 +29,7 @@ FactoryBot.define do
     shipping_day_id       {"1~2日で発送"} 
     product_size_id       {"M"}
     prefecture_id         {"青森県"}
+    public_flag           {1}
     after(:build) do |product|
       product.product_images<<build(:product_image, product: product)
     end
@@ -46,6 +47,7 @@ FactoryBot.define do
     shipping_day_id       {"1~2日で発送"} 
     product_size_id       {"M"}
     prefecture_id         {"青森県"}
+    public_flag           {1}
     11.times do
       after(:build) do |product|
         product.product_images<<build(:product_image, product: product)
@@ -65,6 +67,7 @@ FactoryBot.define do
     shipping_day_id       {"1~2日で発送"} 
     product_size_id       {"M"}
     prefecture_id         {"青森県"}
+    public_flag           {1}
     10.times do
       after(:build) do |product|
         product.product_images<<build(:product_image, product: product)

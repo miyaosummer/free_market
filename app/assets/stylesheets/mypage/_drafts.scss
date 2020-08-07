@@ -1,0 +1,64 @@
+// Place all the styles related to the destinations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//メイン部分
+.draft {
+  background-color: whitesmoke;
+  text-align: center;
+  margin-top: 50px;
+
+  &__main {
+    height: auto;
+    width: 650px;
+    background-color: $white;
+    border-radius: 1px;
+    margin: auto;
+    padding-bottom: 48px;
+    
+    &__title {
+      font-size: 24px;
+      font-weight: bold;
+      border-bottom: 1px solid whitesmoke;
+      padding: 12px;
+    }
+
+    &__list {
+      font-size: 16px;
+      font-weight: bold;
+      border-bottom: 1px solid whitesmoke;
+      padding: 12px;
+      display: flex;
+
+      &:hover {
+        opacity: 0.5 ;
+      }
+    
+      &__left{
+        &__img{
+          height: 50px;
+          width: 50px;
+          object-fit: cover;    
+        }
+      }
+      &__right{
+        width: auto;
+        margin-left: 10px;
+        text-align: left;
+        &__top{
+          font-size: 20px;
+          font-weight: bold;
+          &__title{
+            text-decoration: none;
+            color: #000000;
+          }
+        }
+        &__bottom{
+          text-decoration: none;
+          font-size: 15px;
+          color: #999;
+        }
+      }
+    }
+  }
+}
