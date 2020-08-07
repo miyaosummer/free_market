@@ -52,7 +52,7 @@ class ProductsController < ApplicationController
         render :new
       end
     elsif params[:commit] == "下書きに保存"
-      if @draft.save!
+      if @draft.save
         redirect_to root_path
       else
         render :new
