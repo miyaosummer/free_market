@@ -385,14 +385,7 @@ $(function() {
       $('.putup__main__profit__contents__content__frame__input__calc-result').text('¥' + display_profit);
     }
   }
-  if ($('#unregistered-image').length > 0){
-    console.log('#unregistered-image');
-    let previewLen = $('.preview').length;
-    $('.dropzone-area__inputs').append(buildInputArea(previewLen));
-    $('.dropzone-box').attr('for', function(){
-      return 'upload-image[' + previewLen + ']'
-    });
-  }
+
   // プレビュー追加
   $(document).on('change', 'input[type="file"].upload-image', function(e){
     // inputを追加する
