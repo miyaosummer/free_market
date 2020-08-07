@@ -16,7 +16,7 @@ $(function(){
       if(index == mainDataIndex){
         $(this).css('z-index', 10);
       } else {
-        $(this).css('z-index', 1);
+        $(this).css('z-index', -1);
       };
     });
   });
