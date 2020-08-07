@@ -38,5 +38,5 @@
         =link_to "クレジットカード確認", credit_show_user_path(current_user.id), class: "config__card__link"
         %i.fas.fa-chevron-right
     .config__logout
-      =link_to "ログアウト", logout_user_path(current_user.id), class: "config__logout__link"
+      = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "config__logout__link"
       %i.fas.fa-chevron-right
