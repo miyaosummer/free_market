@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       post 'credit_create', to:'users#credit_create'
       get 'credit_show', to:'users#credit_show'
       delete 'credit_destroy', to:'users#credit_destroy'
-      get 'logout'
+      get 'logout', to:'users#logout'
       get 'draft_list_show', to:'users#draft_list_show'
     end
     resources :destinations, only: [:index, :new, :create, :edit, :update] 
