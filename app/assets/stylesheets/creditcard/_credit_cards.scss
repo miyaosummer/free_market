@@ -132,6 +132,10 @@
             font-size: 14px;
             color: $black;
             padding: 8px;
+            &:focus {
+              border: 1px solid $main-color;
+              outline: 0;
+            }
           }
           .term-label {
             font-size: 14px;
