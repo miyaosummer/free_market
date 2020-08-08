@@ -269,7 +269,12 @@ a{
             &__textbox{
               width: 100%;
               min-height: 104px;
+              border-radius: 1px;
               padding: 10px;
+              &:focus {
+                border: 1px solid $main-color;
+                outline: 0;
+              }
             }
             &__notice{
               background-color: #f8f8f8;
@@ -289,6 +294,14 @@ a{
               border-radius: 100px;
               cursor: pointer;
               outline:0;
+              transition: 0.4s;
+              &:hover {
+                opacity: 0.6;
+              }
+              &:focus {
+                border: 1px solid gray;
+                outline: 0;
+              }
             }
             &__unlogin{
               color: #999999;
