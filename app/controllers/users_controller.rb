@@ -21,10 +21,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def logout
-    redirect_to destroy_user_session_path, notice: 'メッセージが送信されました'
-  end
-
   ######################## ▼ 下書き関連 ▼ ########################
     # 情報表示
     def draft_list_show
@@ -116,6 +112,9 @@ class UsersController < ApplicationController
 
   def take_card
     @card = CreditCard.find_by(user_id: current_user.id)
+  end
+
+  def logout
   end
 
 end
