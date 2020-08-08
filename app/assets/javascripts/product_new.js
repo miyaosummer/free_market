@@ -272,7 +272,7 @@ $(function(){
   // サイズ blur時のエラー処理
   $(document).on('blur', '#product_size', function() {
     if($(this).val() == 0){
-      if($(this).parents('.putup__main__size__select-box').find('.input-error').length == 0){
+      if($(this).parent().find('.input-error').length == 0){
         $('.putup__main__size').append(buildInputError('サイズを選択してください'));
       }
     }
