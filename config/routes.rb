@@ -1,18 +1,22 @@
 Rails.application.routes.draw do
   devise_for :users
   root "tops#index"
-  resources :users ,only: [:index, :new, :show] do
+  resources :users, only: [:index, :new, :show] do
     member do
       get 'credit_new', to:'users#credit_new'
       post 'credit_create', to:'users#credit_create'
       get 'credit_show', to:'users#credit_show'
       delete 'credit_destroy', to:'users#credit_destroy'
-      get 'logout'
+      get 'logout', to:'users#logout'
       get 'draft_list_show', to:'users#draft_list_show'
     end
-    resources :destinations ,only: [:index, :new, :create, :edit, :update] 
+    resources :destinations, only: [:index, :new, :create, :edit, :update] 
   end
-  resources :logs ,only: :index
+  resources :logs, only: [:index] do
+    collection do
+      get 'login'
+    end
+  end
   resources :products ,only: [:new, :create, :show, :edit, :update, :index, :destroy] do
     resources :comments, only: [:create, :destroy]
     member do

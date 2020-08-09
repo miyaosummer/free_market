@@ -1,27 +1,31 @@
-.mypage-bar{
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.mypage-bar {
   width: 650px;
   height: auto;
   padding: 50px 0px;
-  h1{
+  h1 {
     font-weight: bold;
     font-size: 16px;
   }
-  &__index{
+  &__index {
     margin: 0 auto;
     width: 100%;
     height: 100%;
     background-color: whitesmoke;
     //ユーザー画像から１つ目の「一覧を見る」まで。
-    &__user{
+    &__user {
       background-color: white;
 
-      &__title{
+      &__title {
         display: table;
         width: 100%;
         height: 150px;
         background-image: image-url("mizutama.jpg");
         text-align: center;
-        &__icon{
+        &__icon {
           width: 50px;
           height: 50px;
           margin-top: 50px;
@@ -29,54 +33,54 @@
         //Nameについては、サーバーサイド実装の際に追記する。
       }
 
-      &__list{
+      &__list {
         display: flex;
         justify-content: space-between;
         text-align: center;
-        &__notice{
+        &__notice {
           width: 50%;
           line-height: 50px;
-          border-top: 3px solid #99FFFF;
+          border-top: 2px solid $main-color;
         }
-        &__todo{
+        &__todo {
           width: 50%;
           line-height: 50px;
           background-color: lightgray;
         }
       }
 
-      &__product{
+      &__product {
         height: 60px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         border-bottom: 1px whitesmoke solid;
-        &__image{
+        &__image {
           width: 50px;
           height: 50px;
           margin-left: 30px;
         }
-        &__text{
+        &__text {
           width: 600px;
           font-size: 14px;
         }
-        i{
+        i {
           margin-right: 18px;
           opacity: 0.5;
           cursor: pointer;
           transition: all 0.2s ease 0s;
         }
       }
-      &__product:hover{
+      &__product:hover {
         opacity: 0.7;
       }
 
-      &__show{
+      &__show {
         width: 100%;
         height: 60px;
         text-align: center;
         margin-bottom: 50px;
-        &__display-btn{
+        &__display-btn {
           width: 90%;
           line-height: 50px;
           margin: 10px auto;
@@ -90,63 +94,63 @@
     //ここまで。
 
     //「購入した商品」から２つ目の「一覧を見る」まで。
-    &__buy{
+    &__buy {
       background-color: white;
 
-      &__title{
+      &__title {
         line-height: 80px;
         margin-left: 30px;
       }
 
-      &__list{
+      &__list {
         height: 60px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         text-align: center;
-        &__doing{
+        &__doing {
           width: 50%;
           line-height: 50px;
-          border-top: 3px solid #99FFFF;
+          border-top: 2px solid $main-color;
         }
-        &__history{
+        &__history {
           width: 50%;
           line-height: 50px;
           background-color: lightgray;
         }
       }
 
-      &__product{
+      &__product {
         height: 60px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         border-bottom: 1px whitesmoke solid;
-        &__image{
+        &__image {
           width: 50px;
           height: 50px;
           margin-left: 30px;
         }
-        &__text{
+        &__text {
           width: 600px;
           font-size: 14px;
         }
-        i{
+        i {
           margin-right: 18px;
           opacity: 0.5;
           cursor: pointer;
           transition: all 0.2s ease 0s;
         }
       }
-      &__product:hover{
+      &__product:hover {
         opacity: 0.7;
       }
 
-      &__show{
+      &__show {
         width: 100%;
         height: 60px;
         text-align: center;
-        &__display-btn{
+        &__display-btn {
           width: 90%;
           line-height: 50px;
           margin: 10px auto;

@@ -36,6 +36,7 @@
         margin-right: 10px;
 
         &:hover {
+          transition: 0.4s;
           opacity: 0.5 ;
         }
         &__app-store {

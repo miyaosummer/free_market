@@ -27,16 +27,42 @@
       padding-bottom: 36px;
       
       &__head {
-        text-align: center;
         font-size: 24px;
-        font-weight: bold;
-        border-bottom: 1px solid whitesmoke;
+        font-weight: 600;
+        text-align: center;
+        border-bottom: 2px solid whitesmoke;
         padding: 12px;
       }
 
       &__register-form {
         text-align: left;
-
+        &__label {
+          font-size: 14px;
+          font-weight: 600;
+          margin: 36px 0 0 176px;
+        }
+        .icon {
+          color: gray;
+        }
+        &__image {
+          display: flex;
+          margin: 6px 0 0 176px;
+          .mastercard {
+            margin-left: 2px;
+          }
+          .JCB {
+            margin-left: 2px;
+          }
+          .AmericanExpress {
+            margin-left: 2px;
+          }
+          .DinersClub {
+            margin-left: 2px;
+          }
+          .DISCOVER {
+            margin-left: 2px;
+          }
+        }
         //-- カード番号 入力フォーム --//
         &__number {
           &__label {
@@ -47,19 +73,19 @@
           &__image {
             display: flex;
             margin: 6px 0 0 176px;
-            .mypage-mastercard {
+            .mastercard {
               margin-left: 2px;
             }
-            .mypage-JCB {
+            .JCB {
               margin-left: 2px;
             }
-            .mypage-AmericanExpress {
+            .AmericanExpress {
               margin-left: 2px;
             }
-            .mypage-DinersClub {
+            .DinersClub {
               margin-left: 2px;
             }
-            .mypage-DISCOVER {
+            .DISCOVER {
               margin-left: 2px;
             }
           }
@@ -144,13 +170,14 @@
           font-weight: 600;
           color: $white;
           margin: 36px 0 0 176px;
+          transition: 0.4s;
         }
         #token_submit:focus {
           border: 1px solid $main-color;
           outline: 0;
         }
         #token_submit:hover {
-          opacity: 0.7;
+          opacity: 0.6;
         }
       }
     }

@@ -1,256 +1,258 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
 
-
-.side-bar{
+.side-bar {
   min-width: 280px;
   height: auto;
   margin: 50px 25px 50px 50px;
-  h1{
+  h1 {
     font-weight: bold;
     font-size: 16px;
     margin-bottom: 5px;
   }
-  .menu{
+  .menu {
     background-color: white;
     margin-bottom: 50px;
-    //マイページへのリンク
-    &__mypage{
+    // マイページへのリンク
+    &__mypage {
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
       height: 50px;
-      border-bottom: 1px lightgray solid;
-      &__link{
+      border-bottom: 2px solid whitesmoke;
+      &__link {
         width: 100%;
         text-decoration: none;
         font-size: 14px;
         color: black;
         margin-left: 10px;
       }
-      i{
+      i {
         margin-right: 18px;
         opacity: 0.5;
         cursor: pointer;
         transition: all 0.2s ease 0s;
       }
     }
-    &__mypage:hover i{
+    &__mypage:hover i {
       margin-right: 15px;
       opacity: 1;
     }
-    //出品ページへのリンク
-    &__product{
+    // 出品ページへのリンク
+    &__product {
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
       height: 50px;
-      border-bottom: 1px lightgray solid;
-      &__link{
+      border-bottom: 2px solid whitesmoke;
+      &__link {
         width: 100%;
         text-decoration: none;
         font-size: 14px;
         color: black;
         margin-left: 10px;
       }
-      i{
+      i {
         margin-right: 18px;
         opacity: 0.5;
         cursor: pointer;
         transition: all 0.2s ease 0s;
       }
     }
-    &__product:hover i{
-      margin-right: 15px;
-      opacity: 1;
-    }
-
-    //下書き記入ページへのリンク
-    &__edit{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      height: 50px;
-      border-bottom: 1px lightgray solid;
-      &__link{
-        width: 100%;
-        text-decoration: none;
-        font-size: 14px;
-        color: black;
-        margin-left: 10px;
-      }
-      i{
-        margin-right: 18px;
-        opacity: 0.5;
-        cursor: pointer;
-        transition: all 0.2s ease 0s;
-      }
-    }
-    &__edit:hover i{
+    &__product:hover i {
       margin-right: 15px;
       opacity: 1;
     }
 
-    //出品した商品ページへのリンク
-    &__exhibition{
+    // 下書き記入ページへのリンク
+    &__edit {
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
       height: 50px;
-      border-bottom: 1px lightgray solid;
-      &__link{
+      border-bottom: 2px solid whitesmoke;
+      &__link {
         width: 100%;
         text-decoration: none;
         font-size: 14px;
         color: black;
         margin-left: 10px;
       }
-      i{
+      i {
         margin-right: 18px;
         opacity: 0.5;
         cursor: pointer;
         transition: all 0.2s ease 0s;
       }
     }
-    &__exhibition:hover i{
+    &__edit:hover i {
       margin-right: 15px;
       opacity: 1;
     }
 
-    //購入した商品ページへのリンク
-    &__buy{
+    // 出品した商品ページへのリンク
+    &__exhibition {
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
       height: 50px;
-      border-bottom: 1px lightgray solid;
-      &__link{
+      border-bottom: 2px solid whitesmoke;
+      &__link {
         width: 100%;
         text-decoration: none;
         font-size: 14px;
         color: black;
         margin-left: 10px;
       }
-      i{
+      i {
         margin-right: 18px;
         opacity: 0.5;
         cursor: pointer;
         transition: all 0.2s ease 0s;
       }
     }
-    &__buy:hover i{
+    &__exhibition:hover i {
+      margin-right: 15px;
+      opacity: 1;
+    }
+
+    // 購入した商品ページへのリンク
+    &__buy {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      height: 50px;
+      border-bottom: 2px solid whitesmoke;
+      &__link {
+        width: 100%;
+        text-decoration: none;
+        font-size: 14px;
+        color: black;
+        margin-left: 10px;
+      }
+      i {
+        margin-right: 18px;
+        opacity: 0.5;
+        cursor: pointer;
+        transition: all 0.2s ease 0s;
+      }
+    }
+    &__buy:hover i {
       margin-right: 15px;
       opacity: 1;
     }
   }
 
-    .config{
+    .config {
       background-color: white;
 
-      //購入した商品ページへのリンク
-      &__user{
+      // 購入した商品ページへのリンク
+      &__user {
         display: flex;
         align-items: center;
         justify-content: space-between;
         width: 100%;
         height: 50px;
-        border-bottom: 1px lightgray solid;
-        &__link{
+        border-bottom: 2px solid whitesmoke;
+        &__link {
           width: 100%;
           text-decoration: none;
           font-size: 14px;
           color: black;
           margin-left: 10px;
         }
-        i{
+        i {
           margin-right: 18px;
           opacity: 0.5;
           cursor: pointer;
           transition: all 0.2s ease 0s;
         }
       }
-      &__user:hover i{
+      &__user:hover i {
         margin-right: 15px;
         opacity: 1;
       }
-      //発送元、お届け先住所登録ページへのリンク
-      &__destinations{
+      // 発送元、お届け先住所登録ページへのリンク
+      &__destinations {
         display: flex;
         align-items: center;
         justify-content: space-between;
         width: 100%;
         height: 50px;
-        border-bottom: 1px lightgray solid;
-        &__link{
+        border-bottom: 2px solid whitesmoke;
+        &__link {
           width: 100%;
           text-decoration: none;
           font-size: 14px;
           color: black;
           margin-left: 10px;
         }
-        i{
+        i {
           margin-right: 18px;
           opacity: 0.5;
           cursor: pointer;
           transition: all 0.2s ease 0s;
         }
       }
-      &__destinations:hover i{
+      &__destinations:hover i {
         margin-right: 15px;
         opacity: 1;
       }
-      //クレジットカード登録ページへのリンク
-      &__card{
+      // クレジットカード登録ページへのリンク
+      &__card {
         display: flex;
         align-items: center;
         justify-content: space-between;
         width: 100%;
         height: 50px;
-        border-bottom: 1px lightgray solid;
-        &__link{
+        border-bottom: 2px solid whitesmoke;
+        &__link {
           width: 100%;
           text-decoration: none;
           font-size: 14px;
           color: black;
           margin-left: 10px;
         }
-        i{
+        i {
           margin-right: 18px;
           opacity: 0.5;
           cursor: pointer;
           transition: all 0.2s ease 0s;
         }
       }
-      &__card:hover i{
+      &__card:hover i {
         margin-right: 15px;
         opacity: 1;
       }
-      //ログアウトページへのリンク
-      &__logout{
+      // ログアウトページへのリンク
+      &__logout {
         display: flex;
         align-items: center;
         justify-content: space-between;
         width: 100%;
         height: 50px;
-        border-bottom: 1px lightgray solid;
-        &__link{
+        border-bottom: 1px solid whitesmoke;
+        &__link {
           width: 100%;
           text-decoration: none;
           font-size: 14px;
           color: black;
           margin-left: 10px;
         }
-        i{
+        i {
           margin-right: 18px;
           opacity: 0.5;
           cursor: pointer;
           transition: all 0.2s ease 0s;
         }
       }
-      &__logout:hover i{
+      &__logout:hover i {
         margin-right: 15px;
         opacity: 1;
       }

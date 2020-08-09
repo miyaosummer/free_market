@@ -18,9 +18,10 @@
     &__logo {
       margin: 30px 0px;
       width: 150px;
+      transition: 0.4s;
     }
     &__logo:hover {
-      opacity: 0.7;
+      opacity: 0.6;
     }
   }
   //-- クレジットカード未登録 --//
@@ -79,6 +80,7 @@
             margin: 36px 0 0 216px;
           }
         }
+
         //-- セキュリティコード入力フォーム --//
         &__security {
           &__label {
@@ -130,6 +132,10 @@
             font-size: 14px;
             color: $black;
             padding: 8px;
+            &:focus {
+              border: 1px solid $main-color;
+              outline: 0;
+            }
           }
           .term-label {
             font-size: 14px;
@@ -151,13 +157,15 @@
           font-weight: 600;
           color: $white;
           margin: 36px 0 0 216px;
+          cursor: pointer;
+          transition: 0.4s;
         }
         #token_submit:focus {
           border: 1px solid $main-color;
           outline: 0;
         }
         #token_submit:hover {
-          opacity: 0.7;
+          opacity: 0.6;
         }
       }
     }
@@ -186,9 +194,10 @@
     }
     &__logo {
       width: 150px;
+      transition: 0.4s;
     }
     &__logo:hover {
-      opacity: 0.7;
+      opacity: 0.6;
     }
     p {
       text-align: center;
