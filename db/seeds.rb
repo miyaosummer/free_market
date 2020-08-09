@@ -265,10 +265,10 @@ Product.create!(
   product_category_id: '164',
   product_condition_id: '目立った傷や汚れなし',
   postage_way_id: '送料込み(出品者負担)',
-  # postage: '送料込み',
   shipping_day_id: '2〜3日で発送',
   product_size_id: '3',
-  prefecture_id: '東京都'
+  prefecture_id: '東京都',
+  public_flag: '1'
 )
 Product.create!(
   name: 'EDIFICE ストライプシャツ',
@@ -278,11 +278,11 @@ Product.create!(
   product_category_id: '153',
   product_condition_id: '目立った傷や汚れなし',
   postage_way_id: '着払い(購入者負担)',
-  # postage: '着払い',
   shipping_day_id: '1〜2日で発送',
   product_brand_id: '1',
   product_size_id: '4',
-  prefecture_id: '東京都'
+  prefecture_id: '東京都',
+  public_flag: '1'
 )
 Product.create!(
   name: '【A.P.C】グレー Tシャツ',
@@ -292,13 +292,38 @@ Product.create!(
   product_category_id: '151',
   product_condition_id: 'やや傷や汚れあり',
   postage_way_id: '送料込み(出品者負担)',
-  # postage: '送料込み',
   shipping_day_id: '4〜7日で発送',
   product_brand_id: '2',
   product_size_id: '4',
-  prefecture_id: '大阪府'
+  prefecture_id: '大阪府',
+  public_flag: '1'
 )
-
+Product.create!(
+  name: '画像ありの下書き商品',
+  description: '現在鋭意編集中', 
+  price: '',
+  seller_id: '1',
+  product_category_id: '164',
+  product_condition_id: '目立った傷や汚れなし',
+  postage_way_id: '送料込み(出品者負担)',
+  shipping_day_id: '1〜2日で発送',
+  product_size_id: '4',
+  prefecture_id: '東京都',
+  public_flag: '0'
+)
+Product.create!(
+  name: '画像なしの下書き商品',
+  description: '現在鋭意編集中', 
+  price: '',
+  seller_id: '1',
+  product_category_id: '',
+  product_condition_id: '目立った傷や汚れなし',
+  postage_way_id: '送料込み(出品者負担)',
+  shipping_day_id: '1〜2日で発送',
+  product_size_id: '',
+  prefecture_id: '東京都',
+  public_flag: '0'
+)
 # #######################################
 # # 商品写真テーブルへのデータ登録
 # #######################################
@@ -315,7 +340,10 @@ ProductImage.create!(
   image: File.open("#{Rails.root}/db/fixtures/product3.jpeg"),
   product_id:'3'
 )
-
+ProductImage.create!(
+  image: File.open("#{Rails.root}/db/fixtures/product1.jpeg"),
+  product_id:'4'
+)
 # #######################################
 # # コメントテーブルへのデータ登録
 # #######################################

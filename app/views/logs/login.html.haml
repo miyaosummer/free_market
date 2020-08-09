@@ -1,0 +1,14 @@
+.sign-in
+
+  .sign-in__header
+    = render "devise/sessions/header"
+
+  .sign-in__main__form
+    .sign-in__main__form__index
+      ログイン完了
+    .sign-in__main__form__notice
+      ログインが完了しました。
+    = link_to "FURIMAを始める", root_path, class:"sign-in__main__form__btn"
+
+  .sign-in__footer
+    = render "devise/sessions/footer"

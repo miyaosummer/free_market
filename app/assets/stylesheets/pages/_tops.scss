@@ -45,6 +45,7 @@
         }
 
         &__store-btn {
+          transition: 0.4s;
           &:hover {
             opacity: 0.5;
           }
@@ -188,6 +189,7 @@
         }
 
         &__store-btn {
+          transition: 0.4s;
           &:hover {
             opacity: 0.5 ;
           }
@@ -282,7 +284,7 @@
 
     &__container {
       text-align: center;
-
+      
       &__title {
         color: $main-color;
         font-size: 24px;
@@ -290,13 +292,15 @@
       }
 
       &__items {
-        max-width: 780px;
+        max-width: 1200px;
         width: 100%;
-        margin: 26px auto 0;
+        margin: 24px 240px 0;
         display: flex;
-        justify-content: space-around;
+        flex-wrap: wrap;
 
         &__item {
+          margin-right: 24px;
+          margin-bottom: 24px;
           /*  class名をここで区切ります。 */
           /*  pickup の次にある item が適用されます*/
         }
@@ -317,6 +321,7 @@
     height: 245px;
     background-color: $white;
     box-shadow: 0 0 10px rgba($black,0.2);
+    transition: 0.4s;
 
     a {
       text-decoration: none;
@@ -406,9 +411,9 @@
       }
 
       &__tax {
-         color: $black;
-         font-size: 10px;
-         text-align: left;
+        color: $black;
+        font-size: 10px;
+        text-align: left;
       }
     }
   }

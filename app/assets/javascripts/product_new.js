@@ -90,13 +90,17 @@ $(function(){
     });
     return result;
   }
+
   // Submitボタン押されたらエラーチェックを走らせる
-  $('.putup__main__form').submit(function(e){
-    if(!formChecker()){
-      e.preventDefault();
-      return false;
+  $(document).on('click', '.putup__main__form input[type=submit]', function(e) {
+    if ($(this).val() == '出品する' || $(this).val() == '変更を適用する'){
+      if(!formChecker()){
+        e.preventDefault();
+        return false;
+      }
     }
   });
+  
   // --- keyup & blur functions ---//
   // 商品名 keyup時のエラー処理
   $('.putup__main__name__text-box').keyup(function(){
@@ -268,7 +272,7 @@ $(function(){
   // サイズ blur時のエラー処理
   $(document).on('blur', '#product_size', function() {
     if($(this).val() == 0){
-      if($(this).parents('.putup__main__size__select-box').find('.input-error').length == 0){
+      if($(this).parent().find('.input-error').length == 0){
         $('.putup__main__size').append(buildInputError('サイズを選択してください'));
       }
     }
@@ -381,6 +385,7 @@ $(function() {
       $('.putup__main__profit__contents__content__frame__input__calc-result').text('¥' + display_profit);
     }
   }
+
   // プレビュー追加
   $(document).on('change', 'input[type="file"].upload-image', function(e){
     // inputを追加する

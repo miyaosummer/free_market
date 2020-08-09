@@ -2,196 +2,356 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-//メイン部分
-.main-area{
+.destination-error {
+  margin-top: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: red;
+}
+
+// メイン部分
+.main-area {
   width: 100%;
   height: auto;
   background-color: whitesmoke;
   display: flex;
   justify-content: center;
+  padding-bottom: 36px;
 
-  .destinations-form{
+  .destinations-form {
     width: 650px;
     height: auto;
-    margin : 50px 0px;
+    margin: 50px 0px;
     background-color: white;
-    &__title{
+    &__title {
+      font-size: 24px;
+      font-weight: 600;
       text-align: center;
-      border-bottom:1px lightgray solid ;
-      padding: 10px 0px;
-      font-size: 25px;
-      font-weight: bold;
+      border-bottom: 2px solid whitesmoke;
+      padding: 12px 0px;
     }
 
     // 項目ごとにまとめる予定
-    &__index{
+    &__index {
       width: 100%;
       min-width: 500px;
       height: 100%;
-      padding:20px 125px;
-      //名前入力フォーム
-      &__group{
-        margin-bottom: 20px;
-        padding-left: 20px ;
-        &__name{
-          font-size: 13px;
-          font-weight: bold;
-          &__imperative{
-            border-radius: 2px;
-            padding: 2px 4px;
-            font-size: 12px;
-            background-color:#99FFFF;
-          }
-        }
-        &__first-name{
-          width: 350px;
-          height: 45px;
-          margin-top: 5px;
-        }
-        &__last-name{
-          width: 350px;
-          height: 45px;
-          margin-top: 5px;
-        }
-
-        //かな入力フォーム
-        &__kana{
-          font-size: 13px;
-          font-weight: bold;
-          &__imperative{
-            border-radius: 2px;
-            padding: 2px 4px;
-            font-size: 12px;
-            background-color:#99FFFF;
-          }
-        }
-        &__first-kana{
-          width: 350px;
-          height: 45px;
-          margin-top: 5px;
-        }
-        &__last-kana{
-          width: 350px;
-          height: 45px;
-          margin-top: 5px;
-        }
-
-        //郵便番号入力フォーム
-        &__postal-code{
-          font-size: 13px;
-          font-weight: bold;
-          &__field{
-            width: 350px;
-            height: 45px;
-            margin-top: 5px;
-          }
-          &__imperative{
-            border-radius: 2px;
-            padding: 2px 4px;
-            font-size: 12px;
-            background-color:#99FFFF;
-          }
-        }
-
-        //都道府県入力フォーム
-        &__prefectures{
-          font-size: 13px;
-          font-weight: bold;
-          &__box{
-            width: 350px;
-            height: 45px;
-            margin-top: 5px;
-          }
-          &__imperative{
-            border-radius: 2px;
-            padding: 2px 4px;
-            font-size: 12px;
-            background-color:#99FFFF;
-          }
-        }
-
- 
-        //市区町村入力フォーム
-        &__city{
-          font-size: 13px;
-          font-weight: bold;
-          &__field{
-            width: 350px;
-            height: 45px;
-            margin-top: 5px;
-          }
-          &__imperative{
-            border-radius: 2px;
-            padding: 2px 4px;
-            font-size: 12px;
-            background-color:#99FFFF;
-          }
-        }
-
-        //番地入力フォーム
-        &__block{
-          font-size: 13px;
-          font-weight: bold;
-          &__field{
-            width: 350px;
-            height: 45px;
-            margin-top: 5px;
-          }
-          &__imperative{
-            border-radius: 2px;
-            padding: 2px 4px;
-            font-size: 12px;
-            background-color:#99FFFF;
-          }
-        }
-
-        //建物入力フォーム
-        &__building{
-          font-size: 13px;
-          font-weight: bold;
-          &__field{
-            width: 350px;
-            height: 45px;
-            margin-top: 5px;
-          }
-          &__imperative{
-            border-radius: 2px;
-            padding: 2px 4px;
-            font-size: 12px;
-            color: white;
-            background-color:gray;
-          }
-        }
-
-        //電話番号入力フォーム
-        &__phone-number{
-          font-size: 13px;
-          font-weight: bold;
-          &__field{
-            width: 350px;
-            height: 45px;
-            margin-top: 5px;
-          }
-          &__imperative{
-            border-radius: 2px;
-            padding: 2px 4px;
-            font-size: 12px;
-            color: white;
-            background-color:gray;
-          }
-        }
-
+      padding: 36px 125px;
+      i {
+        color: gray;
       }
-      &__submit-btn{
-        text-align: center;
-        height: 40px;
+      
+      // 名前入力フォーム
+      &__group-name {
+        margin-bottom: 36px;
+        padding-left: 24px;
+      }
+      &__name {
         font-size: 14px;
-        width: 300px;
-        border-radius: 5px;
+        font-weight: bold;
+        &__imperative {
+          background-color: $main-color;
+          color: $white;
+          font-size: 12px;
+          font-weight: 300;
+          border-radius: 2px;
+          margin: 4px;
+          padding: 4px;
+          vertical-align: top;
+        }
+      }
+      &__last-name {
+        width: 350px;
+        height: 48px;
+        border: 1px solid #CCCCCC;
+        border-radius: 4px;
+        font-size: 14px;
+        margin-top: 5px;
+        padding: 12px;
+        &:focus {
+          border: 1px solid $main-color;
+          outline: 0;
+        }
+      }
+      &__first-name {
+        width: 350px;
+        height: 48px;
+        border: 1px solid #CCCCCC;
+        border-radius: 4px;
+        font-size: 14px;
+        margin-top: 5px;
+        padding: 12px;
+        &:focus {
+          border: 1px solid $main-color;
+          outline: 0;
+        }
+      }
+
+      // かな入力フォーム
+      &__group-kana {
+        margin-bottom: 36px;
+        padding-left: 24px;
+      }
+      &__kana {
+        font-size: 14px;
+        font-weight: bold;
+        &__imperative {
+          background-color: $main-color;
+          color: $white;
+          font-size: 12px;
+          font-weight: 300;
+          border-radius: 2px;
+          margin: 4px;
+          padding: 4px;
+          vertical-align: top;
+        }
+      }
+      &__last-kana {
+        width: 350px;
+        height: 48px;
+        border: 1px solid #CCCCCC;
+        border-radius: 4px;
+        font-size: 14px;
+        margin-top: 5px;
+        padding: 12px;
+        &:focus {
+          border: 1px solid $main-color;
+          outline: 0;
+        }
+      }
+      &__first-kana {
+        width: 350px;
+        height: 48px;
+        border: 1px solid #CCCCCC;
+        border-radius: 4px;
+        font-size: 14px;
+        margin-top: 5px;
+        padding: 12px;
+        &:focus {
+          border: 1px solid $main-color;
+          outline: 0;
+        }
+      }
+
+      // 郵便番号入力フォーム
+      &__group-postal-code {
+        margin-bottom: 36px;
+        padding-left: 24px;
+      }
+      &__postal-code {
+        font-size: 14px;
+        font-weight: bold;
+        &__field {
+          width: 350px;
+          height: 48px;
+          border: 1px solid #CCCCCC;
+          border-radius: 4px;
+          font-size: 14px;
+          margin-top: 5px;
+          padding: 12px;
+          &:focus {
+            border: 1px solid $main-color;
+            outline: 0;
+          }
+        }
+        &__imperative {
+          background-color: $main-color;
+          color: $white;
+          font-size: 12px;
+          font-weight: 300;
+          border-radius: 2px;
+          margin: 4px;
+          padding: 4px;
+          vertical-align: top;
+        }
+      }
+
+      // 都道府県入力フォーム
+      &__group-prefectures {
+        margin-bottom: 36px;
+        padding-left: 24px;
+      }
+      &__prefectures {
+        font-size: 14px;
+        font-weight: bold;
+        &__box {
+          width: 350px;
+          height: 48px;
+          border: 1px solid #CCCCCC;
+          border-radius: 4px;
+          font-size: 14px;
+          margin-top: 5px;
+          padding: 12px;
+          &:focus {
+            border: 1px solid $main-color;
+            outline: 0;
+          }
+        }
+        &__imperative {
+          background-color: $main-color;
+          color: $white;
+          font-size: 12px;
+          font-weight: 300;
+          border-radius: 2px;
+          margin: 4px;
+          padding: 4px;
+          vertical-align: top;
+        }
+      }
+
+      // 市区町村入力フォーム
+      &__group-city {
+        margin-bottom: 36px;
+        padding-left: 24px;
+      }
+      &__city {
+        font-size: 14px;
+        font-weight: bold;
+        &__field {
+          width: 350px;
+          height: 48px;
+          border: 1px solid #CCCCCC;
+          border-radius: 4px;
+          font-size: 14px;
+          margin-top: 5px;
+          padding: 12px;
+          &:focus {
+            border: 1px solid $main-color;
+            outline: 0;
+          }
+        }
+        &__imperative {
+          background-color: $main-color;
+          color: $white;
+          font-size: 12px;
+          font-weight: 300;
+          border-radius: 2px;
+          margin: 4px;
+          padding: 4px;
+          vertical-align: top;
+        }
+      }
+
+      // 番地入力フォーム
+      &__group-block {
+        margin-bottom: 36px;
+        padding-left: 24px;
+      }
+      &__block {
+        font-size: 14px;
+        font-weight: bold;
+        &__field {
+          width: 350px;
+          height: 48px;
+          border: 1px solid #CCCCCC;
+          border-radius: 4px;
+          font-size: 14px;
+          margin-top: 5px;
+          padding: 12px;
+          &:focus {
+            border: 1px solid $main-color;
+            outline: 0;
+          }
+        }
+        &__imperative {
+          background-color: $main-color;
+          color: $white;
+          font-size: 12px;
+          font-weight: 300;
+          border-radius: 2px;
+          margin: 4px;
+          padding: 4px;
+          vertical-align: top;
+        }
+      }
+
+      // 建物入力フォーム
+      &__group-building {
+        margin-bottom: 36px;
+        padding-left: 24px;
+      }
+      &__building {
+        font-size: 14px;
+        font-weight: bold;
+        &__field {
+          width: 350px;
+          height: 48px;
+          border: 1px solid #CCCCCC;
+          border-radius: 4px;
+          font-size: 14px;
+          margin-top: 5px;
+          padding: 12px;
+          &:focus {
+            border: 1px solid $main-color;
+            outline: 0;
+          }
+        }
+        &__imperative {
+          background-color: gray;
+          color: $white;
+          font-size: 12px;
+          font-weight: 300;
+          border-radius: 2px;
+          margin: 4px;
+          padding: 4px;
+          vertical-align: top;
+        }
+      }
+
+      // 電話番号入力フォーム
+      &__group-phone-number {
+        margin-bottom: 36px;
+        padding-left: 24px;
+      }
+      &__phone-number {
+        font-size: 14px;
+        font-weight: bold;
+        &__field {
+          width: 350px;
+          height: 48px;
+          border: 1px solid #CCCCCC;
+          border-radius: 4px;
+          font-size: 14px;
+          margin-top: 5px;
+          padding: 12px;
+          &:focus {
+            border: 1px solid $main-color;
+            outline: 0;
+          }
+        }
+        &__imperative {
+          background-color: gray;
+          color: $white;
+          font-size: 12px;
+          font-weight: 300;
+          border-radius: 2px;
+          margin: 4px;
+          padding: 4px;
+          vertical-align: top;
+        }
+      }
+
+      &__submit-btn {
+        text-align: center;
+        height: 48px;
+        width: 350px;
+        background-color: $main-color;
+        font-size: 14px;
+        font-weight: 600;
+        color: white;
+        border-radius: 4px;
         border-style: solid;
-        border-color: #99FFFF;
-        background-color:#99FFFF;
-        margin-left: 40px;
+        border-color: $main-color;
+        margin-left: 24px;
+        cursor: pointer;
+        transition: 0.4s;
+        &:hover {
+          opacity: 0.6;
+        }
+        &:focus {
+          border: 1px solid gray;
+          outline: 0;
+        }
       }
     }
   }

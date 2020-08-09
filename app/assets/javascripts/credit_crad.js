@@ -122,7 +122,7 @@ $(function(){
   $('#cvc').blur(function(){
     if($(this).val().length <= 2){
       if($(this).parent().find('.creditcard-error').length == 0){
-        $('.signup-creditcard__main__container__register-form__number').append(buildInputError('セキュリティコードを入力してください'));
+        $('.signup-creditcard__main__container__register-form__security').append(buildInputError('セキュリティコードを入力してください'));
       }
     }
   });

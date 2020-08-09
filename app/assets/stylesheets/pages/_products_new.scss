@@ -1,6 +1,7 @@
 .input-error{
   margin: 20px 0px 0px 40px;
-  font-size: 14px;
+  font-size: 12px;
+  font-weight: 600;
   color: $red;
 }
 
@@ -10,7 +11,7 @@
   &__header{
     text-align: center;
     &__logo{
-      margin:30px 0px;
+      margin: 30px 0px;
       width: 150px;
     }
     &__logo:hover{
@@ -30,10 +31,14 @@
         font-weight: bold;
         font-size: 14px;
         &__imperative{
-          border-radius: 2px;
-          padding: 2px 4px;
+          background-color: $main-color;
+          color: $white;
           font-size: 12px;
-          background-color:$imperative-blue;
+          font-weight: 300;
+          border-radius: 2px;
+          margin: 4px;
+          padding: 4px;
+          vertical-align: top;
         }
       }
       &__description{
@@ -52,21 +57,27 @@
       font-weight: bold;
       font-size: 14px;
       &__imperative{
-        border-radius: 2px;
-        padding: 2px 4px;
+        background-color: $main-color;
+        color: $white;
         font-size: 12px;
-        background-color:$imperative-blue;
+        font-weight: 300;
+        border-radius: 2px;
+        margin: 4px;
+        padding: 4px;
+        vertical-align: top;
       }
     }
     &__text-box{
       margin: 20px 40px 0px 40px;
-      padding: 14px;
+      padding: 12px;
       height: 40px;
       width: calc(100% - 80px);
-      border-color: $border-color;
-      border-style: solid;
-      border-width: 1px;
-      border-radius: 5px;
+      border: 1px solid $border-color;
+      border-radius: 4px;
+      &:focus {
+        border: 1px solid $main-color;
+        outline: 0;
+      }
     }
   }
   &__description{
@@ -76,20 +87,26 @@
       font-weight: bold;
       font-size: 14px;
       &__imperative{
-        border-radius: 2px;
-        padding: 2px 4px;
+        background-color: $main-color;
+        color: $white;
         font-size: 12px;
-        background-color:$imperative-blue;
+        font-weight: 300;
+        border-radius: 2px;
+        margin: 4px;
+        padding: 4px;
+        vertical-align: top;
       }
     }
     &__text-box{
       margin: 20px 40px 0px 40px;
-      padding: 14px;
+      padding: 12px;
       width: calc(100% - 80px);
-      border-color: $border-color;
-      border-style: solid;
-      border-width: 1px;
-      border-radius: 5px;
+      border: 1px solid $border-color;
+      border-radius: 4px;
+      &:focus {
+        border: 1px solid $main-color;
+        outline: 0;
+      }
     }
   }
   &__product-detail{
@@ -108,18 +125,27 @@
       font-weight: bold;
       font-size: 14px;
       &__imperative{
-        border-radius: 2px;
-        padding: 2px 4px;
+        background-color: $main-color;
+        color: $white;
         font-size: 12px;
-        background-color:$imperative-blue;
+        font-weight: 300;
+        border-radius: 2px;
+        margin: 4px;
+        padding: 4px;
+        vertical-align: top;
       }
     }
     &__select-box{
       margin: 20px 40px 0px 40px;
+      padding-left: 12px;
       height: 40px;
       width: calc(100% - 80px);
       border-color: $border-color;
-      border-radius: 5px;
+      border-radius: 4px;
+      &:focus {
+        border: 1px solid $main-color;
+        outline: 0;
+      }
     }
     &__select-box--children{
     }
@@ -130,21 +156,33 @@
       height: 40px;
       width: calc(100% - 80px);
       border-color: $border-color;
-      border-radius: 5px;
+      border-radius: 4px;
+      &:focus {
+        border: 1px solid $main-color;
+        outline: 0;
+      }
     }
     .box--child{
       margin: 20px 40px 0px 40px;
       height: 40px;
       width: calc(100% - 80px);
       border-color: $border-color;
-      border-radius: 5px;
+      border-radius: 4px;
+      &:focus {
+        border: 1px solid $main-color;
+        outline: 0;
+      }
     }
     .box--grand-child{
       margin: 20px 40px 0px 40px;
       height: 40px;
       width: calc(100% - 80px);
       border-color: $border-color;
-      border-radius: 5px;
+      border-radius: 4px;
+      &:focus {
+        border: 1px solid $main-color;
+        outline: 0;
+      }
     }
   }
   &__size{
@@ -154,25 +192,38 @@
       font-weight: bold;
       font-size: 14px;
       &__imperative{
-        border-radius: 2px;
-        padding: 2px 4px;
+        background-color: $main-color;
+        color: $white;
         font-size: 12px;
-        background-color:$imperative-blue;
+        font-weight: 300;
+        border-radius: 2px;
+        margin: 4px;
+        padding: 4px;
+        vertical-align: top;
       }
     }
     &__select-box{
       margin: 20px 40px 0px 40px;
+      padding-left: 12px;
       height: 40px;
       width: calc(100% - 80px);
       border-color: $border-color;
-      border-radius: 5px;
+      border-radius: 4px;
+      &:focus {
+        border: 1px solid $main-color;
+        outline: 0;
+      }
     }
     .box--size{
       margin: 20px 40px 0px 40px;
       height: 40px;
       width: calc(100% - 80px);
       border-color: $border-color;
-      border-radius: 5px;
+      border-radius: 4px;
+      &:focus {
+        border: 1px solid $main-color;
+        outline: 0;
+      }
     }
   }
   &__brand{
@@ -182,21 +233,28 @@
       font-weight: bold;
       font-size: 14px;
       &__optional{
-        border-radius: 2px;
-        padding: 2px 4px;
+        background-color: $border-color;
+        color: $black;
         font-size: 12px;
-        background-color:$border-color;
+        font-weight: 300;
+        border-radius: 2px;
+        margin: 4px;
+        padding: 4px;
+        vertical-align: top;
       }
     }
     &__text-box{
       margin: 20px 40px 0px 40px;
+      padding-left: 12px;
       padding: 14px;
       height: 40px;
       width: calc(100% - 80px);
-      border-color: $border-color;
-      border-style: solid;
-      border-width: 1px;
-      border-radius: 5px;
+      border: 1px solid $border-color;
+      border-radius: 4px;
+      &:focus {
+        border: 1px solid $main-color;
+        outline: 0;
+      }
     }
   }
   &__condition{
@@ -206,18 +264,27 @@
       font-weight: bold;
       font-size: 14px;
       &__imperative{
-        border-radius: 2px;
-        padding: 2px 4px;
+        background-color: $main-color;
+        color: $white;
         font-size: 12px;
-        background-color:$imperative-blue;
+        font-weight: 300;
+        border-radius: 2px;
+        margin: 4px;
+        padding: 4px;
+        vertical-align: top;
       }
     }
     &__select-box{
       margin: 20px 40px 0px 40px;
+      padding-left: 12px;
       height: 40px;
       width: calc(100% - 80px);
       border-color: $border-color;
-      border-radius: 5px;
+      border-radius: 4px;
+      &:focus {
+        border: 1px solid $main-color;
+        outline: 0;
+      }
     }
   }
   &__delivery{
@@ -231,9 +298,9 @@
         width: 16px;
         height: 16px;
         font-size: 12px;
-        color: $black;
+        color: $white;
         border-radius: 50%;
-        background: $imperative-blue;
+        background: $main-color;
         text-align: center;
         text-decoration: none;
         display: inline-block;
@@ -247,18 +314,27 @@
       font-weight: bold;
       font-size: 14px;
       &__imperative{
-        border-radius: 2px;
-        padding: 2px 4px;
+        background-color: $main-color;
+        color: $white;
         font-size: 12px;
-        background-color:$imperative-blue;
+        font-weight: 300;
+        border-radius: 2px;
+        margin: 4px;
+        padding: 4px;
+        vertical-align: top;
       }
     }
     &__select-box{
       margin: 20px 40px 0px 40px;
+      padding-left: 12px;
       height: 40px;
       width: calc(100% - 80px);
       border-color: $border-color;
-      border-radius: 5px;
+      border-radius: 4px;
+      &:focus {
+        border: 1px solid $main-color;
+        outline: 0;
+      }
     }
   }
   &__prefecture{
@@ -268,18 +344,27 @@
       font-weight: bold;
       font-size: 14px;
       &__imperative{
-        border-radius: 2px;
-        padding: 2px 4px;
+        background-color: $main-color;
+        color: $white;
         font-size: 12px;
-        background-color:$imperative-blue;
+        font-weight: 300;
+        border-radius: 2px;
+        margin: 4px;
+        padding: 4px;
+        vertical-align: top;
       }
     }
     &__select-box{
       margin: 20px 40px 0px 40px;
+      padding-left: 12px;
       height: 40px;
       width: calc(100% - 80px);
       border-color: $border-color;
-      border-radius: 5px;
+      border-radius: 4px;
+      &:focus {
+        border: 1px solid $main-color;
+        outline: 0;
+      }
     }
   }
   &__shipping-day{
@@ -289,18 +374,27 @@
       font-weight: bold;
       font-size: 14px;
       &__imperative{
-        border-radius: 2px;
-        padding: 2px 4px;
+        background-color: $main-color;
+        color: $white;
         font-size: 12px;
-        background-color:$imperative-blue;
+        font-weight: 300;
+        border-radius: 2px;
+        margin: 4px;
+        padding: 4px;
+        vertical-align: top;
       }
     }
     &__select-box{
       margin: 20px 40px 0px 40px;
+      padding-left: 12px;
       height: 40px;
       width: calc(100% - 80px);
       border-color: $border-color;
-      border-radius: 5px;
+      border-radius: 4px;
+      &:focus {
+        border: 1px solid $main-color;
+        outline: 0;
+      }
     }
   }
   &__price-range{
@@ -314,9 +408,9 @@
         width: 16px;
         height: 16px;
         font-size: 12px;
-        color: $black;
+        color: $white;
         border-radius: 50%;
-        background: $imperative-blue;
+        background: $main-color;
         text-align: center;
         text-decoration: none;
         display: inline-block;
@@ -338,10 +432,14 @@
               font-weight: bold;
               font-size: 14px;
               &__imperative{
-                border-radius: 2px;
-                padding: 2px 4px;
+                background-color: $main-color;
+                color: $white;
                 font-size: 12px;
-                background-color:$imperative-blue;
+                font-weight: 300;
+                border-radius: 2px;
+                margin: 4px;
+                padding: 4px;
+                vertical-align: top;
               }
             }
           }
@@ -355,10 +453,15 @@
               width: 80%;
               text-align: right;
               margin-left: 5%;
+              padding-right: 6px;
               border-color: $border-color;
               border-style: solid;
               border-width: 1px;
-              border-radius: 5px;
+              border-radius: 4px;
+              &:focus {
+                border: 1px solid $main-color;
+                outline: 0;
+              }
             }
           }
         }
@@ -422,13 +525,23 @@
       height: 50px;
       font-size: 16px;
       font-weight: bold;
+      color: $white;
       width: calc(100% - 360px);
       border-radius: 10px;
       text-align: center;
       vertical-align: middle;
-      border-style: solid;
-      border-color: $imperative-blue;
-      background-color:$imperative-blue;
+      border: 1px solid $main-color;
+      border-radius: 4px;
+      background-color: $main-color;
+      cursor: pointer;
+      transition: 0.4s;
+      &:hover {
+        opacity: 0.6;
+      }
+      &:focus {
+        border: 1px solid gray;
+        outline: 0;
+      }
     }
   }
   &__draft{
@@ -442,19 +555,32 @@
       border-radius: 10px;
       text-align: center;
       vertical-align: middle;
-      border-style: solid;
-      border-color: $border-color;
-      background-color:$border-color;
+      border: 1px solid $border-color;
+      border-radius: 4px;
+      background-color: $border-color;
+      cursor: pointer;
+      transition: 0.4s;
+      &:hover {
+        opacity: 0.6;
+      }
+      &:focus {
+        border: 1px solid gray;
+        outline: 0;
+      }
     }
   }
   &__page-transition{
-    padding-top: 20px;
+    padding: 24px 0;
     &__title{
       text-align: center;
       font-size: 14px;
       &__link{
         text-decoration: none;
-        color: #000000;
+        color: $black;
+        transition: 0.4s;
+        &:hover {
+          color: $main-color;
+        }
       }
     }
   }

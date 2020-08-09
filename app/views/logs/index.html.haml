@@ -1,13 +1,16 @@
 .sign-up
   .sign-up__header
     = render "devise/sessions/header"
+  
   .sign-up__main
     .sign-up__main__form
       .sign-up__main__form__index
-        %p 会員登録完了
+        会員登録完了
       .sign-up__main__form__notice
-        %p ありがとうございます。
-        %p 会員登録が完了しました。
-      =link_to "FURIMAを始める",root_path,class:"sign-up__main__form__btn"
+        ありがとうございます。
+        %br
+        会員登録が完了しました。
+      = link_to "FURIMAを始める", root_path, class:"sign-up__main__form__btn"
+
   .sign-up__footer
     = render "devise/sessions/footer"

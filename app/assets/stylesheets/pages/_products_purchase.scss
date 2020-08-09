@@ -1,31 +1,31 @@
-*{
+* {
   box-sizing: border-box;
 }
 
-.purchase{
+.purchase {
   width: 100%;
   background-color: whitesmoke;
   color: #333;
   
-  &__header{
+  &__header {
     text-align: center;
-    &__logo{
+    &__logo {
       margin:30px 0px;
       width: 150px;
-    }
-    &__logo:hover{
-      opacity: 0.7;
+      &:hover {
+        opacity: 0.7;
+      }
     }
   }
 
-  &__main{
+  &__main {
     width: 50%;
     min-width: 500px;
     margin:0 auto;
     background-color: white;
     text-align: center;
-    &__product-confirmation{
-      font-size: 22px;
+    &__product-confirmation {
+      font-size: 24px;
       padding: 32px;
       border-bottom: 1px solid whitesmoke;
     }
@@ -33,22 +33,22 @@
       font-weight: bold;
     }
 
-    &__product-info{
+    &__product-info {
       height: 150px;
       border-bottom: 1px solid whitesmoke;
       padding: 32px 16px;
-      &__inner{
+      &__inner {
         max-width: 343px;
         margin: 0 auto;
-        &__content{
+        &__content {
           display: flex;
           text-align: center;
-          h3{
+          h3 {
             height: 80px;
             width: 80px;
           }
 
-          img{
+          img {
             height: 80px;
             width: 80px;
             min-width: 80px;
@@ -63,21 +63,21 @@
             align-items: center;
           }
 
-          &__detail{
+          &__detail {
             margin: 8px 0 0 16px;
-            &__name{
+            &__name {
               font-size: 15px;
               margin: 0;
               padding: 0 0 8px;
               line-height: 1.5;
               text-align: left;
             }
-            &__price{
+            &__price {
               margin: 0;
               text-align: left;
               font-size: 15px;
               font-weight: bold;
-              &__tax{
+              &__tax {
                 font-size: 13px;
               }
             }
@@ -86,63 +86,71 @@
       }
     }
 
-    &__payment-info{
-      &__innner{
+    &__payment-info {
+      &__innner {
         max-width: 343px;
         margin: 0 auto;
         padding: 32px 16px;
-        &__form{
+        &__form {
 
-          &__table{
+          &__table {
             font-weight: bold;
             display: flex;
             justify-content: space-between;
             line-height: 35px;
             padding-bottom: 32px;
             border-bottom: 1px solid whitesmoke;
-            &__pay-label{
+            &__pay-label {
               font-size: 18px;
             }
-            &__pay-amount{
+            &__pay-amount {
               font-size: 30px;
             }
           }
 
-          &__user-info{
+          &__user-info {
             padding: 32px 0;
             border-bottom: 1px solid whitesmoke;
             font-size: 14px;
             text-align: left;
-            &__pay-method{
+            &__pay-method {
               font-weight: bold;
             }
-            &__destination{
+            &__destination {
               font-weight: bold;
             }
-            &__text{
+            &__text {
               margin: 8px 0 0;
             }
-            a{
+            a {
               cursor: pointer;
-              color: #0099e8;
+              color: $strongblue;
               text-decoration: none;
             }
           }
 
-          &__submit{
+          &__submit {
             padding: 32px 0;
-            &__submit-btn{
+            &__submit-btn {
               height: 50px;
               font-size: 16px;
               font-weight: bold;
+              color: $white;
               width: 100%;
-              border-radius: 10px;
+              border-radius: 4px;
               text-align: center;
               vertical-align: middle;
-              border-style: solid;
-              border-color: #99FFFF;
-              background-color:#99FFFF;
+              border: 1px solid $main-color;
+              background-color: $main-color;
               cursor: pointer;
+              transition: 0.4s;
+              &:hover {
+                opacity: 0.6;
+              }
+              &:focus {
+                border: 1px solid gray;
+                outline: 0;
+              }
             }
           }
         }
@@ -150,36 +158,36 @@
     }  
   }
 
-  &__footer{
+  &__footer {
     padding-top: 40px;
     text-align: center;
     width: 100%;
-    &__list{
+    &__list {
       display: flex;
       justify-content: center;
       margin-right: 30px;
-      &__left{
+      &__left {
         list-style: none;
         font-size: 12px;
       }
-      &__center{
+      &__center {
         list-style: none;
         font-size: 12px;
         margin: 0px 10px;
       }
-      &__right{
+      &__right {
         list-style: none;
         font-size: 12px;
       }
     }
-    &__logo{
+    &__logo {
       padding-top: 20px;
       width: 150px;
+      &:hover {
+        opacity: 0.7;
+      }
     }
-    &__logo:hover{
-      opacity: 0.7;
-    }
-    p{
+    p {
       text-align: center;
       font-size: 12px;
       padding-bottom: 50px;

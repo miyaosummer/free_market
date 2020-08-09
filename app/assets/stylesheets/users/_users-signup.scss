@@ -11,14 +11,19 @@
     &__logo {
       margin: 30px 0px;
       width: 150px;
-    }
-    &__logo:hover {
-      opacity: 0.7;
+      transition: 0.4s;
+      &:hover {
+        opacity: 0.6;
+      }
     }
   }
 
   &__main {
     text-align: center;
+    i {
+      color: gray;
+    }
+
     &__container {
       height: 100%;
       width: 720px;
@@ -30,7 +35,7 @@
       &__head {
         font-size: 24px;
         font-weight: bold;
-        border-bottom: 1px solid whitesmoke;
+        border-bottom: 2px solid whitesmoke;
         padding: 36px;
       }
 
@@ -57,7 +62,7 @@
           vertical-align: top;
         }
 
-        // textbox関連
+        //-- textbox関連 --//
         .input-full {
           height: 50px;
           width: 300px;
@@ -94,7 +99,7 @@
           }
         }
 
-        // birthday関連
+        //-- birthday関連 --//
         &__input-birthday {
           font-size: 12px;
           margin: 4px 0 0 216px;
@@ -104,12 +109,17 @@
             border: 1px solid #CCCCCC;
             border-radius: 4px;
             font-size: 14px;
-            color: #888888;
+            color: $black;
             padding: 8px;
           }
+          #user_birthday_1i:focus, #user_birthday_2i:focus, #user_birthday_3i:focus {
+            border: 1px solid $main-color;
+            outline: 0;
+          }
         }
+        
 
-        // information関連
+        //-- information関連 --//
         &__form-info {
           font-size: 12px;
           color: #AAAAAA;
@@ -120,6 +130,9 @@
           margin: 36px 0 24px 350px;
           a {
             color: $main-color;
+            .about-icon {
+              color: $main-color;
+            }
           }
         }
         &__form-policy {
@@ -144,6 +157,11 @@
           font-weight: 600;
           color: $white;
           margin: 36px 0 0 216px;
+          cursor: pointer;
+          transition: 0.4s;
+          &:hover {
+            opacity: 0.6;
+          }
         }
       }
     }
@@ -172,9 +190,10 @@
     }
     &__logo {
       width: 150px;
-    }
-    &__logo:hover {
-      opacity: 0.7;
+      transition: 0.4s;
+      &:hover {
+        opacity: 0.6;
+      }
     }
     p {
       text-align: center;
