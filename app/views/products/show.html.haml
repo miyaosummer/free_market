@@ -52,18 +52,20 @@
                     -else
                       %div{class: "show__main__product__content__information__image__top--list__item", data:{index: index}, style: "z-index:1;"}
                         =image_tag product_image.image.url
+
             .show__main__product__content__information__image__sub
               - @product.product_images.each_with_index do |product_image,index|
                 %div{class: "show__main__product__content__information__image__sub--list", data:{index: index}}
                   = image_tag product_image.image.url, {class: "sub-image"}
+
             // 買い手がいたらSOLDOUTを付与
             -if @product.buyer_id.present?
               .show__main__product__content__information__image--soldout
 
           .show__main__product__content__information__price
             %span
-              ¥
-              = @product.price
+              = converting_to_jpy(@product.price)
+              
             .show__main__product__content__information__price__detail
               %span
                 (税込)

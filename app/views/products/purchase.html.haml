@@ -20,8 +20,7 @@
                     = @product.name
                   %p.purchase__main__product-info__inner__content__detail__price
                     %span
-                      ¥
-                      = @product.price
+                      = converting_to_jpy(@product.price)
                     %span.purchase__main__product-info__inner__content__detail__price__tax
                       (税込)
                       %br/
@@ -34,8 +33,7 @@
                 .purchase__main__payment-info__innner__form__table__pay-label
                   支払い金額
                 .purchase__main__payment-info__innner__form__table__pay-amount
-                  ¥
-                  = @product.price
+                  = converting_to_jpy(@product.price)
 
               .purchase__main__payment-info__innner__form__user-info
                 %h3.purchase__main__payment-info__innner__form__user-info__pay-method
