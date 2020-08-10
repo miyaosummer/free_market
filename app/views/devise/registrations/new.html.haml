@@ -39,6 +39,7 @@
 
           -# パスワード（確認）
           .signup__main__container__register-form__label-top
+            %i.fas.fa-key
             = f.label :password, "パスワード（確認）"
             %span.form-require 必須
           .input
@@ -73,6 +74,54 @@
             %span.form-require 必須
           .signup__main__container__register-form__input-birthday
             = raw sprintf(f.date_select(:birthday, prompt:"--", use_month_numbers: true, start_year:Time.now.year, end_year:(1900), date_separator:'%s'), '年 ', '月 ') + '日' 
+
+          -# 郵便番号
+          .signup__main__container__register-form__label-destination
+            %i.fas.fa-map-marker-alt
+            = f.label "郵便番号", class: "destinations-form__index__postal-code"
+            %span.form-require 必須
+          .input-postal-code
+            -# = f.text_field :postal_code, placeholder: "例）1234567", class: "destinations-form__index__postal-code__field", id: "destination_postal_code"
+
+          -# 都道府県
+          .signup__main__container__register-form__label-destination
+            %i.fas.fa-city
+            = f.label "都道府県", class: "destinations-form__index__prefectures"
+            %span.form-require 必須
+          .input-prefectures
+          -#   = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: ""}, {class: "destinations-form__index__prefectures__box"}
+
+          -# 市区町村
+          .signup__main__container__register-form__label-destination
+            %i.fas.fa-city
+            = f.label "市区町村", class: "destinations-form__index__city"
+            %span.form-require 必須
+          .input-city
+          -#   = f.text_field :city, placeholder: "例）新宿区", class: "destinations-form__index__city__field", id: "destination_city"
+
+          -# 番地
+          .signup__main__container__register-form__label-destination
+            %i.fas.fa-city
+            = f.label "番地", class: "destinations-form__index__block"
+            %span.form-require 必須
+          .input-block
+          -#   = f.text_field :block, placeholder: "例）青山1-1-1", class: "destinations-form__index__block__field", id: "destination_block"
+
+          -# 建物名
+          .signup__main__container__register-form__label-destination
+            %i.far.fa-building
+            = f.label "建物名", class: "destinations-form__index__building"
+            %span.form-require 任意
+          .input-building
+          -#   = f.text_field :building, placeholder: "例）野原ビル201", class: "destinations-form__index__building__field"
+
+          -# 電話番号
+          .signup__main__container__register-form__label-destination
+            %i.fas.fa-mobile-alt
+            = f.label "電話番号", class: "destinations-form__index__phone-number"
+            %span.form-require 任意
+          .input-phone-number
+          -#   = f.text_field :phone_number, placeholder: "例）080-1234-5678", class: "destinations-form__index__phone-number__field"
 
           .signup__main__container__register-form__form-info
             %p 
