@@ -258,8 +258,8 @@ ProductBrand.create!(
 #######################################
 p "create Products"
 Product.create!(
-  name: 'ABAHOUSE テーラードジャケット',
-  description: 'ABAHOUSEのテーラードジャケット サイズSです。手触りは柔らかいです。素材はポリエステルです。', 
+  name: 'テーラードジャケット',
+  description: 'テーラードジャケット サイズSです。手触りは柔らかいです。素材はポリエステルです。', 
   price: '5000',
   seller_id: '1',
   product_category_id: '164',
