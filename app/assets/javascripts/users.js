@@ -8,9 +8,6 @@ $(function(){
   }
   if($('#error_explanation').find('Email has already been taken')){
     $('#error_explanation').before(buildEmailDupliError());
-    changeErrorBox('#user_email');
-    changeErrorBox('.input-password');
-    changeErrorBox('.input-password-confirm');
   };
 
   function buildInputError(text){
