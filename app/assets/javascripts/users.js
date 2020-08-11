@@ -68,7 +68,7 @@ $(function(){
     };
     // お名前（全角のみ）
     if($('#user_last_name').val().length > 0){
-      if(!$('#user_last_name').val().match(/^[ぁ-んァ-ヶー一-龠 　\r\n\t]+$/)){
+      if(!$('#user_last_name').val().match(/^[ぁ-んァ-ヶー一-龠 \r\n\t]+$/)){
         $('.input-name-error__last').append(buildInputError('姓を全角で入力してください'));
         changeErrorBox('#user_last_name');
         result = false;
@@ -79,7 +79,7 @@ $(function(){
       result = false;
     };
     if($('#user_first_name').val().length > 0){
-      if(!$('#user_first_name').val().match(/^[ぁ-んァ-ヶー一-龠 　\r\n\t]+$/)){
+      if(!$('#user_first_name').val().match(/^[ぁ-んァ-ヶー一-龠 \r\n\t]+$/)){
         $('.input-name-error__first').append(buildInputError('名を全角で入力してください'));
         changeErrorBox('#user_first_name');
         result = false;
@@ -91,7 +91,7 @@ $(function(){
     };
     // お名前カナ（カナのみ）
     if($('#user_last_name_kana').val().length > 0){
-      if(!$('#user_last_name_kana').val().match(/^[ァ-ロワヲンー 　\r\n\t]*$/)){
+      if(!$('#user_last_name_kana').val().match(/^[ァ-ロワヲンー \r\n\t]*$/)){
         $('.input-name_kana-error__last').append(buildInputError('姓カナをカナで入力してください'));
         changeErrorBox('#user_last_name_kana');
         result = false;
@@ -102,7 +102,7 @@ $(function(){
       result = false;
     };
     if($('#user_first_name_kana').val().length > 0){
-      if(!$('#user_first_name_kana').val().match(/^[ァ-ロワヲンー 　\r\n\t]*$/)){
+      if(!$('#user_first_name_kana').val().match(/^[ァ-ロワヲンー \r\n\t]*$/)){
         $('.input-name_kana-error__first').append(buildInputError('名カナをカナで入力してください'));
         changeErrorBox('#user_first_name_kana');
         result = false;
