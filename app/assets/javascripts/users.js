@@ -211,7 +211,7 @@ $(function(){
   // お名前（全角） keyup & blur
   $('#user_last_name').keyup(function(){
     if($('#user_last_name').val().length > 0){
-      if($('#user_last_name').val().match(/^[ぁ-んァ-ヶー一-龠 　\r\n\t]+$/)){
+      if($('#user_last_name').val().match(/^[ぁ-んァ-ヶー一-龠 \r\n\t]+$/)){
         $('.input-name-error__last').find('.signup-input-error').remove();
         $(this).css('border-color', '');
       };
@@ -219,7 +219,7 @@ $(function(){
   });
   $('#user_first_name').keyup(function(){
     if($('#user_first_name').val().length > 0){
-      if($('#user_first_name').val().match(/^[ぁ-んァ-ヶー一-龠 　\r\n\t]+$/)){
+      if($('#user_first_name').val().match(/^[ぁ-んァ-ヶー一-龠 \r\n\t]+$/)){
         $('.input-name-error__first').find('.signup-input-error').remove();
         $(this).css('border-color', '');
       };
@@ -227,7 +227,7 @@ $(function(){
   });
   $('#user_last_name').blur(function(){
     if($('#user_last_name').val().length > 0){
-      if(!$('#user_last_name').val().match(/^[ぁ-んァ-ヶー一-龠 　\r\n\t]+$/)){
+      if(!$('#user_last_name').val().match(/^[ぁ-んァ-ヶー一-龠 \r\n\t]+$/)){
         if($('.input-name-error__last').find('.signup-input-error').length > 0){
           $('.input-name-error__last').find('.signup-input-error').remove();
         };
@@ -241,7 +241,7 @@ $(function(){
   });
   $('#user_first_name').blur(function(){
     if($('#user_first_name').val().length > 0){
-      if(!$('#user_first_name').val().match(/^[ぁ-んァ-ヶー一-龠 　\r\n\t]+$/)){
+      if(!$('#user_first_name').val().match(/^[ぁ-んァ-ヶー一-龠 \r\n\t]+$/)){
         if($('.input-name-error__first').find('.signup-input-error').length > 0){
           $('.input-name-error__first').find('.signup-input-error').remove();
         };
@@ -256,7 +256,7 @@ $(function(){
   // お名前カナ（全角） keyup & blur
   $('#user_last_name_kana').keyup(function(){
     if($('#user_last_name_kana').val().length > 0){
-      if($('#user_last_name_kana').val().match(/^[ァ-ロワヲンー 　\r\n\t]*$/)){
+      if($('#user_last_name_kana').val().match(/^[ァ-ロワヲンー \r\n\t]*$/)){
         $('.input-name_kana-error__last').find('.signup-input-error').remove();
         $(this).css('border-color', '');
       };
@@ -264,7 +264,7 @@ $(function(){
   });
   $('#user_first_name_kana').keyup(function(){
     if($('#user_first_name_kana').val().length > 0){
-      if($('#user_first_name_kana').val().match(/^[ァ-ロワヲンー 　\r\n\t]*$/)){
+      if($('#user_first_name_kana').val().match(/^[ァ-ロワヲンー \r\n\t]*$/)){
         $('.input-name_kana-error__first').find('.signup-input-error').remove();
         $(this).css('border-color', '');
       };
@@ -272,7 +272,7 @@ $(function(){
   });
   $('#user_last_name_kana').blur(function(){
     if($('#user_last_name_kana').val().length > 0){
-      if(!$('#user_last_name_kana').val().match(/^[ァ-ロワヲンー 　\r\n\t]*$/)){
+      if(!$('#user_last_name_kana').val().match(/^[ァ-ロワヲンー \r\n\t]*$/)){
         if($('.input-name_kana-error__last').find('.signup-input-error').length > 0){
           $('.input-name_kana-error__last').find('.signup-input-error').remove();
         };
@@ -286,7 +286,7 @@ $(function(){
   });
   $('#user_first_name_kana').blur(function(){
     if($('#user_first_name_kana').val().length > 0){
-      if(!$('#user_first_name_kana').val().match(/^[ァ-ロワヲンー 　\r\n\t]*$/)){
+      if(!$('#user_first_name_kana').val().match(/^[ァ-ロワヲンー \r\n\t]*$/)){
         if($('.input-name_kana-error__first').find('.signup-input-error').length > 0){
           $('.input-name_kana-error__first').find('.signup-input-error').remove();
         };
