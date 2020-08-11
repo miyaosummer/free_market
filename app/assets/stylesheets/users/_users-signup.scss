@@ -1,7 +1,9 @@
 *, *:before, *:after {
   box-sizing: border-box;
 }
-
+#error_explanation{
+  display: none;
+}
 .signup {
   width: 100%;
   background-color: whitesmoke;
@@ -206,6 +208,9 @@
   margin: 4px 4px 4px 216px;
   color: red;
   font-size: 14px;
+  &__email-duplication{
+    margin: 30px 4px 30px 204px;
+  }
 }
 .input-name-error,.input-name_kana-error{
   margin-top: 28px;

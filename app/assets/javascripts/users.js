@@ -1,4 +1,18 @@
 $(function(){
+  //--メールアドレス重複時の処理 --//
+  function buildEmailDupliError(){
+    const html = `
+    <div class="signup-input-error signup-input-error__email-duplication">入力されたメールアドレスは既に登録されています。</div>
+    `;
+    return html;
+  }
+  if($('#error_explanation').find('Email has already been taken')){
+    $('#error_explanation').before(buildEmailDupliError());
+    changeErrorBox('#user_email');
+    changeErrorBox('.input-password');
+    changeErrorBox('.input-password-confirm');
+  };
+
   function buildInputError(text){
     const html = `
     <div class="signup-input-error">${text}</div>
