@@ -6,7 +6,7 @@ $(function(){
     `;
     return html;
   }
-  if($('#error_explanation').find('Email has already been taken')){
+  if($('#error_explanation').find('Email has already been taken') && location.pathname == '/users/sign_up'){
     $('#error_explanation').before(buildEmailDupliError());
   };
 
