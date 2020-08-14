@@ -168,13 +168,13 @@ $(function(){
   });
   // メールアドレス keyup & blur
   $('#user_email').keyup(function(){
-    if($('#user_email').val().match(/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/)){
+    if($('#user_email').val().match(/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/)&& location.pathname == '/users/sign_up'){
       $(this).parent().find('.signup-input-error').remove();
       $(this).css('border-color', '');
     };
   });
   $('#user_email').blur(function(){
-    if((!$('#user_email').val().match(/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/) || $('#user_email').val().length == 0) && $(this).parent().find('.signup-input-error').length == 0){
+    if(((!$('#user_email').val().match(/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/) || $('#user_email').val().length == 0) && $(this).parent().find('.signup-input-error').length == 0) && location.pathname == '/users/sign_up'){
       $('#user_email').parent().append(buildInputError('メールアドレスを入力してください'));
       changeErrorBox('#user_email');
     };
