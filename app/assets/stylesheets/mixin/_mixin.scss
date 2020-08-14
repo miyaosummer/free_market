@@ -1,0 +1,5 @@
+@mixin unimplemented {
+  &::after{
+    content: " -未実装- ";
+  }
+}

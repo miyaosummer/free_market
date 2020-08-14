@@ -65,6 +65,7 @@
             transition: 0.4s;
             &:hover {
               opacity: 0.6;
+              @include unimplemented;
             }
           }
           &__google {
@@ -81,6 +82,7 @@
             transition: 0.4s;
             &:hover {
               opacity: 0.6;
+              @include unimplemented;
             }
           }
         }
